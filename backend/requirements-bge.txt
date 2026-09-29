@@ -1,0 +1,4 @@
+# BGE-M3 dense embeddings (~2.3 GB RAM). Install CPU torch first:
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+-r requirements.txt
+sentence-transformers>=3.0

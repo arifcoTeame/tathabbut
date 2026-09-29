@@ -1,0 +1,80 @@
+"""Build the hybrid index (BM25 + dense) from the approved sources.
+
+Usage (from backend/):
+    python scripts/build_index.py                      # tfidf-char, seed data
+    python scripts/build_index.py --embedder bge-m3    # BGE-M3 (needs requirements-bge.txt)
+
+Quran source priority: data/raw/quran_full.json (from fetch_quran.py) > data/seed/quran_seed.json
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import sys
+import time
+from pathlib import Path
+from urllib.parse import quote
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+from app.config import ROOT, settings  # noqa: E402
+from app.core.index import Doc, HybridIndex  # noqa: E402
+from app.core.quran_meta import surah_name  # noqa: E402
+
+DATA = ROOT / "data"
+
+
+def load_quran(prefer_full: bool = True) -> tuple[list[Doc], str]:
+    full = DATA / "raw" / "quran_full.json"
+    use_full = prefer_full and full.exists()
+    path, verified = (full, True) if use_full else (DATA / "seed" / "quran_seed.json", False)
+    records = json.loads(path.read_text("utf-8"))["records"]
+    docs = [
+        Doc(
+            id=f"quran-{r['surah']}:{r['ayah']}",
+            kind="quran",
+            text=r["text"],
+            ref={"surah": r["surah"], "ayah": r["ayah"], "surah_name": surah_name(r["surah"])},
+            verified=verified,
+        )
+        for r in records
+    ]
+    return docs, path.name
+
+
+def load_hadith() -> list[Doc]:
+    records = json.loads((DATA / "seed" / "hadith_seed.json").read_text("utf-8"))["records"]
+    docs = []
+    for r in records:
+        query = " ".join(r["text"].split()[:6])
+        docs.append(
+            Doc(
+                id=f"hadith-{r['id']}",
+                kind="hadith",
+                text=r["text"],
+                ref={"narrator": r.get("narrator", "")},
+                grades=r["grades"],
+                url=r.get("url") or f"https://dorar.net/hadith/search?q={quote(query)}",
+                verified=bool(r.get("verified")),
+            )
+        )
+    return docs
+
+
+def main() -> None:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--embedder", default="tfidf-char", choices=["tfidf-char", "bge-m3"])
+    ap.add_argument("--out", type=Path, default=settings.index_dir)
+    args = ap.parse_args()
+
+    t0 = time.time()
+    quran, quran_file = load_quran()
+    hadith = load_hadith()
+    index = HybridIndex.build(quran + hadith, args.embedder)
+    index.save(args.out)
+    print(f"Quran: {len(quran)} verses from {quran_file} | Hadith: {len(hadith)} records")
+    print(f"Embedder: {args.embedder} | Saved to {args.out} | {time.time() - t0:.1f}s")
+
+
+if __name__ == "__main__":
+    main()
