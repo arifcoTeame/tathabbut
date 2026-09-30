@@ -1,12 +1,23 @@
+# Python
 __pycache__/
 *.pyc
 .venv/
-.env
 .pytest_cache/
+
+# Environment
+.env
+
+# Generated data (built locally)
 data/index/*
 !data/index/.gitkeep
 data/raw/*
 !data/raw/.gitkeep
+
+# Frontend (Next.js)
 node_modules/
 .next/
+next-env.d.ts
+*.tsbuildinfo
+
+# macOS
 .DS_Store
