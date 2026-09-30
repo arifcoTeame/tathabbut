@@ -55,6 +55,7 @@ export default function ClaimCard({ claim }: { claim: Claim }) {
             {claim.grades.map((g, i) => (
               <li key={i}>
                 <b>{g.grade}</b> — {g.muhaddith}، {g.source} ({g.ref})
+                {g.note && <span className="tag">{g.note}</span>}
               </li>
             ))}
           </ul>
@@ -84,7 +85,9 @@ export default function ClaimCard({ claim }: { claim: Claim }) {
             {claim.closest.text}
             {claim.closest.grades?.length > 0 && (
               <span className="src" style={{ display: "block", marginTop: 4 }}>
-                {claim.closest.grades.map((g) => `${g.muhaddith} (${g.source} ${g.ref}): ${g.grade}`).join("؛ ")}
+                {claim.closest.grades
+                  .map((g) => `${g.muhaddith} (${g.source} ${g.ref}): ${g.grade}${g.note ? ` — ${g.note}` : ""}`)
+                  .join("؛ ")}
               </span>
             )}
           </blockquote>

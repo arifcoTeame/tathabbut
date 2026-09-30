@@ -1,7 +1,12 @@
 """Hybrid index: BM25 (lexical, stemmed keys) + dense vectors (inner product),
-fused with Reciprocal Rank Fusion. Uses FAISS when installed, otherwise exact
-NumPy search (identical results; fast enough for tens of thousands of texts). The index holds both Quran and Hadith records;
-each search can be restricted to one collection."""
+fused with Reciprocal Rank Fusion. The index holds both Quran and Hadith records;
+each search can be restricted to one collection.
+
+Both retrievers are vectorised for small CPUs (e.g. a 0.1-vCPU free host):
+* BM25 is precomputed as a sparse doc x term weight matrix (scores identical to
+  rank_bm25.BM25Okapi), so a query is one sparse mat-vec instead of a Python loop per term.
+* Dense search is an exact NumPy inner product; FAISS is used only for very large corpora.
+Ties are broken by document order (earliest verse first), so results are deterministic."""
 from __future__ import annotations
 
 import json
@@ -10,17 +15,20 @@ from pathlib import Path
 
 import numpy as np
 
-try:  # optional accelerator
+from rank_bm25 import BM25Okapi
+from scipy import sparse
+
+try:  # optional accelerator, only worth it for very large corpora
     import faiss
 except ImportError:  # pragma: no cover
     faiss = None
-from rank_bm25 import BM25Okapi
 
 from . import embedder as emb
 from .arabic import key_tokens
 
 RRF_K = 60
 QURAN_VERSES = 6236
+FAISS_MIN_DOCS = 50_000
 
 
 @dataclass
@@ -54,12 +62,39 @@ class HybridIndex:
         self.by_verse = {
             (d.ref["surah"], d.ref["ayah"]): d for d in docs if d.kind == "quran"
         }
-        self._bm25 = BM25Okapi(self._keys)
+        self._build_bm25()
         self._vectors = np.ascontiguousarray(vectors, dtype="float32")
+        self._kind_mask = {
+            kind: np.array([d.kind == kind for d in docs]) for kind in {d.kind for d in docs}
+        }
         self._faiss = None
-        if faiss is not None:
+        if faiss is not None and len(docs) >= FAISS_MIN_DOCS:
             self._faiss = faiss.IndexFlatIP(self._vectors.shape[1])
             self._faiss.add(self._vectors)
+
+    def _build_bm25(self) -> None:
+        """Precompute BM25Okapi term weights as a sparse (docs x terms) matrix."""
+        bm25 = BM25Okapi(self._keys)
+        self._vocab = {term: j for j, term in enumerate(bm25.idf)}
+        rows, cols, vals = [], [], []
+        for i, freqs in enumerate(bm25.doc_freqs):
+            norm = bm25.k1 * (1 - bm25.b + bm25.b * bm25.doc_len[i] / bm25.avgdl)
+            for term, f in freqs.items():
+                rows.append(i)
+                cols.append(self._vocab[term])
+                vals.append(bm25.idf[term] * (f * (bm25.k1 + 1) / (f + norm)))
+        self._bm25_w = sparse.csr_matrix(
+            (np.array(vals), (rows, cols)), shape=(len(self._keys), len(self._vocab))
+        )
+
+    def bm25_scores(self, tokens: list[str]) -> np.ndarray:
+        """Same values as ``BM25Okapi.get_scores`` (repeated query terms count again)."""
+        q = np.zeros(len(self._vocab))
+        for t in tokens:
+            j = self._vocab.get(t)
+            if j is not None:
+                q[j] += 1.0
+        return self._bm25_w @ q
 
     # ------------------------------------------------------------------ build/io
     @classmethod
@@ -126,24 +161,29 @@ class HybridIndex:
         return total
 
     def search(self, text: str, kind: str | None = None, k: int = 8) -> list[Hit]:
-        allowed = [i for i, d in enumerate(self.docs) if kind is None or d.kind == kind]
-        if not allowed:
+        if kind is None:
+            mask = np.ones(len(self.docs), dtype=bool)
+        elif kind in self._kind_mask:
+            mask = self._kind_mask[kind]
+        else:
             return []
-        allowed_set = set(allowed)
+        depth = k * 3
 
-        bm25_scores = self._bm25.get_scores(key_tokens(text))
-        bm25_order = [i for i in np.argsort(-bm25_scores) if i in allowed_set and bm25_scores[i] > 0]
+        bm25_scores = self.bm25_scores(key_tokens(text))
+        cand = np.flatnonzero(mask & (bm25_scores > 0))
+        bm25_order = cand[np.argsort(-bm25_scores[cand], kind="stable")][:depth].tolist()
 
         query_vec = self.embedder.encode([text])
         if self._faiss is not None:
             _, ids = self._faiss.search(query_vec, len(self.docs))
-            order = ids[0]
+            dense_order = [int(i) for i in ids[0] if mask[i]][:depth]
         else:
-            order = np.argsort(-(self._vectors @ query_vec[0]))
-        dense_order = [int(i) for i in order if int(i) in allowed_set]
+            cand = np.flatnonzero(mask)
+            sims = self._vectors[cand] @ query_vec[0]
+            dense_order = cand[np.argsort(-sims, kind="stable")][:depth].tolist()
 
-        bm25_rank = {doc_i: r for r, doc_i in enumerate(bm25_order[: k * 3])}
-        dense_rank = {doc_i: r for r, doc_i in enumerate(dense_order[: k * 3])}
+        bm25_rank = {doc_i: r for r, doc_i in enumerate(bm25_order)}
+        dense_rank = {doc_i: r for r, doc_i in enumerate(dense_order)}
         fused: dict[int, float] = {}
         for rank_map in (bm25_rank, dense_rank):
             for doc_i, r in rank_map.items():

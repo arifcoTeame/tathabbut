@@ -70,8 +70,8 @@ python scripts/build_index.py
 backend/app/core/
   arabic.py      تطبيع عربي + تجذير خفيف + كلمات وظيفية
   extractor.py   استخراج الادعاءات + تصنيف المستويات (أ–د)
-  embedder.py    BGE-M3 أو TF-IDF حرفي
-  index.py       BM25 + بحث متجهي (FAISS اختياري) + دمج RRF
+  embedder.py    BGE-M3 أو TF-IDF حرفي + إسقاط SVD
+  index.py       BM25 مُتجَّه (مصفوفة متفرقة) + بحث متجهي دقيق + دمج RRF
   align.py       محاذاة حرفية حتمية + الفروق
   judge.py       قواعد الحكم الحتمية
   pipeline.py    التنسيق + مخرج JSON

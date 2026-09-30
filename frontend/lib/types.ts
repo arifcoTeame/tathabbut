@@ -15,6 +15,8 @@ export interface Grade {
   ref: string;
   grade: string;
   class: string;
+  /** e.g. «بلفظ مقارب» when the source's wording differs slightly from the record text */
+  note?: string;
 }
 
 export interface SourceRef {

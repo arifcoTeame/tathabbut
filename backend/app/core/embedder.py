@@ -43,7 +43,10 @@ def _l2(x: np.ndarray) -> np.ndarray:
 
 class TfidfCharEmbedder(Embedder):
     """Character n-gram TF-IDF compressed with truncated SVD (LSA) to <=256 dims,
-    so the full Quran index stays a few MB instead of ~1 GB of dense vectors."""
+    so the full Quran index stays a few MB instead of ~1 GB of dense vectors.
+
+    Only the SVD projection matrix is kept (float32, C-contiguous): ``X @ proj`` equals
+    ``TruncatedSVD.transform(X)`` without copying the component matrix on every query."""
 
     name = "tfidf-char"
     _file = "tfidf_char.pkl"
@@ -53,31 +56,34 @@ class TfidfCharEmbedder(Embedder):
         from sklearn.feature_extraction.text import TfidfVectorizer
 
         self.vectorizer = TfidfVectorizer(
-            analyzer="char_wb", ngram_range=(2, 4), sublinear_tf=True, min_df=1
+            analyzer="char_wb", ngram_range=(2, 4), sublinear_tf=True, min_df=1, dtype=np.float32
         )
-        self.svd = None
+        self.proj: np.ndarray | None = None
 
     def fit(self, texts: list[str]) -> None:
         from sklearn.decomposition import TruncatedSVD
 
         matrix = self.vectorizer.fit_transform([normalize(t) for t in texts])
         dims = min(self.max_dims, matrix.shape[0] - 1, matrix.shape[1] - 1)
-        self.svd = TruncatedSVD(n_components=dims, random_state=0).fit(matrix)
+        svd = TruncatedSVD(n_components=dims, random_state=0).fit(matrix)
+        self.proj = np.ascontiguousarray(svd.components_.T, dtype=np.float32)
 
     def encode(self, texts: list[str]) -> np.ndarray:
         matrix = self.vectorizer.transform([normalize(t) for t in texts])
-        return _l2(self.svd.transform(matrix))
+        return _l2(np.asarray(matrix @ self.proj))
 
     def save(self, directory: Path) -> None:
         with open(directory / self._file, "wb") as fh:
-            pickle.dump({"vectorizer": self.vectorizer, "svd": self.svd}, fh)
+            pickle.dump({"vectorizer": self.vectorizer, "proj": self.proj}, fh)
 
     @classmethod
     def load(cls, directory: Path) -> "TfidfCharEmbedder":
         obj = cls()
         with open(directory / cls._file, "rb") as fh:
             state = pickle.load(fh)
-        obj.vectorizer, obj.svd = state["vectorizer"], state["svd"]
+        obj.vectorizer = state["vectorizer"]
+        proj = state["proj"] if "proj" in state else state["svd"].components_.T  # older index format
+        obj.proj = np.ascontiguousarray(proj, dtype=np.float32)
         return obj
 
 

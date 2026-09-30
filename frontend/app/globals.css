@@ -126,6 +126,7 @@ textarea.post::placeholder { color: #6c77ad; }
 .src { font-size: 14px; color: var(--text-2); display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: center; }
 .grades { list-style: none; padding: 0; margin: 6px 0; font-size: 14px; color: var(--text-2); }
 .grades li b { color: var(--text); }
+.grades .tag { margin-inline-start: 6px; }
 .tag { display: inline-block; font-size: 10.5px; padding: 1px 8px; border-radius: 999px; background: var(--border); color: var(--text-2); }
 .badge .flag { display: block; margin-top: 6px; font-size: 11px; font-weight: 600; color: var(--altered); }
 .tag.warn { background: color-mix(in srgb, var(--altered) 18%, transparent); color: var(--altered); }

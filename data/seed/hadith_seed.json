@@ -1,13 +1,15 @@
 {
   "_meta": {
-    "description": "عينة تجريبية مصغرة لمرحلة التطوير. كل سجل يجب مطابقته يدوياً مع dorar.net قبل أي عرض عام، ثم تغيير verified إلى true.",
+    "description": "عيّنة مصغّرة (12 حديثاً) طوبقت نصاً ومحدّثاً ومصدراً ورقماً وحكماً مع dorar.net في 2026-09-30. الأحكام منقولة حرفياً عن المحدّثين.",
     "grade_classes": {
       "authentic": "صحيح / حسن",
       "weak": "ضعيف",
       "very_weak": "ضعيف جداً / منكر",
       "fabricated": "موضوع / باطل / كذب",
       "baseless": "لا أصل له"
-    }
+    },
+    "verified": "2026-09-30 against dorar.net (dorar_api.json); see docs/VERIFY_SEED.md",
+    "grades": "copied verbatim from the muhaddith's ruling as shown on dorar.net; the system never assigns a grade"
   },
   "records": [
     {
@@ -15,110 +17,196 @@
       "text": "إنما الأعمال بالنيات وإنما لكل امرئ ما نوى فمن كانت هجرته إلى دنيا يصيبها أو إلى امرأة ينكحها فهجرته إلى ما هاجر إليه",
       "narrator": "عمر بن الخطاب",
       "grades": [
-        {"muhaddith": "البخاري", "source": "صحيح البخاري", "ref": "1", "grade": "صحيح", "class": "authentic"},
-        {"muhaddith": "مسلم", "source": "صحيح مسلم", "ref": "1907", "grade": "صحيح", "class": "authentic"}
+        {
+          "muhaddith": "البخاري",
+          "source": "صحيح البخاري",
+          "ref": "1",
+          "grade": "صحيح",
+          "class": "authentic"
+        },
+        {
+          "muhaddith": "مسلم",
+          "source": "صحيح مسلم",
+          "ref": "1907",
+          "grade": "صحيح",
+          "class": "authentic",
+          "note": "بلفظ مقارب"
+        }
       ],
-      "verified": false
+      "verified": true
     },
     {
-      "id": "bukhari-10",
+      "id": "bukhari-6484",
       "text": "المسلم من سلم المسلمون من لسانه ويده والمهاجر من هجر ما نهى الله عنه",
-      "narrator": "عبد الله بن عمرو",
+      "narrator": "عبدالله بن عمرو",
       "grades": [
-        {"muhaddith": "البخاري", "source": "صحيح البخاري", "ref": "10", "grade": "صحيح", "class": "authentic"}
+        {
+          "muhaddith": "البخاري",
+          "source": "صحيح البخاري",
+          "ref": "6484",
+          "grade": "صحيح",
+          "class": "authentic"
+        }
       ],
-      "verified": false
+      "verified": true
     },
     {
       "id": "bukhari-13",
       "text": "لا يؤمن أحدكم حتى يحب لأخيه ما يحب لنفسه",
       "narrator": "أنس بن مالك",
       "grades": [
-        {"muhaddith": "البخاري", "source": "صحيح البخاري", "ref": "13", "grade": "صحيح", "class": "authentic"},
-        {"muhaddith": "مسلم", "source": "صحيح مسلم", "ref": "45", "grade": "صحيح", "class": "authentic"}
+        {
+          "muhaddith": "البخاري",
+          "source": "صحيح البخاري",
+          "ref": "13",
+          "grade": "صحيح",
+          "class": "authentic"
+        },
+        {
+          "muhaddith": "مسلم",
+          "source": "صحيح مسلم",
+          "ref": "45",
+          "grade": "صحيح",
+          "class": "authentic",
+          "note": "بلفظ مقارب"
+        }
       ],
-      "verified": false
+      "verified": true
     },
     {
       "id": "bukhari-24",
       "text": "دعه فإن الحياء من الإيمان",
-      "narrator": "عبد الله بن عمر",
+      "narrator": "عبدالله بن عمر",
       "grades": [
-        {"muhaddith": "البخاري", "source": "صحيح البخاري", "ref": "24", "grade": "صحيح", "class": "authentic"}
+        {
+          "muhaddith": "البخاري",
+          "source": "صحيح البخاري",
+          "ref": "24",
+          "grade": "صحيح",
+          "class": "authentic"
+        }
       ],
-      "verified": false
+      "verified": true
     },
     {
       "id": "muslim-55",
       "text": "الدين النصيحة قلنا لمن قال لله ولكتابه ولرسوله ولأئمة المسلمين وعامتهم",
       "narrator": "تميم الداري",
       "grades": [
-        {"muhaddith": "مسلم", "source": "صحيح مسلم", "ref": "55", "grade": "صحيح", "class": "authentic"}
+        {
+          "muhaddith": "مسلم",
+          "source": "صحيح مسلم",
+          "ref": "55",
+          "grade": "صحيح",
+          "class": "authentic"
+        }
       ],
-      "verified": false
+      "verified": true
     },
     {
       "id": "muslim-101",
       "text": "من حمل علينا السلاح فليس منا ومن غشنا فليس منا",
       "narrator": "أبو هريرة",
       "grades": [
-        {"muhaddith": "مسلم", "source": "صحيح مسلم", "ref": "101", "grade": "صحيح", "class": "authentic"}
+        {
+          "muhaddith": "مسلم",
+          "source": "صحيح مسلم",
+          "ref": "101",
+          "grade": "صحيح",
+          "class": "authentic"
+        }
       ],
-      "verified": false
+      "verified": true
     },
     {
       "id": "muslim-223",
       "text": "الطهور شطر الإيمان والحمد لله تملأ الميزان",
       "narrator": "أبو مالك الأشعري",
       "grades": [
-        {"muhaddith": "مسلم", "source": "صحيح مسلم", "ref": "223", "grade": "صحيح", "class": "authentic"}
+        {
+          "muhaddith": "مسلم",
+          "source": "صحيح مسلم",
+          "ref": "223",
+          "grade": "صحيح",
+          "class": "authentic"
+        }
       ],
-      "verified": false
+      "verified": true
     },
     {
       "id": "muslim-2553",
       "text": "البر حسن الخلق والإثم ما حاك في صدرك وكرهت أن يطلع عليه الناس",
-      "narrator": "النواس بن سمعان",
+      "narrator": "النواس بن سمعان الأنصاري",
       "grades": [
-        {"muhaddith": "مسلم", "source": "صحيح مسلم", "ref": "2553", "grade": "صحيح", "class": "authentic"}
+        {
+          "muhaddith": "مسلم",
+          "source": "صحيح مسلم",
+          "ref": "2553",
+          "grade": "صحيح",
+          "class": "authentic"
+        }
       ],
-      "verified": false
+      "verified": true
     },
     {
       "id": "ibnmajah-224",
       "text": "طلب العلم فريضة على كل مسلم",
       "narrator": "أنس بن مالك",
       "grades": [
-        {"muhaddith": "الألباني", "source": "صحيح ابن ماجه", "ref": "184", "grade": "صحيح", "class": "authentic"}
+        {
+          "muhaddith": "الألباني",
+          "source": "صحيح ابن ماجه",
+          "ref": "184",
+          "grade": "صحيح",
+          "class": "authentic"
+        }
       ],
-      "verified": false
+      "verified": true
     },
     {
       "id": "daifa-416",
-      "text": "اطلبوا العلم ولو بالصين فإن طلب العلم فريضة على كل مسلم",
+      "text": "اطلبوا العلم ولو بالصين",
       "narrator": "أنس بن مالك",
       "grades": [
-        {"muhaddith": "الألباني", "source": "السلسلة الضعيفة", "ref": "416", "grade": "باطل", "class": "fabricated"}
+        {
+          "muhaddith": "الألباني",
+          "source": "السلسلة الضعيفة",
+          "ref": "416",
+          "grade": "باطل",
+          "class": "fabricated"
+        }
       ],
-      "verified": false
+      "verified": true
     },
     {
       "id": "daifa-36",
       "text": "حب الوطن من الإيمان",
       "narrator": "",
       "grades": [
-        {"muhaddith": "الألباني", "source": "السلسلة الضعيفة", "ref": "36", "grade": "موضوع", "class": "fabricated"}
+        {
+          "muhaddith": "الألباني",
+          "source": "السلسلة الضعيفة",
+          "ref": "36",
+          "grade": "موضوع",
+          "class": "fabricated"
+        }
       ],
-      "verified": false
+      "verified": true
     },
     {
       "id": "daifa-57",
       "text": "اختلاف أمتي رحمة",
       "narrator": "",
       "grades": [
-        {"muhaddith": "الألباني", "source": "السلسلة الضعيفة", "ref": "57", "grade": "لا أصل له", "class": "baseless"}
+        {
+          "muhaddith": "الألباني",
+          "source": "السلسلة الضعيفة",
+          "ref": "57",
+          "grade": "لا أصل له",
+          "class": "baseless"
+        }
       ],
-      "verified": false
+      "verified": true
     }
   ]
 }

@@ -96,4 +96,18 @@ def test_require_verified_downgrades_unreviewed_sources(index):
     from app.core.judge import Thresholds
 
     strict = Thresholds(require_verified_sources=True)
-    assert verdicts(index, strict, "حب الوطن من الإيمان")[0][0] == "NEEDS_REVIEW"
+    # Reviewed record: the recorded grade is used as-is.
+    assert verdicts(index, strict, "حب الوطن من الإيمان")[0][0] == "NOT_AUTHENTIC"
+    # Same record marked unreviewed: the verdict is withheld.
+    doc = next(d for d in index.docs if d.id == "hadith-daifa-36")
+    doc.verified = False
+    try:
+        assert verdicts(index, strict, "حب الوطن من الإيمان")[0][0] == "NEEDS_REVIEW"
+    finally:
+        doc.verified = True
+
+
+def test_seed_is_reviewed():
+    from scripts.build_index import load_hadith
+
+    assert all(d.verified for d in load_hadith()), "every hadith record must be checked against dorar.net"
