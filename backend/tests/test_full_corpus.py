@@ -1,14 +1,12 @@
-"""Runs only after scripts/fetch_quran.py has produced data/raw/quran_full.json."""
+"""Runs when the full Quran is available (data/raw or the bundled data/quran copy)."""
 import pytest
 
 from app.core import pipeline
 from app.core.index import HybridIndex
 from app.core.judge import Thresholds
-from scripts.build_index import DATA, load_hadith, load_quran
+from scripts.build_index import full_quran_path, load_hadith, load_quran
 
-pytestmark = pytest.mark.skipif(
-    not (DATA / "raw" / "quran_full.json").exists(), reason="full Quran not downloaded"
-)
+pytestmark = pytest.mark.skipif(full_quran_path() is None, reason="full Quran not available")
 LINK = "https://tanzil.net/#{surah}:{ayah}"
 
 

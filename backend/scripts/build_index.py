@@ -4,7 +4,8 @@ Usage (from backend/):
     python scripts/build_index.py                      # tfidf-char, seed data
     python scripts/build_index.py --embedder bge-m3    # BGE-M3 (needs requirements-bge.txt)
 
-Quran source priority: data/raw/quran_full.json (from fetch_quran.py) > data/seed/quran_seed.json
+Quran source priority: data/raw/quran_full.json (fetch_quran.py) > data/quran/quran_full.json (bundled Tanzil copy)
+> data/seed/quran_seed.json
 """
 from __future__ import annotations
 
@@ -24,9 +25,16 @@ from app.core.quran_meta import surah_name  # noqa: E402
 DATA = ROOT / "data"
 
 
+FULL_QURAN_CANDIDATES = (DATA / "raw" / "quran_full.json", DATA / "quran" / "quran_full.json")
+
+
+def full_quran_path() -> Path | None:
+    return next((p for p in FULL_QURAN_CANDIDATES if p.exists()), None)
+
+
 def load_quran(prefer_full: bool = True) -> tuple[list[Doc], str]:
-    full = DATA / "raw" / "quran_full.json"
-    use_full = prefer_full and full.exists()
+    full = full_quran_path()
+    use_full = prefer_full and full is not None
     path, verified = (full, True) if use_full else (DATA / "seed" / "quran_seed.json", False)
     records = json.loads(path.read_text("utf-8"))["records"]
     docs = [

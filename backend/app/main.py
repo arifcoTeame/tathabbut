@@ -37,6 +37,15 @@ app.add_middleware(
 )
 
 
+@app.get("/")
+def root() -> dict:
+    return {
+        "name": "Tathabbut API — محرّك تثبّت للتحقق المُسنَد",
+        "engine_version": pipeline.ENGINE_VERSION,
+        "endpoints": {"verify": "POST /verify", "stats": "GET /index/stats", "docs": "/docs"},
+    }
+
+
 @app.get("/health")
 def health() -> dict:
     return {"status": "ok", "engine_version": pipeline.ENGINE_VERSION}

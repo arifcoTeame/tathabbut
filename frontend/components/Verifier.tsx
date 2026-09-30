@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { IndexStats, VerifyResponse } from "@/lib/types";
 import { VERDICT_META, VERDICT_ORDER } from "@/lib/verdicts";
 import ClaimCard from "./ClaimCard";
@@ -28,11 +28,26 @@ const EXAMPLES: { label: string; text: string }[] = [
   { label: "حديث صحيح", text: "قال رسول الله ﷺ: «لا يؤمن أحدكم حتى يحب لأخيه ما يحب لنفسه»" },
 ];
 
-type Status = { state: "checking" } | { state: "up"; stats: IndexStats } | { state: "down" };
+type Status =
+  | { state: "checking"; waking: boolean }
+  | { state: "up"; stats: IndexStats }
+  | { state: "down" };
 
-function IndexStatus({ status }: { status: Status }) {
-  if (status.state === "checking") return <span className="status"><span className="dot" />جارٍ الاتصال بالمحرك…</span>;
-  if (status.state === "down") return <span className="status"><span className="dot down" />المحرك غير متصل</span>;
+function IndexStatus({ status, onRetry }: { status: Status; onRetry: () => void }) {
+  if (status.state === "checking")
+    return (
+      <span className="status">
+        <span className="dot pulse" />
+        {status.waking ? "المحرك يستيقظ… قد يستغرق ذلك دقيقة" : "جارٍ الاتصال بالمحرك…"}
+      </span>
+    );
+  if (status.state === "down")
+    return (
+      <span className="status">
+        <span className="dot down" />المحرك غير متصل
+        <button className="btn-ghost" onClick={onRetry}>إعادة المحاولة</button>
+      </span>
+    );
   const s = status.stats;
   return (
     <span className="status" title={`نموذج التضمين: ${s.embedder}`}>
@@ -49,15 +64,21 @@ export default function Verifier() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<VerifyResponse | null>(null);
-  const [status, setStatus] = useState<Status>({ state: "checking" });
+  const [status, setStatus] = useState<Status>({ state: "checking", waking: false });
   const resultsRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  // Doubles as a wake-up call for a sleeping free-tier backend.
+  const connect = useCallback(() => {
+    setStatus({ state: "checking", waking: false });
+    const slow = setTimeout(() => setStatus((s) => (s.state === "checking" ? { ...s, waking: true } : s)), 3000);
     fetch("/api/stats")
       .then((r) => (r.ok ? r.json() : Promise.reject()))
       .then((stats: IndexStats) => setStatus({ state: "up", stats }))
-      .catch(() => setStatus({ state: "down" }));
+      .catch(() => setStatus({ state: "down" }))
+      .finally(() => clearTimeout(slow));
   }, []);
+
+  useEffect(() => connect(), [connect]);
 
   async function verify(input = text) {
     const value = input.trim();
@@ -73,6 +94,7 @@ export default function Verifier() {
       const data = await res.json();
       if (!res.ok) throw new Error(typeof data.detail === "string" ? data.detail : "تعذّر إتمام التحقق.");
       setResult(data as VerifyResponse);
+      if (status.state !== "up") connect();
       requestAnimationFrame(() => resultsRef.current?.focus());
     } catch (e) {
       setResult(null);
@@ -88,7 +110,7 @@ export default function Verifier() {
     <>
       <header className="topbar">
         <img src="/logo.png" alt="تثبّت — محرّك التحقق المُسنَد للمحتوى الإسلامي" />
-        <IndexStatus status={status} />
+        <IndexStatus status={status} onRetry={connect} />
       </header>
 
       <section className="hero">

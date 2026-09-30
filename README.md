@@ -24,6 +24,18 @@ curl -s -X POST localhost:8000/verify -H 'Content-Type: application/json' \
 
 واجهة التوثيق التفاعلية: http://localhost:8000/docs
 
+### الواجهة (Next.js)
+
+في نافذة ثانية، والمحرّك يعمل:
+
+```bash
+cd frontend
+npm install
+npm run dev          # http://localhost:3000
+```
+
+التفاصيل في `frontend/README.md`.
+
 ### BGE-M3 (تضمين دلالي كامل)
 
 ```bash
@@ -32,8 +44,11 @@ curl -s -X POST localhost:8000/verify -H 'Content-Type: application/json' \
 
 ### النص القرآني الكامل
 
+المصحف كاملاً (Tanzil simple-clean، 6236 آية) مضمَّن في `data/quran/quran_full.json`، ويُستخدم تلقائياً عند بناء الفهرس.
+لإعادة تنزيله:
+
 ```bash
-python scripts/fetch_quran.py            # Tanzil simple-clean، 6236 آية
+python scripts/fetch_quran.py            # يحفظ في data/raw/quran_full.json
 python scripts/build_index.py
 ```
 
@@ -61,6 +76,10 @@ backend/app/core/
   judge.py       قواعد الحكم الحتمية
   pipeline.py    التنسيق + مخرج JSON
 ```
+
+## النشر
+
+المحرك على Render والواجهة على Vercel، وكلاهما مجاني. الخطوات في `docs/DEPLOY.md`.
 
 ## المصادر
 
