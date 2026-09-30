@@ -37,7 +37,8 @@ app.add_middleware(
 )
 
 
-@app.get("/")
+# HEAD is accepted too: uptime monitors (UptimeRobot, Render) probe with HEAD.
+@app.api_route("/", methods=["GET", "HEAD"])
 def root() -> dict:
     return {
         "name": "Tathabbut API — محرّك تثبّت للتحقق المُسنَد",
@@ -46,7 +47,7 @@ def root() -> dict:
     }
 
 
-@app.get("/health")
+@app.api_route("/health", methods=["GET", "HEAD"])
 def health() -> dict:
     return {"status": "ok", "engine_version": pipeline.ENGINE_VERSION}
 
