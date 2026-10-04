@@ -1,0 +1,42 @@
+{
+  "recorded_at": "2026-10-03T20:19:28.050591+03:00",
+  "engine_version": "0.5.1",
+  "environment": {
+    "os": "Darwin",
+    "machine": "arm64",
+    "python": "3.14.6"
+  },
+  "pytest": {
+    "command": ".venv/bin/python -m pytest -q",
+    "observed_exit_code": 0,
+    "passed": 129,
+    "failed": 0,
+    "duration_seconds": 7.29,
+    "warnings": [
+      "Starlette TestClient reports httpx deprecation; no failed test."
+    ],
+    "provenance": "Summary of the actual command output observed in this local review; not an independently signed test report."
+  },
+  "release_cases": {
+    "path": "local-safety-v0.5.1-2026-10-03.json",
+    "distinct_inputs": 18,
+    "repetitions": 3,
+    "passed": 54,
+    "total": 54,
+    "latency_ms": {
+      "median": 7.0,
+      "p95_nearest_rank": 86,
+      "min": 1,
+      "max": 87
+    },
+    "scope": "FastAPI TestClient in process. Includes local routing and validation; excludes network, provider cold start and concurrent traffic. Not a capacity or general accuracy claim."
+  },
+  "sha256": {
+    "backend/app/core/extractor.py": "384586672a9c2c60bb000fb2e7e2e44116fa1666c58f2f6492beb5efea66c2da",
+    "backend/app/core/pipeline.py": "e231f3935af97fd066ccc48817765aa8fe0a7f4814083d2185b649e7737ee29e",
+    "backend/tests/test_personal_referral.py": "eba40d1008a7c67a00e4ea8d6bf6928e9ef1eb28a04b0da0402993d2d8dee642",
+    "backend/scripts/evaluate_release.py": "e2ab3d973f2399462eec4563ae4772aeadef1df0a5cf23fb005300e02f683f48",
+    "data/seed/hadith_seed.json": "2626be34d6b243317687402e17b468c9788bdd3ca84376db940de35d614d1115",
+    "data/quran/quran_full.json": "5f05c89c7edfd9b9caecd684aa0db459c0ada322bebc75aeaa0bc0594f31b67e"
+  }
+}

@@ -7,7 +7,7 @@ from . import extractor
 from .index import HybridIndex
 from .judge import VERDICTS, Judgement, Thresholds, judge
 
-ENGINE_VERSION = "0.1.0"
+ENGINE_VERSION = "0.6.0"
 DISCLAIMER = "تثبّت أداة مدعومة بالذكاء الاصطناعي ولا تُغني عن المختص. النص الشرعي منسوخ من الفهرس، والدرجات منقولة عن المحدّثين كما هي مسجّلة في المصدر."
 
 
@@ -49,7 +49,7 @@ def _explanation(j: Judgement) -> dict | None:
     elif j.code == "REFER":
         text = "هذه مسألة شخصية تختلف باختلاف الوقائع؛ يُرجع فيها إلى مفتٍ أو جهة إفتاء مؤهلة."
     elif j.code == "NO_ORIGIN":
-        text = "لم يُعثر في المصادر المعتمدة المفهرسة على نص مطابق لهذا الادعاء."
+        text = "لم يُعثر على نص مطابق في الفهرس الحالي؛ عدم العثور لا يحكم على صحة الحديث أو وجوده في مصادر أخرى."
     else:
         return None
     return {"kind": "template", "generated": True, "text": text}
@@ -62,6 +62,11 @@ def run(index: HybridIndex, text: str, th: Thresholds, quran_link: str) -> dict:
 
     for claim in extractor.extract(text):
         j = judge(index, claim, th)
+        if claim.omitted_count:
+            j.notes.append(
+                f"تجاوز النص حد عرض {extractor.MAX_CLAIMS} بطاقة؛ لم تُعرض {claim.omitted_count} بطاقة إضافية. "
+                "تُقدّم الحالات الشخصية للإحالة عند بلوغ الحد. قسّم النص إلى أجزاء لمراجعة بقية الادعاءات."
+            )
         summary[j.code] += 1
         c = j.candidate
         level = "A" if c is not None and claim.level == "B" else claim.level

@@ -3,14 +3,18 @@ const API = process.env.TATHABBUT_API_URL ?? "http://localhost:8000";
 // Also used to wake a sleeping free-tier backend (up to about a minute).
 export const maxDuration = 60;
 
-export async function GET() {
+export async function GET(req: Request) {
   try {
-    const res = await fetch(`${API}/index/stats`, { cache: "no-store", signal: AbortSignal.timeout(55_000) });
-    return new Response(await res.text(), {
+    const res = await fetch(`${API}/index/stats`, {
+      cache: "no-store",
+      signal: AbortSignal.any([req.signal, AbortSignal.timeout(55_000)]),
+    });
+    const data: unknown = await res.json();
+    return Response.json(data, {
       status: res.status,
-      headers: { "Content-Type": "application/json; charset=utf-8" },
+      headers: { "Cache-Control": "no-store" },
     });
   } catch {
-    return Response.json({ detail: "offline" }, { status: 502 });
+    return Response.json({ detail: "offline" }, { status: 502, headers: { "Cache-Control": "no-store" } });
   }
 }

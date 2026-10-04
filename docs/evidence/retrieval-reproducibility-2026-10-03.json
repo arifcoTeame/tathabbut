@@ -1,0 +1,31 @@
+{
+  "checked_at": "2026-10-03T20:20:08.572909+03:00",
+  "scope": "Repeatability of offline synthetic retrieval evaluation only; not scientific correctness or production performance",
+  "protocol": "reference-retrieval-v1",
+  "queries_per_run": 814,
+  "checks": {
+    "fixture_identical": true,
+    "corpus_identical": true,
+    "code_identical": true,
+    "all_rankings_identical": true,
+    "all_metrics_identical": true,
+    "both_indexes_fresh": true,
+    "both_offline": true
+  },
+  "runs": [
+    {
+      "file": "docs/evidence/retrieval-evaluation-2026-10-03.json",
+      "sha256": "d5009d37f391df5cf95d0af5d63876d87140cd27220cb2dd6ae60b9aacfba2b2",
+      "evaluated_at": "2026-10-03T20:17:48.465217+03:00",
+      "total_seconds": 6.881,
+      "build_seconds": 3.314
+    },
+    {
+      "file": "docs/evidence/retrieval-evaluation-repeat-2026-10-03.json",
+      "sha256": "02bbd2cf1eee13cdc88e1d582abe45177568bdc2e37858f92c965ae65a1048c4",
+      "evaluated_at": "2026-10-03T20:18:04.000630+03:00",
+      "total_seconds": 7.417,
+      "build_seconds": 3.91
+    }
+  ]
+}

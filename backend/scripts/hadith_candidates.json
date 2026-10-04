@@ -1,0 +1,404 @@
+{
+  "_meta": {
+    "description": "95 عبارة بحث مرشحة لمراجعة مصدر الحديث. ليست نصوصاً معتمدة، ولا أحكاماً أو درجات، ولا تعني ثبوت نسبتها. أول 12 عبارة تقابل السجلات الحالية لإعادة مراجعتها عند إتاحة المصدر؛ 83 عبارة للتوسعة.",
+    "status": "pending_source_access_and_permitted_use",
+    "source": "https://dorar.net/dorar_api.json",
+    "created_on": "2026-10-02",
+    "status_updated_on": "2026-10-03",
+    "candidate_count": 95
+  },
+  "candidates": [
+    {
+      "id": "hadith-candidate-001",
+      "query": "إنما الأعمال بالنيات",
+      "existing_record_id": "bukhari-1"
+    },
+    {
+      "id": "hadith-candidate-002",
+      "query": "المسلم من سلم المسلمون من لسانه ويده",
+      "existing_record_id": "bukhari-6484"
+    },
+    {
+      "id": "hadith-candidate-003",
+      "query": "لا يؤمن أحدكم حتى يحب لأخيه",
+      "existing_record_id": "bukhari-13"
+    },
+    {
+      "id": "hadith-candidate-004",
+      "query": "دعه فإن الحياء من الإيمان",
+      "existing_record_id": "bukhari-24"
+    },
+    {
+      "id": "hadith-candidate-005",
+      "query": "الدين النصيحة",
+      "existing_record_id": "muslim-55"
+    },
+    {
+      "id": "hadith-candidate-006",
+      "query": "من غشنا فليس منا",
+      "existing_record_id": "muslim-101"
+    },
+    {
+      "id": "hadith-candidate-007",
+      "query": "الطهور شطر الإيمان",
+      "existing_record_id": "muslim-223"
+    },
+    {
+      "id": "hadith-candidate-008",
+      "query": "البر حسن الخلق",
+      "existing_record_id": "muslim-2553"
+    },
+    {
+      "id": "hadith-candidate-009",
+      "query": "طلب العلم فريضة على كل مسلم",
+      "existing_record_id": "ibnmajah-224"
+    },
+    {
+      "id": "hadith-candidate-010",
+      "query": "اطلبوا العلم ولو بالصين",
+      "existing_record_id": "daifa-416"
+    },
+    {
+      "id": "hadith-candidate-011",
+      "query": "حب الوطن من الإيمان",
+      "existing_record_id": "daifa-36"
+    },
+    {
+      "id": "hadith-candidate-012",
+      "query": "اختلاف أمتي رحمة",
+      "existing_record_id": "daifa-57"
+    },
+    {
+      "id": "hadith-candidate-013",
+      "query": "من كان يؤمن بالله واليوم الآخر فليقل خيرا"
+    },
+    {
+      "id": "hadith-candidate-014",
+      "query": "من حسن إسلام المرء تركه ما لا يعنيه"
+    },
+    {
+      "id": "hadith-candidate-015",
+      "query": "لا تغضب"
+    },
+    {
+      "id": "hadith-candidate-016",
+      "query": "إن الله كتب الإحسان على كل شيء"
+    },
+    {
+      "id": "hadith-candidate-017",
+      "query": "اتق الله حيثما كنت"
+    },
+    {
+      "id": "hadith-candidate-018",
+      "query": "احفظ الله يحفظك"
+    },
+    {
+      "id": "hadith-candidate-019",
+      "query": "إذا لم تستح فاصنع ما شئت"
+    },
+    {
+      "id": "hadith-candidate-020",
+      "query": "قل آمنت بالله ثم استقم"
+    },
+    {
+      "id": "hadith-candidate-021",
+      "query": "يا عبادي إني حرمت الظلم على نفسي"
+    },
+    {
+      "id": "hadith-candidate-022",
+      "query": "كل سلامى من الناس عليه صدقة"
+    },
+    {
+      "id": "hadith-candidate-023",
+      "query": "ازهد في الدنيا يحبك الله"
+    },
+    {
+      "id": "hadith-candidate-024",
+      "query": "لا ضرر ولا ضرار"
+    },
+    {
+      "id": "hadith-candidate-025",
+      "query": "البينة على المدعي"
+    },
+    {
+      "id": "hadith-candidate-026",
+      "query": "من رأى منكم منكرا فليغيره بيده"
+    },
+    {
+      "id": "hadith-candidate-027",
+      "query": "لا تحاسدوا ولا تناجشوا"
+    },
+    {
+      "id": "hadith-candidate-028",
+      "query": "من نفس عن مؤمن كربة"
+    },
+    {
+      "id": "hadith-candidate-029",
+      "query": "إن الله تجاوز عن أمتي الخطأ والنسيان"
+    },
+    {
+      "id": "hadith-candidate-030",
+      "query": "كن في الدنيا كأنك غريب"
+    },
+    {
+      "id": "hadith-candidate-031",
+      "query": "يا ابن آدم إنك ما دعوتني ورجوتني"
+    },
+    {
+      "id": "hadith-candidate-032",
+      "query": "خيركم من تعلم القرآن وعلمه"
+    },
+    {
+      "id": "hadith-candidate-033",
+      "query": "اقرؤوا القرآن فإنه يأتي يوم القيامة"
+    },
+    {
+      "id": "hadith-candidate-034",
+      "query": "الدال على الخير كفاعله"
+    },
+    {
+      "id": "hadith-candidate-035",
+      "query": "بلغوا عني ولو آية"
+    },
+    {
+      "id": "hadith-candidate-036",
+      "query": "من كذب علي متعمدا"
+    },
+    {
+      "id": "hadith-candidate-037",
+      "query": "يسروا ولا تعسروا"
+    },
+    {
+      "id": "hadith-candidate-038",
+      "query": "إنما بعثت لأتمم"
+    },
+    {
+      "id": "hadith-candidate-039",
+      "query": "تبسمك في وجه أخيك صدقة"
+    },
+    {
+      "id": "hadith-candidate-040",
+      "query": "الكلمة الطيبة صدقة"
+    },
+    {
+      "id": "hadith-candidate-041",
+      "query": "لا تحقرن من المعروف شيئا"
+    },
+    {
+      "id": "hadith-candidate-042",
+      "query": "الراحمون يرحمهم الرحمن"
+    },
+    {
+      "id": "hadith-candidate-043",
+      "query": "من لا يرحم لا يرحم"
+    },
+    {
+      "id": "hadith-candidate-044",
+      "query": "ليس الشديد بالصرعة"
+    },
+    {
+      "id": "hadith-candidate-045",
+      "query": "ما نقصت صدقة من مال"
+    },
+    {
+      "id": "hadith-candidate-046",
+      "query": "اتقوا النار ولو بشق تمرة"
+    },
+    {
+      "id": "hadith-candidate-047",
+      "query": "اليد العليا خير من اليد السفلى"
+    },
+    {
+      "id": "hadith-candidate-048",
+      "query": "خيركم خيركم لأهله"
+    },
+    {
+      "id": "hadith-candidate-049",
+      "query": "أكمل المؤمنين إيمانا أحسنهم خلقا"
+    },
+    {
+      "id": "hadith-candidate-050",
+      "query": "كلكم راع وكلكم مسؤول"
+    },
+    {
+      "id": "hadith-candidate-051",
+      "query": "الجنة تحت أقدام الأمهات"
+    },
+    {
+      "id": "hadith-candidate-052",
+      "query": "أمك ثم أمك ثم أمك"
+    },
+    {
+      "id": "hadith-candidate-053",
+      "query": "رضا الرب في رضا الوالد"
+    },
+    {
+      "id": "hadith-candidate-054",
+      "query": "من أحب أن يبسط له في رزقه"
+    },
+    {
+      "id": "hadith-candidate-055",
+      "query": "لا يدخل الجنة قاطع"
+    },
+    {
+      "id": "hadith-candidate-056",
+      "query": "أنا وكافل اليتيم في الجنة"
+    },
+    {
+      "id": "hadith-candidate-057",
+      "query": "الساعي على الأرملة والمسكين"
+    },
+    {
+      "id": "hadith-candidate-058",
+      "query": "ما زال جبريل يوصيني بالجار"
+    },
+    {
+      "id": "hadith-candidate-059",
+      "query": "والله لا يؤمن الذي لا يأمن جاره"
+    },
+    {
+      "id": "hadith-candidate-060",
+      "query": "من سلك طريقا يلتمس فيه علما"
+    },
+    {
+      "id": "hadith-candidate-061",
+      "query": "من يرد الله به خيرا يفقهه في الدين"
+    },
+    {
+      "id": "hadith-candidate-062",
+      "query": "العلماء ورثة الأنبياء"
+    },
+    {
+      "id": "hadith-candidate-063",
+      "query": "خير الناس أنفعهم للناس"
+    },
+    {
+      "id": "hadith-candidate-064",
+      "query": "أحب الأعمال إلى الله أدومها"
+    },
+    {
+      "id": "hadith-candidate-065",
+      "query": "نعمتان مغبون فيهما كثير من الناس"
+    },
+    {
+      "id": "hadith-candidate-066",
+      "query": "اغتنم خمسا قبل خمس"
+    },
+    {
+      "id": "hadith-candidate-067",
+      "query": "احرص على ما ينفعك واستعن بالله"
+    },
+    {
+      "id": "hadith-candidate-068",
+      "query": "عجبا لأمر المؤمن"
+    },
+    {
+      "id": "hadith-candidate-069",
+      "query": "إن مع العسر يسرا وإن مع العسر يسرا"
+    },
+    {
+      "id": "hadith-candidate-070",
+      "query": "إن الله جميل يحب الجمال"
+    },
+    {
+      "id": "hadith-candidate-071",
+      "query": "إن الله رفيق يحب الرفق"
+    },
+    {
+      "id": "hadith-candidate-072",
+      "query": "من يحرم الرفق يحرم الخير"
+    },
+    {
+      "id": "hadith-candidate-073",
+      "query": "الدعاء هو العبادة"
+    },
+    {
+      "id": "hadith-candidate-074",
+      "query": "الدعاء مخ العبادة"
+    },
+    {
+      "id": "hadith-candidate-075",
+      "query": "لا يرد القضاء إلا الدعاء"
+    },
+    {
+      "id": "hadith-candidate-076",
+      "query": "أنا عند ظن عبدي بي"
+    },
+    {
+      "id": "hadith-candidate-077",
+      "query": "سبق المفردون"
+    },
+    {
+      "id": "hadith-candidate-078",
+      "query": "كلمتان خفيفتان على اللسان"
+    },
+    {
+      "id": "hadith-candidate-079",
+      "query": "من صلى علي صلاة"
+    },
+    {
+      "id": "hadith-candidate-080",
+      "query": "من صام رمضان إيمانا واحتسابا"
+    },
+    {
+      "id": "hadith-candidate-081",
+      "query": "من قام ليلة القدر إيمانا واحتسابا"
+    },
+    {
+      "id": "hadith-candidate-082",
+      "query": "صوموا تصحوا"
+    },
+    {
+      "id": "hadith-candidate-083",
+      "query": "نوم الصائم عبادة"
+    },
+    {
+      "id": "hadith-candidate-084",
+      "query": "أوله رحمة وأوسطه مغفرة وآخره عتق"
+    },
+    {
+      "id": "hadith-candidate-085",
+      "query": "رجعنا من الجهاد الأصغر"
+    },
+    {
+      "id": "hadith-candidate-086",
+      "query": "اعمل لدنياك كأنك تعيش أبدا"
+    },
+    {
+      "id": "hadith-candidate-087",
+      "query": "خير الأسماء ما عبد وما حمد"
+    },
+    {
+      "id": "hadith-candidate-088",
+      "query": "كما تدين تدان"
+    },
+    {
+      "id": "hadith-candidate-089",
+      "query": "أبغض الحلال إلى الله الطلاق"
+    },
+    {
+      "id": "hadith-candidate-090",
+      "query": "الفقر فخري"
+    },
+    {
+      "id": "hadith-candidate-091",
+      "query": "من لم تنهه صلاته عن الفحشاء والمنكر"
+    },
+    {
+      "id": "hadith-candidate-092",
+      "query": "أصحابي كالنجوم"
+    },
+    {
+      "id": "hadith-candidate-093",
+      "query": "اطلبوا العلم من المهد إلى اللحد"
+    },
+    {
+      "id": "hadith-candidate-094",
+      "query": "لو أحسن أحدكم ظنه بحجر"
+    },
+    {
+      "id": "hadith-candidate-095",
+      "query": "إن الله لا ينظر إلى صوركم وأموالكم"
+    }
+  ]
+}

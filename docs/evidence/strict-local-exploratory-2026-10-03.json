@@ -1,0 +1,680 @@
+{
+  "checked_at": "2026-10-03T15:09:57.525668+03:00",
+  "scope": "Exploratory local audit, 8 new inputs, not general accuracy",
+  "cases": [
+    {
+      "id": "quran_singular_changed",
+      "input": "قال تعالى: ﴿قل هو الله أحدا﴾",
+      "purpose": "changed_word",
+      "response": {
+        "claims": [
+          {
+            "id": 1,
+            "text": "قل هو الله أحدا",
+            "type_hint": "quran",
+            "level": "A",
+            "verdict": {
+              "code": "ALTERED",
+              "label_ar": "مُحرَّف"
+            },
+            "source": {
+              "id": "quran-112:1",
+              "kind": "quran",
+              "text": "بسم الله الرحمن الرحيم قل هو الله أحد",
+              "ref": {
+                "surah": 112,
+                "ayah": 1,
+                "surah_name": "الإخلاص"
+              },
+              "url": "https://tanzil.net/#112:1",
+              "verified": true
+            },
+            "grades": [],
+            "diff": [
+              {
+                "op": "equal",
+                "text": "قل هو الله"
+              },
+              {
+                "op": "changed",
+                "claim": "أحدا",
+                "source": "أحد"
+              }
+            ],
+            "evidence": {
+              "claim_coverage": 0.75,
+              "content_coverage": 0.667,
+              "span_coverage": 1.0,
+              "similarity": 0.5,
+              "retrieval_fused": 0.0315,
+              "bm25_rank": 3,
+              "dense_rank": 2
+            },
+            "closest": null,
+            "alternatives": [],
+            "notes": [],
+            "explanation": {
+              "kind": "template",
+              "generated": true,
+              "text": "النص المنقول يختلف عن نص المصحف في سورة الإخلاص، الآية 1؛ انظر الفروق حرفاً حرفاً."
+            }
+          }
+        ],
+        "summary": {
+          "VERIFIED": 0,
+          "NOT_AUTHENTIC": 0,
+          "ALTERED": 1,
+          "NO_ORIGIN": 0,
+          "DISPUTED": 0,
+          "REFER": 0,
+          "NEEDS_REVIEW": 0
+        },
+        "index": {
+          "embedder": "tfidf-char",
+          "docs": 6248,
+          "quran": 6236,
+          "hadith": 12,
+          "verified_docs": 6248,
+          "quran_complete": true
+        },
+        "disclaimer": "تثبّت أداة مدعومة بالذكاء الاصطناعي ولا تُغني عن المختص. النص الشرعي منسوخ من الفهرس، والدرجات منقولة عن المحدّثين كما هي مسجّلة في المصدر.",
+        "engine_version": "0.5.0",
+        "elapsed_ms": 9
+      }
+    },
+    {
+      "id": "quran_extra_negation",
+      "input": "قال تعالى: ﴿قل ليس هو الله أحد﴾",
+      "purpose": "added_word",
+      "response": {
+        "claims": [
+          {
+            "id": 1,
+            "text": "قل ليس هو الله أحد",
+            "type_hint": "quran",
+            "level": "A",
+            "verdict": {
+              "code": "ALTERED",
+              "label_ar": "مُحرَّف"
+            },
+            "source": {
+              "id": "quran-112:1",
+              "kind": "quran",
+              "text": "بسم الله الرحمن الرحيم قل هو الله أحد",
+              "ref": {
+                "surah": 112,
+                "ayah": 1,
+                "surah_name": "الإخلاص"
+              },
+              "url": "https://tanzil.net/#112:1",
+              "verified": true
+            },
+            "grades": [],
+            "diff": [
+              {
+                "op": "equal",
+                "text": "قل"
+              },
+              {
+                "op": "added",
+                "claim": "ليس"
+              },
+              {
+                "op": "equal",
+                "text": "هو الله أحد"
+              }
+            ],
+            "evidence": {
+              "claim_coverage": 0.8,
+              "content_coverage": 0.75,
+              "span_coverage": 1.0,
+              "similarity": 0.615,
+              "retrieval_fused": 0.03227,
+              "bm25_rank": 0,
+              "dense_rank": 2
+            },
+            "closest": null,
+            "alternatives": [],
+            "notes": [],
+            "explanation": {
+              "kind": "template",
+              "generated": true,
+              "text": "النص المنقول يختلف عن نص المصحف في سورة الإخلاص، الآية 1؛ انظر الفروق حرفاً حرفاً."
+            }
+          }
+        ],
+        "summary": {
+          "VERIFIED": 0,
+          "NOT_AUTHENTIC": 0,
+          "ALTERED": 1,
+          "NO_ORIGIN": 0,
+          "DISPUTED": 0,
+          "REFER": 0,
+          "NEEDS_REVIEW": 0
+        },
+        "index": {
+          "embedder": "tfidf-char",
+          "docs": 6248,
+          "quran": 6236,
+          "hadith": 12,
+          "verified_docs": 6248,
+          "quran_complete": true
+        },
+        "disclaimer": "تثبّت أداة مدعومة بالذكاء الاصطناعي ولا تُغني عن المختص. النص الشرعي منسوخ من الفهرس، والدرجات منقولة عن المحدّثين كما هي مسجّلة في المصدر.",
+        "engine_version": "0.5.0",
+        "elapsed_ms": 7
+      }
+    },
+    {
+      "id": "quran_plain_control",
+      "input": "قال تعالى: ﴿قل هو الله أحد﴾",
+      "purpose": "exact_control",
+      "response": {
+        "claims": [
+          {
+            "id": 1,
+            "text": "قل هو الله أحد",
+            "type_hint": "quran",
+            "level": "A",
+            "verdict": {
+              "code": "VERIFIED",
+              "label_ar": "موثّق"
+            },
+            "source": {
+              "id": "quran-112:1",
+              "kind": "quran",
+              "text": "بسم الله الرحمن الرحيم قل هو الله أحد",
+              "ref": {
+                "surah": 112,
+                "ayah": 1,
+                "surah_name": "الإخلاص"
+              },
+              "url": "https://tanzil.net/#112:1",
+              "verified": true
+            },
+            "grades": [],
+            "diff": [],
+            "evidence": {
+              "claim_coverage": 1.0,
+              "content_coverage": 1.0,
+              "span_coverage": 1.0,
+              "similarity": 0.667,
+              "retrieval_fused": 0.03252,
+              "bm25_rank": 0,
+              "dense_rank": 1
+            },
+            "closest": null,
+            "alternatives": [],
+            "notes": [],
+            "explanation": {
+              "kind": "template",
+              "generated": true,
+              "text": "النص مطابق لما في المصحف: سورة الإخلاص، الآية 1."
+            }
+          }
+        ],
+        "summary": {
+          "VERIFIED": 1,
+          "NOT_AUTHENTIC": 0,
+          "ALTERED": 0,
+          "NO_ORIGIN": 0,
+          "DISPUTED": 0,
+          "REFER": 0,
+          "NEEDS_REVIEW": 0
+        },
+        "index": {
+          "embedder": "tfidf-char",
+          "docs": 6248,
+          "quran": 6236,
+          "hadith": 12,
+          "verified_docs": 6248,
+          "quran_complete": true
+        },
+        "disclaimer": "تثبّت أداة مدعومة بالذكاء الاصطناعي ولا تُغني عن المختص. النص الشرعي منسوخ من الفهرس، والدرجات منقولة عن المحدّثين كما هي مسجّلة في المصدر.",
+        "engine_version": "0.5.0",
+        "elapsed_ms": 6
+      }
+    },
+    {
+      "id": "hadith_added_negation",
+      "input": "قال رسول الله ﷺ: «ليس الدين النصيحة»",
+      "purpose": "added_negation",
+      "response": {
+        "claims": [
+          {
+            "id": 1,
+            "text": "ليس الدين النصيحة",
+            "type_hint": "hadith",
+            "level": "A",
+            "verdict": {
+              "code": "NEEDS_REVIEW",
+              "label_ar": "يتطلب مزيد تحقق"
+            },
+            "source": {
+              "id": "hadith-muslim-55",
+              "kind": "hadith",
+              "text": "الدين النصيحة قلنا لمن قال لله ولكتابه ولرسوله ولأئمة المسلمين وعامتهم",
+              "ref": {
+                "narrator": "تميم الداري"
+              },
+              "url": "https://dorar.net/hadith/search?q=%D8%A7%D9%84%D8%AF%D9%8A%D9%86%20%D8%A7%D9%84%D9%86%D8%B5%D9%8A%D8%AD%D8%A9%20%D9%82%D9%84%D9%86%D8%A7%20%D9%84%D9%85%D9%86%20%D9%82%D8%A7%D9%84%20%D9%84%D9%84%D9%87",
+              "verified": true
+            },
+            "grades": [
+              {
+                "muhaddith": "مسلم",
+                "source": "صحيح مسلم",
+                "ref": "55",
+                "grade": "صحيح",
+                "class": "authentic"
+              }
+            ],
+            "diff": [
+              {
+                "op": "added",
+                "claim": "ليس"
+              },
+              {
+                "op": "equal",
+                "text": "الدين النصيحة"
+              }
+            ],
+            "evidence": {
+              "claim_coverage": 0.667,
+              "content_coverage": 0.667,
+              "span_coverage": 1.0,
+              "similarity": 0.286,
+              "retrieval_fused": 0.03279,
+              "bm25_rank": 0,
+              "dense_rank": 0
+            },
+            "closest": null,
+            "alternatives": [],
+            "notes": [
+              "أقرب نص في المصدر يختلف في ألفاظه؛ تُعرض درجة المصدر ولا تُنقل إلى النص المدخل قبل مراجعة الفروق."
+            ],
+            "explanation": null
+          }
+        ],
+        "summary": {
+          "VERIFIED": 0,
+          "NOT_AUTHENTIC": 0,
+          "ALTERED": 0,
+          "NO_ORIGIN": 0,
+          "DISPUTED": 0,
+          "REFER": 0,
+          "NEEDS_REVIEW": 1
+        },
+        "index": {
+          "embedder": "tfidf-char",
+          "docs": 6248,
+          "quran": 6236,
+          "hadith": 12,
+          "verified_docs": 6248,
+          "quran_complete": true
+        },
+        "disclaimer": "تثبّت أداة مدعومة بالذكاء الاصطناعي ولا تُغني عن المختص. النص الشرعي منسوخ من الفهرس، والدرجات منقولة عن المحدّثين كما هي مسجّلة في المصدر.",
+        "engine_version": "0.5.0",
+        "elapsed_ms": 5
+      }
+    },
+    {
+      "id": "hadith_plain_control",
+      "input": "قال رسول الله ﷺ: «الدين النصيحة»",
+      "purpose": "exact_control",
+      "response": {
+        "claims": [
+          {
+            "id": 1,
+            "text": "الدين النصيحة",
+            "type_hint": "hadith",
+            "level": "A",
+            "verdict": {
+              "code": "VERIFIED",
+              "label_ar": "موثّق"
+            },
+            "source": {
+              "id": "hadith-muslim-55",
+              "kind": "hadith",
+              "text": "الدين النصيحة قلنا لمن قال لله ولكتابه ولرسوله ولأئمة المسلمين وعامتهم",
+              "ref": {
+                "narrator": "تميم الداري"
+              },
+              "url": "https://dorar.net/hadith/search?q=%D8%A7%D9%84%D8%AF%D9%8A%D9%86%20%D8%A7%D9%84%D9%86%D8%B5%D9%8A%D8%AD%D8%A9%20%D9%82%D9%84%D9%86%D8%A7%20%D9%84%D9%85%D9%86%20%D9%82%D8%A7%D9%84%20%D9%84%D9%84%D9%87",
+              "verified": true
+            },
+            "grades": [
+              {
+                "muhaddith": "مسلم",
+                "source": "صحيح مسلم",
+                "ref": "55",
+                "grade": "صحيح",
+                "class": "authentic"
+              }
+            ],
+            "diff": [],
+            "evidence": {
+              "claim_coverage": 1.0,
+              "content_coverage": 1.0,
+              "span_coverage": 1.0,
+              "similarity": 0.308,
+              "retrieval_fused": 0.03279,
+              "bm25_rank": 0,
+              "dense_rank": 0
+            },
+            "closest": null,
+            "alternatives": [],
+            "notes": [],
+            "explanation": {
+              "kind": "template",
+              "generated": true,
+              "text": "الدرجة كما هي مسجّلة في المصدر: مسلم (صحيح مسلم 55): صحيح."
+            }
+          }
+        ],
+        "summary": {
+          "VERIFIED": 1,
+          "NOT_AUTHENTIC": 0,
+          "ALTERED": 0,
+          "NO_ORIGIN": 0,
+          "DISPUTED": 0,
+          "REFER": 0,
+          "NEEDS_REVIEW": 0
+        },
+        "index": {
+          "embedder": "tfidf-char",
+          "docs": 6248,
+          "quran": 6236,
+          "hadith": 12,
+          "verified_docs": 6248,
+          "quran_complete": true
+        },
+        "disclaimer": "تثبّت أداة مدعومة بالذكاء الاصطناعي ولا تُغني عن المختص. النص الشرعي منسوخ من الفهرس، والدرجات منقولة عن المحدّثين كما هي مسجّلة في المصدر.",
+        "engine_version": "0.5.0",
+        "elapsed_ms": 4
+      }
+    },
+    {
+      "id": "personal_with_quote_same_sentence",
+      "input": "هل يجوز لي ترك الصلاة لأن الله قال: ﴿إن الله غفور رحيم﴾؟",
+      "purpose": "must_keep_personal_referral",
+      "response": {
+        "claims": [
+          {
+            "id": 1,
+            "text": "إن الله غفور رحيم",
+            "type_hint": "quran",
+            "level": "A",
+            "verdict": {
+              "code": "VERIFIED",
+              "label_ar": "موثّق"
+            },
+            "source": {
+              "id": "quran-8:69",
+              "kind": "quran",
+              "text": "فكلوا مما غنمتم حلالا طيبا واتقوا الله إن الله غفور رحيم",
+              "ref": {
+                "surah": 8,
+                "ayah": 69,
+                "surah_name": "الأنفال"
+              },
+              "url": "https://tanzil.net/#8:69",
+              "verified": true
+            },
+            "grades": [],
+            "diff": [],
+            "evidence": {
+              "claim_coverage": 1.0,
+              "content_coverage": 1.0,
+              "span_coverage": 1.0,
+              "similarity": 0.533,
+              "retrieval_fused": 0.03055,
+              "bm25_rank": 3,
+              "dense_rank": 6
+            },
+            "closest": null,
+            "alternatives": [
+              {
+                "id": "quran-2:199",
+                "ref": {
+                  "surah": 2,
+                  "ayah": 199,
+                  "surah_name": "البقرة"
+                },
+                "url": "https://tanzil.net/#2:199"
+              },
+              {
+                "id": "quran-5:39",
+                "ref": {
+                  "surah": 5,
+                  "ayah": 39,
+                  "surah_name": "المائدة"
+                },
+                "url": "https://tanzil.net/#5:39"
+              }
+            ],
+            "notes": [
+              "النص نفسه يتكرر في 12 مواضع من المصحف، منها: البقرة 199، المائدة 39."
+            ],
+            "explanation": {
+              "kind": "template",
+              "generated": true,
+              "text": "النص مطابق لما في المصحف: سورة الأنفال، الآية 69."
+            }
+          }
+        ],
+        "summary": {
+          "VERIFIED": 1,
+          "NOT_AUTHENTIC": 0,
+          "ALTERED": 0,
+          "NO_ORIGIN": 0,
+          "DISPUTED": 0,
+          "REFER": 0,
+          "NEEDS_REVIEW": 0
+        },
+        "index": {
+          "embedder": "tfidf-char",
+          "docs": 6248,
+          "quran": 6236,
+          "hadith": 12,
+          "verified_docs": 6248,
+          "quran_complete": true
+        },
+        "disclaimer": "تثبّت أداة مدعومة بالذكاء الاصطناعي ولا تُغني عن المختص. النص الشرعي منسوخ من الفهرس، والدرجات منقولة عن المحدّثين كما هي مسجّلة في المصدر.",
+        "engine_version": "0.5.0",
+        "elapsed_ms": 85
+      }
+    },
+    {
+      "id": "personal_with_quote_split_sentences",
+      "input": "قال تعالى: ﴿إن الله غفور رحيم﴾. هل يجوز لي ترك الصلاة؟",
+      "purpose": "must_keep_personal_referral",
+      "response": {
+        "claims": [
+          {
+            "id": 1,
+            "text": "إن الله غفور رحيم",
+            "type_hint": "quran",
+            "level": "A",
+            "verdict": {
+              "code": "VERIFIED",
+              "label_ar": "موثّق"
+            },
+            "source": {
+              "id": "quran-8:69",
+              "kind": "quran",
+              "text": "فكلوا مما غنمتم حلالا طيبا واتقوا الله إن الله غفور رحيم",
+              "ref": {
+                "surah": 8,
+                "ayah": 69,
+                "surah_name": "الأنفال"
+              },
+              "url": "https://tanzil.net/#8:69",
+              "verified": true
+            },
+            "grades": [],
+            "diff": [],
+            "evidence": {
+              "claim_coverage": 1.0,
+              "content_coverage": 1.0,
+              "span_coverage": 1.0,
+              "similarity": 0.533,
+              "retrieval_fused": 0.03055,
+              "bm25_rank": 3,
+              "dense_rank": 6
+            },
+            "closest": null,
+            "alternatives": [
+              {
+                "id": "quran-2:199",
+                "ref": {
+                  "surah": 2,
+                  "ayah": 199,
+                  "surah_name": "البقرة"
+                },
+                "url": "https://tanzil.net/#2:199"
+              },
+              {
+                "id": "quran-5:39",
+                "ref": {
+                  "surah": 5,
+                  "ayah": 39,
+                  "surah_name": "المائدة"
+                },
+                "url": "https://tanzil.net/#5:39"
+              }
+            ],
+            "notes": [
+              "النص نفسه يتكرر في 12 مواضع من المصحف، منها: البقرة 199، المائدة 39."
+            ],
+            "explanation": {
+              "kind": "template",
+              "generated": true,
+              "text": "النص مطابق لما في المصحف: سورة الأنفال، الآية 69."
+            }
+          },
+          {
+            "id": 2,
+            "text": "هل يجوز لي ترك الصلاة",
+            "type_hint": "personal",
+            "level": "D",
+            "verdict": {
+              "code": "REFER",
+              "label_ar": "إحالة"
+            },
+            "source": null,
+            "grades": [],
+            "diff": [],
+            "evidence": null,
+            "closest": null,
+            "alternatives": [],
+            "notes": [
+              "حالة شخصية تتطلب فتوى من جهة مؤهلة؛ لا يُصدر النظام حكماً فيها."
+            ],
+            "explanation": {
+              "kind": "template",
+              "generated": true,
+              "text": "هذه مسألة شخصية تختلف باختلاف الوقائع؛ يُرجع فيها إلى مفتٍ أو جهة إفتاء مؤهلة."
+            }
+          }
+        ],
+        "summary": {
+          "VERIFIED": 1,
+          "NOT_AUTHENTIC": 0,
+          "ALTERED": 0,
+          "NO_ORIGIN": 0,
+          "DISPUTED": 0,
+          "REFER": 1,
+          "NEEDS_REVIEW": 0
+        },
+        "index": {
+          "embedder": "tfidf-char",
+          "docs": 6248,
+          "quran": 6236,
+          "hadith": 12,
+          "verified_docs": 6248,
+          "quran_complete": true
+        },
+        "disclaimer": "تثبّت أداة مدعومة بالذكاء الاصطناعي ولا تُغني عن المختص. النص الشرعي منسوخ من الفهرس، والدرجات منقولة عن المحدّثين كما هي مسجّلة في المصدر.",
+        "engine_version": "0.5.0",
+        "elapsed_ms": 85
+      }
+    },
+    {
+      "id": "personal_with_exact_hadith",
+      "input": "هل يجوز لي أن أفعل ذلك بناء على حديث رسول الله ﷺ: «الدين النصيحة»؟",
+      "purpose": "must_keep_personal_referral",
+      "response": {
+        "claims": [
+          {
+            "id": 1,
+            "text": "الدين النصيحة",
+            "type_hint": "hadith",
+            "level": "A",
+            "verdict": {
+              "code": "VERIFIED",
+              "label_ar": "موثّق"
+            },
+            "source": {
+              "id": "hadith-muslim-55",
+              "kind": "hadith",
+              "text": "الدين النصيحة قلنا لمن قال لله ولكتابه ولرسوله ولأئمة المسلمين وعامتهم",
+              "ref": {
+                "narrator": "تميم الداري"
+              },
+              "url": "https://dorar.net/hadith/search?q=%D8%A7%D9%84%D8%AF%D9%8A%D9%86%20%D8%A7%D9%84%D9%86%D8%B5%D9%8A%D8%AD%D8%A9%20%D9%82%D9%84%D9%86%D8%A7%20%D9%84%D9%85%D9%86%20%D9%82%D8%A7%D9%84%20%D9%84%D9%84%D9%87",
+              "verified": true
+            },
+            "grades": [
+              {
+                "muhaddith": "مسلم",
+                "source": "صحيح مسلم",
+                "ref": "55",
+                "grade": "صحيح",
+                "class": "authentic"
+              }
+            ],
+            "diff": [],
+            "evidence": {
+              "claim_coverage": 1.0,
+              "content_coverage": 1.0,
+              "span_coverage": 1.0,
+              "similarity": 0.308,
+              "retrieval_fused": 0.03279,
+              "bm25_rank": 0,
+              "dense_rank": 0
+            },
+            "closest": null,
+            "alternatives": [],
+            "notes": [],
+            "explanation": {
+              "kind": "template",
+              "generated": true,
+              "text": "الدرجة كما هي مسجّلة في المصدر: مسلم (صحيح مسلم 55): صحيح."
+            }
+          }
+        ],
+        "summary": {
+          "VERIFIED": 1,
+          "NOT_AUTHENTIC": 0,
+          "ALTERED": 0,
+          "NO_ORIGIN": 0,
+          "DISPUTED": 0,
+          "REFER": 0,
+          "NEEDS_REVIEW": 0
+        },
+        "index": {
+          "embedder": "tfidf-char",
+          "docs": 6248,
+          "quran": 6236,
+          "hadith": 12,
+          "verified_docs": 6248,
+          "quran_complete": true
+        },
+        "disclaimer": "تثبّت أداة مدعومة بالذكاء الاصطناعي ولا تُغني عن المختص. النص الشرعي منسوخ من الفهرس، والدرجات منقولة عن المحدّثين كما هي مسجّلة في المصدر.",
+        "engine_version": "0.5.0",
+        "elapsed_ms": 5
+      }
+    }
+  ]
+}

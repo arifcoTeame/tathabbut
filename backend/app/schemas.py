@@ -1,10 +1,18 @@
 from __future__ import annotations
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 
 class VerifyRequest(BaseModel):
     text: str = Field(..., min_length=2, description="النص أو المنشور المراد التحقق منه")
+
+    @field_validator("text")
+    @classmethod
+    def meaningful_text(cls, value: str) -> str:
+        value = value.strip()
+        if len(value) < 2:
+            raise ValueError("أدخل نصاً من حرفين على الأقل بعد إزالة المسافات.")
+        return value
 
 
 class Verdict(BaseModel):

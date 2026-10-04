@@ -2,13 +2,15 @@
 
 Two parallel token streams are produced from the same text:
   * display tokens  - diacritics removed, letters untouched (shown to the user)
-  * key tokens      - normalized + lightly stemmed (used for BM25 and alignment)
+  * key tokens      - normalized + lightly stemmed (used for retrieval)
 Both streams always have the same length, so an alignment on keys maps 1:1 onto
-display words.
+display words. Quotation wording uses a third stream that preserves the letters
+and attached particles; retrieval normalization must not establish an exact match.
 """
 from __future__ import annotations
 
 import re
+import unicodedata
 
 _DIACRITICS = re.compile(r"[ؐ-ًؚ-ٰٟۖ-ۭـ]")
 _NON_WORD = re.compile(r"[^\w\s]|[\d٠-٩۰-۹_]")
@@ -19,6 +21,9 @@ _LETTER_MAP = str.maketrans({
 })
 _ALLAH = {"الله", "لله", "بالله", "والله", "تالله", "فالله", "اللهم"}
 _ARTICLE_PREFIXES = ("بال", "كال", "لل", "ال")
+NEGATION_KEYS = {"لا", "لم", "لن", "ما", "ليس", "ليست", "لست", "لسنا", "ليسوا", "لستم", "لستن", "لسن"}
+# Three-letter forms such as «ولا» are deliberately left intact by the stemmer.
+NEGATION_KEYS |= {prefix + word for prefix in ("و", "ف") for word in NEGATION_KEYS}
 
 # function words ignored when measuring *content* coverage (keys are normalized+stemmed)
 STOPWORDS = {
@@ -29,7 +34,9 @@ STOPWORDS = {
 
 
 def strip_diacritics(text: str) -> str:
-    return _DIACRITICS.sub("", text)
+    # Compose hamza/madda first so removing vowel marks cannot erase a letter's
+    # hamza merely because the input used its decomposed Unicode spelling.
+    return _DIACRITICS.sub("", unicodedata.normalize("NFC", text))
 
 
 def normalize(text: str) -> str:
@@ -60,3 +67,9 @@ def display_tokens(text: str) -> list[str]:
 
 def key_tokens(text: str) -> list[str]:
     return [light_stem(w) for w in normalize(text).split()]
+
+
+def wording_tokens(text: str) -> list[str]:
+    """Words for checking quotations: ignore vowels, punctuation and the
+    wasla sign, but preserve hamza, letters, conjunctions and prepositions."""
+    return [word.replace("ٱ", "ا") for word in display_tokens(text)]

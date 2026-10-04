@@ -16,6 +16,8 @@ def test_api_verify(index, monkeypatch, tmp_path):
         assert body["claims"][0]["verdict"] == {"code": "NOT_AUTHENTIC", "label_ar": "لا يصح"}
         assert body["summary"]["NOT_AUTHENTIC"] == 1
         assert client.post("/verify", json={"text": "ا" * 5000}).status_code == 413
+        assert client.post("/verify", json={"text": "   \n  "}).status_code == 422
+        assert client.post("/verify", json={"text": "  ا  "}).status_code == 422
 
 
 def test_health_accepts_head(index, monkeypatch, tmp_path):

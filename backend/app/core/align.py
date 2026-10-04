@@ -6,7 +6,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from difflib import SequenceMatcher
 
-from .arabic import STOPWORDS, display_tokens, key_tokens
+from .arabic import NEGATION_KEYS, STOPWORDS, display_tokens, key_tokens, wording_tokens
 
 
 @dataclass
@@ -22,43 +22,57 @@ class Alignment:
 
     @property
     def exact(self) -> bool:
-        return self.claim_coverage >= 0.999 and self.span_coverage >= 0.999
+        return bool(self.diff) and all(op["op"] == "equal" for op in self.diff)
 
 
-def align(claim: str, source: str) -> Alignment:
-    c_keys, s_keys = key_tokens(claim), key_tokens(source)
+def align(claim: str, source: str, *, stemmed: bool = True, preserve_negation: bool = False) -> Alignment:
+    c_search, s_search = key_tokens(claim), key_tokens(source)
     c_disp, s_disp = display_tokens(claim), display_tokens(source)
-    if not c_keys or not s_keys:
+    if not c_search or not s_search:
         return Alignment(0.0, 0.0, 0.0, 0.0, (0, 0), [], [])
 
-    blocks = [b for b in SequenceMatcher(None, c_keys, s_keys, autojunk=False).get_matching_blocks() if b.size]
-    matched = sum(b.size for b in blocks)
-    if not matched:
-        return Alignment(0.0, 0.0, 0.0, 0.0, (0, 0), [], [c_keys])
+    # Loose keys locate the source span, including changed attached particles at
+    # its edges. Only the second comparison below can establish exact wording.
+    anchors = [b for b in SequenceMatcher(None, c_search, s_search, autojunk=False).get_matching_blocks() if b.size]
+    if not anchors:
+        return Alignment(0.0, 0.0, 0.0, 0.0, (0, 0), [], [c_search])
 
-    matched_pos = {i for b in blocks for i in range(b.a, b.a + b.size)}
-    content = [i for i, k in enumerate(c_keys) if k not in STOPWORDS] or list(range(len(c_keys)))
-    content_cov = sum(i in matched_pos for i in content) / len(content)
-
-    start = blocks[0].b
-    end = blocks[-1].b + blocks[-1].size
+    start = anchors[0].b
+    end = anchors[-1].b + anchors[-1].size
+    c_keys, s_keys = (c_search, s_search) if stemmed else (wording_tokens(claim), wording_tokens(source))
+    if not stemmed:
+        # A source may contain both «فإن مع العسر يسرا» and «إن مع العسر
+        # يسرا». Prefer the actual quotation over an earlier stem-equivalent run.
+        literal = SequenceMatcher(None, c_keys, s_keys, autojunk=False).find_longest_match()
+        if literal.size == len(c_keys):
+            start, end = literal.b, literal.b + literal.size
+    # An excerpt starting immediately after «لا» must not be certified after
+    # dropping the word that negates it. Include it in the comparison and diff.
+    if preserve_negation and start > 0 and s_search[start - 1] in NEGATION_KEYS:
+        start -= 1
     span_keys, span_disp = s_keys[start:end], s_disp[start:end]
+    matcher = SequenceMatcher(None, c_keys, span_keys, autojunk=False)
+    blocks = [b for b in matcher.get_matching_blocks() if b.size]
+    matched = sum(b.size for b in blocks)
+    matched_pos = {i for b in blocks for i in range(b.a, b.a + b.size)}
+    content = [i for i, k in enumerate(c_search) if k not in STOPWORDS] or list(range(len(c_keys)))
+    content_cov = sum(i in matched_pos for i in content) / len(content)
 
     diff: list[dict] = []
     added: list[list[str]] = []
-    for tag, i1, i2, j1, j2 in SequenceMatcher(None, c_keys, span_keys, autojunk=False).get_opcodes():
+    for tag, i1, i2, j1, j2 in matcher.get_opcodes():
         if tag == "equal":
             diff.append({"op": "equal", "text": " ".join(c_disp[i1:i2])})
         elif tag == "delete":        # words in the claim, not in the source
             diff.append({"op": "added", "claim": " ".join(c_disp[i1:i2])})
-            added.append(c_keys[i1:i2])
+            added.append(c_search[i1:i2])
         elif tag == "insert":        # words in the source, missing from the claim
             diff.append({"op": "missing", "source": " ".join(span_disp[j1:j2])})
         else:
             diff.append({"op": "changed", "claim": " ".join(c_disp[i1:i2]), "source": " ".join(span_disp[j1:j2])})
-            added.append(c_keys[i1:i2])
+            added.append(c_search[i1:i2])
 
-    trail = len(c_keys) - (blocks[-1].a + blocks[-1].size)
+    trail = len(c_keys) - (anchors[-1].a + anchors[-1].size)
     tail_source = " ".join(s_disp[end : end + trail]) if trail else ""
 
     return Alignment(

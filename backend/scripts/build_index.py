@@ -60,7 +60,7 @@ def load_hadith() -> list[Doc]:
                 id=f"hadith-{r['id']}",
                 kind="hadith",
                 text=r["text"],
-                ref={"narrator": r.get("narrator", "")},
+                ref={"narrator": r.get("narrator", ""), "context": r.get("dorar_text", "")},
                 grades=r["grades"],
                 url=r.get("url") or f"https://dorar.net/hadith/search?q={quote(query)}",
                 verified=bool(r.get("verified")),

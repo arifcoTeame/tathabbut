@@ -24,6 +24,7 @@ RUN pip install -r backend/requirements.txt && \
 RUN useradd -m -u 1000 user
 ENV HOME=/home/user HF_HOME=/home/user/.cache/huggingface
 COPY --chown=user data ./data
+COPY --chown=user LICENSES ./LICENSES
 COPY --chown=user backend ./backend
 RUN mkdir -p data/index data/raw && chown -R user:user /app
 USER user
@@ -37,6 +38,6 @@ RUN python scripts/build_index.py --embedder "$EMBEDDER" || \
       python scripts/build_index.py --embedder tfidf-char )
 
 # Model (if any) is cached at build time: no network needed at runtime.
-ENV HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 TATHABBUT_CORS=*
+ENV HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 TATHABBUT_REQUIRE_VERIFIED=true
 EXPOSE 7860
 CMD ["sh", "-c", "exec uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-7860}"]

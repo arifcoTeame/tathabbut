@@ -1,0 +1,130 @@
+{
+  "checked_at": "2026-10-03T20:30:36.194162+03:00",
+  "release": "0.5.1",
+  "manifest_sha256": "1492825432d1a5545e02c655bce49db4a94bd8661ef2b46e0308a14cd998db90",
+  "scope": "Local consistency gate for saved evidence; no official score or final compliance certification",
+  "network_used": false,
+  "local_checks_passed": true,
+  "local_check_count": 8,
+  "local_checks_passed_count": 8,
+  "overall_ready": false,
+  "status_counts": {
+    "local_verified": 4,
+    "owner_handoff": 3,
+    "external_review_pending": 4
+  },
+  "pending_requirements": [
+    {
+      "id": "public_repository_upload",
+      "label_ar": "رفع النسخة النهائية إلى GitHub العام",
+      "status": "owner_handoff"
+    },
+    {
+      "id": "video_upload",
+      "label_ar": "تسجيل ورفع فيديو لا يتجاوز دقيقتين",
+      "status": "owner_handoff"
+    },
+    {
+      "id": "final_presentation_and_portal",
+      "label_ar": "اعتماد العرض الرسمي والتسليم عبر البوابة",
+      "status": "owner_handoff"
+    },
+    {
+      "id": "quran_reference_comparison",
+      "label_ar": "المقابلة المستقلة بالمصدر القرآني الوارد في المرجعية",
+      "status": "external_review_pending"
+    },
+    {
+      "id": "hadith_reuse_and_expansion",
+      "label_ar": "حقوق البيانات الحديثية ومراجعة التوسعة",
+      "status": "external_review_pending"
+    },
+    {
+      "id": "independent_review_and_user_trial",
+      "label_ar": "المراجعة العلمية وقياس النفع مع مستخدمين",
+      "status": "external_review_pending"
+    },
+    {
+      "id": "live_release_verification",
+      "label_ar": "التحقق من الإصدار المنشور بعد الرفع",
+      "status": "external_review_pending"
+    }
+  ],
+  "checks": [
+    {
+      "id": "manifest_structure",
+      "passed": true,
+      "details": {
+        "requirements": 11,
+        "criterion_weights_total": 100,
+        "urls_checked": "Expected URL strings only; no network request"
+      }
+    },
+    {
+      "id": "references",
+      "passed": true,
+      "details": {
+        "existing_nonempty_references": 30,
+        "meaning": "File existence, not approval of its substantive claims"
+      }
+    },
+    {
+      "id": "versions",
+      "passed": true,
+      "details": {
+        "engine": "0.5.1",
+        "frontend_package": "0.5.1",
+        "lockfile": "0.5.1"
+      }
+    },
+    {
+      "id": "data_counts",
+      "passed": true,
+      "details": {
+        "quran": 6236,
+        "hadith": 12,
+        "meaning": "Structural count and identifier check; not independent source authentication"
+      }
+    },
+    {
+      "id": "saved_safety_results",
+      "passed": true,
+      "details": {
+        "distinct_cases": 18,
+        "repetitions": 3,
+        "saved_passed": 54,
+        "saved_total": 54,
+        "saved_pytest_passed": 129,
+        "tests_rerun_by_this_checker": false
+      }
+    },
+    {
+      "id": "evidence_code_hashes",
+      "passed": true,
+      "details": {
+        "matching_tested_code_and_data_hashes": 6
+      }
+    },
+    {
+      "id": "retrieval_repeatability",
+      "passed": true,
+      "details": {
+        "queries_per_run": 814,
+        "identical_rankings": true,
+        "scope": "Synthetic reference retrieval only"
+      }
+    },
+    {
+      "id": "public_git_inventory",
+      "passed": true,
+      "details": {
+        "candidate_files": 107,
+        "risky_filename_count": 0,
+        "file_contents_scanned": false,
+        "secret_file_contents_read": false,
+        "limitation": "Names only; this cannot detect a credential embedded in an ordinary source file"
+      }
+    }
+  ],
+  "exit_policy": "Exit 0 for passed local checks even when owner handoff or external review is pending"
+}

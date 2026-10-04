@@ -1,0 +1,516 @@
+{
+  "recorded_at": "2026-10-04T20:35:26.758488+03:00",
+  "engine_version": "0.6.0",
+  "alternative": "exact text search over the same corpus (diacritics stripped, letter-normalised)",
+  "corpus_documents": 6368,
+  "claims_total": 42,
+  "exact_search_sufficient": 17,
+  "tathabbut_matches_expected": 42,
+  "by_expected_verdict": {
+    "VERIFIED": {
+      "claims": 20,
+      "exact_search_sufficient": 15,
+      "tathabbut_matches_expected": 20
+    },
+    "ALTERED": {
+      "claims": 5,
+      "exact_search_sufficient": 0,
+      "tathabbut_matches_expected": 5
+    },
+    "NOT_AUTHENTIC": {
+      "claims": 4,
+      "exact_search_sufficient": 0,
+      "tathabbut_matches_expected": 4
+    },
+    "NEEDS_REVIEW": {
+      "claims": 3,
+      "exact_search_sufficient": 0,
+      "tathabbut_matches_expected": 3
+    },
+    "NO_ORIGIN": {
+      "claims": 2,
+      "exact_search_sufficient": 2,
+      "tathabbut_matches_expected": 2
+    },
+    "DISPUTED": {
+      "claims": 1,
+      "exact_search_sufficient": 0,
+      "tathabbut_matches_expected": 1
+    },
+    "REFER": {
+      "claims": 7,
+      "exact_search_sufficient": 0,
+      "tathabbut_matches_expected": 7
+    }
+  },
+  "limits": [
+    "Single run in process (FastAPI TestClient); the release evidence covers the repeated runs.",
+    "The 25 cases were chosen to probe failure modes, not sampled from real traffic; counts are not a general accuracy rate.",
+    "Exact search is credited whenever FOUND/NOT_FOUND alone leads to the expected decision; it is never penalised for lacking a UI.",
+    "A better alternative (a scholar, or manual lookup in dorar.net with reading of the grades) is not measured here; see HUMAN_REVIEW.md."
+  ],
+  "rows": [
+    {
+      "case": "quran_exact",
+      "claim_index": 0,
+      "span": "إياك نعبد وإياك نستعين",
+      "expected": "VERIFIED",
+      "exact_search_found": true,
+      "exact_search_decision": "FOUND",
+      "exact_search_sufficient": true,
+      "tathabbut_verdict": "VERIFIED",
+      "tathabbut_matches_expected": true
+    },
+    {
+      "case": "quran_changed_particle",
+      "claim_index": 0,
+      "span": "إياك نعبد فإياك نستعين",
+      "expected": "ALTERED",
+      "exact_search_found": false,
+      "exact_search_decision": "NOT_FOUND",
+      "exact_search_sufficient": false,
+      "tathabbut_verdict": "ALTERED",
+      "tathabbut_matches_expected": true
+    },
+    {
+      "case": "quran_missing_particle",
+      "claim_index": 0,
+      "span": "إياك نعبد إياك نستعين",
+      "expected": "ALTERED",
+      "exact_search_found": false,
+      "exact_search_decision": "NOT_FOUND",
+      "exact_search_sufficient": false,
+      "tathabbut_verdict": "ALTERED",
+      "tathabbut_matches_expected": true
+    },
+    {
+      "case": "quran_merged_quote",
+      "claim_index": 0,
+      "span": "ومن يتوكل على الله فهو حسبه ونعم الوكيل",
+      "expected": "ALTERED",
+      "exact_search_found": false,
+      "exact_search_decision": "NOT_FOUND",
+      "exact_search_sufficient": false,
+      "tathabbut_verdict": "ALTERED",
+      "tathabbut_matches_expected": true
+    },
+    {
+      "case": "quran_changed_word",
+      "claim_index": 0,
+      "span": "لا يكلف الله نفسا إلا طاقتها",
+      "expected": "ALTERED",
+      "exact_search_found": false,
+      "exact_search_decision": "NOT_FOUND",
+      "exact_search_sufficient": false,
+      "tathabbut_verdict": "ALTERED",
+      "tathabbut_matches_expected": true
+    },
+    {
+      "case": "hadith_authentic",
+      "claim_index": 0,
+      "span": "الدين النصيحة",
+      "expected": "VERIFIED",
+      "exact_search_found": true,
+      "exact_search_decision": "FOUND",
+      "exact_search_sufficient": false,
+      "tathabbut_verdict": "VERIFIED",
+      "tathabbut_matches_expected": true
+    },
+    {
+      "case": "hadith_recorded_weak",
+      "claim_index": 0,
+      "span": "حب الوطن من الإيمان",
+      "expected": "NOT_AUTHENTIC",
+      "exact_search_found": true,
+      "exact_search_decision": "FOUND",
+      "exact_search_sufficient": false,
+      "tathabbut_verdict": "NOT_AUTHENTIC",
+      "tathabbut_matches_expected": true
+    },
+    {
+      "case": "hadith_negation_removed",
+      "claim_index": 0,
+      "span": "يؤمن أحدكم حتى يحب لأخيه ما يحب لنفسه",
+      "expected": "NEEDS_REVIEW",
+      "exact_search_found": true,
+      "exact_search_decision": "FOUND",
+      "exact_search_sufficient": false,
+      "tathabbut_verdict": "NEEDS_REVIEW",
+      "tathabbut_matches_expected": true
+    },
+    {
+      "case": "hadith_wording_changed",
+      "claim_index": 0,
+      "span": "اطلبوا العلم ولو في الصين",
+      "expected": "NEEDS_REVIEW",
+      "exact_search_found": false,
+      "exact_search_decision": "NOT_FOUND",
+      "exact_search_sufficient": false,
+      "tathabbut_verdict": "NEEDS_REVIEW",
+      "tathabbut_matches_expected": true
+    },
+    {
+      "case": "outside_corpus",
+      "claim_index": 0,
+      "span": "الصبر مفتاح الفرج",
+      "expected": "NO_ORIGIN",
+      "exact_search_found": false,
+      "exact_search_decision": "NOT_FOUND",
+      "exact_search_sufficient": true,
+      "tathabbut_verdict": "NO_ORIGIN",
+      "tathabbut_matches_expected": true
+    },
+    {
+      "case": "hadith_popular_not_established",
+      "claim_index": 0,
+      "span": "النظافة من الإيمان",
+      "expected": "NOT_AUTHENTIC",
+      "exact_search_found": true,
+      "exact_search_decision": "FOUND",
+      "exact_search_sufficient": false,
+      "tathabbut_verdict": "NOT_AUTHENTIC",
+      "tathabbut_matches_expected": true
+    },
+    {
+      "case": "hadith_hasan_grade",
+      "claim_index": 0,
+      "span": "إن الله تعالى يحب إذا عمل أحدكم عملا أن يتقنه",
+      "expected": "VERIFIED",
+      "exact_search_found": true,
+      "exact_search_decision": "FOUND",
+      "exact_search_sufficient": false,
+      "tathabbut_verdict": "VERIFIED",
+      "tathabbut_matches_expected": true
+    },
+    {
+      "case": "hadith_scholars_disagree",
+      "claim_index": 0,
+      "span": "خير الناس أنفعهم للناس",
+      "expected": "DISPUTED",
+      "exact_search_found": true,
+      "exact_search_decision": "FOUND",
+      "exact_search_sufficient": false,
+      "tathabbut_verdict": "DISPUTED",
+      "tathabbut_matches_expected": true
+    },
+    {
+      "case": "hadith_baseless_recorded",
+      "claim_index": 0,
+      "span": "من عرف نفسه فقد عرف ربه",
+      "expected": "NOT_AUTHENTIC",
+      "exact_search_found": true,
+      "exact_search_decision": "FOUND",
+      "exact_search_sufficient": false,
+      "tathabbut_verdict": "NOT_AUTHENTIC",
+      "tathabbut_matches_expected": true
+    },
+    {
+      "case": "hadith_fragment_of_long_text",
+      "claim_index": 0,
+      "span": "الكلمة الطيبة صدقة",
+      "expected": "VERIFIED",
+      "exact_search_found": true,
+      "exact_search_decision": "FOUND",
+      "exact_search_sufficient": false,
+      "tathabbut_verdict": "VERIFIED",
+      "tathabbut_matches_expected": true
+    },
+    {
+      "case": "hadith_popular_variant_wording",
+      "claim_index": 0,
+      "span": "إنما بعثت لأتمم مكارم الأخلاق",
+      "expected": "NEEDS_REVIEW",
+      "exact_search_found": false,
+      "exact_search_decision": "NOT_FOUND",
+      "exact_search_sufficient": false,
+      "tathabbut_verdict": "NEEDS_REVIEW",
+      "tathabbut_matches_expected": true
+    },
+    {
+      "case": "hadith_extra_words_not_in_record",
+      "claim_index": 0,
+      "span": "الحكمة ضالة المؤمن أنى وجدها فهو أحق بها",
+      "expected": "NO_ORIGIN",
+      "exact_search_found": false,
+      "exact_search_decision": "NOT_FOUND",
+      "exact_search_sufficient": true,
+      "tathabbut_verdict": "NO_ORIGIN",
+      "tathabbut_matches_expected": true
+    },
+    {
+      "case": "personal_referral",
+      "claim_index": 0,
+      "span": "هل يجوز لي أن أجمع الصلاة في العمل",
+      "expected": "REFER",
+      "exact_search_found": false,
+      "exact_search_decision": "NOT_FOUND",
+      "exact_search_sufficient": false,
+      "tathabbut_verdict": "REFER",
+      "tathabbut_matches_expected": true
+    },
+    {
+      "case": "multiple_claims",
+      "claim_index": 0,
+      "span": "اطلبوا العلم ولو بالصين",
+      "expected": "NOT_AUTHENTIC",
+      "exact_search_found": true,
+      "exact_search_decision": "FOUND",
+      "exact_search_sufficient": false,
+      "tathabbut_verdict": "NOT_AUTHENTIC",
+      "tathabbut_matches_expected": true
+    },
+    {
+      "case": "multiple_claims",
+      "claim_index": 1,
+      "span": "ومن يتوكل على الله فهو حسبه ونعم الوكيل",
+      "expected": "ALTERED",
+      "exact_search_found": false,
+      "exact_search_decision": "NOT_FOUND",
+      "exact_search_sufficient": false,
+      "tathabbut_verdict": "ALTERED",
+      "tathabbut_matches_expected": true
+    },
+    {
+      "case": "multiple_claims",
+      "claim_index": 2,
+      "span": "هل يجوز لي أن أجمع الصلاة في العمل",
+      "expected": "REFER",
+      "exact_search_found": false,
+      "exact_search_decision": "NOT_FOUND",
+      "exact_search_sufficient": false,
+      "tathabbut_verdict": "REFER",
+      "tathabbut_matches_expected": true
+    },
+    {
+      "case": "personal_with_quran_same_sentence",
+      "claim_index": 0,
+      "span": "هل يجوز لي ترك الصلاة لأن الله قال: ﴿إن الله غفور رحيم﴾",
+      "expected": "REFER",
+      "exact_search_found": false,
+      "exact_search_decision": "NOT_FOUND",
+      "exact_search_sufficient": false,
+      "tathabbut_verdict": "REFER",
+      "tathabbut_matches_expected": true
+    },
+    {
+      "case": "personal_with_quran_same_sentence",
+      "claim_index": 1,
+      "span": "إن الله غفور رحيم",
+      "expected": "VERIFIED",
+      "exact_search_found": true,
+      "exact_search_decision": "FOUND",
+      "exact_search_sufficient": true,
+      "tathabbut_verdict": "VERIFIED",
+      "tathabbut_matches_expected": true
+    },
+    {
+      "case": "personal_with_hadith_same_sentence",
+      "claim_index": 0,
+      "span": "هل يجوز لي أن أفعل ذلك بناء على حديث رسول الله ﷺ: «الدين النصيحة»",
+      "expected": "REFER",
+      "exact_search_found": false,
+      "exact_search_decision": "NOT_FOUND",
+      "exact_search_sufficient": false,
+      "tathabbut_verdict": "REFER",
+      "tathabbut_matches_expected": true
+    },
+    {
+      "case": "personal_with_hadith_same_sentence",
+      "claim_index": 1,
+      "span": "الدين النصيحة",
+      "expected": "VERIFIED",
+      "exact_search_found": true,
+      "exact_search_decision": "FOUND",
+      "exact_search_sufficient": false,
+      "tathabbut_verdict": "VERIFIED",
+      "tathabbut_matches_expected": true
+    },
+    {
+      "case": "personal_after_quote",
+      "claim_index": 0,
+      "span": "قال رسول الله ﷺ: «الدين النصيحة»، فهل يحق لي نشر أسرار زوجتي",
+      "expected": "REFER",
+      "exact_search_found": false,
+      "exact_search_decision": "NOT_FOUND",
+      "exact_search_sufficient": false,
+      "tathabbut_verdict": "REFER",
+      "tathabbut_matches_expected": true
+    },
+    {
+      "case": "personal_after_quote",
+      "claim_index": 1,
+      "span": "الدين النصيحة",
+      "expected": "VERIFIED",
+      "exact_search_found": true,
+      "exact_search_decision": "FOUND",
+      "exact_search_sufficient": false,
+      "tathabbut_verdict": "VERIFIED",
+      "tathabbut_matches_expected": true
+    },
+    {
+      "case": "personal_after_unquoted_citation",
+      "claim_index": 0,
+      "span": "قال تعالى قل هو الله أحد، فهل يلزمني شيء في حالتي",
+      "expected": "REFER",
+      "exact_search_found": false,
+      "exact_search_decision": "NOT_FOUND",
+      "exact_search_sufficient": false,
+      "tathabbut_verdict": "REFER",
+      "tathabbut_matches_expected": true
+    },
+    {
+      "case": "personal_after_unquoted_citation",
+      "claim_index": 1,
+      "span": "قل هو الله أحد",
+      "expected": "VERIFIED",
+      "exact_search_found": true,
+      "exact_search_decision": "FOUND",
+      "exact_search_sufficient": true,
+      "tathabbut_verdict": "VERIFIED",
+      "tathabbut_matches_expected": true
+    },
+    {
+      "case": "first_person_quran_is_not_user_question",
+      "claim_index": 0,
+      "span": "إني نذرت للرحمن صوما",
+      "expected": "VERIFIED",
+      "exact_search_found": true,
+      "exact_search_decision": "FOUND",
+      "exact_search_sufficient": true,
+      "tathabbut_verdict": "VERIFIED",
+      "tathabbut_matches_expected": true
+    },
+    {
+      "case": "referral_preserved_at_display_limit",
+      "claim_index": 0,
+      "span": "هل يجوز لي ترك الصلاة",
+      "expected": "REFER",
+      "exact_search_found": false,
+      "exact_search_decision": "NOT_FOUND",
+      "exact_search_sufficient": false,
+      "tathabbut_verdict": "REFER",
+      "tathabbut_matches_expected": true
+    },
+    {
+      "case": "referral_preserved_at_display_limit",
+      "claim_index": 1,
+      "span": "قل هو الله أحد",
+      "expected": "VERIFIED",
+      "exact_search_found": true,
+      "exact_search_decision": "FOUND",
+      "exact_search_sufficient": true,
+      "tathabbut_verdict": "VERIFIED",
+      "tathabbut_matches_expected": true
+    },
+    {
+      "case": "referral_preserved_at_display_limit",
+      "claim_index": 2,
+      "span": "قل هو الله أحد",
+      "expected": "VERIFIED",
+      "exact_search_found": true,
+      "exact_search_decision": "FOUND",
+      "exact_search_sufficient": true,
+      "tathabbut_verdict": "VERIFIED",
+      "tathabbut_matches_expected": true
+    },
+    {
+      "case": "referral_preserved_at_display_limit",
+      "claim_index": 3,
+      "span": "قل هو الله أحد",
+      "expected": "VERIFIED",
+      "exact_search_found": true,
+      "exact_search_decision": "FOUND",
+      "exact_search_sufficient": true,
+      "tathabbut_verdict": "VERIFIED",
+      "tathabbut_matches_expected": true
+    },
+    {
+      "case": "referral_preserved_at_display_limit",
+      "claim_index": 4,
+      "span": "قل هو الله أحد",
+      "expected": "VERIFIED",
+      "exact_search_found": true,
+      "exact_search_decision": "FOUND",
+      "exact_search_sufficient": true,
+      "tathabbut_verdict": "VERIFIED",
+      "tathabbut_matches_expected": true
+    },
+    {
+      "case": "referral_preserved_at_display_limit",
+      "claim_index": 5,
+      "span": "قل هو الله أحد",
+      "expected": "VERIFIED",
+      "exact_search_found": true,
+      "exact_search_decision": "FOUND",
+      "exact_search_sufficient": true,
+      "tathabbut_verdict": "VERIFIED",
+      "tathabbut_matches_expected": true
+    },
+    {
+      "case": "referral_preserved_at_display_limit",
+      "claim_index": 6,
+      "span": "قل هو الله أحد",
+      "expected": "VERIFIED",
+      "exact_search_found": true,
+      "exact_search_decision": "FOUND",
+      "exact_search_sufficient": true,
+      "tathabbut_verdict": "VERIFIED",
+      "tathabbut_matches_expected": true
+    },
+    {
+      "case": "referral_preserved_at_display_limit",
+      "claim_index": 7,
+      "span": "قل هو الله أحد",
+      "expected": "VERIFIED",
+      "exact_search_found": true,
+      "exact_search_decision": "FOUND",
+      "exact_search_sufficient": true,
+      "tathabbut_verdict": "VERIFIED",
+      "tathabbut_matches_expected": true
+    },
+    {
+      "case": "referral_preserved_at_display_limit",
+      "claim_index": 8,
+      "span": "قل هو الله أحد",
+      "expected": "VERIFIED",
+      "exact_search_found": true,
+      "exact_search_decision": "FOUND",
+      "exact_search_sufficient": true,
+      "tathabbut_verdict": "VERIFIED",
+      "tathabbut_matches_expected": true
+    },
+    {
+      "case": "referral_preserved_at_display_limit",
+      "claim_index": 9,
+      "span": "قل هو الله أحد",
+      "expected": "VERIFIED",
+      "exact_search_found": true,
+      "exact_search_decision": "FOUND",
+      "exact_search_sufficient": true,
+      "tathabbut_verdict": "VERIFIED",
+      "tathabbut_matches_expected": true
+    },
+    {
+      "case": "referral_preserved_at_display_limit",
+      "claim_index": 10,
+      "span": "قل هو الله أحد",
+      "expected": "VERIFIED",
+      "exact_search_found": true,
+      "exact_search_decision": "FOUND",
+      "exact_search_sufficient": true,
+      "tathabbut_verdict": "VERIFIED",
+      "tathabbut_matches_expected": true
+    },
+    {
+      "case": "referral_preserved_at_display_limit",
+      "claim_index": 11,
+      "span": "قل هو الله أحد",
+      "expected": "VERIFIED",
+      "exact_search_found": true,
+      "exact_search_decision": "FOUND",
+      "exact_search_sufficient": true,
+      "tathabbut_verdict": "VERIFIED",
+      "tathabbut_matches_expected": true
+    }
+  ]
+}

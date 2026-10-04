@@ -1,0 +1,1083 @@
+{
+  "checked_at": "2026-10-03T02:10:33.473375+03:00",
+  "base_url": "https://tathabbut.vercel.app",
+  "scope": "12 targeted regression cases; not a representative accuracy benchmark",
+  "index": {
+    "embedder": "tfidf-char",
+    "docs": 6248,
+    "quran": 6236,
+    "hadith": 12,
+    "verified_docs": 6248,
+    "quran_complete": true
+  },
+  "cases": [
+    {
+      "id": "quran_exact",
+      "input": "﴿إياك نعبد وإياك نستعين﴾",
+      "expected": [
+        "VERIFIED"
+      ],
+      "actual": [
+        "VERIFIED"
+      ],
+      "passed": true,
+      "engine_version": "0.1.0",
+      "roundtrip_ms": 891,
+      "response": {
+        "claims": [
+          {
+            "id": 1,
+            "text": "إياك نعبد وإياك نستعين",
+            "type_hint": "quran",
+            "level": "A",
+            "verdict": {
+              "code": "VERIFIED",
+              "label_ar": "موثّق"
+            },
+            "source": {
+              "id": "quran-1:5",
+              "kind": "quran",
+              "text": "إياك نعبد وإياك نستعين",
+              "ref": {
+                "surah": 1,
+                "ayah": 5,
+                "surah_name": "الفاتحة"
+              },
+              "url": "https://tanzil.net/#1:5",
+              "verified": true
+            },
+            "grades": [],
+            "diff": [],
+            "evidence": {
+              "claim_coverage": 1.0,
+              "content_coverage": 1.0,
+              "span_coverage": 1.0,
+              "similarity": 1.0,
+              "retrieval_fused": 0.03279,
+              "bm25_rank": 0,
+              "dense_rank": 0
+            },
+            "closest": null,
+            "alternatives": [],
+            "notes": [],
+            "explanation": {
+              "kind": "template",
+              "generated": true,
+              "text": "النص مطابق لما في المصحف: سورة الفاتحة، الآية 5."
+            }
+          }
+        ],
+        "summary": {
+          "VERIFIED": 1,
+          "NOT_AUTHENTIC": 0,
+          "ALTERED": 0,
+          "NO_ORIGIN": 0,
+          "DISPUTED": 0,
+          "REFER": 0,
+          "NEEDS_REVIEW": 0
+        },
+        "index": {
+          "embedder": "tfidf-char",
+          "docs": 6248,
+          "quran": 6236,
+          "hadith": 12,
+          "verified_docs": 6248,
+          "quran_complete": true
+        },
+        "disclaimer": "تثبّت أداة مدعومة بالذكاء الاصطناعي ولا تُغني عن المختص. النص الشرعي منسوخ من الفهرس، والدرجات منقولة عن المحدّثين كما هي مسجّلة في المصدر.",
+        "engine_version": "0.1.0",
+        "elapsed_ms": 227
+      }
+    },
+    {
+      "id": "quran_changed_particle",
+      "input": "﴿إياك نعبد فإياك نستعين﴾",
+      "expected": [
+        "ALTERED"
+      ],
+      "actual": [
+        "VERIFIED"
+      ],
+      "passed": false,
+      "engine_version": "0.1.0",
+      "roundtrip_ms": 808,
+      "response": {
+        "claims": [
+          {
+            "id": 1,
+            "text": "إياك نعبد فإياك نستعين",
+            "type_hint": "quran",
+            "level": "A",
+            "verdict": {
+              "code": "VERIFIED",
+              "label_ar": "موثّق"
+            },
+            "source": {
+              "id": "quran-1:5",
+              "kind": "quran",
+              "text": "إياك نعبد وإياك نستعين",
+              "ref": {
+                "surah": 1,
+                "ayah": 5,
+                "surah_name": "الفاتحة"
+              },
+              "url": "https://tanzil.net/#1:5",
+              "verified": true
+            },
+            "grades": [],
+            "diff": [],
+            "evidence": {
+              "claim_coverage": 1.0,
+              "content_coverage": 1.0,
+              "span_coverage": 1.0,
+              "similarity": 1.0,
+              "retrieval_fused": 0.03279,
+              "bm25_rank": 0,
+              "dense_rank": 0
+            },
+            "closest": null,
+            "alternatives": [],
+            "notes": [],
+            "explanation": {
+              "kind": "template",
+              "generated": true,
+              "text": "النص مطابق لما في المصحف: سورة الفاتحة، الآية 5."
+            }
+          }
+        ],
+        "summary": {
+          "VERIFIED": 1,
+          "NOT_AUTHENTIC": 0,
+          "ALTERED": 0,
+          "NO_ORIGIN": 0,
+          "DISPUTED": 0,
+          "REFER": 0,
+          "NEEDS_REVIEW": 0
+        },
+        "index": {
+          "embedder": "tfidf-char",
+          "docs": 6248,
+          "quran": 6236,
+          "hadith": 12,
+          "verified_docs": 6248,
+          "quran_complete": true
+        },
+        "disclaimer": "تثبّت أداة مدعومة بالذكاء الاصطناعي ولا تُغني عن المختص. النص الشرعي منسوخ من الفهرس، والدرجات منقولة عن المحدّثين كما هي مسجّلة في المصدر.",
+        "engine_version": "0.1.0",
+        "elapsed_ms": 266
+      }
+    },
+    {
+      "id": "quran_missing_particle",
+      "input": "﴿إياك نعبد إياك نستعين﴾",
+      "expected": [
+        "ALTERED"
+      ],
+      "actual": [
+        "VERIFIED"
+      ],
+      "passed": false,
+      "engine_version": "0.1.0",
+      "roundtrip_ms": 788,
+      "response": {
+        "claims": [
+          {
+            "id": 1,
+            "text": "إياك نعبد إياك نستعين",
+            "type_hint": "quran",
+            "level": "A",
+            "verdict": {
+              "code": "VERIFIED",
+              "label_ar": "موثّق"
+            },
+            "source": {
+              "id": "quran-1:5",
+              "kind": "quran",
+              "text": "إياك نعبد وإياك نستعين",
+              "ref": {
+                "surah": 1,
+                "ayah": 5,
+                "surah_name": "الفاتحة"
+              },
+              "url": "https://tanzil.net/#1:5",
+              "verified": true
+            },
+            "grades": [],
+            "diff": [],
+            "evidence": {
+              "claim_coverage": 1.0,
+              "content_coverage": 1.0,
+              "span_coverage": 1.0,
+              "similarity": 1.0,
+              "retrieval_fused": 0.03279,
+              "bm25_rank": 0,
+              "dense_rank": 0
+            },
+            "closest": null,
+            "alternatives": [],
+            "notes": [],
+            "explanation": {
+              "kind": "template",
+              "generated": true,
+              "text": "النص مطابق لما في المصحف: سورة الفاتحة، الآية 5."
+            }
+          }
+        ],
+        "summary": {
+          "VERIFIED": 1,
+          "NOT_AUTHENTIC": 0,
+          "ALTERED": 0,
+          "NO_ORIGIN": 0,
+          "DISPUTED": 0,
+          "REFER": 0,
+          "NEEDS_REVIEW": 0
+        },
+        "index": {
+          "embedder": "tfidf-char",
+          "docs": 6248,
+          "quran": 6236,
+          "hadith": 12,
+          "verified_docs": 6248,
+          "quran_complete": true
+        },
+        "disclaimer": "تثبّت أداة مدعومة بالذكاء الاصطناعي ولا تُغني عن المختص. النص الشرعي منسوخ من الفهرس، والدرجات منقولة عن المحدّثين كما هي مسجّلة في المصدر.",
+        "engine_version": "0.1.0",
+        "elapsed_ms": 176
+      }
+    },
+    {
+      "id": "quran_merged_quote",
+      "input": "﴿ومن يتوكل على الله فهو حسبه ونعم الوكيل﴾",
+      "expected": [
+        "ALTERED"
+      ],
+      "actual": [
+        "ALTERED"
+      ],
+      "passed": true,
+      "engine_version": "0.1.0",
+      "roundtrip_ms": 899,
+      "response": {
+        "claims": [
+          {
+            "id": 1,
+            "text": "ومن يتوكل على الله فهو حسبه ونعم الوكيل",
+            "type_hint": "quran",
+            "level": "A",
+            "verdict": {
+              "code": "ALTERED",
+              "label_ar": "مُحرَّف"
+            },
+            "source": {
+              "id": "quran-65:3",
+              "kind": "quran",
+              "text": "ويرزقه من حيث لا يحتسب ومن يتوكل على الله فهو حسبه إن الله بالغ أمره قد جعل الله لكل شيء قدرا",
+              "ref": {
+                "surah": 65,
+                "ayah": 3,
+                "surah_name": "الطلاق"
+              },
+              "url": "https://tanzil.net/#65:3",
+              "verified": true
+            },
+            "grades": [],
+            "diff": [
+              {
+                "op": "equal",
+                "text": "ومن يتوكل على الله فهو حسبه"
+              },
+              {
+                "op": "changed",
+                "claim": "ونعم الوكيل",
+                "source": "إن الله"
+              }
+            ],
+            "evidence": {
+              "claim_coverage": 0.75,
+              "content_coverage": 0.714,
+              "span_coverage": 1.0,
+              "similarity": 0.414,
+              "retrieval_fused": 0.03279,
+              "bm25_rank": 0,
+              "dense_rank": 0
+            },
+            "closest": null,
+            "alternatives": [],
+            "notes": [],
+            "explanation": {
+              "kind": "template",
+              "generated": true,
+              "text": "النص المنقول يختلف عن نص المصحف في سورة الطلاق، الآية 3؛ انظر الفروق حرفاً حرفاً."
+            }
+          }
+        ],
+        "summary": {
+          "VERIFIED": 0,
+          "NOT_AUTHENTIC": 0,
+          "ALTERED": 1,
+          "NO_ORIGIN": 0,
+          "DISPUTED": 0,
+          "REFER": 0,
+          "NEEDS_REVIEW": 0
+        },
+        "index": {
+          "embedder": "tfidf-char",
+          "docs": 6248,
+          "quran": 6236,
+          "hadith": 12,
+          "verified_docs": 6248,
+          "quran_complete": true
+        },
+        "disclaimer": "تثبّت أداة مدعومة بالذكاء الاصطناعي ولا تُغني عن المختص. النص الشرعي منسوخ من الفهرس، والدرجات منقولة عن المحدّثين كما هي مسجّلة في المصدر.",
+        "engine_version": "0.1.0",
+        "elapsed_ms": 344
+      }
+    },
+    {
+      "id": "quran_changed_word",
+      "input": "﴿لا يكلف الله نفسا إلا طاقتها﴾",
+      "expected": [
+        "ALTERED"
+      ],
+      "actual": [
+        "ALTERED"
+      ],
+      "passed": true,
+      "engine_version": "0.1.0",
+      "roundtrip_ms": 899,
+      "response": {
+        "claims": [
+          {
+            "id": 1,
+            "text": "لا يكلف الله نفسا إلا طاقتها",
+            "type_hint": "quran",
+            "level": "A",
+            "verdict": {
+              "code": "ALTERED",
+              "label_ar": "مُحرَّف"
+            },
+            "source": {
+              "id": "quran-2:286",
+              "kind": "quran",
+              "text": "لا يكلف الله نفسا إلا وسعها لها ما كسبت وعليها ما اكتسبت ربنا لا تؤاخذنا إن نسينا أو أخطأنا ربنا ولا تحمل علينا إصرا كما حملته على الذين من قبلنا ربنا ولا تحملنا ما لا طاقة لنا به واعف عنا واغفر لنا وارحمنا أنت مولانا فانصرنا على القوم الكافرين",
+              "ref": {
+                "surah": 2,
+                "ayah": 286,
+                "surah_name": "البقرة"
+              },
+              "url": "https://tanzil.net/#2:286",
+              "verified": true
+            },
+            "grades": [],
+            "diff": [
+              {
+                "op": "equal",
+                "text": "لا يكلف الله نفسا إلا"
+              },
+              {
+                "op": "changed",
+                "claim": "طاقتها",
+                "source": "وسعها"
+              }
+            ],
+            "evidence": {
+              "claim_coverage": 0.833,
+              "content_coverage": 0.75,
+              "span_coverage": 1.0,
+              "similarity": 0.182,
+              "retrieval_fused": 0.02971,
+              "bm25_rank": 3,
+              "dense_rank": 10
+            },
+            "closest": null,
+            "alternatives": [
+              {
+                "id": "quran-65:7",
+                "ref": {
+                  "surah": 65,
+                  "ayah": 7,
+                  "surah_name": "الطلاق"
+                },
+                "url": "https://tanzil.net/#65:7"
+              }
+            ],
+            "notes": [
+              "قريب بالقدر نفسه من مواضع أخرى: الطلاق 7؛ رُجّح الأقرب لفظاً."
+            ],
+            "explanation": {
+              "kind": "template",
+              "generated": true,
+              "text": "النص المنقول يختلف عن نص المصحف في سورة البقرة، الآية 286؛ انظر الفروق حرفاً حرفاً."
+            }
+          }
+        ],
+        "summary": {
+          "VERIFIED": 0,
+          "NOT_AUTHENTIC": 0,
+          "ALTERED": 1,
+          "NO_ORIGIN": 0,
+          "DISPUTED": 0,
+          "REFER": 0,
+          "NEEDS_REVIEW": 0
+        },
+        "index": {
+          "embedder": "tfidf-char",
+          "docs": 6248,
+          "quran": 6236,
+          "hadith": 12,
+          "verified_docs": 6248,
+          "quran_complete": true
+        },
+        "disclaimer": "تثبّت أداة مدعومة بالذكاء الاصطناعي ولا تُغني عن المختص. النص الشرعي منسوخ من الفهرس، والدرجات منقولة عن المحدّثين كما هي مسجّلة في المصدر.",
+        "engine_version": "0.1.0",
+        "elapsed_ms": 292
+      }
+    },
+    {
+      "id": "hadith_authentic",
+      "input": "قال رسول الله ﷺ: «الدين النصيحة»",
+      "expected": [
+        "VERIFIED"
+      ],
+      "actual": [
+        "VERIFIED"
+      ],
+      "passed": true,
+      "engine_version": "0.1.0",
+      "roundtrip_ms": 947,
+      "response": {
+        "claims": [
+          {
+            "id": 1,
+            "text": "الدين النصيحة",
+            "type_hint": "hadith",
+            "level": "A",
+            "verdict": {
+              "code": "VERIFIED",
+              "label_ar": "موثّق"
+            },
+            "source": {
+              "id": "hadith-muslim-55",
+              "kind": "hadith",
+              "text": "الدين النصيحة قلنا لمن قال لله ولكتابه ولرسوله ولأئمة المسلمين وعامتهم",
+              "ref": {
+                "narrator": "تميم الداري"
+              },
+              "url": "https://dorar.net/hadith/search?q=%D8%A7%D9%84%D8%AF%D9%8A%D9%86%20%D8%A7%D9%84%D9%86%D8%B5%D9%8A%D8%AD%D8%A9%20%D9%82%D9%84%D9%86%D8%A7%20%D9%84%D9%85%D9%86%20%D9%82%D8%A7%D9%84%20%D9%84%D9%84%D9%87",
+              "verified": true
+            },
+            "grades": [
+              {
+                "muhaddith": "مسلم",
+                "source": "صحيح مسلم",
+                "ref": "55",
+                "grade": "صحيح",
+                "class": "authentic"
+              }
+            ],
+            "diff": [],
+            "evidence": {
+              "claim_coverage": 1.0,
+              "content_coverage": 1.0,
+              "span_coverage": 1.0,
+              "similarity": 0.308,
+              "retrieval_fused": 0.03279,
+              "bm25_rank": 0,
+              "dense_rank": 0
+            },
+            "closest": null,
+            "alternatives": [],
+            "notes": [],
+            "explanation": {
+              "kind": "template",
+              "generated": true,
+              "text": "الدرجة كما هي مسجّلة في المصدر: مسلم (صحيح مسلم 55): صحيح."
+            }
+          }
+        ],
+        "summary": {
+          "VERIFIED": 1,
+          "NOT_AUTHENTIC": 0,
+          "ALTERED": 0,
+          "NO_ORIGIN": 0,
+          "DISPUTED": 0,
+          "REFER": 0,
+          "NEEDS_REVIEW": 0
+        },
+        "index": {
+          "embedder": "tfidf-char",
+          "docs": 6248,
+          "quran": 6236,
+          "hadith": 12,
+          "verified_docs": 6248,
+          "quran_complete": true
+        },
+        "disclaimer": "تثبّت أداة مدعومة بالذكاء الاصطناعي ولا تُغني عن المختص. النص الشرعي منسوخ من الفهرس، والدرجات منقولة عن المحدّثين كما هي مسجّلة في المصدر.",
+        "engine_version": "0.1.0",
+        "elapsed_ms": 233
+      }
+    },
+    {
+      "id": "hadith_recorded_weak",
+      "input": "قال رسول الله ﷺ: «حب الوطن من الإيمان»",
+      "expected": [
+        "NOT_AUTHENTIC"
+      ],
+      "actual": [
+        "NOT_AUTHENTIC"
+      ],
+      "passed": true,
+      "engine_version": "0.1.0",
+      "roundtrip_ms": 850,
+      "response": {
+        "claims": [
+          {
+            "id": 1,
+            "text": "حب الوطن من الإيمان",
+            "type_hint": "hadith",
+            "level": "A",
+            "verdict": {
+              "code": "NOT_AUTHENTIC",
+              "label_ar": "لا يصح"
+            },
+            "source": {
+              "id": "hadith-daifa-36",
+              "kind": "hadith",
+              "text": "حب الوطن من الإيمان",
+              "ref": {
+                "narrator": ""
+              },
+              "url": "https://dorar.net/hadith/search?q=%D8%AD%D8%A8%20%D8%A7%D9%84%D9%88%D8%B7%D9%86%20%D9%85%D9%86%20%D8%A7%D9%84%D8%A5%D9%8A%D9%85%D8%A7%D9%86",
+              "verified": true
+            },
+            "grades": [
+              {
+                "muhaddith": "الألباني",
+                "source": "السلسلة الضعيفة",
+                "ref": "36",
+                "grade": "موضوع",
+                "class": "fabricated"
+              }
+            ],
+            "diff": [],
+            "evidence": {
+              "claim_coverage": 1.0,
+              "content_coverage": 1.0,
+              "span_coverage": 1.0,
+              "similarity": 1.0,
+              "retrieval_fused": 0.03279,
+              "bm25_rank": 0,
+              "dense_rank": 0
+            },
+            "closest": null,
+            "alternatives": [],
+            "notes": [],
+            "explanation": {
+              "kind": "template",
+              "generated": true,
+              "text": "الدرجة كما هي مسجّلة في المصدر: الألباني (السلسلة الضعيفة 36): موضوع."
+            }
+          }
+        ],
+        "summary": {
+          "VERIFIED": 0,
+          "NOT_AUTHENTIC": 1,
+          "ALTERED": 0,
+          "NO_ORIGIN": 0,
+          "DISPUTED": 0,
+          "REFER": 0,
+          "NEEDS_REVIEW": 0
+        },
+        "index": {
+          "embedder": "tfidf-char",
+          "docs": 6248,
+          "quran": 6236,
+          "hadith": 12,
+          "verified_docs": 6248,
+          "quran_complete": true
+        },
+        "disclaimer": "تثبّت أداة مدعومة بالذكاء الاصطناعي ولا تُغني عن المختص. النص الشرعي منسوخ من الفهرس، والدرجات منقولة عن المحدّثين كما هي مسجّلة في المصدر.",
+        "engine_version": "0.1.0",
+        "elapsed_ms": 256
+      }
+    },
+    {
+      "id": "hadith_negation_removed",
+      "input": "قال رسول الله ﷺ: «يؤمن أحدكم حتى يحب لأخيه ما يحب لنفسه»",
+      "expected": [
+        "NEEDS_REVIEW"
+      ],
+      "actual": [
+        "VERIFIED"
+      ],
+      "passed": false,
+      "engine_version": "0.1.0",
+      "roundtrip_ms": 828,
+      "response": {
+        "claims": [
+          {
+            "id": 1,
+            "text": "يؤمن أحدكم حتى يحب لأخيه ما يحب لنفسه",
+            "type_hint": "hadith",
+            "level": "A",
+            "verdict": {
+              "code": "VERIFIED",
+              "label_ar": "موثّق"
+            },
+            "source": {
+              "id": "hadith-bukhari-13",
+              "kind": "hadith",
+              "text": "لا يؤمن أحدكم حتى يحب لأخيه ما يحب لنفسه",
+              "ref": {
+                "narrator": "أنس بن مالك"
+              },
+              "url": "https://dorar.net/hadith/search?q=%D9%84%D8%A7%20%D9%8A%D8%A4%D9%85%D9%86%20%D8%A3%D8%AD%D8%AF%D9%83%D9%85%20%D8%AD%D8%AA%D9%89%20%D9%8A%D8%AD%D8%A8%20%D9%84%D8%A3%D8%AE%D9%8A%D9%87",
+              "verified": true
+            },
+            "grades": [
+              {
+                "muhaddith": "البخاري",
+                "source": "صحيح البخاري",
+                "ref": "13",
+                "grade": "صحيح",
+                "class": "authentic"
+              },
+              {
+                "muhaddith": "مسلم",
+                "source": "صحيح مسلم",
+                "ref": "45",
+                "grade": "صحيح",
+                "class": "authentic",
+                "note": "بلفظ مقارب"
+              }
+            ],
+            "diff": [],
+            "evidence": {
+              "claim_coverage": 1.0,
+              "content_coverage": 1.0,
+              "span_coverage": 1.0,
+              "similarity": 0.941,
+              "retrieval_fused": 0.03279,
+              "bm25_rank": 0,
+              "dense_rank": 0
+            },
+            "closest": null,
+            "alternatives": [],
+            "notes": [],
+            "explanation": {
+              "kind": "template",
+              "generated": true,
+              "text": "الدرجة كما هي مسجّلة في المصدر: البخاري (صحيح البخاري 13): صحيح؛ مسلم (صحيح مسلم 45): صحيح."
+            }
+          }
+        ],
+        "summary": {
+          "VERIFIED": 1,
+          "NOT_AUTHENTIC": 0,
+          "ALTERED": 0,
+          "NO_ORIGIN": 0,
+          "DISPUTED": 0,
+          "REFER": 0,
+          "NEEDS_REVIEW": 0
+        },
+        "index": {
+          "embedder": "tfidf-char",
+          "docs": 6248,
+          "quran": 6236,
+          "hadith": 12,
+          "verified_docs": 6248,
+          "quran_complete": true
+        },
+        "disclaimer": "تثبّت أداة مدعومة بالذكاء الاصطناعي ولا تُغني عن المختص. النص الشرعي منسوخ من الفهرس، والدرجات منقولة عن المحدّثين كما هي مسجّلة في المصدر.",
+        "engine_version": "0.1.0",
+        "elapsed_ms": 171
+      }
+    },
+    {
+      "id": "hadith_wording_changed",
+      "input": "قال رسول الله ﷺ: «اطلبوا العلم ولو في الصين»",
+      "expected": [
+        "NEEDS_REVIEW"
+      ],
+      "actual": [
+        "NOT_AUTHENTIC"
+      ],
+      "passed": false,
+      "engine_version": "0.1.0",
+      "roundtrip_ms": 1079,
+      "response": {
+        "claims": [
+          {
+            "id": 1,
+            "text": "اطلبوا العلم ولو في الصين",
+            "type_hint": "hadith",
+            "level": "A",
+            "verdict": {
+              "code": "NOT_AUTHENTIC",
+              "label_ar": "لا يصح"
+            },
+            "source": {
+              "id": "hadith-daifa-416",
+              "kind": "hadith",
+              "text": "اطلبوا العلم ولو بالصين",
+              "ref": {
+                "narrator": "أنس بن مالك"
+              },
+              "url": "https://dorar.net/hadith/search?q=%D8%A7%D8%B7%D9%84%D8%A8%D9%88%D8%A7%20%D8%A7%D9%84%D8%B9%D9%84%D9%85%20%D9%88%D9%84%D9%88%20%D8%A8%D8%A7%D9%84%D8%B5%D9%8A%D9%86",
+              "verified": true
+            },
+            "grades": [
+              {
+                "muhaddith": "الألباني",
+                "source": "السلسلة الضعيفة",
+                "ref": "416",
+                "grade": "باطل",
+                "class": "fabricated"
+              }
+            ],
+            "diff": [
+              {
+                "op": "equal",
+                "text": "اطلبوا العلم ولو"
+              },
+              {
+                "op": "added",
+                "claim": "في"
+              },
+              {
+                "op": "equal",
+                "text": "الصين"
+              }
+            ],
+            "evidence": {
+              "claim_coverage": 0.8,
+              "content_coverage": 1.0,
+              "span_coverage": 1.0,
+              "similarity": 0.889,
+              "retrieval_fused": 0.03279,
+              "bm25_rank": 0,
+              "dense_rank": 0
+            },
+            "closest": null,
+            "alternatives": [],
+            "notes": [
+              "مطابقة لفظية 80% — قد تختلف ألفاظ الروايات."
+            ],
+            "explanation": {
+              "kind": "template",
+              "generated": true,
+              "text": "الدرجة كما هي مسجّلة في المصدر: الألباني (السلسلة الضعيفة 416): باطل."
+            }
+          }
+        ],
+        "summary": {
+          "VERIFIED": 0,
+          "NOT_AUTHENTIC": 1,
+          "ALTERED": 0,
+          "NO_ORIGIN": 0,
+          "DISPUTED": 0,
+          "REFER": 0,
+          "NEEDS_REVIEW": 0
+        },
+        "index": {
+          "embedder": "tfidf-char",
+          "docs": 6248,
+          "quran": 6236,
+          "hadith": 12,
+          "verified_docs": 6248,
+          "quran_complete": true
+        },
+        "disclaimer": "تثبّت أداة مدعومة بالذكاء الاصطناعي ولا تُغني عن المختص. النص الشرعي منسوخ من الفهرس، والدرجات منقولة عن المحدّثين كما هي مسجّلة في المصدر.",
+        "engine_version": "0.1.0",
+        "elapsed_ms": 113
+      }
+    },
+    {
+      "id": "outside_corpus",
+      "input": "قال رسول الله ﷺ: «النظافة من الإيمان»",
+      "expected": [
+        "NO_ORIGIN"
+      ],
+      "actual": [
+        "NO_ORIGIN"
+      ],
+      "passed": true,
+      "engine_version": "0.1.0",
+      "roundtrip_ms": 915,
+      "response": {
+        "claims": [
+          {
+            "id": 1,
+            "text": "النظافة من الإيمان",
+            "type_hint": "hadith",
+            "level": "A",
+            "verdict": {
+              "code": "NO_ORIGIN",
+              "label_ar": "لا أصل له في المصادر المعتمدة"
+            },
+            "source": null,
+            "grades": [],
+            "diff": [],
+            "evidence": null,
+            "closest": null,
+            "alternatives": [],
+            "notes": [
+              "لم يُعثر على نص مطابق في المصادر المعتمدة المفهرسة؛ هذا ليس حكماً بالوضع."
+            ],
+            "explanation": {
+              "kind": "template",
+              "generated": true,
+              "text": "لم يُعثر في المصادر المعتمدة المفهرسة على نص مطابق لهذا الادعاء."
+            }
+          }
+        ],
+        "summary": {
+          "VERIFIED": 0,
+          "NOT_AUTHENTIC": 0,
+          "ALTERED": 0,
+          "NO_ORIGIN": 1,
+          "DISPUTED": 0,
+          "REFER": 0,
+          "NEEDS_REVIEW": 0
+        },
+        "index": {
+          "embedder": "tfidf-char",
+          "docs": 6248,
+          "quran": 6236,
+          "hadith": 12,
+          "verified_docs": 6248,
+          "quran_complete": true
+        },
+        "disclaimer": "تثبّت أداة مدعومة بالذكاء الاصطناعي ولا تُغني عن المختص. النص الشرعي منسوخ من الفهرس، والدرجات منقولة عن المحدّثين كما هي مسجّلة في المصدر.",
+        "engine_version": "0.1.0",
+        "elapsed_ms": 294
+      }
+    },
+    {
+      "id": "personal_referral",
+      "input": "هل يجوز لي أن أجمع الصلاة في العمل؟",
+      "expected": [
+        "REFER"
+      ],
+      "actual": [
+        "REFER"
+      ],
+      "passed": true,
+      "engine_version": "0.1.0",
+      "roundtrip_ms": 549,
+      "response": {
+        "claims": [
+          {
+            "id": 1,
+            "text": "هل يجوز لي أن أجمع الصلاة في العمل",
+            "type_hint": "personal",
+            "level": "D",
+            "verdict": {
+              "code": "REFER",
+              "label_ar": "إحالة"
+            },
+            "source": null,
+            "grades": [],
+            "diff": [],
+            "evidence": null,
+            "closest": null,
+            "alternatives": [],
+            "notes": [
+              "حالة شخصية تتطلب فتوى من جهة مؤهلة؛ لا يُصدر النظام حكماً فيها."
+            ],
+            "explanation": {
+              "kind": "template",
+              "generated": true,
+              "text": "هذه مسألة شخصية تختلف باختلاف الوقائع؛ يُرجع فيها إلى مفتٍ أو جهة إفتاء مؤهلة."
+            }
+          }
+        ],
+        "summary": {
+          "VERIFIED": 0,
+          "NOT_AUTHENTIC": 0,
+          "ALTERED": 0,
+          "NO_ORIGIN": 0,
+          "DISPUTED": 0,
+          "REFER": 1,
+          "NEEDS_REVIEW": 0
+        },
+        "index": {
+          "embedder": "tfidf-char",
+          "docs": 6248,
+          "quran": 6236,
+          "hadith": 12,
+          "verified_docs": 6248,
+          "quran_complete": true
+        },
+        "disclaimer": "تثبّت أداة مدعومة بالذكاء الاصطناعي ولا تُغني عن المختص. النص الشرعي منسوخ من الفهرس، والدرجات منقولة عن المحدّثين كما هي مسجّلة في المصدر.",
+        "engine_version": "0.1.0",
+        "elapsed_ms": 0
+      }
+    },
+    {
+      "id": "multiple_claims",
+      "input": "قال رسول الله ﷺ: «اطلبوا العلم ولو بالصين». وقال تعالى: ﴿ومن يتوكل على الله فهو حسبه ونعم الوكيل﴾. هل يجوز لي أن أجمع الصلاة في العمل؟",
+      "expected": [
+        "NOT_AUTHENTIC",
+        "ALTERED",
+        "REFER"
+      ],
+      "actual": [
+        "NOT_AUTHENTIC",
+        "ALTERED",
+        "REFER"
+      ],
+      "passed": true,
+      "engine_version": "0.1.0",
+      "roundtrip_ms": 1335,
+      "response": {
+        "claims": [
+          {
+            "id": 1,
+            "text": "اطلبوا العلم ولو بالصين",
+            "type_hint": "hadith",
+            "level": "A",
+            "verdict": {
+              "code": "NOT_AUTHENTIC",
+              "label_ar": "لا يصح"
+            },
+            "source": {
+              "id": "hadith-daifa-416",
+              "kind": "hadith",
+              "text": "اطلبوا العلم ولو بالصين",
+              "ref": {
+                "narrator": "أنس بن مالك"
+              },
+              "url": "https://dorar.net/hadith/search?q=%D8%A7%D8%B7%D9%84%D8%A8%D9%88%D8%A7%20%D8%A7%D9%84%D8%B9%D9%84%D9%85%20%D9%88%D9%84%D9%88%20%D8%A8%D8%A7%D9%84%D8%B5%D9%8A%D9%86",
+              "verified": true
+            },
+            "grades": [
+              {
+                "muhaddith": "الألباني",
+                "source": "السلسلة الضعيفة",
+                "ref": "416",
+                "grade": "باطل",
+                "class": "fabricated"
+              }
+            ],
+            "diff": [],
+            "evidence": {
+              "claim_coverage": 1.0,
+              "content_coverage": 1.0,
+              "span_coverage": 1.0,
+              "similarity": 1.0,
+              "retrieval_fused": 0.03279,
+              "bm25_rank": 0,
+              "dense_rank": 0
+            },
+            "closest": null,
+            "alternatives": [],
+            "notes": [],
+            "explanation": {
+              "kind": "template",
+              "generated": true,
+              "text": "الدرجة كما هي مسجّلة في المصدر: الألباني (السلسلة الضعيفة 416): باطل."
+            }
+          },
+          {
+            "id": 2,
+            "text": "ومن يتوكل على الله فهو حسبه ونعم الوكيل",
+            "type_hint": "quran",
+            "level": "A",
+            "verdict": {
+              "code": "ALTERED",
+              "label_ar": "مُحرَّف"
+            },
+            "source": {
+              "id": "quran-65:3",
+              "kind": "quran",
+              "text": "ويرزقه من حيث لا يحتسب ومن يتوكل على الله فهو حسبه إن الله بالغ أمره قد جعل الله لكل شيء قدرا",
+              "ref": {
+                "surah": 65,
+                "ayah": 3,
+                "surah_name": "الطلاق"
+              },
+              "url": "https://tanzil.net/#65:3",
+              "verified": true
+            },
+            "grades": [],
+            "diff": [
+              {
+                "op": "equal",
+                "text": "ومن يتوكل على الله فهو حسبه"
+              },
+              {
+                "op": "changed",
+                "claim": "ونعم الوكيل",
+                "source": "إن الله"
+              }
+            ],
+            "evidence": {
+              "claim_coverage": 0.75,
+              "content_coverage": 0.714,
+              "span_coverage": 1.0,
+              "similarity": 0.414,
+              "retrieval_fused": 0.03279,
+              "bm25_rank": 0,
+              "dense_rank": 0
+            },
+            "closest": null,
+            "alternatives": [],
+            "notes": [],
+            "explanation": {
+              "kind": "template",
+              "generated": true,
+              "text": "النص المنقول يختلف عن نص المصحف في سورة الطلاق، الآية 3؛ انظر الفروق حرفاً حرفاً."
+            }
+          },
+          {
+            "id": 3,
+            "text": "هل يجوز لي أن أجمع الصلاة في العمل",
+            "type_hint": "personal",
+            "level": "D",
+            "verdict": {
+              "code": "REFER",
+              "label_ar": "إحالة"
+            },
+            "source": null,
+            "grades": [],
+            "diff": [],
+            "evidence": null,
+            "closest": null,
+            "alternatives": [],
+            "notes": [
+              "حالة شخصية تتطلب فتوى من جهة مؤهلة؛ لا يُصدر النظام حكماً فيها."
+            ],
+            "explanation": {
+              "kind": "template",
+              "generated": true,
+              "text": "هذه مسألة شخصية تختلف باختلاف الوقائع؛ يُرجع فيها إلى مفتٍ أو جهة إفتاء مؤهلة."
+            }
+          }
+        ],
+        "summary": {
+          "VERIFIED": 0,
+          "NOT_AUTHENTIC": 1,
+          "ALTERED": 1,
+          "NO_ORIGIN": 0,
+          "DISPUTED": 0,
+          "REFER": 1,
+          "NEEDS_REVIEW": 0
+        },
+        "index": {
+          "embedder": "tfidf-char",
+          "docs": 6248,
+          "quran": 6236,
+          "hadith": 12,
+          "verified_docs": 6248,
+          "quran_complete": true
+        },
+        "disclaimer": "تثبّت أداة مدعومة بالذكاء الاصطناعي ولا تُغني عن المختص. النص الشرعي منسوخ من الفهرس، والدرجات منقولة عن المحدّثين كما هي مسجّلة في المصدر.",
+        "engine_version": "0.1.0",
+        "elapsed_ms": 735
+      }
+    }
+  ],
+  "passed": 8,
+  "total": 12
+}

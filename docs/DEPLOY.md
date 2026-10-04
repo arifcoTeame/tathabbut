@@ -1,39 +1,40 @@
-# النشر (Live Demo) — مجاني بالكامل
+# النشر والتحقق
 
-| الجزء | المنصة | الخطة |
-|---|---|---|
-| المحرك (FastAPI) | Render — Web Service (Docker) | Free: 512 MB RAM، والمحرك يستهلك نحو 260 MB مع المصحف كاملاً |
-| الواجهة (Next.js) | Vercel | Hobby |
+## المنصات الحالية
 
-> تشترط Hugging Face اشتراك PRO لأي Space من نوع Docker أو Gradio، فلم تعد خياراً مجانياً.
-> لذلك تعمل النسخة الحية بالتضمين الخفيف `tfidf-char`.
-> ويبقى BGE-M3 متاحاً بإضافة `--build-arg EMBEDDER=bge-m3` على أي خادم فيه 3 GB من الذاكرة أو أكثر.
+- الواجهة: https://tathabbut.vercel.app — Next.js على Vercel.
+- الخلفية: https://tathabbut-api.onrender.com — FastAPI داخل Docker على Render.
+- المستودع العام: https://github.com/arifcoTeame/tathabbut.
 
-## 1) المحرك على Render
-1. من New ← Web Service ← Public Git Repository أدخل الرابط `https://github.com/arifcoTeame/tathabbut`.
-2. الإعدادات:
-   - Language: **Docker**
-   - Branch: `main`
-   - Region: Frankfurt
-   - Instance: **Free**
-   - Dockerfile Path: `backend/Dockerfile`
-   - Docker Build Context Directory: `.`
-   - Health Check Path: `/health`
-3. البناء يأخذ قرابة 3 إلى 5 دقائق. للتحقق افتح `https://<service>.onrender.com/index/stats`، ويجب أن يظهر `"quran_complete": true`.
+لا تتضمن هذه الوثيقة وعداً بخطة مجانية أو وقت تشغيل مضمون. راجع لوحة كل مزود وحدود الخطة الفعلية قبل التحكيم.
 
-نص المصحف مضمَّن في `data/quran/quran_full.json` من Tanzil، فلا يعتمد البناء على تنزيله.
+## الإعداد
 
-## 2) الواجهة على Vercel
-1. من Add New ← Project استورد `arifcoTeame/tathabbut`.
-2. اجعل Root Directory = `frontend`.
-3. أضف متغير البيئة `TATHABBUT_API_URL=https://<service>.onrender.com` بدون `/` في آخره.
-4. اضغط Deploy.
+Render: Dockerfile هو `backend/Dockerfile` وسياق البناء جذر المستودع؛ فحص الصحة `/health`. صورة البناء تشمل النص القرآني وتبني الفهرس من البيانات الحالية، وتشغّل شرط مراجعة المصادر. تقبل الخدمة `PORT` الذي يحدده المزود.
 
-## ملاحظات
-- خدمة Render المجانية تنام بعد 15 دقيقة بلا طلبات، وتستيقظ في نحو 30 إلى 60 ثانية.
-  - الواجهة توقظها تلقائياً عند الفتح وتعرض «المحرك يستيقظ…».
-  - للإبقاء عليها مستيقظة: مراقب مجاني على UptimeRobot (HTTP(s)، كل 5 دقائق) يطلب `/health`.
-  - `/health` و`/` يقبلان GET وHEAD، لأن أدوات المراقبة تفحص بـ HEAD.
-  - `.github/workflows/keepalive.yml` احتياط إضافي، لكن مواعيد GitHub المجدولة قد تتأخر أو تُتخطى.
-- إذا لم يُعِد Render البناء بعد الرفع إلى GitHub، فاستخدم Manual Deploy ← Deploy latest commit.
-- عنوان المحرك لا يصل إلى المتصفح، لأن الواجهة تمرّ عبر `/api/verify` على خادم Vercel.
+Vercel: مجلد المشروع `frontend`، ومتغير `TATHABBUT_API_URL=https://tathabbut-api.onrender.com`. أمر البناء `npm run build`، والاعتمادات عبر lockfile.
+
+## إصدار تحديث
+
+1. افحص التغييرات، وشغّل اختبارات الخلفية وفحص الأنواع وبناء الواجهة.
+2. احفظ commit بتاريخ العمل الفعلي، وادفعه إلى الفرع المرتبط بالنشر دون force push.
+3. تحقق من اكتمال النشر في المنصتين. رفع GitHub وحده لا يثبت نشر الخلفية.
+4. افحص `/health`: يجب أن يكون `engine_version` مساويًا `0.6.0` لهذا الإصدار.
+5. افحص `/api/stats` في الواجهة، ثم أعد تشغيل الحالات الـ25 عبر الواجهة المنشورة (كل حالة ثلاث مرات):
+
+```bash
+cd backend
+.venv/bin/python scripts/evaluate_release.py --base-url https://tathabbut.vercel.app --frontend --repeat 3 --output ../docs/evidence/live-after-v0.6.0.json
+```
+
+6. جرّب المتصفح: أمثلة متعددة، نص مختلف أثناء طلب، مسح، انقطاع، شاشة صغيرة، وروابط المصادر.
+
+## التراجع
+
+احتفظ بآخر commit منشور وعامل. عند فشل نشر جديد، أعد نشر ذلك commit من لوحة المزود، ثم وثّق العطل وكرر فحص الصحة والتحقق. لا تُعد كتابة تاريخ GitHub للتراجع.
+
+## قبل جلسة التحكيم
+
+جرّب بدء الخدمة بعد خمولها ووقت الاستجابة على الخطة الفعلية. المهلة الحالية 55 ثانية؛ عند التعطل تعرض الواجهة رسالة واضحة وإعادة محاولة. مراقبة دورية لا تضمن منع الخمول ولا تُغني عن الاختبار قبل الجلسة.
+
+أبق مفاتيح المزود وبيانات الدخول في إعدادات الخدمة، ولا تضفها إلى المستودع أو صور العرض. يمكن للجنة اختبار الرابط العام دون حساب.

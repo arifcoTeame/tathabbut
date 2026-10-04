@@ -42,6 +42,7 @@ _QUOTES = [
     (re.compile(r"\"([^\"]{2,})\""), None),
 ]
 _SENTENCE_SPLIT = re.compile(r"[.!؟?\n؛]+")
+_REQUEST_OPENING = re.compile(r"^(?:[وف]\s*)?(?:هل\b|ماذا\b|ما حكم\b|في حالتي\b|انا\b|سوالي\b)")
 
 
 @dataclass
@@ -53,6 +54,7 @@ class Claim:
     start: int
     end: int
     context_after: str = ""
+    omitted_count: int = 0
 
 
 def is_personal(text: str) -> bool:
@@ -63,10 +65,14 @@ def is_personal(text: str) -> bool:
 def classify_level(text: str, type_hint: str) -> str:
     """Content levels from the challenge's scientific package:
     A stable primary texts · B explanation · C disputed/sensitive · D personal fatwa."""
-    if type_hint == "personal" or is_personal(text):
+    if type_hint == "personal":
         return "D"
+    # First-person words in a narrated quotation belong to its speaker, not
+    # automatically to the person asking us to check the quotation.
     if type_hint in ("quran", "hadith"):
         return "A"
+    if is_personal(text):
+        return "D"
     n = normalize(text)
     if any(c in n for c in DISPUTE_CUES):
         return "C"
@@ -94,6 +100,19 @@ def _strip_cue(sentence: str) -> tuple[str | None, str]:
     return None, sentence
 
 
+def _split_personal_tail(body: str) -> tuple[str, str]:
+    """Separate an explicit user question following an unquoted citation.
+
+    A first-person word alone is insufficient: a request must open the clause
+    after a comma, so narrated wording such as «زوجتي» stays in the quotation.
+    """
+    for boundary in re.finditer(r"[،,]\s*", body):
+        tail = body[boundary.end():].strip()
+        if _REQUEST_OPENING.match(normalize(tail)) and is_personal(tail):
+            return body[:boundary.start()].rstrip(), tail
+    return body, ""
+
+
 def extract(text: str) -> list[Claim]:
     spans: list[tuple[int, int, str, str | None]] = []
     for pattern, forced in _QUOTES:
@@ -107,8 +126,9 @@ def extract(text: str) -> list[Claim]:
     prev_end = 0
     for start, end, body, forced in spans:
         window = text[max(prev_end, start - CUE_WINDOW): start]
+        window = _SENTENCE_SPLIT.split(window)[-1]
         kind = forced or _cue_type(window)
-        if kind is None and (is_personal(body) or is_personal(window)):
+        if kind is None and is_personal(body):
             kind = "personal"
         after = text[end: end + 120]
         claims.append(Claim(0, body, kind or "unknown", "", start, end, after))
@@ -129,9 +149,21 @@ def extract(text: str) -> list[Claim]:
         had_quote = any(pos <= qs < cursor for qs, _, _, _ in spans)
         kind, body = _strip_cue(s)
         if kind and not had_quote:
-            claims.append(Claim(0, body, kind, "", pos, cursor))
-        elif is_personal(s) and not had_quote:
-            claims.append(Claim(0, s, "personal", "", pos, cursor, text[cursor: cursor + 120]))
+            prefix = s[:len(s) - len(body)]
+            body, personal_tail = _split_personal_tail(body)
+            if body:
+                body_start = pos + sentence.find(body)
+                claims.append(Claim(0, body, kind, "", body_start, body_start + len(body)))
+            # The user's question can precede the attribution or follow an
+            # unquoted citation. Keep its context without grading that context.
+            if is_personal(prefix) or personal_tail:
+                request = text[pos:cursor].strip()
+                claims.append(Claim(0, request, "personal", "", pos, cursor, text[cursor: cursor + 120]))
+        elif is_personal(s):
+            # Detect personal context only outside the masked quotations, but
+            # show the original sentence so the question remains intelligible.
+            request = text[pos:cursor].strip()
+            claims.append(Claim(0, request, "personal", "", pos, cursor, text[cursor: cursor + 120]))
 
     # nothing recognised: treat the input itself as the claim(s)
     if not claims:
@@ -143,10 +175,17 @@ def extract(text: str) -> list[Claim]:
             claims.append(Claim(0, s, "personal" if is_personal(s) else "unknown", "", pos, pos + len(s)))
 
     claims.sort(key=lambda c: c.start)
-    claims = claims[:MAX_CLAIMS]
+    for c in claims:
+        c.level = classify_level(c.text, c.type_hint)
+    if len(claims) > MAX_CLAIMS:
+        omitted = len(claims) - MAX_CLAIMS
+        # Reserve capacity for referrals even if many quotations precede them.
+        # At the limit, show referrals first so they cannot be hidden at the end.
+        claims.sort(key=lambda c: (c.level != "D", c.start))
+        claims = claims[:MAX_CLAIMS]
+        claims[0].omitted_count = omitted
     for i, c in enumerate(claims, 1):
         c.id = i
-        c.level = classify_level(c.text, c.type_hint)
     return claims
 
 

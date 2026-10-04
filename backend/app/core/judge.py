@@ -9,7 +9,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 
 from .align import Alignment, align, contains
-from .arabic import key_tokens, normalize
+from .arabic import key_tokens, normalize, wording_tokens
 from .extractor import Claim, has_categorical_ruling
 from .index import Doc, Hit, HybridIndex
 
@@ -17,7 +17,7 @@ VERDICTS = {
     "VERIFIED": "موثّق",
     "NOT_AUTHENTIC": "لا يصح",
     "ALTERED": "مُحرَّف",
-    "NO_ORIGIN": "لا أصل له في المصادر المعتمدة",
+    "NO_ORIGIN": "لم يُعثر عليه",
     "DISPUTED": "خلافي",
     "REFER": "إحالة",
     "NEEDS_REVIEW": "يتطلب مزيد تحقق",
@@ -29,7 +29,7 @@ MAX_EXTRA_VERSES = 3
 class Thresholds:
     quran_altered_min: float = 0.6     # claim coverage for "altered verse"
     quran_unknown_min: float = 0.8     # stricter when the claim was not marked as a verse
-    hadith_match_min: float = 0.75     # content coverage: same narration (wording variants allowed)
+    hadith_match_min: float = 0.75     # retrieval gate; recorded wording must also match exactly
     hadith_review_min: float = 0.6     # content coverage: close but not enough -> needs review
     closest_min: float = 0.6           # show a "closest text" hint only above this
     min_words_altered: int = 3
@@ -61,13 +61,13 @@ def _quran_candidates(index: HybridIndex, text: str) -> list[Candidate]:
     n_words = len(key_tokens(text))
     out = []
     for h in index.search(text, kind="quran"):
-        out.append(Candidate(h, align(text, h.doc.text), h.doc))
+        out.append(Candidate(h, align(text, h.doc.text, stemmed=False, preserve_negation=True), h.doc))
         # multi-verse quotes: extend while the claim is longer than the verse
         for extra in range(1, MAX_EXTRA_VERSES + 1):
             run = index.verse_run(h.doc, extra)
             if run is None:
                 break
-            out.append(Candidate(h, align(text, run.text), run))
+            out.append(Candidate(h, align(text, run.text, stemmed=False, preserve_negation=True), run))
             if len(run.keys) >= n_words:
                 break
     return out
@@ -76,6 +76,8 @@ def _quran_candidates(index: HybridIndex, text: str) -> list[Candidate]:
 def _surface(claim: str, doc: Doc) -> bool:
     """Exact wording (before stemming) appears as whole words in the source:
     separates «فإن مع العسر» (94:5) from «إن مع العسر» (94:6)."""
+    if doc.kind == "quran":
+        return contains(wording_tokens(doc.text), wording_tokens(claim))
     return f" {normalize(claim)} " in f" {normalize(doc.text)} "
 
 
@@ -118,7 +120,10 @@ def _best(index: HybridIndex, text: str, kind: str) -> Candidate | None:
                 alts.append(c.doc)
         best.alternatives, best.ties = sorted(alts, key=_verse_key)[:4], len(seen)
         return best
-    cands = [Candidate(h, align(text, h.doc.text), h.doc) for h in index.search(text, kind=kind)]
+    cands = [
+        Candidate(h, align(text, h.doc.text, stemmed=False, preserve_negation=True), h.doc)
+        for h in index.search(text, kind=kind)
+    ]
     key = lambda c: (round(c.al.content_coverage, 3), round(c.al.claim_coverage, 3), _surface(text, c.doc), c.al.dice, c.hit.fused)
     return max(cands, key=key) if cands else None
 
@@ -127,6 +132,8 @@ def _grade_verdict(doc: Doc) -> tuple[str, list[str]]:
     if not doc.grades:
         return "NEEDS_REVIEW", ["لا توجد درجة مسجّلة لهذا النص في المصدر؛ لا يُصدر النظام درجة من عنده."]
     classes = {g.get("class") for g in doc.grades}
+    if not classes <= {"authentic", "weak", "very_weak", "fabricated", "baseless", "unverified"}:
+        return "NEEDS_REVIEW", ["تصنيف إحدى الدرجات المسجّلة مفقود أو غير معروف؛ تُعرض الدرجات دون استنتاج حكم منها."]
     authentic, other = "authentic" in classes, bool(classes - {"authentic"})
     if authentic and other:
         return "DISPUTED", ["اختلف المحدّثون في درجته؛ تُعرض الأحكام كلها منسوبة لأصحابها دون ترجيح."]
@@ -168,11 +175,11 @@ def _judge_quran(index: HybridIndex, claim: Claim, c: Candidate | None, th: Thre
 def _judge_hadith(c: Candidate | None, th: Thresholds) -> Judgement:
     if c is None or c.al.content_coverage < th.hadith_review_min:
         return _no_origin(c, th)
-    if c.al.content_coverage < th.hadith_match_min:
-        return Judgement("NEEDS_REVIEW", c, notes=["أقرب نص في المصادر مطابق جزئياً فقط؛ يُعرض للمراجعة دون حكم."])
+    if c.al.content_coverage < th.hadith_match_min or not c.al.exact:
+        return Judgement("NEEDS_REVIEW", c, notes=[
+            "أقرب نص في المصدر يختلف في ألفاظه؛ تُعرض درجة المصدر ولا تُنقل إلى النص المدخل قبل مراجعة الفروق.",
+        ])
     code, notes = _grade_verdict(c.doc)
-    if c.al.claim_coverage < 0.999:
-        notes.append(f"مطابقة لفظية {round(c.al.claim_coverage * 100)}% — قد تختلف ألفاظ الروايات.")
     return Judgement(code, c, notes=notes)
 
 
@@ -216,12 +223,15 @@ def judge(index: HybridIndex, claim: Claim, th: Thresholds) -> Judgement:
     if c and c.doc.kind == "quran" and c.alternatives:
         where = "، ".join(f"{d.ref['surah_name']} {d.ref['ayah']}" for d in c.alternatives)
         if j.code == "VERIFIED":
-            total = index.count_containing(key_tokens(claim.text)) if "ayah_end" not in c.doc.ref else c.ties
+            total = (
+                sum(_surface(claim.text, doc) for doc in index.docs if doc.kind == "quran")
+                if "ayah_end" not in c.doc.ref else c.ties
+            )
             j.notes.append(f"النص نفسه يتكرر في {max(total, c.ties)} مواضع من المصحف، منها: {where}.")
         else:
             j.notes.append(f"قريب بالقدر نفسه من مواضع أخرى: {where}؛ رُجّح الأقرب لفظاً.")
     if j.code == "NO_ORIGIN":
-        j.notes.append("لم يُعثر على نص مطابق في المصادر المعتمدة المفهرسة؛ هذا ليس حكماً بالوضع.")
+        j.notes.append("لم يُعثر على نص مطابق في الفهرس الحالي؛ عدم العثور لا يحكم على صحة الحديث أو وجوده في مصادر أخرى.")
     quran_related = claim.type_hint == "quran" or (j.candidate and j.candidate.doc.kind == "quran")
     if quran_related and j.code in ("ALTERED", "NO_ORIGIN") and not index.stats()["quran_complete"]:
         j.notes.append("تنبيه: الفهرس القرآني الحالي عينة جزئية؛ الحكم مبدئي حتى تحميل النص الكامل.")

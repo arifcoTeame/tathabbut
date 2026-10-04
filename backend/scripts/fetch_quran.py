@@ -43,7 +43,11 @@ def main() -> None:
         sys.exit(f"Expected 6236 verses, got {len(records)}. Check the downloaded file format.")
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(
-        json.dumps({"_meta": {"source": "tanzil.net simple-clean (Hafs)", "count": len(records)}, "records": records},
+        json.dumps({"_meta": {
+            "source": "tanzil.net simple-clean (Hafs)", "count": len(records),
+            "license_url": "https://tanzil.net/docs/Text_License",
+            "copyright_notice": (OUT.parents[1].parent / "LICENSES" / "Tanzil.txt").read_text("utf-8"),
+        }, "records": records},
                    ensure_ascii=False),
         "utf-8",
     )

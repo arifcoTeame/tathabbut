@@ -1,15 +1,22 @@
 {
   "_meta": {
-    "description": "عيّنة مصغّرة (12 حديثاً) طوبقت نصاً ومحدّثاً ومصدراً ورقماً وحكماً مع dorar.net في 2026-09-30. الأحكام منقولة حرفياً عن المحدّثين.",
+    "description": "72 حديثاً من أكثر الأحاديث تداولاً، صحيحها وضعيفها. كل سجل طوبق نصاً ومحدّثاً ومصدراً ورقماً وحكماً مع dorar.net. الأحكام منقولة حرفياً عن المحدّثين، ولا يُصدر النظام درجة من عنده.",
     "grade_classes": {
       "authentic": "صحيح / حسن",
       "weak": "ضعيف",
       "very_weak": "ضعيف جداً / منكر",
       "fabricated": "موضوع / باطل / كذب",
-      "baseless": "لا أصل له"
+      "baseless": "لا أصل له",
+      "unverified": "لا يصح / ليس بصحيح (نفي عام دون تعيين درجة)"
     },
-    "verified": "2026-09-30 against dorar.net (dorar_api.json); see docs/VERIFY_SEED.md",
-    "grades": "copied verbatim from the muhaddith's ruling as shown on dorar.net; the system never assigns a grade"
+    "verified": "2026-09-30 (12 سجلاً) + 2026-10-03 (60 سجلاً، provenance=assisted_api_transcript)؛ انظر docs/VERIFY_SEED.md",
+    "grades": "copied verbatim from the muhaddith's ruling as shown on dorar.net; the system never assigns a grade",
+    "fields": {
+      "text": "اللفظ المتداول كما يرد في الموضع (دون تشكيل)",
+      "dorar_text": "نص الموضع كما تعرضه الدرر السنية",
+      "grades[].note": "«بلفظ مقارب» عندما يختلف لفظ هذا المصدر عن نص السجل",
+      "provenance": "طريقة الاسترجاع وتاريخه للسجلات المضافة في أكتوبر 2026"
+    }
   },
   "records": [
     {
@@ -207,6 +214,1830 @@
         }
       ],
       "verified": true
+    },
+    {
+      "id": "tirmidhi-2646",
+      "text": "من سلك طريقا يلتمس فيه علما سهل الله له طريقا إلى الجنة",
+      "narrator": "أبو هريرة",
+      "grades": [
+        {
+          "muhaddith": "الألباني",
+          "source": "صحيح الترمذي",
+          "ref": "2646",
+          "grade": "صحيح",
+          "class": "authentic"
+        },
+        {
+          "muhaddith": "الألباني",
+          "source": "صحيح الجامع",
+          "ref": "6298",
+          "grade": "صحيح",
+          "class": "authentic"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "من سلك طريقا يلتمس فيه علما سهل الله له طريقا إلى الجنة",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "من سلك طريقا يلتمس فيه علما سهل الله له طريقا إلى الجنة",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "bukhari-2989",
+      "text": "الكلمة الطيبة صدقة",
+      "narrator": "أبو هريرة",
+      "grades": [
+        {
+          "muhaddith": "البخاري",
+          "source": "صحيح البخاري",
+          "ref": "2989",
+          "grade": "[صحيح]",
+          "class": "authentic"
+        },
+        {
+          "muhaddith": "مسلم",
+          "source": "صحيح مسلم",
+          "ref": "1009",
+          "grade": "[صحيح]",
+          "class": "authentic"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "كل سلامى من الناس عليه صدقة كل يوم تطلع فيه الشمس؛ يعدل بين الاثنين صدقة، ويعين الرجل على دابته فيحمل عليها، أو يرفع عليها متاعه: صدقة، والكلمة الطيبة صدقة، وكل خطوة يخطوها إلى الصلاة صدقة، ويميط الأذى عن الطريق صدقة.",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "كل سلامى من الناس عليه صدقة والكلمة الطيبة صدقة",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "tirmidhi-1956",
+      "text": "تبسمك في وجه أخيك لك صدقة",
+      "narrator": "أبو ذر الغفاري",
+      "grades": [
+        {
+          "muhaddith": "الألباني",
+          "source": "صحيح الترمذي",
+          "ref": "1956",
+          "grade": "صحيح",
+          "class": "authentic"
+        },
+        {
+          "muhaddith": "الألباني",
+          "source": "صحيح الجامع",
+          "ref": "2908",
+          "grade": "صحيح",
+          "class": "authentic"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "تبسمك في وجه أخيك لك صدقة وأمرك بالمعروف ونهيك عن المنكر صدقة وإرشادك الرجل في أرض الضلال لك صدقة وبصرك للرجل الرديء البصر لك صدقة وإماطتك الحجر والشوك والعظم عن الطريق لك صدقة وإفراغك من دلوك في دلو أخيك لك صدقة",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "تبسمك في وجه أخيك لك صدقة",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "abudawud-1452",
+      "text": "خيركم من تعلم القرآن وعلمه",
+      "narrator": "عثمان بن عفان",
+      "grades": [
+        {
+          "muhaddith": "الألباني",
+          "source": "صحيح أبي داود",
+          "ref": "1452",
+          "grade": "صحيح",
+          "class": "authentic"
+        },
+        {
+          "muhaddith": "الألباني",
+          "source": "صحيح الترمذي",
+          "ref": "2907",
+          "grade": "صحيح",
+          "class": "authentic"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "خيركم من تعلم القرآن وعلمه",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "خيركم من تعلم القرآن وعلمه",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "bukhari-6475",
+      "text": "من كان يؤمن بالله واليوم الآخر فليقل خيرا أو ليصمت",
+      "narrator": "أبو هريرة",
+      "grades": [
+        {
+          "muhaddith": "البخاري",
+          "source": "صحيح البخاري",
+          "ref": "6475",
+          "grade": "[صحيح]",
+          "class": "authentic"
+        },
+        {
+          "muhaddith": "مسلم",
+          "source": "صحيح مسلم",
+          "ref": "47",
+          "grade": "[صحيح]",
+          "class": "authentic"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "من كان يؤمن بالله واليوم الآخر فليقل خيرا أو ليصمت، ومن كان يؤمن بالله واليوم الآخر فلا يؤذ جاره، ومن كان يؤمن بالله واليوم الآخر فليكرم ضيفه.",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "من كان يؤمن بالله واليوم الآخر فليقل خيرا أو ليصمت",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "bukhari-6114",
+      "text": "ليس الشديد بالصرعة إنما الشديد الذي يملك نفسه عند الغضب",
+      "narrator": "أبو هريرة",
+      "grades": [
+        {
+          "muhaddith": "البخاري",
+          "source": "صحيح البخاري",
+          "ref": "6114",
+          "grade": "[صحيح]",
+          "class": "authentic"
+        },
+        {
+          "muhaddith": "مسلم",
+          "source": "صحيح مسلم",
+          "ref": "2609",
+          "grade": "[صحيح]",
+          "class": "authentic"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "ليس الشديد بالصرعة، إنما الشديد الذي يملك نفسه عند الغضب.",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "ليس الشديد بالصرعة إنما الشديد الذي يملك نفسه عند الغضب",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "hidaya-4897",
+      "text": "الراحمون يرحمهم الرحمن ارحموا من في الأرض يرحمكم من في السماء",
+      "narrator": "عبدالله بن عمرو",
+      "grades": [
+        {
+          "muhaddith": "الألباني",
+          "source": "هداية الرواة",
+          "ref": "4897",
+          "grade": "صحيح",
+          "class": "authentic"
+        },
+        {
+          "muhaddith": "الألباني",
+          "source": "صحيح أبي داود",
+          "ref": "4941",
+          "grade": "صحيح",
+          "class": "authentic",
+          "note": "بلفظ مقارب"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "الراحمون يرحمهم الرحمن، ارحموا من في الأرض ؛ يرحمكم من في السماء",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "الراحمون يرحمهم الرحمن ارحموا من في الأرض يرحمكم من في السماء",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "bukhari-6013",
+      "text": "من لا يرحم لا يرحم",
+      "narrator": "جرير بن عبدالله",
+      "grades": [
+        {
+          "muhaddith": "البخاري",
+          "source": "صحيح البخاري",
+          "ref": "6013",
+          "grade": "[صحيح]",
+          "class": "authentic"
+        },
+        {
+          "muhaddith": "الألباني",
+          "source": "صحيح الجامع",
+          "ref": "6598",
+          "grade": "صحيح",
+          "class": "authentic"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "من لا يرحم لا يرحم.",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "من لا يرحم لا يرحم",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "muslim-2564",
+      "text": "إن الله لا ينظر إلى صوركم وأموالكم ولكن ينظر إلى قلوبكم وأعمالكم",
+      "narrator": "أبو هريرة",
+      "grades": [
+        {
+          "muhaddith": "مسلم",
+          "source": "صحيح مسلم",
+          "ref": "2564",
+          "grade": "[صحيح]",
+          "class": "authentic"
+        },
+        {
+          "muhaddith": "الألباني",
+          "source": "صحيح الجامع",
+          "ref": "1862",
+          "grade": "صحيح",
+          "class": "authentic",
+          "note": "بلفظ مقارب"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "إن الله لا ينظر إلى صوركم وأموالكم، ولكن ينظر إلى قلوبكم وأعمالكم.",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "إن الله لا ينظر إلى صوركم وأموالكم ولكن ينظر إلى قلوبكم وأعمالكم",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "abudawud-1479",
+      "text": "الدعاء هو العبادة",
+      "narrator": "النعمان بن بشير",
+      "grades": [
+        {
+          "muhaddith": "الألباني",
+          "source": "صحيح أبي داود",
+          "ref": "1479",
+          "grade": "صحيح",
+          "class": "authentic"
+        },
+        {
+          "muhaddith": "الألباني",
+          "source": "صحيح الجامع",
+          "ref": "3407",
+          "grade": "صحيح",
+          "class": "authentic"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "الدعاء هو العبادة  قال ربكم ادعوني أستجب لكم",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "الدعاء هو العبادة",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "bukhari-2446",
+      "text": "المؤمن للمؤمن كالبنيان يشد بعضه بعضا",
+      "narrator": "أبو موسى الأشعري",
+      "grades": [
+        {
+          "muhaddith": "البخاري",
+          "source": "صحيح البخاري",
+          "ref": "2446",
+          "grade": "[صحيح]",
+          "class": "authentic"
+        },
+        {
+          "muhaddith": "مسلم",
+          "source": "صحيح مسلم",
+          "ref": "2585",
+          "grade": "[صحيح]",
+          "class": "authentic"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "المؤمن للمؤمن كالبنيان يشد بعضه بعضا، وشبك بين أصابعه.",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "المؤمن للمؤمن كالبنيان يشد بعضه بعضا",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "bukhari-6116",
+      "text": "أن رجلا قال للنبي صلى الله عليه وسلم أوصني قال لا تغضب فردد مرارا قال لا تغضب",
+      "narrator": "أبو هريرة",
+      "grades": [
+        {
+          "muhaddith": "البخاري",
+          "source": "صحيح البخاري",
+          "ref": "6116",
+          "grade": "[صحيح]",
+          "class": "authentic"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "أن رجلا قال للنبي صلى الله عليه وسلم: أوصني، قال: لا تغضب. فردد مرارا، قال: لا تغضب.",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "أوصني قال لا تغضب فردد مرارا",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "muslim-91",
+      "text": "إن الله جميل يحب الجمال",
+      "narrator": "عبدالله بن مسعود",
+      "grades": [
+        {
+          "muhaddith": "مسلم",
+          "source": "صحيح مسلم",
+          "ref": "91",
+          "grade": "[صحيح]",
+          "class": "authentic"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "لا يدخل الجنة من كان في قلبه مثقال ذرة من كبر، قال رجل: إن الرجل يحب أن يكون ثوبه حسنا ونعله حسنة، قال: إن الله جميل يحب الجمال، الكبر بطر الحق، وغمط الناس.",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "يحب الرجل أن يكون ثوبه حسنا ونعله حسنة إن الله جميل",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "sahihjami-3289",
+      "text": "خير الناس أنفعهم للناس",
+      "narrator": "جابر بن عبدالله",
+      "grades": [
+        {
+          "muhaddith": "الألباني",
+          "source": "صحيح الجامع",
+          "ref": "3289",
+          "grade": "حسن",
+          "class": "authentic"
+        },
+        {
+          "muhaddith": "الذهبي",
+          "source": "ميزان الاعتدال",
+          "ref": "3/248",
+          "grade": "عمرو بن بكر السكسكي واه وأحاديثه شبه موضوعه",
+          "class": "very_weak"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "خير الناس أنفعهم للناس",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "خير الناس أنفعهم للناس",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text. الحكمان لمتنٍ واحد: حسّنه الألباني وضعّفه الذهبي بسبب الراوي، فيُعرض الادعاء «خلافي»."
+      }
+    },
+    {
+      "id": "tirmidhi-485",
+      "text": "من صلى علي صلاة صلى الله عليه بها عشرا",
+      "narrator": "أبو هريرة",
+      "grades": [
+        {
+          "muhaddith": "الألباني",
+          "source": "صحيح الترمذي",
+          "ref": "485",
+          "grade": "صحيح",
+          "class": "authentic"
+        },
+        {
+          "muhaddith": "مسلم",
+          "source": "صحيح مسلم",
+          "ref": "384",
+          "grade": "[صحيح]",
+          "class": "authentic"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "من صلى علي صلاة صلى الله عليه بها عشرا.",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "من صلى علي صلاة صلى الله عليه بها عشرا",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "bukhari-6464",
+      "text": "أحب الأعمال إلى الله أدومها وإن قل",
+      "narrator": "عائشة أم المؤمنين",
+      "grades": [
+        {
+          "muhaddith": "البخاري",
+          "source": "صحيح البخاري",
+          "ref": "6464",
+          "grade": "[صحيح]",
+          "class": "authentic"
+        },
+        {
+          "muhaddith": "مسلم",
+          "source": "صحيح مسلم",
+          "ref": "783",
+          "grade": "[صحيح]",
+          "class": "authentic",
+          "note": "بلفظ مقارب"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "سددوا وقاربوا، واعلموا أن لن يدخل أحدكم عمله الجنة، وأن أحب الأعمال إلى الله أدومها وإن قل.",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "أحب الأعمال إلى الله أدومها وإن قل",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "sahihjami-1880",
+      "text": "إن الله تعالى يحب إذا عمل أحدكم عملا أن يتقنه",
+      "narrator": "عائشة أم المؤمنين",
+      "grades": [
+        {
+          "muhaddith": "الألباني",
+          "source": "صحيح الجامع",
+          "ref": "1880",
+          "grade": "حسن",
+          "class": "authentic"
+        },
+        {
+          "muhaddith": "السيوطي",
+          "source": "الجامع الصغير",
+          "ref": "1855",
+          "grade": "حسن",
+          "class": "authentic"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "إن الله تعالى يحب إذا عمل أحدكم عملا أن يتقنه",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "إن الله تعالى يحب إذا عمل أحدكم عملا أن يتقنه",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "sahihjami-97",
+      "text": "اتق الله حيثما كنت وأتبع السيئة الحسنة تمحها",
+      "narrator": "أبو ذر الغفاري ومعاذ بن جبل وأنس بن مالك",
+      "grades": [
+        {
+          "muhaddith": "الألباني",
+          "source": "صحيح الجامع",
+          "ref": "97",
+          "grade": "حسن",
+          "class": "authentic"
+        },
+        {
+          "muhaddith": "الألباني",
+          "source": "صحيح الترمذي",
+          "ref": "1987",
+          "grade": "حسن",
+          "class": "authentic",
+          "note": "بلفظ مقارب"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "اتق الله حيثما كنت ، وأتبع السيئة الحسنة تمحها ، و خالق الناس بخلق حسن",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "اتق الله حيثما كنت وأتبع السيئة الحسنة تمحها",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "bukhari-2447",
+      "text": "الظلم ظلمات يوم القيامة",
+      "narrator": "عبدالله بن عمر",
+      "grades": [
+        {
+          "muhaddith": "البخاري",
+          "source": "صحيح البخاري",
+          "ref": "2447",
+          "grade": "[صحيح]",
+          "class": "authentic"
+        },
+        {
+          "muhaddith": "مسلم",
+          "source": "صحيح مسلم",
+          "ref": "2579",
+          "grade": "[صحيح]",
+          "class": "authentic"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "الظلم ظلمات يوم القيامة.",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "الظلم ظلمات يوم القيامة",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "tamhid-24-333",
+      "text": "إنما بعثت لأتمم صالح الأخلاق",
+      "narrator": "أبو هريرة",
+      "grades": [
+        {
+          "muhaddith": "ابن عبدالبر",
+          "source": "التمهيد",
+          "ref": "24/333",
+          "grade": "صحيح",
+          "class": "authentic"
+        },
+        {
+          "muhaddith": "الألباني",
+          "source": "صحيح الجامع",
+          "ref": "2833",
+          "grade": "صحيح",
+          "class": "authentic",
+          "note": "بلفظ مقارب"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "إنما بعثت لأتمم صالح الأخلاق",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "إنما بعثت لأتمم صالح الأخلاق",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "bukhari-5200",
+      "text": "كلكم راع وكلكم مسؤول عن رعيته",
+      "narrator": "عبدالله بن عمر",
+      "grades": [
+        {
+          "muhaddith": "البخاري",
+          "source": "صحيح البخاري",
+          "ref": "5200",
+          "grade": "[صحيح]",
+          "class": "authentic"
+        },
+        {
+          "muhaddith": "الألباني",
+          "source": "غاية المرام",
+          "ref": "269",
+          "grade": "صحيح",
+          "class": "authentic"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "كلكم راع وكلكم مسؤول عن رعيته، والأمير راع، والرجل راع على أهل بيته، والمرأة راعية على بيت زوجها وولده، فكلكم راع وكلكم مسؤول عن رعيته.",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "كلكم راع وكلكم مسؤول عن رعيته",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "muslim-2588",
+      "text": "ما نقصت صدقة من مال",
+      "narrator": "أبو هريرة",
+      "grades": [
+        {
+          "muhaddith": "مسلم",
+          "source": "صحيح مسلم",
+          "ref": "2588",
+          "grade": "[صحيح]",
+          "class": "authentic"
+        },
+        {
+          "muhaddith": "الألباني",
+          "source": "صحيح الترمذي",
+          "ref": "2029",
+          "grade": "صحيح",
+          "class": "authentic"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "ما نقصت صدقة من مال، وما زاد الله عبدا بعفو إلا عزا، وما تواضع أحد لله إلا رفعه الله.",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "ما نقصت صدقة من مال",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "bukhari-52",
+      "text": "إن في الجسد مضغة إذا صلحت صلح الجسد كله وإذا فسدت فسد الجسد كله ألا وهي القلب",
+      "narrator": "النعمان بن بشير",
+      "grades": [
+        {
+          "muhaddith": "البخاري",
+          "source": "صحيح البخاري",
+          "ref": "52",
+          "grade": "[صحيح]",
+          "class": "authentic"
+        },
+        {
+          "muhaddith": "مسلم",
+          "source": "صحيح مسلم",
+          "ref": "1599",
+          "grade": "[صحيح]",
+          "class": "authentic"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "الحلال بين، والحرام بين، وبينهما مشبهات لا يعلمها كثير من الناس، فمن اتقى المشبهات استبرأ لدينه وعرضه، ومن وقع في الشبهات كراع يرعى حول الحمى، يوشك أن يواقعه، ألا وإن لكل ملك حمى، ألا إن حمى الله في أرضه محارمه، ألا وإن في الجسد مضغة إذا صلحت صلح الجسد كله، وإذا فسدت فسد الجسد كله، ألا وهي القلب.",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "إن في الجسد مضغة إذا صلحت صلح الجسد كله وإذا فسدت فسد الجسد كله ألا وهي القلب",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "tirmidhi-2317",
+      "text": "من حسن إسلام المرء تركه ما لا يعنيه",
+      "narrator": "أبو هريرة",
+      "grades": [
+        {
+          "muhaddith": "الألباني",
+          "source": "صحيح الترمذي",
+          "ref": "2317",
+          "grade": "صحيح",
+          "class": "authentic"
+        },
+        {
+          "muhaddith": "الألباني",
+          "source": "صحيح ابن ماجه",
+          "ref": "3226",
+          "grade": "صحيح",
+          "class": "authentic"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "من حسن إسلام المرء تركه ما لا يعنيه",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "من حسن إسلام المرء تركه ما لا يعنيه",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "bukhari-6682",
+      "text": "كلمتان خفيفتان على اللسان ثقيلتان في الميزان حبيبتان إلى الرحمن سبحان الله وبحمده سبحان الله العظيم",
+      "narrator": "أبو هريرة",
+      "grades": [
+        {
+          "muhaddith": "البخاري",
+          "source": "صحيح البخاري",
+          "ref": "6682",
+          "grade": "[صحيح]",
+          "class": "authentic"
+        },
+        {
+          "muhaddith": "مسلم",
+          "source": "صحيح مسلم",
+          "ref": "2694",
+          "grade": "[صحيح]",
+          "class": "authentic"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "كلمتان خفيفتان على اللسان، ثقيلتان في الميزان، حبيبتان إلى الرحمن: سبحان الله وبحمده، سبحان الله العظيم.",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "كلمتان خفيفتان على اللسان ثقيلتان في الميزان حبيبتان إلى الرحمن سبحان الله وبحمده سبحان الله العظيم",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "sahihjami-8195",
+      "text": "اليد العليا خير من اليد السفلى",
+      "narrator": "عبدالله بن عمر",
+      "grades": [
+        {
+          "muhaddith": "الألباني",
+          "source": "صحيح الجامع",
+          "ref": "8195",
+          "grade": "صحيح",
+          "class": "authentic"
+        },
+        {
+          "muhaddith": "الألباني",
+          "source": "صحيح الجامع",
+          "ref": "8197",
+          "grade": "صحيح",
+          "class": "authentic"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "اليد العليا خير من اليد السفلى ، وابدأ بمن تعول",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "اليد العليا خير من اليد السفلى",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "sahiha-250",
+      "text": "لا ضرر ولا ضرار",
+      "narrator": "أبو سعيد الخدري وابن عباس وعبادة بن الصامت وعائشة وأبو هريرة وجابر بن عبدالله وثعلبة بن مالك",
+      "grades": [
+        {
+          "muhaddith": "الألباني",
+          "source": "السلسلة الصحيحة",
+          "ref": "250",
+          "grade": "صحيح",
+          "class": "authentic"
+        },
+        {
+          "muhaddith": "الألباني",
+          "source": "صحيح ابن ماجه",
+          "ref": "1910",
+          "grade": "صحيح لغيره",
+          "class": "authentic"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "لا ضرر ولا ضرار.",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "لا ضرر ولا ضرار",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "muslim-1732",
+      "text": "بشروا ولا تنفروا ويسروا ولا تعسروا",
+      "narrator": "أبو موسى الأشعري",
+      "grades": [
+        {
+          "muhaddith": "مسلم",
+          "source": "صحيح مسلم",
+          "ref": "1732",
+          "grade": "[صحيح]",
+          "class": "authentic"
+        },
+        {
+          "muhaddith": "الألباني",
+          "source": "صحيح أبي داود",
+          "ref": "4835",
+          "grade": "صحيح",
+          "class": "authentic"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "كان رسول الله صلى الله عليه وسلم إذا بعث أحدا من أصحابه في بعض أمره، قال: بشروا ولا تنفروا، ويسروا ولا تعسروا.",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "بشروا ولا تنفروا ويسروا ولا تعسروا",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "sifatfatwa-103",
+      "text": "العلماء ورثة الأنبياء",
+      "narrator": "أبو الدرداء",
+      "grades": [
+        {
+          "muhaddith": "الألباني",
+          "source": "صفة الفتوى",
+          "ref": "103",
+          "grade": "إسناده حسن",
+          "class": "authentic"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "العلماء ورثة الأنبياء [يعني حديث: من سلك طريقا يطلب فيه علما سلك الله به طريقا من طرق الجنة وإن الملائكة لتضع أجنحتها رضى لطالب العلم وإن العالم ليستغفر له من في السماوات ومن في الأرض والحيتان في جوف الماء وإن فضل العالم على العابد كفضل القمر ليلة البدر على سائر الكواكب وإن العلماء ورثة الأنبياء وإن الأنبياء لم يورثوا دينارا ولا درهما]",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "العلماء ورثة الأنبياء",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "tirmidhi-1954",
+      "text": "من لم يشكر الناس لم يشكر الله",
+      "narrator": "أبو هريرة",
+      "grades": [
+        {
+          "muhaddith": "الألباني",
+          "source": "صحيح الترمذي",
+          "ref": "1954",
+          "grade": "صحيح",
+          "class": "authentic"
+        },
+        {
+          "muhaddith": "الألباني",
+          "source": "صحيح الترمذي",
+          "ref": "1955",
+          "grade": "صحيح [لغيره]",
+          "class": "authentic"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "من لم يشكر الناس لم يشكر الله",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "من لم يشكر الناس لم يشكر الله",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "bukhari-660",
+      "text": "سبعة يظلهم الله في ظله يوم لا ظل إلا ظله",
+      "narrator": "أبو هريرة",
+      "grades": [
+        {
+          "muhaddith": "البخاري",
+          "source": "صحيح البخاري",
+          "ref": "660",
+          "grade": "[صحيح]",
+          "class": "authentic"
+        },
+        {
+          "muhaddith": "مسلم",
+          "source": "صحيح مسلم",
+          "ref": "1031",
+          "grade": "[صحيح]",
+          "class": "authentic"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "سبعة يظلهم الله في ظله يوم لا ظل إلا ظله: الإمام العادل، وشاب نشأ في عبادة ربه، ورجل قلبه معلق في المساجد، ورجلان تحابا في الله اجتمعا عليه وتفرقا عليه، ورجل طلبته امرأة ذات منصب وجمال، فقال: إني أخاف الله، ورجل تصدق، أخفى حتى لا تعلم شماله ما تنفق يمينه، ورجل ذكر الله خاليا ففاضت عيناه.",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "سبعة يظلهم الله في ظله يوم لا ظل إلا ظله",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "daifjami-3429",
+      "text": "الشتاء ربيع المؤمن",
+      "narrator": "أبو سعيد الخدري",
+      "grades": [
+        {
+          "muhaddith": "الألباني",
+          "source": "ضعيف الجامع",
+          "ref": "3429",
+          "grade": "ضعيف",
+          "class": "weak"
+        },
+        {
+          "muhaddith": "الألباني",
+          "source": "السلسلة الصحيحة",
+          "ref": "4/556",
+          "grade": "إسناده فيه ضعف",
+          "class": "weak"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "الشتاء ربيع المؤمن [قصر نهاره فصامه، وطال ليله فقامه.]",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "الشتاء ربيع المؤمن",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "ibnbaz-6-113",
+      "text": "اطلبوا العلم من المهد إلى اللحد",
+      "narrator": "",
+      "grades": [
+        {
+          "muhaddith": "ابن باز",
+          "source": "الفوائد العلمية من الدروس البازية",
+          "ref": "6/113",
+          "grade": "ضعيف، وبعضهم جعله في الموضوعات",
+          "class": "weak"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "اطلبوا العلم من المهد إلى اللحد",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "اطلبوا العلم من المهد إلى اللحد",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "ibnbaz-6-113-2",
+      "text": "النظافة من الإيمان",
+      "narrator": "",
+      "grades": [
+        {
+          "muhaddith": "ابن باز",
+          "source": "الفوائد العلمية من الدروس البازية",
+          "ref": "6/113",
+          "grade": "رفعه إلى النبي صلى الله عليه وسلم ليس بصحيح",
+          "class": "unverified"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "النظافة من الإيمان",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "النظافة من الإيمان",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "daifjami-2666",
+      "text": "الجنة تحت أقدام الأمهات",
+      "narrator": "أنس بن مالك",
+      "grades": [
+        {
+          "muhaddith": "الألباني",
+          "source": "ضعيف الجامع",
+          "ref": "2666",
+          "grade": "ضعيف",
+          "class": "weak"
+        },
+        {
+          "muhaddith": "الألباني",
+          "source": "السلسلة الضعيفة",
+          "ref": "593",
+          "grade": "موضوع",
+          "class": "fabricated"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "الجنة تحت أقدام الأمهات",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "الجنة تحت أقدام الأمهات",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "ibnjawzi-2-113",
+      "text": "أنا مدينة العلم وعلي بابها",
+      "narrator": "عبدالله بن عباس",
+      "grades": [
+        {
+          "muhaddith": "ابن الجوزي",
+          "source": "الموضوعات لابن الجوزي",
+          "ref": "2/113",
+          "grade": "لا يصح من جميع الوجوه",
+          "class": "unverified"
+        },
+        {
+          "muhaddith": "يحيى بن معين",
+          "source": "تاريخ بغداد",
+          "ref": "11/205",
+          "grade": "كذب، ليس له أصل، منكر جداً",
+          "class": "fabricated"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "أنا مدينة العلم وعلي بابها",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "أنا مدينة العلم وعلي بابها",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "daifa-66",
+      "text": "من عرف نفسه فقد عرف ربه",
+      "narrator": "",
+      "grades": [
+        {
+          "muhaddith": "الألباني",
+          "source": "السلسلة الضعيفة",
+          "ref": "66",
+          "grade": "لا أصل له",
+          "class": "baseless"
+        },
+        {
+          "muhaddith": "الصغاني",
+          "source": "الموضوعات للصغاني",
+          "ref": "35",
+          "grade": "موضوع",
+          "class": "fabricated"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "من عرف نفسه فقد عرف ربه",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "من عرف نفسه فقد عرف ربه",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "daifa-282",
+      "text": "لولاك لما خلقت الأفلاك",
+      "narrator": "",
+      "grades": [
+        {
+          "muhaddith": "الألباني",
+          "source": "السلسلة الضعيفة",
+          "ref": "282",
+          "grade": "موضوع",
+          "class": "fabricated"
+        },
+        {
+          "muhaddith": "الصغاني",
+          "source": "الموضوعات للصغاني",
+          "ref": "52",
+          "grade": "موضوع",
+          "class": "fabricated"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "لولاك لما خلقت الأفلاك",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "لولاك لما خلقت الأفلاك",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "daifa-310",
+      "text": "من لم يهتم بأمر المسلمين فليس منهم",
+      "narrator": "أبو ذر الغفاري",
+      "grades": [
+        {
+          "muhaddith": "الألباني",
+          "source": "السلسلة الضعيفة",
+          "ref": "310",
+          "grade": "ضعيف جداً",
+          "class": "very_weak"
+        },
+        {
+          "muhaddith": "الألباني",
+          "source": "السلسلة الضعيفة",
+          "ref": "312",
+          "grade": "ضعيف",
+          "class": "weak",
+          "note": "بلفظ مقارب"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "من أصبح وهمه الدنيا ، فليس من الله في شيء ، ومن لم يهتم بأمر المسلمين فليس منهم ، ومن أعطى الذلة من نفسه طائعا غير مكره ، فليس منا",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "من لم يهتم بأمر المسلمين فليس منهم",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "daifa-4589",
+      "text": "من حفظ على أمتي أربعين حديثا",
+      "narrator": "عبدالله بن عباس",
+      "grades": [
+        {
+          "muhaddith": "الألباني",
+          "source": "السلسلة الضعيفة",
+          "ref": "4589",
+          "grade": "موضوع",
+          "class": "fabricated"
+        },
+        {
+          "muhaddith": "الألباني",
+          "source": "ضعيف الجامع",
+          "ref": "5561",
+          "grade": "ضعيف",
+          "class": "weak"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "من حفظ على أمتي أربعين حديثا من السنة، كنت له شفيعا يوم القيامة",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "من حفظ على أمتي أربعين حديثا",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "daifjami-4301",
+      "text": "الحكمة ضالة المؤمن",
+      "narrator": "أبو هريرة",
+      "grades": [
+        {
+          "muhaddith": "الألباني",
+          "source": "ضعيف الجامع",
+          "ref": "4301",
+          "grade": "ضعيف جداً",
+          "class": "very_weak"
+        },
+        {
+          "muhaddith": "ابن الجوزي",
+          "source": "العلل المتناهية",
+          "ref": "1/96",
+          "grade": "لا يصح",
+          "class": "unverified"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "الكلمة الحكمة ضالة المؤمن ، حيث وجدها جذبها",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "الحكمة ضالة المؤمن",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "daifjami-3619",
+      "text": "طلب الحلال جهاد",
+      "narrator": "عبدالله بن عباس وعبدالله بن عمر",
+      "grades": [
+        {
+          "muhaddith": "الألباني",
+          "source": "ضعيف الجامع",
+          "ref": "3619",
+          "grade": "ضعيف",
+          "class": "weak"
+        },
+        {
+          "muhaddith": "الألباني",
+          "source": "السلسلة الضعيفة",
+          "ref": "1301",
+          "grade": "ضعيف",
+          "class": "weak"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "طلب الحلال جهاد.",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "طلب الحلال جهاد",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "saghani-64",
+      "text": "الدنيا مزرعة الآخرة",
+      "narrator": "",
+      "grades": [
+        {
+          "muhaddith": "الصغاني",
+          "source": "الموضوعات للصغاني",
+          "ref": "64",
+          "grade": "موضوع",
+          "class": "fabricated"
+        },
+        {
+          "muhaddith": "العراقي",
+          "source": "تخريج الإحياء للعراقي",
+          "ref": "4/24",
+          "grade": "لم أجده بهذا اللفظ مرفوعا",
+          "class": "baseless"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "الدنيا مزرعة الآخرة",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "الدنيا مزرعة الآخرة",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "daifa-611",
+      "text": "ما خاب من استخار ولا ندم من استشار",
+      "narrator": "أنس بن مالك",
+      "grades": [
+        {
+          "muhaddith": "الألباني",
+          "source": "السلسلة الضعيفة",
+          "ref": "611",
+          "grade": "موضوع",
+          "class": "fabricated"
+        },
+        {
+          "muhaddith": "الألباني",
+          "source": "ضعيف الجامع",
+          "ref": "5056",
+          "grade": "موضوع",
+          "class": "fabricated"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "ما خاب من استخار، ولا ندم من استشار، ولا عال من اقتصد",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "ما خاب من استخار ولا ندم من استشار",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "daifa-3876",
+      "text": "علموا أبناءكم السباحة والرماية",
+      "narrator": "بكر بن عبدالله بن ربيع الأنصاري",
+      "grades": [
+        {
+          "muhaddith": "الألباني",
+          "source": "السلسلة الضعيفة",
+          "ref": "3876",
+          "grade": "ضعيف",
+          "class": "weak"
+        },
+        {
+          "muhaddith": "الألباني",
+          "source": "السلسلة الضعيفة",
+          "ref": "3877",
+          "grade": "ضعيف جداً",
+          "class": "very_weak",
+          "note": "بلفظ مقارب"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "علموا أبناءكم السباحة والرماية، ونعم لهو المؤمنة مغزلها، وإذا دعاك أبواك فأجب أمك",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "علموا أبناءكم السباحة والرماية",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "daifjami-115",
+      "text": "اتقوا الدنيا فوالذي نفسي بيده إنها لأسحر من هاروت وماروت",
+      "narrator": "عبدالله بن بسر",
+      "grades": [
+        {
+          "muhaddith": "الألباني",
+          "source": "ضعيف الجامع",
+          "ref": "115",
+          "grade": "ضعيف",
+          "class": "weak"
+        },
+        {
+          "muhaddith": "الألباني",
+          "source": "السلسلة الضعيفة",
+          "ref": "34",
+          "grade": "منكر لا أصل له",
+          "class": "very_weak",
+          "note": "بلفظ مقارب"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "اتقوا الدنيا ، فوالذي نفسي بيده ، إنها لأسحر من هاروت وماروت",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "اتقوا الدنيا فوالذي نفسي بيده إنها لأسحر من هاروت وماروت",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "daifjami-5607",
+      "text": "من زار قبري وجبت له شفاعتي",
+      "narrator": "عبدالله بن عمر",
+      "grades": [
+        {
+          "muhaddith": "الألباني",
+          "source": "ضعيف الجامع",
+          "ref": "5607",
+          "grade": "موضوع",
+          "class": "fabricated"
+        },
+        {
+          "muhaddith": "ابن باز",
+          "source": "مجموع فتاوى ابن باز",
+          "ref": "113/16",
+          "grade": "موضوع",
+          "class": "fabricated"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "من زار قبري ، وجبت له شفاعتي",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "من زار قبري وجبت له شفاعتي",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "maqasid-559",
+      "text": "يوم صومكم يوم نحركم",
+      "narrator": "",
+      "grades": [
+        {
+          "muhaddith": "السخاوي",
+          "source": "المقاصد الحسنة",
+          "ref": "559",
+          "grade": "لا أصل له",
+          "class": "baseless"
+        },
+        {
+          "muhaddith": "ابن باز",
+          "source": "مجموع فتاوى ابن باز",
+          "ref": "26/374",
+          "grade": "لا أعلم له أصلا شرعيا، ولا أعلم أنه ورد في ذلك حديث يعتمد عليه",
+          "class": "baseless"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "يوم صومكم يوم نحركم",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "يوم صومكم يوم نحركم",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "daifa-8",
+      "text": "اعمل لدنياك كأنك تعيش أبدا واعمل لآخرتك كأنك تموت غدا",
+      "narrator": "",
+      "grades": [
+        {
+          "muhaddith": "الألباني",
+          "source": "السلسلة الضعيفة",
+          "ref": "8",
+          "grade": "لا أصل له مرفوعاً",
+          "class": "baseless"
+        },
+        {
+          "muhaddith": "ابن عثيمين",
+          "source": "فتاوى نور على الدرب لابن عثيمين",
+          "ref": "2/575",
+          "grade": "هذا القول المشهور لا يصح عن النَّبيِّ صلَّى اللهُ عليه وسلَّمَ، فهو من الأحاديث الموضوعة",
+          "class": "fabricated"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "اعمل لدنياك كأنك تعيش أبدا ، واعمل لآخرتك كأنك تموت غدا",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "اعمل لدنياك كأنك تعيش أبدا واعمل لآخرتك كأنك تموت غدا",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "daifjami-3566",
+      "text": "الصلاة عماد الدين",
+      "narrator": "عمر بن الخطاب",
+      "grades": [
+        {
+          "muhaddith": "الألباني",
+          "source": "ضعيف الجامع",
+          "ref": "3566",
+          "grade": "ضعيف",
+          "class": "weak"
+        },
+        {
+          "muhaddith": "الألباني",
+          "source": "السلسلة الضعيفة",
+          "ref": "6967",
+          "grade": "ضعيف",
+          "class": "weak"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "الصلاة عماد الدين [يعني حديث: جاء رجل فقال يا رسول الله أي شيء أحب عند الله فقال الصلاة لوقتها ومن ترك الصلاة فلا دين له والصلاة عماد الدين]",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "الصلاة عماد الدين",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "saghani-54",
+      "text": "حب الهرة من الإيمان",
+      "narrator": "",
+      "grades": [
+        {
+          "muhaddith": "الصغاني",
+          "source": "الموضوعات للصغاني",
+          "ref": "54",
+          "grade": "موضوع",
+          "class": "fabricated"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "حب الهرة من الإيمان",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "حب الهرة من الإيمان",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "daifjami-249",
+      "text": "أدبني ربي فأحسن تأديبي",
+      "narrator": "عبدالله بن مسعود",
+      "grades": [
+        {
+          "muhaddith": "الألباني",
+          "source": "ضعيف الجامع",
+          "ref": "249",
+          "grade": "ضعيف",
+          "class": "weak"
+        },
+        {
+          "muhaddith": "الألباني",
+          "source": "السلسلة الضعيفة",
+          "ref": "72",
+          "grade": "ضعيف",
+          "class": "weak"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "أدبني ربي فأحسن تأديبي",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "أدبني ربي فأحسن تأديبي",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "daifjami-1704",
+      "text": "إن الله تعالى يحب العبد المؤمن المحترف",
+      "narrator": "عبدالله بن عمر",
+      "grades": [
+        {
+          "muhaddith": "الألباني",
+          "source": "ضعيف الجامع",
+          "ref": "1704",
+          "grade": "ضعيف",
+          "class": "weak"
+        },
+        {
+          "muhaddith": "ابن الجوزي",
+          "source": "العلل المتناهية",
+          "ref": "2/589",
+          "grade": "لا يصح",
+          "class": "unverified",
+          "note": "بلفظ مقارب"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "إن الله تعالى يحب العبد المؤمن المحترف",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "إن الله تعالى يحب العبد المؤمن المحترف",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "shawkani-120",
+      "text": "ركعتان من المتزوج خير من سبعين ركعة من الأعزب",
+      "narrator": "أنس بن مالك",
+      "grades": [
+        {
+          "muhaddith": "الشوكاني",
+          "source": "الفوائد المجموعة",
+          "ref": "120",
+          "grade": "في إسناده مسعود بن عمرو قال الذهبي في الميزان: لا أعرفه وخبره باطل",
+          "class": "fabricated"
+        },
+        {
+          "muhaddith": "ابن الجوزي",
+          "source": "الموضوعات لابن الجوزي",
+          "ref": "3/44",
+          "grade": "أورده في كتاب الموضوعات",
+          "class": "fabricated",
+          "note": "بلفظ مقارب"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "ركعتان من المتزوج خير من سبعين ركعة من الأعزب .",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "ركعتان من المتزوج خير من سبعين ركعة من الأعزب",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "daifa-30",
+      "text": "الخير في وفي أمتي إلى يوم القيامة",
+      "narrator": "",
+      "grades": [
+        {
+          "muhaddith": "الألباني",
+          "source": "السلسلة الضعيفة",
+          "ref": "30",
+          "grade": "لا أصل له",
+          "class": "baseless"
+        },
+        {
+          "muhaddith": "ملا علي قاري",
+          "source": "الأسرار المرفوعة",
+          "ref": "202",
+          "grade": "قيل لا أصل له أو بأصله موضوع",
+          "class": "fabricated"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "الخير في وفي أمتي إلى يوم القيامة",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "الخير في وفي أمتي إلى يوم القيامة",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "sahihjami-2230",
+      "text": "إذا لم تستح فاصنع ما شئت",
+      "narrator": "حذيفة بن اليمان وابن مسعود",
+      "grades": [
+        {
+          "muhaddith": "الألباني",
+          "source": "صحيح الجامع",
+          "ref": "2230",
+          "grade": "صحيح",
+          "class": "authentic"
+        },
+        {
+          "muhaddith": "الألباني",
+          "source": "صحيح أبي داود",
+          "ref": "4797",
+          "grade": "صحيح",
+          "class": "authentic",
+          "note": "بلفظ مقارب"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "إن مما أدرك الناس من كلام النبوة الأولى : إذا لم تستح فاصنع ما شئت",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "إذا لم تستح فاصنع ما شئت",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "bukhari-6117",
+      "text": "الحياء لا يأتي إلا بخير",
+      "narrator": "عمران بن الحصين",
+      "grades": [
+        {
+          "muhaddith": "البخاري",
+          "source": "صحيح البخاري",
+          "ref": "6117",
+          "grade": "[صحيح]",
+          "class": "authentic"
+        },
+        {
+          "muhaddith": "مسلم",
+          "source": "صحيح مسلم",
+          "ref": "37",
+          "grade": "[صحيح]",
+          "class": "authentic"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "الحياء لا يأتي إلا بخير. فقال بشير بن كعب: مكتوب في الحكمة: إن من الحياء وقارا، وإن من الحياء سكينة. فقال له عمران: أحدثك عن رسول الله صلى الله عليه وسلم وتحدثني عن صحيفتك!",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "الحياء لا يأتي إلا بخير",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "irwa-1448",
+      "text": "ابدأ بنفسك ثم بمن تعول",
+      "narrator": "جابر بن عبدالله",
+      "grades": [
+        {
+          "muhaddith": "الألباني",
+          "source": "إرواء الغليل",
+          "ref": "1448",
+          "grade": "صحيح مركب من حديثين",
+          "class": "authentic"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "ابدأ بنفسك ثم بمن تعول",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "ابدأ بنفسك ثم بمن تعول",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "muslim-2622",
+      "text": "رب أشعث مدفوع بالأبواب لو أقسم على الله لأبره",
+      "narrator": "أبو هريرة",
+      "grades": [
+        {
+          "muhaddith": "مسلم",
+          "source": "صحيح مسلم",
+          "ref": "2622",
+          "grade": "[صحيح]",
+          "class": "authentic"
+        },
+        {
+          "muhaddith": "الألباني",
+          "source": "صحيح الترغيب",
+          "ref": "3212",
+          "grade": "صحيح لغيره",
+          "class": "authentic",
+          "note": "بلفظ مقارب"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "رب أشعث مدفوع بالأبواب لو أقسم على الله لأبره.",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "رب أشعث مدفوع بالأبواب لو أقسم على الله لأبره",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
+    },
+    {
+      "id": "daifa-1794",
+      "text": "من بات كالا من عمله بات مغفورا له",
+      "narrator": "المقدام بن معدي كرب",
+      "grades": [
+        {
+          "muhaddith": "الألباني",
+          "source": "السلسلة الضعيفة",
+          "ref": "1794",
+          "grade": "منكر",
+          "class": "very_weak"
+        },
+        {
+          "muhaddith": "الألباني",
+          "source": "السلسلة الضعيفة",
+          "ref": "2626",
+          "grade": "ضعيف",
+          "class": "weak",
+          "note": "بلفظ مقارب"
+        }
+      ],
+      "verified": true,
+      "dorar_text": "ما أكل العبد طعاما أحب إلى الله من كد يده، ومن بات كالا من عمله بات مغفورا له",
+      "provenance": {
+        "method": "assisted_api_transcript",
+        "endpoint": "https://dorar.net/dorar_api.json",
+        "query": "من بات كالا من عمله بات مغفورا له",
+        "retrieved_at": "2026-10-03",
+        "reviewed_at": "2026-10-03",
+        "note": "نص الموضع والمحدّث والمصدر والرقم والحكم منقولة من استجابة الواجهة البرمجية للدرر كما عُرضت؛ ليست لقطة بايتية. الفحص الآلي يتحقق أن نص السجل اقتباس متصل من dorar_text."
+      }
     }
   ]
 }

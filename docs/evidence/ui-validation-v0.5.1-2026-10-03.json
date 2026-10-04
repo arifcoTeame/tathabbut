@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-03",
+  "engine_version": "0.5.1",
+  "environment": "local browser + production Next.js + local FastAPI",
+  "checks": [
+    {
+      "name": "personal question with Quran",
+      "result": "REFER and VERIFIED separately, prominent warning"
+    },
+    {
+      "name": "changed attached letter",
+      "result": "ALTERED with word differences and Tanzil link"
+    },
+    {
+      "name": "clear input",
+      "result": "old result removed; submit disabled"
+    },
+    {
+      "name": "mobile width",
+      "requested_width": 390,
+      "actual_client_width": 375,
+      "scroll_width": 375,
+      "horizontal_overflow": false
+    },
+    {
+      "name": "about page mobile",
+      "result": "sources, method, limits and privacy visible; no horizontal overflow"
+    }
+  ],
+  "limits": [
+    "Not a complete assistive-technology audit",
+    "Not a live deployment verification",
+    "Network error was visible before local API startup; retry restored connected state"
+  ],
+  "screenshots": [
+    "screenshots/local-referral-detail-v0.5.1.jpg",
+    "screenshots/local-altered-v0.5.1.jpg",
+    "screenshots/local-mobile-v0.5.1.jpg",
+    "screenshots/local-about-v0.5.1.jpg"
+  ]
+}
