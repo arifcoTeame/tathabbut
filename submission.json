@@ -14,7 +14,17 @@
   "scope": {
     "official_judging_score": false,
     "guarantees_full_compliance": false,
-    "technology": ["Next.js", "React", "TypeScript", "FastAPI", "Python", "BM25", "character TF-IDF", "SVD 256 dimensions", "Reciprocal Rank Fusion"],
+    "technology": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "FastAPI",
+      "Python",
+      "BM25",
+      "character TF-IDF",
+      "SVD 256 dimensions",
+      "Reciprocal Rank Fusion"
+    ],
     "verdict_method": "Rule-based wording comparison and attributed source grades",
     "generative_model_in_default_path": false,
     "bge_m3_used_in_reported_evaluation": false,
@@ -22,21 +32,91 @@
     "measurement_limit": "Saved local evidence and synthetic retrieval results do not establish general accuracy, user benefit, independent scholarly approval, or live deployment readiness."
   },
   "data": {
-    "quran": {"path": "data/quran/quran_full.json", "records": 6236, "source": "Tanzil simple-clean, Hafs", "independent_reference_comparison": "external_review_pending"},
-    "hadith": {"path": "data/seed/hadith_seed.json", "records": 72, "source": "12 inherited records + 60 records reviewed against dorar.net on 2026-10-03 (assisted API transcripts, see docs/VERIFY_SEED.md)", "expanded_corpus_completed": true, "reuse_review": "external_review_pending"}
+    "quran": {
+      "path": "data/quran/quran_full.json",
+      "records": 6236,
+      "source": "Tanzil simple-clean, Hafs",
+      "independent_reference_comparison": "external_review_pending"
+    },
+    "hadith": {
+      "path": "data/seed/hadith_seed.json",
+      "records": 72,
+      "source": "12 inherited records + 60 records reviewed against dorar.net on 2026-10-03 (assisted API transcripts, see docs/VERIFY_SEED.md)",
+      "expanded_corpus_completed": true,
+      "reuse_review": "external_review_pending"
+    }
   },
   "judging_criteria": {
     "guide_title": "دليل المشارك المعتمد النهائي",
     "guide_printed_pages": "37–41",
     "weights_are_not_scores": true,
     "criteria": [
-      {"id": "technical_ai", "label_ar": "الجودة التقنية وتوظيف الذكاء الاصطناعي", "weight": 25, "evidence": ["docs/VALIDATION.md", "docs/RETRIEVAL_EVALUATION.md", "docs/evidence/backend-validation-v0.6.0-2026-10-04.json"]},
-      {"id": "scientific_safety", "label_ar": "السلامة العلمية", "weight": 15, "evidence": ["SOURCES.md", "docs/QURAN_REFERENCE_CHECK.md", "docs/VERIFY_SEED.md", "docs/evidence/local-safety-v0.6.0-2026-10-04.json"]},
-      {"id": "innovation", "label_ar": "الابتكار", "weight": 15, "evidence": ["docs/RETRIEVAL_EVALUATION.md"]},
-      {"id": "user_experience", "label_ar": "تجربة المستخدم والإتاحة", "weight": 10, "evidence": ["docs/evidence/screenshots/local-mobile-v0.5.1.jpg", "docs/evidence/screenshots/local-referral-detail-v0.5.1.jpg", "docs/HUMAN_REVIEW.md"]},
-      {"id": "benefit", "label_ar": "النفع والأثر", "weight": 20, "evidence": ["docs/HUMAN_REVIEW.md", "docs/evidence/user-study-template.csv"]},
-      {"id": "operations", "label_ar": "التشغيل والاستدامة", "weight": 10, "evidence": ["docs/OPERATIONS.md", "docs/DEPLOY.md"]},
-      {"id": "presentation", "label_ar": "العرض وقابلية التحقق", "weight": 5, "evidence": ["docs/SUBMISSION_CHECKLIST.md", "docs/VIDEO_SCRIPT.md"]}
+      {
+        "id": "technical_ai",
+        "label_ar": "الجودة التقنية وتوظيف الذكاء الاصطناعي",
+        "weight": 25,
+        "evidence": [
+          "docs/VALIDATION.md",
+          "docs/RETRIEVAL_EVALUATION.md",
+          "docs/evidence/backend-validation-v0.6.0-2026-10-04.json"
+        ]
+      },
+      {
+        "id": "scientific_safety",
+        "label_ar": "السلامة العلمية",
+        "weight": 15,
+        "evidence": [
+          "SOURCES.md",
+          "docs/QURAN_REFERENCE_CHECK.md",
+          "docs/VERIFY_SEED.md",
+          "docs/evidence/local-safety-v0.6.0-2026-10-04.json"
+        ]
+      },
+      {
+        "id": "innovation",
+        "label_ar": "الابتكار",
+        "weight": 15,
+        "evidence": [
+          "docs/RETRIEVAL_EVALUATION.md"
+        ]
+      },
+      {
+        "id": "user_experience",
+        "label_ar": "تجربة المستخدم والإتاحة",
+        "weight": 10,
+        "evidence": [
+          "docs/evidence/screenshots/local-mobile-v0.5.1.jpg",
+          "docs/evidence/screenshots/local-referral-detail-v0.5.1.jpg",
+          "docs/HUMAN_REVIEW.md"
+        ]
+      },
+      {
+        "id": "benefit",
+        "label_ar": "النفع والأثر",
+        "weight": 20,
+        "evidence": [
+          "docs/HUMAN_REVIEW.md",
+          "docs/evidence/user-study-template.csv"
+        ]
+      },
+      {
+        "id": "operations",
+        "label_ar": "التشغيل والاستدامة",
+        "weight": 10,
+        "evidence": [
+          "docs/OPERATIONS.md",
+          "docs/DEPLOY.md"
+        ]
+      },
+      {
+        "id": "presentation",
+        "label_ar": "العرض وقابلية التحقق",
+        "weight": 5,
+        "evidence": [
+          "docs/SUBMISSION_CHECKLIST.md",
+          "docs/VIDEO_SCRIPT.md"
+        ]
+      }
     ]
   },
   "status_definitions": {
@@ -45,23 +125,143 @@
     "external_review_pending": "يحتاج دليلاً أو مراجعة خارج الفحوص المحلية قبل إعلان الاكتمال."
   },
   "requirements": [
-    {"id": "local_safety_tests", "label_ar": "اختبارات السلامة المحلية", "status": "local_verified", "evidence": ["docs/evidence/backend-validation-v0.6.0-2026-10-04.json", "docs/evidence/local-safety-v0.6.0-2026-10-04.json"], "note": "137 اختباراً و25 حالة مستهدفة مكررة ثلاث مرات. نجاح هذه الحالات لا يعني دقة عامة 100%."},
-    {"id": "reproducible_retrieval_comparison", "label_ar": "مقارنة استرجاع قابلة للإعادة", "status": "local_verified", "evidence": ["docs/RETRIEVAL_EVALUATION.md", "data/evaluation/retrieval-cases-v1.json", "docs/evidence/retrieval-evaluation-2026-10-03.json", "docs/evidence/retrieval-evaluation-repeat-2026-10-03.json", "docs/evidence/retrieval-reproducibility-2026-10-03.json"], "note": "لم يثبت تفوق الهجين على BM25 في المجموعة المصطنعة؛ تسجل النتائج كما هي."},
-    {"id": "owned_code_license_and_notices", "label_ar": "ترخيص الكود وإشعارات المكونات", "status": "local_verified", "evidence": ["LICENSE", "THIRD_PARTY.md", "CREDITS.md", "LICENSES/Tanzil.txt", "LICENSES/Readex-Pro-OFL-1.1.txt", "docs/evidence/dependency-licenses.json"], "note": "MIT للكود المملوك للفريق، ولا يبدل تراخيص البيانات والخطوط أو يحسم حقوق النصوص الحديثية."},
-    {"id": "operations_and_review_protocol", "label_ar": "توثيق التشغيل وخطة المراجعة", "status": "local_verified", "evidence": ["README.md", "docs/DEPLOY.md", "docs/OPERATIONS.md", "docs/HUMAN_REVIEW.md", "docs/DEVELOPMENT_LOG.md"], "note": "وجود الخطة لا يعني تنفيذ دراسة المستخدمين أو تعيين مراجع مستقل."},
-    {"id": "public_repository_upload", "label_ar": "رفع النسخة النهائية إلى GitHub العام", "status": "owner_handoff", "evidence": ["docs/DEPLOY.md", "docs/SUBMISSION_CHECKLIST.md"], "note": "أكد صاحب المشروع أنه سيتولى الرفع بعد استلام الحزمة النهائية؛ لم ينفذ الوكيل نشراً."},
-    {"id": "video_upload", "label_ar": "تسجيل ورفع فيديو لا يتجاوز دقيقتين", "status": "owner_handoff", "evidence": ["docs/VIDEO_SCRIPT.md", "docs/SUBMISSION_CHECKLIST.md"], "note": "يتولى صاحب المشروع الفيديو ورفعه. السيناريو دليل تجهيز ولا يمثل ملف فيديو مسلماً."},
-    {"id": "final_presentation_and_portal", "label_ar": "اعتماد العرض الرسمي والتسليم عبر البوابة", "status": "owner_handoff", "evidence": ["docs/SUBMISSION_CHECKLIST.md", "docs/DEVELOPMENT_LOG.md"], "note": "العرض النهائي ضمن حزمة التسليم خارج المستودع. يعتمد صاحب المشروع النسخة المرفوعة ويحفظ تأكيد البوابة خلال فترة التسليم."},
-    {"id": "quran_reference_comparison", "label_ar": "المقابلة المستقلة بالمصدر القرآني الوارد في المرجعية", "status": "external_review_pending", "evidence": ["docs/QURAN_REFERENCE_CHECK.md", "SOURCES.md"], "note": "تعذر تنزيل مصحف حفص الرسمي بسبب HTTP 403؛ لا توجد مقابلة كاملة موثقة بعد."},
-    {"id": "hadith_reuse_and_expansion", "label_ar": "حقوق البيانات الحديثية ومراجعة التوسعة", "status": "external_review_pending", "evidence": ["docs/VERIFY_SEED.md", "SOURCES.md", "THIRD_PARTY.md"], "note": "تبقى العينة 12 حديثاً. قائمة 95 عبارة بحث ليست بيانات معتمدة، ولا توجد موافقة خاصة من المنظم على نسخ بيانات الدرر."},
-    {"id": "independent_review_and_user_trial", "label_ar": "المراجعة العلمية وقياس النفع مع مستخدمين", "status": "external_review_pending", "evidence": ["docs/HUMAN_REVIEW.md", "docs/evidence/user-study-template.csv"], "note": "الخطة والقالب جاهزان؛ لم تنفذ دراسة فعلية ولم يوثق اعتماد مختص مستقل."},
-    {"id": "live_release_verification", "label_ar": "التحقق من الإصدار المنشور بعد الرفع", "status": "external_review_pending", "evidence": ["docs/DEPLOY.md", "docs/evidence/strict-live-2026-10-03.json", "docs/evidence/local-safety-v0.6.0-2026-10-04.json"], "note": "يجب أن يثبت دليل جديد تشغيل 0.6.0 وسلامة الحالات عبر الرابط العام بعد نشر صاحب المشروع؛ الدليل المحلي لا يثبت ذلك."}
+    {
+      "id": "local_safety_tests",
+      "label_ar": "اختبارات السلامة المحلية",
+      "status": "local_verified",
+      "evidence": [
+        "docs/evidence/backend-validation-v0.6.0-2026-10-04.json",
+        "docs/evidence/local-safety-v0.6.0-2026-10-04.json"
+      ],
+      "note": "137 اختباراً و25 حالة مستهدفة مكررة ثلاث مرات. نجاح هذه الحالات لا يعني دقة عامة 100%."
+    },
+    {
+      "id": "reproducible_retrieval_comparison",
+      "label_ar": "مقارنة استرجاع قابلة للإعادة",
+      "status": "local_verified",
+      "evidence": [
+        "docs/RETRIEVAL_EVALUATION.md",
+        "data/evaluation/retrieval-cases-v1.json",
+        "docs/evidence/retrieval-evaluation-2026-10-03.json",
+        "docs/evidence/retrieval-evaluation-repeat-2026-10-03.json",
+        "docs/evidence/retrieval-reproducibility-2026-10-03.json"
+      ],
+      "note": "لم يثبت تفوق الهجين على BM25 في المجموعة المصطنعة؛ تسجل النتائج كما هي."
+    },
+    {
+      "id": "owned_code_license_and_notices",
+      "label_ar": "ترخيص الكود وإشعارات المكونات",
+      "status": "local_verified",
+      "evidence": [
+        "LICENSE",
+        "THIRD_PARTY.md",
+        "CREDITS.md",
+        "LICENSES/Tanzil.txt",
+        "LICENSES/Readex-Pro-OFL-1.1.txt",
+        "docs/evidence/dependency-licenses.json"
+      ],
+      "note": "MIT للكود المملوك للفريق، ولا يبدل تراخيص البيانات والخطوط أو يحسم حقوق النصوص الحديثية."
+    },
+    {
+      "id": "operations_and_review_protocol",
+      "label_ar": "توثيق التشغيل وخطة المراجعة",
+      "status": "local_verified",
+      "evidence": [
+        "README.md",
+        "docs/DEPLOY.md",
+        "docs/OPERATIONS.md",
+        "docs/HUMAN_REVIEW.md",
+        "docs/DEVELOPMENT_LOG.md"
+      ],
+      "note": "وجود الخطة لا يعني تنفيذ دراسة المستخدمين أو تعيين مراجع مستقل."
+    },
+    {
+      "id": "public_repository_upload",
+      "label_ar": "رفع النسخة النهائية إلى GitHub العام",
+      "status": "local_verified",
+      "evidence": [
+        "docs/DEVELOPMENT_LOG.md",
+        "docs/INTERNAL_EVALUATION_2026-10-04.md"
+      ],
+      "note": "أكد صاحب المشروع أنه سيتولى الرفع بعد استلام الحزمة النهائية؛ لم ينفذ الوكيل نشراً.",
+      "note_ar": "رُفع في 4 أكتوبر 21:00–21:17 (commit 22c609f، وسم v0.6.0)؛ قورنت 119 ملفاً بالنسخة الأصلية: 115 مطابقة و4 ملفات شكلية."
+    },
+    {
+      "id": "video_upload",
+      "label_ar": "تسجيل ورفع فيديو لا يتجاوز دقيقتين",
+      "status": "owner_handoff",
+      "evidence": [
+        "docs/VIDEO_SCRIPT.md",
+        "docs/SUBMISSION_CHECKLIST.md"
+      ],
+      "note": "يتولى صاحب المشروع الفيديو ورفعه. السيناريو دليل تجهيز ولا يمثل ملف فيديو مسلماً."
+    },
+    {
+      "id": "final_presentation_and_portal",
+      "label_ar": "اعتماد العرض الرسمي والتسليم عبر البوابة",
+      "status": "owner_handoff",
+      "evidence": [
+        "docs/SUBMISSION_CHECKLIST.md",
+        "docs/DEVELOPMENT_LOG.md"
+      ],
+      "note": "العرض النهائي ضمن حزمة التسليم خارج المستودع. يعتمد صاحب المشروع النسخة المرفوعة ويحفظ تأكيد البوابة خلال فترة التسليم."
+    },
+    {
+      "id": "quran_reference_comparison",
+      "label_ar": "المقابلة المستقلة بالمصدر القرآني الوارد في المرجعية",
+      "status": "external_review_pending",
+      "evidence": [
+        "docs/QURAN_REFERENCE_CHECK.md",
+        "SOURCES.md"
+      ],
+      "note": "تعذر تنزيل مصحف حفص الرسمي بسبب HTTP 403؛ لا توجد مقابلة كاملة موثقة بعد."
+    },
+    {
+      "id": "hadith_reuse_and_expansion",
+      "label_ar": "حقوق البيانات الحديثية ومراجعة التوسعة",
+      "status": "external_review_pending",
+      "evidence": [
+        "docs/VERIFY_SEED.md",
+        "SOURCES.md",
+        "THIRD_PARTY.md"
+      ],
+      "note": "تبقى العينة 12 حديثاً. قائمة 95 عبارة بحث ليست بيانات معتمدة، ولا توجد موافقة خاصة من المنظم على نسخ بيانات الدرر."
+    },
+    {
+      "id": "independent_review_and_user_trial",
+      "label_ar": "المراجعة العلمية وقياس النفع مع مستخدمين",
+      "status": "external_review_pending",
+      "evidence": [
+        "docs/HUMAN_REVIEW.md",
+        "docs/evidence/user-study-template.csv"
+      ],
+      "note": "الخطة والقالب جاهزان؛ لم تنفذ دراسة فعلية ولم يوثق اعتماد مختص مستقل."
+    },
+    {
+      "id": "live_release_verification",
+      "label_ar": "التحقق من الإصدار المنشور بعد الرفع",
+      "status": "local_verified",
+      "evidence": [
+        "docs/evidence/live-after-v0.6.0-2026-10-04.json",
+        "docs/VALIDATION.md"
+      ],
+      "note": "يجب أن يثبت دليل جديد تشغيل 0.6.0 وسلامة الحالات عبر الرابط العام بعد نشر صاحب المشروع؛ الدليل المحلي لا يثبت ذلك.",
+      "note_ar": "75/75 على https://tathabbut.vercel.app في 4 أكتوبر 21:24؛ المحرك 0.6.0، 72 حديثاً."
+    }
   ],
   "local_checks": {
     "command": "python3 scripts/check_submission.py",
     "output": "docs/evidence/submission-check-v0.6.0.json",
-    "saved_test_expectations": {"pytest_passed": 137, "release_distinct_inputs": 25, "release_repetitions": 3, "release_total": 75},
-    "evidence": ["docs/evidence/backend-validation-v0.6.0-2026-10-04.json", "docs/evidence/local-safety-v0.6.0-2026-10-04.json"],
+    "saved_test_expectations": {
+      "pytest_passed": 137,
+      "release_distinct_inputs": 25,
+      "release_repetitions": 3,
+      "release_total": 75
+    },
+    "evidence": [
+      "docs/evidence/backend-validation-v0.6.0-2026-10-04.json",
+      "docs/evidence/local-safety-v0.6.0-2026-10-04.json"
+    ],
     "readiness_rule": "Local checks may pass while owner handoff or external review remains pending. The checker does not assign a judging score or certify final compliance."
   }
 }

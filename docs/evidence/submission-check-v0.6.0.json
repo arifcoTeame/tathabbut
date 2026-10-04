@@ -1,7 +1,7 @@
 {
-  "checked_at": "2026-10-04T20:39:40.286396+03:00",
+  "checked_at": "2026-10-04T21:27:01.794997+03:00",
   "release": "0.6.0",
-  "manifest_sha256": "efac6649226d9b4759556f58251017d153a256868b46976ea6dd14ae79d0873e",
+  "manifest_sha256": "53680d50e357750a3016b54d3436ea524c1f0505289a733db186c2f75c86d775",
   "scope": "Local consistency gate for saved evidence; no official score or final compliance certification",
   "network_used": false,
   "local_checks_passed": true,
@@ -9,16 +9,11 @@
   "local_checks_passed_count": 8,
   "overall_ready": false,
   "status_counts": {
-    "local_verified": 4,
-    "owner_handoff": 3,
-    "external_review_pending": 4
+    "local_verified": 6,
+    "owner_handoff": 2,
+    "external_review_pending": 3
   },
   "pending_requirements": [
-    {
-      "id": "public_repository_upload",
-      "label_ar": "رفع النسخة النهائية إلى GitHub العام",
-      "status": "owner_handoff"
-    },
     {
       "id": "video_upload",
       "label_ar": "تسجيل ورفع فيديو لا يتجاوز دقيقتين",
@@ -43,11 +38,6 @@
       "id": "independent_review_and_user_trial",
       "label_ar": "المراجعة العلمية وقياس النفع مع مستخدمين",
       "status": "external_review_pending"
-    },
-    {
-      "id": "live_release_verification",
-      "label_ar": "التحقق من الإصدار المنشور بعد الرفع",
-      "status": "external_review_pending"
     }
   ],
   "checks": [
@@ -64,7 +54,7 @@
       "id": "references",
       "passed": true,
       "details": {
-        "existing_nonempty_references": 30,
+        "existing_nonempty_references": 31,
         "meaning": "File existence, not approval of its substantive claims"
       }
     },
@@ -118,7 +108,7 @@
       "id": "public_git_inventory",
       "passed": true,
       "details": {
-        "candidate_files": 119,
+        "candidate_files": 120,
         "risky_filename_count": 0,
         "file_contents_scanned": false,
         "secret_file_contents_read": false,

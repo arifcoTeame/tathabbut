@@ -89,6 +89,7 @@ npm run build
 - [DEPLOY](docs/DEPLOY.md): النشر والتحقق والتراجع.
 - [SUBMISSION_CHECKLIST](docs/SUBMISSION_CHECKLIST.md): متطلبات التسليم وحالتها.
 - [DEVELOPMENT_LOG](docs/DEVELOPMENT_LOG.md): فصل التحضير عن إنجازات 4–6 أكتوبر.
+- [TEST_CASES](docs/TEST_CASES.md): حالات الاختبار الـ25 مصنّفة (صحيح، غير ثابت، نقص، تعارض، خارج المرجع، إحالة) وكيف يتعامل النظام معها دون هلوسة.
 - [INTERNAL_EVALUATION_2026-10-04](docs/INTERNAL_EVALUATION_2026-10-04.md): التقييم الداخلي للإصدار 0.6.0 (محاكاة الفرز، ومنظور المحكّم).
 - [JUDGING_REVIEW](docs/JUDGING_REVIEW.md): تقييم داخلي سابق (3 أكتوبر) وفق دليل التحكيم.
 
