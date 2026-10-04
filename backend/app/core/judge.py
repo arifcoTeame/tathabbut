@@ -6,10 +6,10 @@ source. The system never produces a hadith grade of its own.
 """
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 
 from .align import Alignment, align, contains
-from .arabic import key_tokens, normalize, wording_tokens
+from .arabic import display_tokens, key_tokens, normalize, wording_tokens
 from .extractor import Claim, has_categorical_ruling
 from .index import Doc, Hit, HybridIndex
 
@@ -61,16 +61,38 @@ def _quran_candidates(index: HybridIndex, text: str) -> list[Candidate]:
     n_words = len(key_tokens(text))
     out = []
     for h in index.search(text, kind="quran"):
-        out.append(Candidate(h, align(text, h.doc.text, stemmed=False, preserve_negation=True), h.doc))
-        # multi-verse quotes: extend while the claim is longer than the verse
-        for extra in range(1, MAX_EXTRA_VERSES + 1):
-            run = index.verse_run(h.doc, extra)
-            if run is None:
-                break
-            out.append(Candidate(h, align(text, run.text, stemmed=False, preserve_negation=True), run))
-            if len(run.keys) >= n_words:
-                break
+        own = Candidate(h, align(text, h.doc.text, stemmed=False, preserve_negation=True), h.doc)
+        out.append(own)
+        # multi-verse quotes: extend while the claim is longer than the verse,
+        # starting at the hit and, when the claim begins before it (e.g. «الم» + 2:2), one verse earlier
+        starts = [h.doc]
+        prev = index.by_verse.get((h.doc.ref["surah"], h.doc.ref["ayah"] - 1))
+        if prev is not None and own.al.claim_coverage < 1:
+            starts.append(prev)
+        for start in starts:
+            for extra in range(1, MAX_EXTRA_VERSES + 1):
+                run = index.verse_run(start, extra)
+                if run is None:
+                    break
+                out.append(Candidate(h, align(text, run.text, stemmed=False, preserve_negation=True), run))
+                if len(run.keys) >= n_words:
+                    break
     return out
+
+
+BASMALA_WORDS = ["بسم", "الله", "الرحمن", "الرحيم"]
+BASMALA_NOTE = ("البسملة في أول الاقتباس ليست من الآية في ترقيم المصحف (إلا في الفاتحة)، "
+                "فقورن ما بعدها؛ وهي آية في الفاتحة وجزء من الآية 30 من سورة النمل.")
+
+
+def _without_basmala(claim: Claim) -> tuple[Claim, bool]:
+    """«بسم الله الرحمن الرحيم قل هو الله أحد»: compare the verse after the basmala."""
+    if claim.type_hint == "hadith":
+        return claim, False
+    words = display_tokens(claim.text)
+    if len(words) > 4 and wording_tokens(" ".join(words[:4])) == BASMALA_WORDS:
+        return replace(claim, text=" ".join(words[4:])), True
+    return claim, False
 
 
 def _surface(claim: str, doc: Doc) -> bool:
@@ -191,6 +213,7 @@ def judge(index: HybridIndex, claim: Claim, th: Thresholds) -> Judgement:
             notes.append("ورد بعد السؤال جواب بصيغة القطع؛ يُنصح بتعديله إلى الإحالة.")
         return Judgement("REFER", notes=notes)
 
+    claim, basmala_prefix = _without_basmala(claim)
     n_words = len(key_tokens(claim.text))
     q = _best(index, claim.text, "quran")
     h = _best(index, claim.text, "hadith")
@@ -235,6 +258,8 @@ def judge(index: HybridIndex, claim: Claim, th: Thresholds) -> Judgement:
     quran_related = claim.type_hint == "quran" or (j.candidate and j.candidate.doc.kind == "quran")
     if quran_related and j.code in ("ALTERED", "NO_ORIGIN") and not index.stats()["quran_complete"]:
         j.notes.append("تنبيه: الفهرس القرآني الحالي عينة جزئية؛ الحكم مبدئي حتى تحميل النص الكامل.")
+    if basmala_prefix and j.candidate and j.candidate.doc.kind == "quran":
+        j.notes.insert(0, BASMALA_NOTE)
     if th.require_verified_sources and j.candidate and not j.candidate.doc.verified:
         j.notes.append("سجل المصدر لم يُراجع بعد؛ حُوّل الحكم إلى المراجعة.")
         j.code = "NEEDS_REVIEW"

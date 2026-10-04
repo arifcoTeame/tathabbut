@@ -1,0 +1,57 @@
+{
+  "recorded_at": "2026-10-04T23:02:00.474150+03:00",
+  "engine_version": "0.6.1",
+  "environment": {
+    "os": "Linux",
+    "machine": "x86_64",
+    "python": "3.11.15",
+    "note": "Linux container used for the 0.6.0 review; 0.5.1 evidence was recorded on macOS."
+  },
+  "pytest": {
+    "command": "python3 -m pytest -q",
+    "observed_exit_code": 0,
+    "passed": 151,
+    "failed": 0,
+    "duration_seconds": 51.77,
+    "provenance": "Summary of the actual command output observed in this local review; not an independently signed test report."
+  },
+  "release_cases": {
+    "path": "local-safety-v0.6.1-2026-10-04.json",
+    "distinct_inputs": 27,
+    "repetitions": 3,
+    "passed": 81,
+    "total": 81,
+    "latency_ms": {
+      "median": 0,
+      "p95_nearest_rank": 0,
+      "min": 0,
+      "max": 0
+    },
+    "scope": "FastAPI TestClient in process. Includes local routing and validation; excludes network, provider cold start and concurrent traffic. Not a capacity or general accuracy claim."
+  },
+  "sha256": {
+    "backend/app/core/extractor.py": "384586672a9c2c60bb000fb2e7e2e44116fa1666c58f2f6492beb5efea66c2da",
+    "backend/app/core/pipeline.py": "0a3c9be0eb06d36d5cf6cb0aed8f436e2668baf559d50503d38f2d0d1e54032e",
+    "backend/app/core/judge.py": "63f43d5361000b0a2d3acdeb3ae746f9576442f333bd1f668bd7ed72474f9d4e",
+    "backend/scripts/build_index.py": "f069240415179d22b64cc0ac11f94249bf5fe523ac18306f7693a6570cadd82e",
+    "backend/scripts/validate_hadith.py": "6e81b6871cb52ab7dd61c2691c38a61885b3a0253372573658af964521ffc26c",
+    "backend/tests/test_engine.py": "8e784d1c63d9d37697e775946689614fcfe8ff15b73826744ea95da795032d57",
+    "backend/tests/test_personal_referral.py": "eba40d1008a7c67a00e4ea8d6bf6928e9ef1eb28a04b0da0402993d2d8dee642",
+    "backend/scripts/evaluate_release.py": "1be030b593a5f4010662fb474de48240a3470b855a53a93abcfa9e56b7832f00",
+    "data/seed/hadith_seed.json": "8b71df75317d54b01bbe7c16c9f5459d675b8e1c40d32d957039553bba94cbfd",
+    "data/quran/quran_full.json": "5f05c89c7edfd9b9caecd684aa0db459c0ada322bebc75aeaa0bc0594f31b67e",
+    "backend/scripts/compare_quranpedia.py": "f226859c40763303ec5d5d0e5e7e0313eef4f012abf7ea6a4dcc7a7fe6ab1457",
+    "backend/tests/test_compare_quranpedia.py": "f270c764c84d3077941aa28e3125c7ecafddb8f9f4a3ed7a3956e8def0c1141e",
+    "backend/scripts/compare_baseline_search.py": "3e01be26fe5ed82710142fb811863472545cea0497920431be8ebf0e55ee583a",
+    "backend/tests/test_compare_baseline_search.py": "671110e9683274d280eb02f0cd10836934d304216456773fe23bb2f7772a1553",
+    "backend/app/core/arabic.py": "c099cd8ecd4299afe8a29317b7a834bcc15d5b5e1695640d7a8cc85d16298392",
+    "backend/tests/test_quran_reference.py": "c21e09dc1a4413bfa795d65f9cb622d85ba90de5461e2265f0feee39f347eea2"
+  },
+  "baseline_comparison": {
+    "path": "baseline-comparison-v0.6.0.json",
+    "alternative": "exact text search over the same corpus",
+    "claims": 42,
+    "exact_search_sufficient": 17,
+    "tathabbut_matches_expected": 42
+  }
+}

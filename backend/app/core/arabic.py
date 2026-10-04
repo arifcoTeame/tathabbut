@@ -33,10 +33,21 @@ STOPWORDS = {
 }
 
 
+# Orthographic variants between the bundled Tanzil text and the King Fahd
+# (imla'i) text published by Quranpedia. Found by scripts/compare_quranpedia.py:
+# across all 6236 verses these are the only letter-level differences, so the
+# table is exhaustive for that reference. Both spellings are the same word.
+_JOINED = re.compile(r"(?<!\S)([وف]?)بعدما(?!\S)")          # بعدما ≡ بعد ما
+ORTHO_VARIANTS = {"الزنا": "الزنى", "حسرتا": "حسرتى", "ويلتا": "ويلتى"}
+_ORTHO_KEYS = {k.translate(str.maketrans({"ى": "ي"})): v.translate(str.maketrans({"ى": "ي"}))
+               for k, v in ORTHO_VARIANTS.items()}
+
+
 def strip_diacritics(text: str) -> str:
     # Compose hamza/madda first so removing vowel marks cannot erase a letter's
     # hamza merely because the input used its decomposed Unicode spelling.
-    return _DIACRITICS.sub("", unicodedata.normalize("NFC", text))
+    text = _DIACRITICS.sub("", unicodedata.normalize("NFC", text))
+    return _JOINED.sub(r"\1بعد ما", text)
 
 
 def normalize(text: str) -> str:
@@ -66,10 +77,11 @@ def display_tokens(text: str) -> list[str]:
 
 
 def key_tokens(text: str) -> list[str]:
-    return [light_stem(w) for w in normalize(text).split()]
+    return [light_stem(_ORTHO_KEYS.get(w, w)) for w in normalize(text).split()]
 
 
 def wording_tokens(text: str) -> list[str]:
     """Words for checking quotations: ignore vowels, punctuation and the
     wasla sign, but preserve hamza, letters, conjunctions and prepositions."""
-    return [word.replace("ٱ", "ا") for word in display_tokens(text)]
+    words = (word.replace("ٱ", "ا") for word in display_tokens(text))
+    return [ORTHO_VARIANTS.get(word, word) for word in words]

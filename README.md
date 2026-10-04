@@ -4,7 +4,8 @@
 
 - [الموقع المنشور](https://tathabbut.vercel.app)
 - [المستودع](https://github.com/arifcoTeame/tathabbut)
-- إصدار الكود الحالي: **0.6.0**. راجع [حالة التسليم](docs/SUBMISSION_CHECKLIST.md) و[سجل التطوير ونسخة البداية](docs/DEVELOPMENT_LOG.md).
+- إصدار الكود الحالي: **0.6.1**. راجع [حالة التسليم](docs/SUBMISSION_CHECKLIST.md) و[سجل التطوير ونسخة البداية](docs/DEVELOPMENT_LOG.md).
+- نص المصحف قوبل بمصحف حفص في الموسوعة القرآنية (طبعة مجمع الملك فهد): 6230 آية متطابقة و6 فروق إملائية فقط، والآيات الـ6236 بنص الطبعة كلها «موثّق» في المحرك. [التفاصيل](docs/QURAN_REFERENCE_CHECK.md).
 - النطاق الحالي: **6236 آية و72 حديثاً** (12 سجلاً موروثاً + 60 سجلاً روجعت مع الدرر السنية في 3 أكتوبر 2026، انظر `docs/VERIFY_SEED.md`). أي حديث خارج الفهرس يُعرض «لم يُعثر عليه»، وهو ليس حكماً بالوضع.
 
 ## كيف يعمل؟
@@ -50,7 +51,7 @@ cd backend
 
 ```bash
 cd backend
-bash run.sh test                       # 137 اختباراً
+bash run.sh test                       # 151 اختباراً
 .venv/bin/python scripts/evaluate_release.py --in-process --repeat 3 --output ../docs/evidence/local-smoke.json
 .venv/bin/python scripts/compare_baseline_search.py        # مقارنة بالبحث الحرفي على الحالات نفسها
 cd ../frontend
@@ -58,7 +59,7 @@ npm run typecheck
 npm run build
 ```
 
-`evaluate_release.py` مع `--in-process` يشغّل المحرك داخل العملية ويختبر 25 حالة محددة (×3 عند `--repeat 3`) ويحتفظ باستجاباتها؛ ومع `--base-url https://tathabbut.vercel.app --frontend` يختبر النسخة المنشورة. هذه الحالات مختارة لكشف أنماط الفشل، وليست قياساً لدقة عامة على الأحاديث المتداولة.
+`evaluate_release.py` مع `--in-process` يشغّل المحرك داخل العملية ويختبر 27 حالة محددة (×3 عند `--repeat 3`) ويحتفظ باستجاباتها؛ ومع `--base-url https://tathabbut.vercel.app --frontend` يختبر النسخة المنشورة. هذه الحالات مختارة لكشف أنماط الفشل، وليست قياساً لدقة عامة على الأحاديث المتداولة.
 
 لمقابلة النص القرآني بحزمة الموسوعة القرآنية الرسمية: `scripts/compare_quranpedia.py` (انظر [QURAN_REFERENCE_CHECK](docs/QURAN_REFERENCE_CHECK.md)). لفحص جاهزية حزمة التسليم: `python3 scripts/check_submission.py` من جذر المستودع.
 

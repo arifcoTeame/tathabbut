@@ -3,7 +3,7 @@
   "project": {
     "name_ar": "تثبّت",
     "name_en": "Tathabbut",
-    "release": "0.6.0",
+    "release": "0.6.1",
     "prepared_on": "2026-10-03",
     "timezone": "Asia/Riyadh",
     "phase": "pre_challenge_preparation",
@@ -58,7 +58,7 @@
         "evidence": [
           "docs/VALIDATION.md",
           "docs/RETRIEVAL_EVALUATION.md",
-          "docs/evidence/backend-validation-v0.6.0-2026-10-04.json"
+          "docs/evidence/backend-validation-v0.6.1-2026-10-04.json"
         ]
       },
       {
@@ -69,7 +69,7 @@
           "SOURCES.md",
           "docs/QURAN_REFERENCE_CHECK.md",
           "docs/VERIFY_SEED.md",
-          "docs/evidence/local-safety-v0.6.0-2026-10-04.json"
+          "docs/evidence/local-safety-v0.6.1-2026-10-04.json"
         ]
       },
       {
@@ -130,8 +130,8 @@
       "label_ar": "اختبارات السلامة المحلية",
       "status": "local_verified",
       "evidence": [
-        "docs/evidence/backend-validation-v0.6.0-2026-10-04.json",
-        "docs/evidence/local-safety-v0.6.0-2026-10-04.json"
+        "docs/evidence/backend-validation-v0.6.1-2026-10-04.json",
+        "docs/evidence/local-safety-v0.6.1-2026-10-04.json"
       ],
       "note": "137 اختباراً و25 حالة مستهدفة مكررة ثلاث مرات. نجاح هذه الحالات لا يعني دقة عامة 100%."
     },
@@ -210,12 +210,14 @@
     {
       "id": "quran_reference_comparison",
       "label_ar": "المقابلة المستقلة بالمصدر القرآني الوارد في المرجعية",
-      "status": "external_review_pending",
+      "status": "local_verified",
       "evidence": [
         "docs/QURAN_REFERENCE_CHECK.md",
-        "SOURCES.md"
+        "docs/evidence/quranpedia-compare-2026-10-04.json",
+        "docs/evidence/kingfahd-text-verification-2026-10-04.json"
       ],
-      "note": "تعذر تنزيل مصحف حفص الرسمي بسبب HTTP 403؛ لا توجد مقابلة كاملة موثقة بعد."
+      "note": "تعذر تنزيل مصحف حفص الرسمي بسبب HTTP 403؛ لا توجد مقابلة كاملة موثقة بعد.",
+      "note_ar": "قوبلت الآيات الـ6236 بمصحف حفص في الموسوعة القرآنية (إصدار 2026-10-04، موافق لطبعة مجمع الملك فهد): 6230 متطابقة حرفياً و6 فروق إملائية؛ وأدخلت الآيات الـ6236 بنص الموسوعة إلى المحرك فكانت كلها «موثّق»."
     },
     {
       "id": "hadith_reuse_and_expansion",
@@ -254,14 +256,14 @@
     "command": "python3 scripts/check_submission.py",
     "output": "docs/evidence/submission-check-v0.6.0.json",
     "saved_test_expectations": {
-      "pytest_passed": 137,
-      "release_distinct_inputs": 25,
+      "pytest_passed": 151,
+      "release_distinct_inputs": 27,
       "release_repetitions": 3,
-      "release_total": 75
+      "release_total": 81
     },
     "evidence": [
-      "docs/evidence/backend-validation-v0.6.0-2026-10-04.json",
-      "docs/evidence/local-safety-v0.6.0-2026-10-04.json"
+      "docs/evidence/backend-validation-v0.6.1-2026-10-04.json",
+      "docs/evidence/local-safety-v0.6.1-2026-10-04.json"
     ],
     "readiness_rule": "Local checks may pass while owner handoff or external review remains pending. The checker does not assign a judging score or certify final compliance."
   }

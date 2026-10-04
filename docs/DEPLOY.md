@@ -19,12 +19,12 @@ Vercel: مجلد المشروع `frontend`، ومتغير `TATHABBUT_API_URL=htt
 1. افحص التغييرات، وشغّل اختبارات الخلفية وفحص الأنواع وبناء الواجهة.
 2. احفظ commit بتاريخ العمل الفعلي، وادفعه إلى الفرع المرتبط بالنشر دون force push.
 3. تحقق من اكتمال النشر في المنصتين. رفع GitHub وحده لا يثبت نشر الخلفية.
-4. افحص `/health`: يجب أن يكون `engine_version` مساويًا `0.6.0` لهذا الإصدار.
-5. افحص `/api/stats` في الواجهة، ثم أعد تشغيل الحالات الـ25 عبر الواجهة المنشورة (كل حالة ثلاث مرات):
+4. افحص `/health`: يجب أن يكون `engine_version` مساويًا `0.6.1` لهذا الإصدار.
+5. افحص `/api/stats` في الواجهة، ثم أعد تشغيل الحالات الـ27 عبر الواجهة المنشورة (كل حالة ثلاث مرات):
 
 ```bash
 cd backend
-.venv/bin/python scripts/evaluate_release.py --base-url https://tathabbut.vercel.app --frontend --repeat 3 --output ../docs/evidence/live-after-v0.6.0.json
+.venv/bin/python scripts/evaluate_release.py --base-url https://tathabbut.vercel.app --frontend --repeat 3 --output ../docs/evidence/live-after-v0.6.1.json
 ```
 
 6. جرّب المتصفح: أمثلة متعددة، نص مختلف أثناء طلب، مسح، انقطاع، شاشة صغيرة، وروابط المصادر.

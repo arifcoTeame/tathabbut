@@ -18,6 +18,7 @@ Nothing in the project data is modified.
 from __future__ import annotations
 
 import argparse
+import difflib
 import gzip
 import hashlib
 import json
@@ -27,6 +28,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 BUNDLED = ROOT / "data" / "quran" / "quran_full.json"
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from build_index import verse_text  # noqa: E402  (basmala separated as in the index)
 
 DIACRITICS = re.compile(r"[ؐ-ًؚ-ٰٟۖ-ۭـ]")
 SURAH_KEYS = ("surah", "sura", "sura_id", "surah_id", "surah_number", "chapter", "SoraNum", "sora")
@@ -34,7 +37,11 @@ AYAH_KEYS = ("ayah", "aya", "aya_id", "ayah_id", "ayah_number", "verse", "AyaNum
 TEXT_KEYS = ("text", "aya_text", "ayah_text", "verse_text", "AyaText", "simple", "text_simple", "content")
 
 
+INVISIBLE = re.compile("[\ufeff\u200b-\u200f\u2060\u00ad]")  # BOM, zero-width and direction marks
+
+
 def normalize(text: str) -> str:
+    text = INVISIBLE.sub("", text)
     text = DIACRITICS.sub("", text)
     text = re.sub("[آأإٱ]", "ا", text)  # alef variants -> alef
     text = text.replace("ة", "ه").replace("ى", "ي")  # ta marbuta / alef maqsura
@@ -94,11 +101,15 @@ def compare(bundled: list[dict], reference: dict[tuple[int, int], str]) -> dict:
         if key not in reference:
             missing.append({"surah": key[0], "ayah": key[1]})
             continue
-        a, b = normalize(rec["text"]), normalize(reference[key])
+        a, b = normalize(verse_text(rec)), normalize(reference[key])
         if a == b:
             matched += 1
         else:
-            diffs.append({"surah": key[0], "ayah": key[1], "bundled": rec["text"], "reference": reference[key]})
+            wa, wb = a.split(), b.split()
+            ops = difflib.SequenceMatcher(None, wa, wb).get_opcodes()
+            words = [{"op": op, "bundled": " ".join(wa[i1:i2]), "reference": " ".join(wb[j1:j2])}
+                     for op, i1, i2, j1, j2 in ops if op != "equal"]
+            diffs.append({"surah": key[0], "ayah": key[1], "words": words})
     extra = [{"surah": s, "ayah": a} for (s, a) in sorted(set(reference) - {(r["surah"], r["ayah"]) for r in bundled})]
     return {
         "bundled_verses": len(bundled),
@@ -122,14 +133,19 @@ def main(argv=None) -> int:
         print(f"SHA-256 mismatch: file={digest} expected={args.expected_sha256}", file=sys.stderr)
         return 2
 
-    reference = extract_verses(load_any(args.dump))
+    dump = load_any(args.dump)
+    reference = extract_verses(dump)
     if not reference:
         print("No verse records recognised in the dump; inspect its schema and extend the key lists.", file=sys.stderr)
         return 3
 
     bundled = json.loads(BUNDLED.read_text(encoding="utf-8"))["records"]
-    report = {"dump": str(args.dump), "dump_sha256": digest, **compare(bundled, reference)}
-    summary = {k: (len(v) if isinstance(v, list) else v) for k, v in report.items() if k != "dump"}
+    lic = dump.get("license", {}) if isinstance(dump, dict) else {}
+    report = {"reference": "Quranpedia.net — Hafs mushaf (King Fahd Complex print), https://quranpedia.net/dumps",
+              "reference_version": lic.get("version"), "dump_file": args.dump.name, "dump_sha256": digest,
+              "note": "Only verse locations and differing words are kept; the reference text itself is not redistributed.",
+              **compare(bundled, reference)}
+    summary = {k: (len(v) if isinstance(v, list) else v) for k, v in report.items() if k not in ("note", "reference")}
     print(json.dumps(summary, ensure_ascii=False, indent=2))
     if args.output:
         args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")

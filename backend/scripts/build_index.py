@@ -32,6 +32,20 @@ def full_quran_path() -> Path | None:
     return next((p for p in FULL_QURAN_CANDIDATES if p.exists()), None)
 
 
+BASMALA = "بسم الله الرحمن الرحيم"
+
+
+def verse_text(record: dict) -> str:
+    """The Tanzil file prepends the basmala to verse 1 of every surah except
+    al-Fatiha (where it is verse 1) and at-Tawba (which has none). In the
+    Madani mushaf numbering it is not part of that verse, so it is separated
+    here for indexing and display; the bundled file itself stays verbatim."""
+    text = record["text"]
+    if record["ayah"] == 1 and record["surah"] != 1 and text.startswith(BASMALA + " "):
+        return text[len(BASMALA) + 1:]
+    return text
+
+
 def load_quran(prefer_full: bool = True) -> tuple[list[Doc], str]:
     full = full_quran_path()
     use_full = prefer_full and full is not None
@@ -41,7 +55,7 @@ def load_quran(prefer_full: bool = True) -> tuple[list[Doc], str]:
         Doc(
             id=f"quran-{r['surah']}:{r['ayah']}",
             kind="quran",
-            text=r["text"],
+            text=verse_text(r),
             ref={"surah": r["surah"], "ayah": r["ayah"], "surah_name": surah_name(r["surah"])},
             verified=verified,
         )

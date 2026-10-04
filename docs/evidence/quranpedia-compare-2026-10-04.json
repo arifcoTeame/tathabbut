@@ -1,0 +1,80 @@
+{
+  "reference": "Quranpedia.net — Hafs mushaf (King Fahd Complex print), https://quranpedia.net/dumps",
+  "reference_version": "2026-10-04",
+  "dump_file": "mushafs-1.json",
+  "dump_sha256": "c492bc7b23affd6a268d76e09f445c4cbb68cac9fc72e4381cf35b5a6091c17c",
+  "note": "Only verse locations and differing words are kept; the reference text itself is not redistributed.",
+  "bundled_verses": 6236,
+  "reference_verses": 6236,
+  "matched_after_normalization": 6230,
+  "differences": [
+    {
+      "surah": 2,
+      "ayah": 181,
+      "words": [
+        {
+          "op": "replace",
+          "bundled": "بعد ما",
+          "reference": "بعدما"
+        }
+      ]
+    },
+    {
+      "surah": 5,
+      "ayah": 31,
+      "words": [
+        {
+          "op": "replace",
+          "bundled": "ويلتي",
+          "reference": "ويلتا"
+        }
+      ]
+    },
+    {
+      "surah": 8,
+      "ayah": 6,
+      "words": [
+        {
+          "op": "replace",
+          "bundled": "بعد ما",
+          "reference": "بعدما"
+        }
+      ]
+    },
+    {
+      "surah": 13,
+      "ayah": 37,
+      "words": [
+        {
+          "op": "replace",
+          "bundled": "بعد ما",
+          "reference": "بعدما"
+        }
+      ]
+    },
+    {
+      "surah": 17,
+      "ayah": 32,
+      "words": [
+        {
+          "op": "replace",
+          "bundled": "الزني",
+          "reference": "الزنا"
+        }
+      ]
+    },
+    {
+      "surah": 39,
+      "ayah": 56,
+      "words": [
+        {
+          "op": "replace",
+          "bundled": "حسرتي",
+          "reference": "حسرتا"
+        }
+      ]
+    }
+  ],
+  "missing_in_reference": [],
+  "extra_in_reference": []
+}

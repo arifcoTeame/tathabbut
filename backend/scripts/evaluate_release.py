@@ -18,6 +18,8 @@ CASES = [
     ("quran_missing_particle", "﴿إياك نعبد إياك نستعين﴾", ["ALTERED"]),
     ("quran_merged_quote", "﴿ومن يتوكل على الله فهو حسبه ونعم الوكيل﴾", ["ALTERED"]),
     ("quran_changed_word", "﴿لا يكلف الله نفسا إلا طاقتها﴾", ["ALTERED"]),
+    ("quran_king_fahd_spelling", "﴿ولا تقربوا الزنا إنه كان فاحشة وساء سبيلا﴾", ["VERIFIED"]),
+    ("quran_basmala_prefix", "﴿بسم الله الرحمن الرحيم قل هو الله أحد﴾", ["VERIFIED"]),
     ("hadith_authentic", "قال رسول الله ﷺ: «الدين النصيحة»", ["VERIFIED"]),
     ("hadith_recorded_weak", "قال رسول الله ﷺ: «حب الوطن من الإيمان»", ["NOT_AUTHENTIC"]),
     ("hadith_negation_removed", "قال رسول الله ﷺ: «يؤمن أحدكم حتى يحب لأخيه ما يحب لنفسه»", ["NEEDS_REVIEW"]),
