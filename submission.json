@@ -189,12 +189,13 @@
     {
       "id": "video_upload",
       "label_ar": "تسجيل ورفع فيديو لا يتجاوز دقيقتين",
-      "status": "owner_handoff",
+      "status": "local_verified",
       "evidence": [
-        "docs/VIDEO_SCRIPT.md",
-        "docs/SUBMISSION_CHECKLIST.md"
+        "docs/SUBMISSION_FORM.md",
+        "docs/DEVELOPMENT_LOG.md"
       ],
-      "note": "يتولى صاحب المشروع الفيديو ورفعه. السيناريو دليل تجهيز ولا يمثل ملف فيديو مسلماً."
+      "note": "يتولى صاحب المشروع الفيديو ورفعه. السيناريو دليل تجهيز ولا يمثل ملف فيديو مسلماً.",
+      "note_ar": "https://www.youtube.com/watch?v=TnObDSHEl4M — غير مُدرج، 1:42، فُحص في 4 أكتوبر 22:10."
     },
     {
       "id": "final_presentation_and_portal",

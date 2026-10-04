@@ -19,7 +19,7 @@
 الملف: `تثبت - العرض الرسمي.pptx` (3.8 MB، 12 شريحة على القالب الرسمي)
 
 ## رابط فيديو توضيحي لا يتجاوز دقيقتين
-YouTube — غير مُدرج: (يُلصق بعد الرفع)
+https://www.youtube.com/watch?v=TnObDSHEl4M  (YouTube، غير مُدرج، 1:42؛ فُحص من متصفح آخر في 4 أكتوبر 22:10)
 
 ## الكود المصدري مستودع GitHub
 https://github.com/arifcoTeame/tathabbut

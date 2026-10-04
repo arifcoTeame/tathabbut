@@ -1,7 +1,7 @@
 {
-  "checked_at": "2026-10-04T21:27:01.794997+03:00",
+  "checked_at": "2026-10-04T22:08:37.398005+03:00",
   "release": "0.6.0",
-  "manifest_sha256": "53680d50e357750a3016b54d3436ea524c1f0505289a733db186c2f75c86d775",
+  "manifest_sha256": "df6409472bec6f96ac64591601f0382f3c8546bba47c4fd7d52ddee4aca73a64",
   "scope": "Local consistency gate for saved evidence; no official score or final compliance certification",
   "network_used": false,
   "local_checks_passed": true,
@@ -9,16 +9,11 @@
   "local_checks_passed_count": 8,
   "overall_ready": false,
   "status_counts": {
-    "local_verified": 6,
-    "owner_handoff": 2,
+    "local_verified": 7,
+    "owner_handoff": 1,
     "external_review_pending": 3
   },
   "pending_requirements": [
-    {
-      "id": "video_upload",
-      "label_ar": "تسجيل ورفع فيديو لا يتجاوز دقيقتين",
-      "status": "owner_handoff"
-    },
     {
       "id": "final_presentation_and_portal",
       "label_ar": "اعتماد العرض الرسمي والتسليم عبر البوابة",
@@ -54,7 +49,7 @@
       "id": "references",
       "passed": true,
       "details": {
-        "existing_nonempty_references": 31,
+        "existing_nonempty_references": 32,
         "meaning": "File existence, not approval of its substantive claims"
       }
     },
@@ -108,7 +103,7 @@
       "id": "public_git_inventory",
       "passed": true,
       "details": {
-        "candidate_files": 120,
+        "candidate_files": 121,
         "risky_filename_count": 0,
         "file_contents_scanned": false,
         "secret_file_contents_read": false,
