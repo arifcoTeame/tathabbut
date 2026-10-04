@@ -25,6 +25,8 @@ export interface SourceRef {
   ayah_end?: number;
   surah_name?: string;
   narrator?: string;
+  /** full wording of the cited entry in the source (hadith) when the record is a popular fragment */
+  context?: string;
 }
 
 export interface Source {

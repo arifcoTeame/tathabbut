@@ -9,7 +9,7 @@ function SourceLine({ claim }: { claim: Claim }) {
       {s.kind === "quran" ? <span>{verseLabel(s.ref)}</span> : s.ref.narrator ? <span>الراوي: {s.ref.narrator}</span> : null}
       {s.url && (
         <a href={s.url} target="_blank" rel="noopener noreferrer">
-          {s.kind === "quran" ? "عرض الآية في المصدر" : "التحقق في الدرر السنية"} ↗
+          {s.kind === "quran" ? "عرض الآية في مشروع تنزيل (Tanzil)" : "التحقق في الدرر السنية"} ↗
         </a>
       )}
       {!s.verified && <span className="tag warn">سجل تجريبي لم يُراجع بعد</span>}
@@ -22,11 +22,12 @@ export default function ClaimCard({ claim }: { claim: Claim }) {
   const src = claim.source;
   const showDiff = claim.diff.length > 0 && claim.diff.some((d) => d.op !== "equal");
   const misattributed = claim.type_hint === "hadith" && src?.kind === "quran";
+  const hadithReview = src?.kind === "hadith" && claim.verdict.code === "NEEDS_REVIEW";
 
   return (
     <article className="card" aria-labelledby={`claim-${claim.id}`}>
       <div className={`badge tone-${meta.tone}`}>
-        {claim.verdict.label_ar}
+        {claim.verdict.code === "NO_ORIGIN" ? meta.label : claim.verdict.label_ar}
         <small>{meta.hint}</small>
         {misattributed && <span className="flag">⚠ النص آية لا حديث</span>}
       </div>
@@ -38,6 +39,22 @@ export default function ClaimCard({ claim }: { claim: Claim }) {
         </div>
         <p className="c-claim" id={`claim-${claim.id}`}>«{claim.text}»</p>
 
+        {claim.verdict.code === "NO_ORIGIN" && (
+          <p className="coverage-note">
+            {claim.type_hint === "quran"
+              ? "لم نجد نصاً مطابقاً في الفهرس القرآني الحالي. راجع النص ونسبته إلى المصحف."
+              : "لم نجد مطابقة في المجموعة المفهرسة. هذه النتيجة لا تثبت أن الحديث لا أصل له، ولا تحكم بصحته أو ضعفه."}
+            {(claim.type_hint === "hadith" || claim.type_hint === "unknown") && (
+              <>
+                {" "}
+                <a href={`https://dorar.net/hadith/search?q=${encodeURIComponent(claim.text)}`} target="_blank" rel="noopener noreferrer">
+                  البحث في الدرر السنية ↗
+                </a>
+              </>
+            )}
+          </p>
+        )}
+
         {src && (
           <>
             <blockquote className="quote">
@@ -45,26 +62,37 @@ export default function ClaimCard({ claim }: { claim: Claim }) {
                 {src.kind === "quran" ? "النص المعتمد من المصحف — منسوخ من الفهرس" : "النص كما هو مسجّل في المصدر"}
               </span>
               {src.kind === "quran" ? `﴿${src.text}﴾` : src.text}
+              {src.kind === "hadith" && src.ref.context && src.ref.context !== src.text && (
+                <span className="ctx">
+                  <span className="lbl">الموضع كاملاً كما تعرضه الدرر السنية</span>
+                  {src.ref.context}
+                </span>
+              )}
             </blockquote>
             <SourceLine claim={claim} />
           </>
         )}
 
         {claim.grades.length > 0 && (
-          <ul className="grades" aria-label="أحكام المحدّثين كما هي مسجّلة في المصدر">
-            {claim.grades.map((g, i) => (
-              <li key={i}>
-                <b>{g.grade}</b> — {g.muhaddith}، {g.source} ({g.ref})
-                {g.note && <span className="tag">{g.note}</span>}
-              </li>
-            ))}
-          </ul>
+          <>
+            {hadithReview && (
+              <p className="coverage-note">الدرجات التالية تخص نص المصدر؛ لا تُنقل إلى النص المدخل قبل مراجعة الفروق.</p>
+            )}
+            <ul className="grades" aria-label="أحكام المحدّثين لنص المصدر">
+              {claim.grades.map((g, i) => (
+                <li key={i}>
+                  <b>{g.grade}</b> — {g.muhaddith}، {g.source} ({g.ref})
+                  {g.note && <span className="tag">{g.note}</span>}
+                </li>
+              ))}
+            </ul>
+          </>
         )}
 
         {showDiff && (
           <div style={{ marginTop: 8 }}>
             <div className="c-head">الفروق كلمة بكلمة</div>
-            <DiffView ops={claim.diff} />
+            <DiffView ops={claim.diff} sourceKind={src?.kind} />
           </div>
         )}
 
@@ -103,7 +131,7 @@ export default function ClaimCard({ claim }: { claim: Claim }) {
 
         {claim.explanation && (
           <div className="gen">
-            <span className="tag">شرح مولَّد</span>
+            <span className="tag">{claim.explanation.kind === "template" ? "توضيح آلي" : "شرح مولَّد"}</span>
             {claim.explanation.text}
           </div>
         )}
