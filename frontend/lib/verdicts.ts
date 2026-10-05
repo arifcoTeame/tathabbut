@@ -11,13 +11,13 @@ export const VERDICT_ORDER: VerdictCode[] = [
 ];
 
 export const VERDICT_META: Record<VerdictCode, { label: string; hint: string; tone: string }> = {
-  VERIFIED: { label: "موثّق", hint: "مطابق للمصدر المعتمد", tone: "verified" },
-  NOT_AUTHENTIC: { label: "لا يصح", hint: "بدرجة منقولة عن المحدّثين", tone: "weak" },
-  ALTERED: { label: "مُحرَّف", hint: "يختلف عن نص المصحف", tone: "altered" },
-  NO_ORIGIN: { label: "لم يُعثر عليه", hint: "ضمن قاعدة البيانات الحالية · يتطلب تحققاً", tone: "noorigin" },
-  DISPUTED: { label: "خلافي", hint: "لا يُعرض بصيغة القطع", tone: "disputed" },
-  REFER: { label: "إحالة", hint: "حالة شخصية · المستوى (د)", tone: "refer" },
-  NEEDS_REVIEW: { label: "يتطلب مزيد تحقق", hint: "مطابقة غير كافية للحكم", tone: "review" },
+  VERIFIED: { label: "مطابق للمصدر", hint: "آية مطابقة أو حديث صحيح/حسن بحسب الدرر السنية", tone: "verified" },
+  NOT_AUTHENTIC: { label: "ضعيف أو موضوع", hint: "بحسب حكم الدرر السنية", tone: "weak" },
+  ALTERED: { label: "يختلف عن النص القرآني", hint: "النص المعتمد في Quranpedia", tone: "altered" },
+  NO_ORIGIN: { label: "لم يُعثر عليه", hint: "ضمن قاعدة الأحاديث الحالية في المنصة · لا يعني الحكم بالصحة أو الضعف", tone: "noorigin" },
+  DISPUTED: { label: "حكم مختلف فيه", hint: "بحسب الدرر السنية", tone: "disputed" },
+  REFER: { label: "إحالة إلى مختص", hint: "حالة شخصية", tone: "refer" },
+  NEEDS_REVIEW: { label: "يحتاج إلى تحقق إضافي", hint: "نتيجة مشابهة وليست مطابقة", tone: "review" },
 };
 
 export const TYPE_LABEL: Record<Claim["type_hint"], string> = {

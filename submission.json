@@ -3,7 +3,7 @@
   "project": {
     "name_ar": "تثبّت",
     "name_en": "Tathabbut",
-    "release": "0.7.1",
+    "release": "0.8.0",
     "prepared_on": "2026-10-03",
     "timezone": "Asia/Riyadh",
     "phase": "pre_challenge_preparation",
@@ -58,8 +58,8 @@
         "evidence": [
           "docs/VALIDATION.md",
           "docs/RETRIEVAL_EVALUATION.md",
-          "docs/evidence/backend-validation-v0.7.1-2026-10-05.json",
-          "docs/evidence/retrieval-typos-v0.7.1-2026-10-05.json"
+          "docs/evidence/backend-validation-v0.8.0-2026-10-06.json",
+          "docs/evidence/retrieval-typos-v0.8.0-2026-10-06.json"
         ]
       },
       {
@@ -70,8 +70,8 @@
           "SOURCES.md",
           "docs/QURAN_REFERENCE_CHECK.md",
           "docs/VERIFY_SEED.md",
-          "docs/evidence/local-safety-v0.7.1-2026-10-05.json",
-          "docs/evidence/quran-variants-v0.7.1-2026-10-05.json"
+          "docs/evidence/local-safety-v0.8.0-2026-10-06.json",
+          "docs/evidence/quran-variants-v0.8.0-2026-10-06.json"
         ]
       },
       {
@@ -132,10 +132,10 @@
       "label_ar": "اختبارات السلامة المحلية",
       "status": "local_verified",
       "evidence": [
-        "docs/evidence/backend-validation-v0.7.1-2026-10-05.json",
-        "docs/evidence/local-safety-v0.7.1-2026-10-05.json"
+        "docs/evidence/backend-validation-v0.8.0-2026-10-06.json",
+        "docs/evidence/local-safety-v0.8.0-2026-10-06.json"
       ],
-      "note": "181 اختباراً و35 حالة مستهدفة مكررة ثلاث مرات (105/105). نجاح هذه الحالات لا يعني دقة عامة 100%."
+      "note": "191 اختباراً و37 حالة مستهدفة مكررة ثلاث مرات (111/111). نجاح هذه الحالات لا يعني دقة عامة 100%."
     },
     {
       "id": "reproducible_retrieval_comparison",
@@ -147,7 +147,7 @@
         "docs/evidence/retrieval-evaluation-2026-10-03.json",
         "docs/evidence/retrieval-evaluation-repeat-2026-10-03.json",
         "docs/evidence/retrieval-reproducibility-2026-10-03.json",
-        "docs/evidence/retrieval-typos-v0.7.1-2026-10-05.json"
+        "docs/evidence/retrieval-typos-v0.8.0-2026-10-06.json"
       ],
       "note": "بروتوكول v1 (814 استعلاماً) قياس تاريخي لم يثبت فيه تفوق الهجين على BM25. قياس 0.7.0: 1000 آية بأخطاء إملائية مصطنعة ببذرة ثابتة، يقارن BM25 وTF-IDF/SVD والدمج والمحرك كاملاً؛ النتائج كما هي في الملف."
     },
@@ -219,7 +219,7 @@
         "docs/QURAN_REFERENCE_CHECK.md",
         "docs/evidence/quranpedia-compare-2026-10-04.json",
         "docs/evidence/kingfahd-text-verification-2026-10-04.json",
-        "docs/evidence/quran-variants-v0.7.1-2026-10-05.json"
+        "docs/evidence/quran-variants-v0.8.0-2026-10-06.json"
       ],
       "note": "اعتمد الإصدار 0.7.0 نص مصحف حفص من الموسوعة القرآنية (طبعة مجمع الملك فهد، إصدار 2026-10-04) مصدراً للنص المعروض والمطابقة. أُدخلت الآيات الـ6236 بنص المجمع وبنص Tanzil بين ﴿﴾ فكانت كلها «موثّق»، وأُدخلت بلا تشكيل ولا همزات ولا أقواس فتعرّف المحرك على كل آية من 3 كلمات فأكثر.",
       "note_ar": "اعتمد الإصدار 0.7.0 نص مصحف حفص من الموسوعة القرآنية (طبعة مجمع الملك فهد، إصدار 2026-10-04) مصدراً للنص المعروض والمطابقة. أُدخلت الآيات الـ6236 بنص المجمع وبنص Tanzil بين ﴿﴾ فكانت كلها «موثّق»، وأُدخلت بلا تشكيل ولا همزات ولا أقواس فتعرّف المحرك على كل آية من 3 كلمات فأكثر."
@@ -248,27 +248,27 @@
     {
       "id": "live_release_verification",
       "label_ar": "التحقق من الإصدار المنشور بعد الرفع",
-      "status": "local_verified",
+      "status": "owner_handoff",
       "evidence": [
         "docs/evidence/live-after-v0.7.1-2026-10-05.json",
         "docs/VALIDATION.md"
       ],
-      "note": "105/105 and a 114-surah sample 302/302 on https://tathabbut.vercel.app, 2026-10-05 20:47–20:53, engine 0.7.1 (commit df95258).",
-      "note_ar": "105/105، وعينة السور الـ114 302/302، على https://tathabbut.vercel.app في 5 أكتوبر 20:53؛ المحرك 0.7.1."
+      "note": "Live 0.7.1: 105/105 and 302/302; 0.8.0 live check after deployment.",
+      "note_ar": "آخر دليل حي: 0.7.1 (105/105 و302/302). اختبار 0.8.0 الحي بعد النشر."
     }
   ],
   "local_checks": {
     "command": "python3 scripts/check_submission.py",
-    "output": "docs/evidence/submission-check-v0.7.1.json",
+    "output": "docs/evidence/submission-check-v0.8.0.json",
     "saved_test_expectations": {
-      "pytest_passed": 181,
-      "release_distinct_inputs": 35,
+      "pytest_passed": 191,
+      "release_distinct_inputs": 37,
       "release_repetitions": 3,
-      "release_total": 105
+      "release_total": 111
     },
     "evidence": [
-      "docs/evidence/backend-validation-v0.7.1-2026-10-05.json",
-      "docs/evidence/local-safety-v0.7.1-2026-10-05.json"
+      "docs/evidence/backend-validation-v0.8.0-2026-10-06.json",
+      "docs/evidence/local-safety-v0.8.0-2026-10-06.json"
     ],
     "readiness_rule": "Local checks may pass while owner handoff or external review remains pending. The checker does not assign a judging score or certify final compliance."
   }

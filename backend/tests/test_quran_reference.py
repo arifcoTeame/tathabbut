@@ -153,3 +153,14 @@ def test_quranpedia_link_opens_the_verse_itself(full_index):
     claim = pipeline.run(full_index, "قال أنا أحيي وأميت", Thresholds(), settings.quran_link)["claims"][0]
     assert claim["source"]["id"] == "quran-2:258"
     assert claim["source"]["url"] == "https://quranpedia.net/surah/1/2?ayah_id=265"
+
+
+# Owner check, 21:07: «قال انا احي» showed الحجر 52 while «قال انا احي واميت» showed
+# البقرة 258. The same words, with or without the last one, should lead to the same verse,
+# and the other verses that share the words are listed.
+@pytest.mark.parametrize("text", ["قال انا احي", "قال انا احي واميت"])
+def test_misspelled_excerpt_finds_the_same_verse_and_lists_others(full_index, text):
+    c = pipeline.run(full_index, text, Thresholds(), "{surah}")["claims"][0]
+    assert c["verdict"]["code"] == "NEEDS_REVIEW"          # «احي» is not the mushaf's «أحيي»
+    assert c["source"]["id"] == "quran-2:258"
+    assert "quran-15:52" in [a["id"] for a in c["alternatives"]]

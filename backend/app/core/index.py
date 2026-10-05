@@ -10,6 +10,7 @@ Ties are broken by document order (earliest verse first), so results are determi
 from __future__ import annotations
 
 import json
+from difflib import SequenceMatcher
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
 
@@ -52,6 +53,13 @@ class Hit:
     fused: float
     bm25_rank: int | None
     dense_rank: int | None
+
+
+def _close(a: str, b: str) -> bool:
+    """Two words differing by a small spelling slip (a dropped, added or changed letter)."""
+    if min(len(a), len(b)) < 2:
+        return False
+    return SequenceMatcher(None, a, b, autojunk=False).ratio() >= 0.75
 
 
 class HybridIndex:
@@ -178,18 +186,40 @@ class HybridIndex:
         found = sorted(set(found), key=lambda i: (len(self._keys[i]), i))
         return found[:limit]
 
+    def near_phrase_matches(self, keys: list[str], mask: np.ndarray, limit: int) -> list[int]:
+        """Records containing ``keys`` contiguously with one word (two for 6+ words) misspelled:
+        the misspelled word must still be close in spelling («احي» ~ «احيي»)."""
+        n = len(keys)
+        if n < 3:
+            return []
+        allowed = 1 if n < 6 else 2
+        found: set[int] = set()
+        for anchor in range(min(2, n)):              # a typo may be in the first word
+            for doc_i, pos in self._positions.get(keys[anchor], ()):
+                start = pos - anchor
+                window = self._keys[doc_i][start : start + n] if start >= 0 else []
+                if not mask[doc_i] or len(window) != n:
+                    continue
+                misses = [(a, b) for a, b in zip(keys, window) if a != b]
+                if 0 < len(misses) <= allowed and all(_close(a, b) for a, b in misses):
+                    found.add(doc_i)
+        return sorted(found, key=lambda i: (len(self._keys[i]), i))[:limit]
+
     def _with_phrase_matches(self, top: list[tuple[int, float]], keys: list[str], mask: np.ndarray, k: int):
         """Keep the fused ranking, but make sure records that contain the quotation
-        word for word are among the candidates passed to the word alignment."""
+        word for word (or with one misspelled word) are among the candidates passed
+        to the word alignment."""
         exact = self.phrase_matches(keys, mask, k)
+        exact += [i for i in self.near_phrase_matches(keys, mask, k) if i not in exact]
+        exact = exact[:k]
         present = {i for i, _ in top}
         missing = [i for i in exact if i not in present]
         if not missing:
             return top
-        keep = [kv for kv in top if kv[0] in exact] + [kv for kv in top if kv[0] not in exact]
-        keep = keep[: max(0, k - len(missing))]
+        # Added after the ranked candidates, never in place of them: the same words typed
+        # with or without a slip should be compared with the same verses.
         floor = min((score for _, score in top), default=0.0)
-        return keep + [(i, floor) for i in missing]
+        return top + [(i, floor) for i in missing]
 
     def search(self, text: str, kind: str | None = None, k: int = 8) -> list[Hit]:
         if kind is None:

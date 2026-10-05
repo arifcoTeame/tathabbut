@@ -15,9 +15,9 @@ from .index import Doc, Hit, HybridIndex
 
 VERDICTS = {
     "VERIFIED": "موثّق",
-    "NOT_AUTHENTIC": "لا يصح",
-    "ALTERED": "مُحرَّف",
-    "NO_ORIGIN": "لم يُعثر عليه ضمن قاعدة البيانات الحالية",
+    "NOT_AUTHENTIC": "ضعيف أو موضوع بحسب الدرر السنية",
+    "ALTERED": "يختلف عن النص القرآني المعتمد",
+    "NO_ORIGIN": "لم يُعثر على تطابق مطابق",
     "DISPUTED": "خلافي",
     "REFER": "إحالة",
     "NEEDS_REVIEW": "يتطلب مزيد تحقق",
@@ -131,10 +131,15 @@ def _best(index: HybridIndex, text: str, kind: str) -> Candidate | None:
         cands = _quran_candidates(index, text)
         if not cands:
             return None
-        head = lambda c: (round(c.al.claim_coverage, 3), round(c.al.span_coverage, 3), _surface(text, c.doc))
+        # Most words found in order first. Among verses with the same share, prefer the one whose
+        # differing word is spelled most like the claim's («احي» ~ «أحيي» in 2:258 rather than
+        # 15:52, which only shares «قال إنا»), then the tighter span.
+        head = lambda c: (round(c.al.claim_coverage, 3), _surface(text, c.doc))
+        order = lambda c: (round(_residue(c), 3), round(c.al.span_coverage, 3), round(c.al.dice, 3),
+                           -_verse_key(c.doc)[0], -_verse_key(c.doc)[1])
         top = max(head(c) for c in cands)
         tied = [c for c in cands if head(c) == top]
-        tied.sort(key=lambda c: (_residue(c), round(c.al.dice, 3), -_verse_key(c.doc)[0], -_verse_key(c.doc)[1]), reverse=True)
+        tied.sort(key=order, reverse=True)
         best = tied[0]
         seen, alts = {_verse_key(best.doc)}, []
         for c in tied[1:]:
@@ -142,6 +147,16 @@ def _best(index: HybridIndex, text: str, kind: str) -> Candidate | None:
                 seen.add(_verse_key(c.doc))
                 alts.append(c.doc)
         best.alternatives, best.ties = sorted(alts, key=_verse_key)[:4], len(seen)
+        if not best.al.exact:
+            # Not an exact quotation: list the other verses that share most of its words,
+            # closest first, so the reader sees every candidate the search considered.
+            floor = max(0.5, round(best.al.claim_coverage - 0.34, 3))
+            near, keys = [], {_verse_key(best.doc)}
+            for c in sorted(cands, key=lambda c: (round(c.al.claim_coverage, 3),) + order(c), reverse=True):
+                if c.al.claim_coverage >= floor and _verse_key(c.doc) not in keys and "ayah_end" not in c.doc.ref:
+                    keys.add(_verse_key(c.doc))
+                    near.append(c.doc)
+            best.alternatives = near[:5]
         return best
     cands = [
         Candidate(h, align(text, h.doc.text, stemmed=False, preserve_negation=True), h.doc)
@@ -217,7 +232,7 @@ def _judge_quran(index: HybridIndex, claim: Claim, c: Candidate | None, th: Thre
     if c.al.exact:
         return Judgement("VERIFIED", c)
     if len(key_tokens(claim.text)) < th.min_words_altered:
-        return Judgement("NEEDS_REVIEW", c, notes=["النص قصير جداً للحكم بالتحريف."])
+        return Judgement("NEEDS_REVIEW", c, notes=["النص قصير جداً للحكم بأنه يختلف عن الآية؛ يحتاج إلى تحقق إضافي."])
     notes, merged_tail = [], False
     for i, run in enumerate(c.al.added):
         if len(run) < 2:
@@ -288,9 +303,12 @@ def judge(index: HybridIndex, claim: Claim, th: Thresholds) -> Judgement:
             # show the correct verse with its surah and number, without asserting «مُحرَّف».
             where = f"سورة {q.doc.ref['surah_name']}، الآية {q.doc.ref['ayah']}" + (
                 f"–{q.doc.ref['ayah_end']}" if q.doc.ref.get("ayah_end") else "")
+            last = q.al.diff[-1] if q.al.diff else None
+            if last and last["op"] == "added" and q.al.tail_source:     # «طاقتها» in place of «وسعها»
+                q.al.diff[-1] = {"op": "changed", "claim": last["claim"], "source": q.al.tail_source}
             j = Judgement("NEEDS_REVIEW", q, notes=[
                 f"النص يشبه آية قرآنية ولا يطابقها حرفياً ({where}). إن كان المقصود الآية فنصها الصحيح معروض أعلاه مع الفروق؛ "
-                "ولم يُحكم بالتحريف لأن النص لم يُقدَّم على أنه آية."])
+                "ولم يُحكم بأنه يختلف عن الآية لأن النص لم يُقدَّم على أنه آية."])
         elif claim.level == "C":
             j = Judgement("DISPUTED", notes=["مسألة اجتهادية؛ لا تُعرض بصيغة القطع ويُحال فيها إلى المختص."])
         elif n_words < 3 and (short := _short_text(index, claim, q, h, n_words, th)):
@@ -309,13 +327,15 @@ def judge(index: HybridIndex, claim: Claim, th: Thresholds) -> Judgement:
             )
             j.notes.append(f"النص نفسه يتكرر في {max(total, c.ties)} مواضع من المصحف، منها: {where}.")
         else:
-            j.notes.append(f"قريب بالقدر نفسه من مواضع أخرى: {where}؛ رُجّح الأقرب لفظاً.")
+            j.notes.append(f"آيات أخرى تشترك في ألفاظ النص (الأقرب أولاً): {where}؛ رُجّح الأقرب لفظاً، ويمكن فتح كل آية من الروابط.")
     if j.code == "NO_ORIGIN" and not j.short:
         if claim.type_hint == "quran":
             j.notes.append("لم يُعثر على آية مطابقة في المصحف (6236 آية)؛ لا يُبنى على هذا النص بوصفه آية حتى يُراجع.")
         else:
-            j.notes.append("لم يُعثر على نص مطابق في المصحف ولا في قاعدة الأحاديث الحالية (72 سجلاً)؛ يتطلب تحققاً. "
-                           "عدم العثور لا يعني أن الحديث لا يصح، ولا يحكم على وجوده في مصادر أخرى.")
+            j.notes.append("لم يُعثر على تطابق مطابق ضمن قاعدة الأحاديث الحالية في منصة تثبّت، ولا في المصحف. "
+                           "هذه النتيجة لا تعني أن الحديث غير موجود في الدرر السنية، ولا تعني الحكم عليه بالصحة أو الضعف؛ "
+                           "بل تعني فقط أنه لم يُعثر عليه ضمن قاعدة الأحاديث الحالية في المنصة. "
+                           "للتأكد من وجود النص وحكمه، ابحث عنه كاملًا في موقع الدرر السنية.")
     quran_related = claim.type_hint == "quran" or (j.candidate and j.candidate.doc.kind == "quran")
     if quran_related and j.code in ("ALTERED", "NO_ORIGIN") and not index.stats()["quran_complete"]:
         j.notes.append("تنبيه: الفهرس القرآني الحالي عينة جزئية؛ الحكم مبدئي حتى تحميل النص الكامل.")

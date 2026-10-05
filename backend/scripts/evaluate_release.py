@@ -27,6 +27,8 @@ CASES = [
     ("quran_excerpt_of_long_verse", "﴿لا تحزن إن الله معنا﴾", ["VERIFIED"]),
     ("quran_short_excerpt_unmarked", "لا تاخذه", ["NEEDS_REVIEW"]),
     ("quran_short_complete_verse", "الله الصمد", ["VERIFIED"]),
+    ("quran_misspelled_short_excerpt", "قال انا احي", ["NEEDS_REVIEW"]),
+    ("hadith_unquoted_without_honorific", "قال رسول الله حب الوطن من الايمان", ["NOT_AUTHENTIC"]),
     ("hadith_not_in_database", "قال رسول الله ﷺ: «تفاءلوا بالخير تجدوه»", ["NO_ORIGIN"]),
     ("hadith_authentic", "قال رسول الله ﷺ: «الدين النصيحة»", ["VERIFIED"]),
     ("hadith_recorded_weak", "قال رسول الله ﷺ: «حب الوطن من الإيمان»", ["NOT_AUTHENTIC"]),

@@ -66,19 +66,38 @@ def load_quran(prefer_full: bool = True) -> tuple[list[Doc], str]:
     return docs, path.name
 
 
+DORAR_LINKS = DATA / "seed" / "dorar_links.json"
+
+
+def load_dorar_links() -> dict:
+    """Direct Dorar entry links (https://dorar.net/h/…) checked against each grade's
+    muhaddith, book and number. A grade without a checked link keeps no link, and a
+    record without any falls back to a Dorar search (labelled as a search in the UI)."""
+    if not DORAR_LINKS.exists():
+        return {}
+    return json.loads(DORAR_LINKS.read_text("utf-8"))["records"]
+
+
 def load_hadith() -> list[Doc]:
     records = json.loads((DATA / "seed" / "hadith_seed.json").read_text("utf-8"))["records"]
+    links = load_dorar_links()
     docs = []
     for r in records:
         query = " ".join(r["text"].split()[:6])
+        checked = links.get(r["id"], {}).get("grades", [])
+        grades = []
+        for i, g in enumerate(r["grades"]):
+            url = checked[i] if i < len(checked) else None
+            grades.append({**g, "url": url} if url else dict(g))
+        direct = next((g["url"] for g in grades if g.get("url")), None)
         docs.append(
             Doc(
                 id=f"hadith-{r['id']}",
                 kind="hadith",
                 text=r["text"],
                 ref={"narrator": r.get("narrator", ""), "context": r.get("dorar_text", "")},
-                grades=r["grades"],
-                url=r.get("url") or f"https://dorar.net/hadith/search?q={quote(query)}",
+                grades=grades,
+                url=direct or f"https://dorar.net/hadith/search?q={quote(query)}",
                 verified=bool(r.get("verified")),
             )
         )

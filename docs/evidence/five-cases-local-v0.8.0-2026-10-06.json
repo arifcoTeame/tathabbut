@@ -1,0 +1,308 @@
+{
+  "recorded_at": "2026-10-06T02:34:25+0300",
+  "endpoint": "http://127.0.0.1:8000/verify",
+  "passed": 15,
+  "total": 15,
+  "rows": [
+    {
+      "case": "watan",
+      "form": "original",
+      "input": "قال رسول الله ﷺ: «حب الوطن من الإيمان»",
+      "matched_text": "حب الوطن من الإيمان",
+      "attribution_excluded": true,
+      "verdict": "NOT_AUTHENTIC",
+      "expected": "NOT_AUTHENTIC",
+      "source": "hadith-daifa-36",
+      "source_url": "https://dorar.net/h/v9O0rvM9",
+      "grades": [
+        "موضوع — الألباني"
+      ],
+      "diff": [],
+      "engine_version": "0.8.0",
+      "seconds": 0.04,
+      "passed": true
+    },
+    {
+      "case": "watan",
+      "form": "diacritics",
+      "input": "قالَ رسولُ اللهِ ﷺ: «حُبُّ الوَطَنِ مِنَ الإيمانِ»",
+      "matched_text": "حُبُّ الوَطَنِ مِنَ الإيمانِ",
+      "attribution_excluded": true,
+      "verdict": "NOT_AUTHENTIC",
+      "expected": "NOT_AUTHENTIC",
+      "source": "hadith-daifa-36",
+      "source_url": "https://dorar.net/h/v9O0rvM9",
+      "grades": [
+        "موضوع — الألباني"
+      ],
+      "diff": [],
+      "engine_version": "0.8.0",
+      "seconds": 0.03,
+      "passed": true
+    },
+    {
+      "case": "watan",
+      "form": "plain",
+      "input": "قال رسول الله حب الوطن من الايمان",
+      "matched_text": "حب الوطن من الايمان",
+      "attribution_excluded": true,
+      "verdict": "NOT_AUTHENTIC",
+      "expected": "NOT_AUTHENTIC",
+      "source": "hadith-daifa-36",
+      "source_url": "https://dorar.net/h/v9O0rvM9",
+      "grades": [
+        "موضوع — الألباني"
+      ],
+      "diff": [],
+      "engine_version": "0.8.0",
+      "seconds": 0.03,
+      "passed": true
+    },
+    {
+      "case": "taqa",
+      "form": "original",
+      "input": "قال تعالى: ﴿لا يكلف الله نفسًا إلا طاقتها﴾",
+      "matched_text": "لا يكلف الله نفسًا إلا طاقتها",
+      "attribution_excluded": true,
+      "verdict": "ALTERED",
+      "expected": "ALTERED",
+      "source": "البقرة",
+      "source_url": "https://quranpedia.net/surah/1/2?ayah_id=293",
+      "grades": [],
+      "diff": [
+        {
+          "op": "changed",
+          "claim": "طاقتها",
+          "source": "وسعها"
+        }
+      ],
+      "engine_version": "0.8.0",
+      "seconds": 0.03,
+      "passed": true
+    },
+    {
+      "case": "taqa",
+      "form": "diacritics",
+      "input": "قالَ تعالى: ﴿لَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا طَاقَتَهَا﴾",
+      "matched_text": "لَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا طَاقَتَهَا",
+      "attribution_excluded": true,
+      "verdict": "ALTERED",
+      "expected": "ALTERED",
+      "source": "البقرة",
+      "source_url": "https://quranpedia.net/surah/1/2?ayah_id=293",
+      "grades": [],
+      "diff": [
+        {
+          "op": "changed",
+          "claim": "طاقتها",
+          "source": "وسعها"
+        }
+      ],
+      "engine_version": "0.8.0",
+      "seconds": 0.03,
+      "passed": true
+    },
+    {
+      "case": "taqa",
+      "form": "plain",
+      "input": "قال تعالى لا يكلف الله نفسا الا طاقتها",
+      "matched_text": "لا يكلف الله نفسا الا طاقتها",
+      "attribution_excluded": true,
+      "verdict": "ALTERED",
+      "expected": "ALTERED",
+      "source": "البقرة",
+      "source_url": "https://quranpedia.net/surah/1/2?ayah_id=293",
+      "grades": [],
+      "diff": [
+        {
+          "op": "changed",
+          "claim": "طاقتها",
+          "source": "وسعها"
+        }
+      ],
+      "engine_version": "0.8.0",
+      "seconds": 0.03,
+      "passed": true
+    },
+    {
+      "case": "anfa",
+      "form": "original",
+      "input": "قال رسول الله ﷺ: «خير الناس أنفعهم للناس»",
+      "matched_text": "خير الناس أنفعهم للناس",
+      "attribution_excluded": true,
+      "verdict": "DISPUTED",
+      "expected": "DISPUTED",
+      "source": "hadith-sahihjami-3289",
+      "source_url": "https://dorar.net/h/LWuCYU03",
+      "grades": [
+        "حسن — الألباني",
+        "عمرو بن بكر السكسكي واه وأحاديثه شبه موضوعه — الذهبي"
+      ],
+      "diff": [],
+      "engine_version": "0.8.0",
+      "seconds": 0.02,
+      "passed": true
+    },
+    {
+      "case": "anfa",
+      "form": "diacritics",
+      "input": "قالَ رسولُ اللهِ ﷺ: «خَيْرُ النَّاسِ أَنْفَعُهُمْ لِلنَّاسِ»",
+      "matched_text": "خَيْرُ النَّاسِ أَنْفَعُهُمْ لِلنَّاسِ",
+      "attribution_excluded": true,
+      "verdict": "DISPUTED",
+      "expected": "DISPUTED",
+      "source": "hadith-sahihjami-3289",
+      "source_url": "https://dorar.net/h/LWuCYU03",
+      "grades": [
+        "حسن — الألباني",
+        "عمرو بن بكر السكسكي واه وأحاديثه شبه موضوعه — الذهبي"
+      ],
+      "diff": [],
+      "engine_version": "0.8.0",
+      "seconds": 0.02,
+      "passed": true
+    },
+    {
+      "case": "anfa",
+      "form": "plain",
+      "input": "قال رسول الله خير الناس انفعهم للناس",
+      "matched_text": "خير الناس انفعهم للناس",
+      "attribution_excluded": true,
+      "verdict": "DISPUTED",
+      "expected": "DISPUTED",
+      "source": "hadith-sahihjami-3289",
+      "source_url": "https://dorar.net/h/LWuCYU03",
+      "grades": [
+        "حسن — الألباني",
+        "عمرو بن بكر السكسكي واه وأحاديثه شبه موضوعه — الذهبي"
+      ],
+      "diff": [],
+      "engine_version": "0.8.0",
+      "seconds": 0.02,
+      "passed": true
+    },
+    {
+      "case": "makarim",
+      "form": "original",
+      "input": "قال رسول الله ﷺ: «إنما بعثت لأتمم مكارم الأخلاق»",
+      "matched_text": "إنما بعثت لأتمم مكارم الأخلاق",
+      "attribution_excluded": true,
+      "verdict": "NEEDS_REVIEW",
+      "expected": "NEEDS_REVIEW",
+      "source": "hadith-tamhid-24-333",
+      "source_url": "https://dorar.net/h/5J9EJKLh",
+      "grades": [
+        "صحيح — ابن عبدالبر",
+        "صحيح — الألباني"
+      ],
+      "diff": [
+        {
+          "op": "changed",
+          "claim": "مكارم",
+          "source": "صالح"
+        }
+      ],
+      "engine_version": "0.8.0",
+      "seconds": 0.02,
+      "passed": true
+    },
+    {
+      "case": "makarim",
+      "form": "diacritics",
+      "input": "قالَ رسولُ اللهِ ﷺ: «إِنَّمَا بُعِثْتُ لِأُتَمِّمَ مَكَارِمَ الأَخْلَاقِ»",
+      "matched_text": "إِنَّمَا بُعِثْتُ لِأُتَمِّمَ مَكَارِمَ الأَخْلَاقِ",
+      "attribution_excluded": true,
+      "verdict": "NEEDS_REVIEW",
+      "expected": "NEEDS_REVIEW",
+      "source": "hadith-tamhid-24-333",
+      "source_url": "https://dorar.net/h/5J9EJKLh",
+      "grades": [
+        "صحيح — ابن عبدالبر",
+        "صحيح — الألباني"
+      ],
+      "diff": [
+        {
+          "op": "changed",
+          "claim": "مكارم",
+          "source": "صالح"
+        }
+      ],
+      "engine_version": "0.8.0",
+      "seconds": 0.02,
+      "passed": true
+    },
+    {
+      "case": "makarim",
+      "form": "plain",
+      "input": "قال رسول الله انما بعثت لاتمم مكارم الاخلاق",
+      "matched_text": "انما بعثت لاتمم مكارم الاخلاق",
+      "attribution_excluded": true,
+      "verdict": "NEEDS_REVIEW",
+      "expected": "NEEDS_REVIEW",
+      "source": "hadith-tamhid-24-333",
+      "source_url": "https://dorar.net/h/5J9EJKLh",
+      "grades": [
+        "صحيح — ابن عبدالبر",
+        "صحيح — الألباني"
+      ],
+      "diff": [
+        {
+          "op": "changed",
+          "claim": "مكارم",
+          "source": "صالح"
+        }
+      ],
+      "engine_version": "0.8.0",
+      "seconds": 0.02,
+      "passed": true
+    },
+    {
+      "case": "sabr",
+      "form": "original",
+      "input": "قال رسول الله ﷺ: «الصبر مفتاح الفرج»",
+      "matched_text": "الصبر مفتاح الفرج",
+      "attribution_excluded": true,
+      "verdict": "NO_ORIGIN",
+      "expected": "NO_ORIGIN",
+      "source": null,
+      "source_url": null,
+      "grades": [],
+      "diff": [],
+      "engine_version": "0.8.0",
+      "seconds": 0.02,
+      "passed": true
+    },
+    {
+      "case": "sabr",
+      "form": "diacritics",
+      "input": "قالَ رسولُ اللهِ ﷺ: «الصَّبْرُ مِفْتَاحُ الفَرَجِ»",
+      "matched_text": "الصَّبْرُ مِفْتَاحُ الفَرَجِ",
+      "attribution_excluded": true,
+      "verdict": "NO_ORIGIN",
+      "expected": "NO_ORIGIN",
+      "source": null,
+      "source_url": null,
+      "grades": [],
+      "diff": [],
+      "engine_version": "0.8.0",
+      "seconds": 0.02,
+      "passed": true
+    },
+    {
+      "case": "sabr",
+      "form": "plain",
+      "input": "قال رسول الله الصبر مفتاح الفرج",
+      "matched_text": "الصبر مفتاح الفرج",
+      "attribution_excluded": true,
+      "verdict": "NO_ORIGIN",
+      "expected": "NO_ORIGIN",
+      "source": null,
+      "source_url": null,
+      "grades": [],
+      "diff": [],
+      "engine_version": "0.8.0",
+      "seconds": 0.02,
+      "passed": true
+    }
+  ]
+}

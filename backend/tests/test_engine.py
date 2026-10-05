@@ -123,8 +123,8 @@ def test_unmarked_or_misattributed_altered_quran_is_not_verified(index, th, text
 
 def test_missing_match_is_not_a_hadith_authenticity_verdict(index, th):
     c = pipeline.run(index, "قال رسول الله ﷺ: «الصبر مفتاح الفرج»", th, LINK)["claims"][0]
-    assert c["verdict"] == {"code": "NO_ORIGIN", "label_ar": "لم يُعثر عليه ضمن قاعدة البيانات الحالية"}
-    assert any("يتطلب تحققاً" in n and "لا يعني أن الحديث لا يصح" in n for n in c["notes"])
+    assert c["verdict"] == {"code": "NO_ORIGIN", "label_ar": "لم يُعثر على تطابق مطابق"}
+    assert any("قاعدة الأحاديث الحالية" in n and "لا تعني الحكم عليه بالصحة أو الضعف" in n for n in c["notes"])
 
 
 @pytest.mark.parametrize("text,source_id,difference", [

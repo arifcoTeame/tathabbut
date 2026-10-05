@@ -194,10 +194,8 @@ export default function Verifier() {
           إلى طلبات أقصر للتحقق من بقية المقاطع.
         </p>
         <p className="coverage-note" id="coverage-note">
-          {status.state === "up"
-            ? `نطاق الأحاديث الحالي: ${status.stats.hadith.toLocaleString("ar")} حديثاً مفهرساً. `
-            : "تغطية الأحاديث محدودة بالمجموعة المفهرسة. "}
-          عدم العثور على حديث في الفهرس لا يعني أنه لا أصل له، ويحتاج إلى بحث أوسع لدى المختص.
+          القرآن: المصحف كاملًا (6,236 آية) من Quranpedia. الأحاديث: قاعدة الأحاديث الحالية في المنصة
+          بأحكامها من الدرر السنية فقط؛ عدم العثور على حديث هنا لا يعني أنه غير موجود في الدرر السنية ولا يحكم عليه.
           {" "}<Link href="/about">المصادر ونطاق التحقق والخصوصية</Link>
         </p>
       </section>
@@ -278,10 +276,11 @@ export default function Verifier() {
                     <b>{result.summary[code] ?? 0}</b>
                   </span>
                 ))}
-                <span className="meta-line">
-                  {claimsCount(result.claims.length)} · {result.elapsed_ms} ms
+                <details className="meta-line">
+                  <summary>{claimsCount(result.claims.length)} · تفاصيل تقنية</summary>
+                  زمن الاستجابة {result.elapsed_ms} ms
                   {result.engine_version && <> · إصدار المحرك <bdi>{result.engine_version}</bdi></>}
-                </span>
+                </details>
               </div>
               {result.claims.length === 0 ? (
                 <div className="empty">لم يُعثر على ادعاءات شرعية قابلة للتحقق في هذا النص.</div>

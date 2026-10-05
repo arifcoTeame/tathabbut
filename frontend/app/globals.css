@@ -13,12 +13,14 @@
   --purple: #6150ea;
 
   --verified: #2ef2c2;
-  --weak: #ff6b6b;
+  --hasan: #8be38b;
+  --weak: #ffa24c;
+  --fabricated: #ff5c7a;
   --altered: #ffc44d;
-  --noorigin: #ff9f7a;
+  --noorigin: #a9b6e4;
   --disputed: #7fb2ff;
-  --refer: #b9aeff;
-  --review: #9fa6d4;
+  --refer: #e2a8ff;
+  --review: #c7b8ff;
 
   --radius: 14px;
   --font: "Readex Pro", system-ui, -apple-system, "Segoe UI", Tahoma, sans-serif;
@@ -117,6 +119,30 @@ textarea.post::placeholder { color: #6c77ad; }
 .tone-verified { --c: var(--verified); } .tone-weak { --c: var(--weak); } .tone-altered { --c: var(--altered); }
 .tone-noorigin { --c: var(--noorigin); } .tone-disputed { --c: var(--disputed); } .tone-refer { --c: var(--refer); }
 .tone-review { --c: var(--review); }
+.tone-hasan { --c: var(--hasan); } .tone-fabricated { --c: var(--fabricated); }
+.badge.tone-noorigin { border-style: dashed; }
+.b-icon { display: block; font-size: 22px; line-height: 1; margin-bottom: 6px; }
+
+.c-claim .lbl, .quote .similar-note { display: block; font-size: 11px; font-weight: 400; color: var(--muted); margin-bottom: 2px; }
+.verdict-box {
+  border: 1px solid color-mix(in srgb, var(--c) 45%, transparent);
+  background: color-mix(in srgb, var(--c) 8%, transparent);
+  border-radius: 10px; padding: 10px 14px; margin: 4px 0 10px;
+}
+.verdict-box p { margin: 0 0 6px; overflow-wrap: anywhere; }
+.v-summary { font-size: 15px; color: var(--text); }
+.v-advice { font-size: 15px; color: var(--text); }
+.v-advice b { color: var(--c); }
+.btn-source {
+  display: inline-block; margin-top: 4px; padding: 7px 14px; border-radius: 999px; font-size: 14px; font-weight: 600;
+  text-decoration: none; color: var(--accent-ink); background: var(--accent);
+}
+.btn-source:hover { filter: brightness(1.08); }
+.quote.similar { border-inline-start-style: dashed; border-inline-start-color: var(--review); }
+.quote .similar-note { color: var(--review); font-weight: 600; font-size: 12px; margin-bottom: 4px; }
+.inline-link { display: block; font-size: 13px; margin-top: 6px; }
+.grades .g-label { color: var(--muted); }
+.grades .g-meta { color: var(--text-2); }
 
 .c-head { font-size: 13px; color: var(--muted); margin-bottom: 4px; display: flex; flex-wrap: wrap; gap: 6px 12px; }
 .c-claim { font-size: 18px; font-weight: 600; margin: 0 0 10px; overflow-wrap: anywhere; }
@@ -181,3 +207,5 @@ details.evidence dl { display: grid; grid-template-columns: auto auto; gap: 2px 
   .hero h1 { font-size: 26px; }
   .panel, .card { padding: 16px; }
 }
+.meta-line summary { cursor: pointer; }
+.v-note { font-size: 13px; color: var(--text-2); }

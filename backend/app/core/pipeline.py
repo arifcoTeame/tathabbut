@@ -7,7 +7,7 @@ from . import extractor
 from .index import HybridIndex
 from .judge import VERDICTS, Judgement, Thresholds, judge
 
-ENGINE_VERSION = "0.7.1"
+ENGINE_VERSION = "0.8.0"
 DISCLAIMER = "تثبّت أداة مدعومة بالذكاء الاصطناعي ولا تُغني عن المختص. النص الشرعي منسوخ من الفهرس، والدرجات منقولة عن المحدّثين كما هي مسجّلة في المصدر."
 
 
@@ -45,7 +45,7 @@ def _explanation(j: Judgement) -> dict | None:
         g = "؛ ".join(f"{x['muhaddith']} ({x['source']} {x['ref']}): {x['grade']}" for x in c.doc.grades)
         text = f"الدرجة كما هي مسجّلة في المصدر: {g}."
     elif j.code == "ALTERED" and c:
-        text = f"النص المنقول يختلف عن نص المصحف في {_ayah_label(c.doc.ref)}؛ انظر الفروق حرفاً حرفاً."
+        text = f"النص المدخل يختلف عن النص القرآني المعتمد في Quranpedia ({_ayah_label(c.doc.ref)})؛ انظر موضع الاختلاف."
     elif j.code == "REFER":
         text = "هذه مسألة شخصية تختلف باختلاف الوقائع؛ يُرجع فيها إلى مفتٍ أو جهة إفتاء مؤهلة."
     elif j.code == "NO_ORIGIN":

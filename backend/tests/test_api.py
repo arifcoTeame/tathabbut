@@ -13,7 +13,7 @@ def test_api_verify(index, monkeypatch, tmp_path):
         r = client.post("/verify", json={"text": "حب الوطن من الإيمان"})
         assert r.status_code == 200
         body = r.json()
-        assert body["claims"][0]["verdict"] == {"code": "NOT_AUTHENTIC", "label_ar": "لا يصح"}
+        assert body["claims"][0]["verdict"] == {"code": "NOT_AUTHENTIC", "label_ar": "ضعيف أو موضوع بحسب الدرر السنية"}
         assert body["summary"]["NOT_AUTHENTIC"] == 1
         assert client.post("/verify", json={"text": "ا" * 5000}).status_code == 413
         assert client.post("/verify", json={"text": "   \n  "}).status_code == 422

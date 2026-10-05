@@ -1,0 +1,1979 @@
+{
+  "checked_at": "2026-10-06T03:20:00+03:00",
+  "engine_version": "0.8.0",
+  "purpose": "Does each Dorar button open the same hadith entry the platform cites?",
+  "method": "For every grade of every record, the Dorar search results (first six words, then full text; up to 12 pages, both result tabs) were read in the Claude desktop built-in browser and the entry whose muhaddith, book and page/number equal the platform's grade was taken; its own page (https://dorar.net/h/…) was then opened and its muhaddith, book and number read back.",
+  "summary": {
+    "records": 72,
+    "records_with_direct_entry_link": 70,
+    "records_with_search_link_only": [
+      "ibnmajah-224",
+      "sahiha-250"
+    ],
+    "grades": 127,
+    "grades_with_direct_entry_link": 112,
+    "entry_pages_matching_muhaddith_book_number": 112,
+    "grade_text_differences": "none except editorial brackets on one ruling (sahihjami-3289, الذهبي: «[فيه] … [و] …»)"
+  },
+  "ui_rule": "«فتح النتيجة في الدرر السنية» only for a dorar.net/h/ entry link; «فتح الحديث المشابه في الدرر السنية» when the entry is a similar text; otherwise «البحث عن النص في الدرر السنية».",
+  "previous_check_superseded": "The earlier note (first search result only) is replaced by this entry-level check.",
+  "grades_detail": [
+    {
+      "id": "bukhari-1",
+      "muhaddith": "البخاري",
+      "source": "صحيح البخاري",
+      "ref": "1",
+      "grade_in_platform": "صحيح",
+      "entry_url": "https://dorar.net/h/45wXAdej",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 5
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "[صحيح]"
+    },
+    {
+      "id": "bukhari-1",
+      "muhaddith": "مسلم",
+      "source": "صحيح مسلم",
+      "ref": "1907",
+      "grade_in_platform": "صحيح",
+      "entry_url": null,
+      "found_in_search": null,
+      "entry_page_checked": false,
+      "grade_on_entry_page": null
+    },
+    {
+      "id": "bukhari-6484",
+      "muhaddith": "البخاري",
+      "source": "صحيح البخاري",
+      "ref": "6484",
+      "grade_in_platform": "صحيح",
+      "entry_url": "https://dorar.net/h/DmRdWSfQ",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 8
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "[صحيح]"
+    },
+    {
+      "id": "bukhari-13",
+      "muhaddith": "البخاري",
+      "source": "صحيح البخاري",
+      "ref": "13",
+      "grade_in_platform": "صحيح",
+      "entry_url": "https://dorar.net/h/a3n67ZEt",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 5
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "[صحيح]"
+    },
+    {
+      "id": "bukhari-13",
+      "muhaddith": "مسلم",
+      "source": "صحيح مسلم",
+      "ref": "45",
+      "grade_in_platform": "صحيح",
+      "entry_url": "https://dorar.net/h/yHAUK8gN",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 8
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "[صحيح]"
+    },
+    {
+      "id": "bukhari-24",
+      "muhaddith": "البخاري",
+      "source": "صحيح البخاري",
+      "ref": "24",
+      "grade_in_platform": "صحيح",
+      "entry_url": "https://dorar.net/h/9TKrxdvC",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 6
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "[صحيح]"
+    },
+    {
+      "id": "muslim-55",
+      "muhaddith": "مسلم",
+      "source": "صحيح مسلم",
+      "ref": "55",
+      "grade_in_platform": "صحيح",
+      "entry_url": "https://dorar.net/h/EsvPuuoh",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 1
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "[صحيح]"
+    },
+    {
+      "id": "muslim-101",
+      "muhaddith": "مسلم",
+      "source": "صحيح مسلم",
+      "ref": "101",
+      "grade_in_platform": "صحيح",
+      "entry_url": "https://dorar.net/h/xNJyF35K",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 1
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "[صحيح]"
+    },
+    {
+      "id": "muslim-223",
+      "muhaddith": "مسلم",
+      "source": "صحيح مسلم",
+      "ref": "223",
+      "grade_in_platform": "صحيح",
+      "entry_url": "https://dorar.net/h/TvSSnRwa",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 3
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "[صحيح]"
+    },
+    {
+      "id": "muslim-2553",
+      "muhaddith": "مسلم",
+      "source": "صحيح مسلم",
+      "ref": "2553",
+      "grade_in_platform": "صحيح",
+      "entry_url": "https://dorar.net/h/bq8mtkbl",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 1
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "[صحيح]"
+    },
+    {
+      "id": "ibnmajah-224",
+      "muhaddith": "الألباني",
+      "source": "صحيح ابن ماجه",
+      "ref": "184",
+      "grade_in_platform": "صحيح",
+      "entry_url": null,
+      "found_in_search": null,
+      "entry_page_checked": false,
+      "grade_on_entry_page": null
+    },
+    {
+      "id": "daifa-416",
+      "muhaddith": "الألباني",
+      "source": "السلسلة الضعيفة",
+      "ref": "416",
+      "grade_in_platform": "باطل",
+      "entry_url": "https://dorar.net/h/Yx6dE0Zf",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 6
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "باطل"
+    },
+    {
+      "id": "daifa-36",
+      "muhaddith": "الألباني",
+      "source": "السلسلة الضعيفة",
+      "ref": "36",
+      "grade_in_platform": "موضوع",
+      "entry_url": "https://dorar.net/h/v9O0rvM9",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 7
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "موضوع"
+    },
+    {
+      "id": "daifa-57",
+      "muhaddith": "الألباني",
+      "source": "السلسلة الضعيفة",
+      "ref": "57",
+      "grade_in_platform": "لا أصل له",
+      "entry_url": "https://dorar.net/h/Rf4rusmc",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 6
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "لا أصل له"
+    },
+    {
+      "id": "tirmidhi-2646",
+      "muhaddith": "الألباني",
+      "source": "صحيح الترمذي",
+      "ref": "2646",
+      "grade_in_platform": "صحيح",
+      "entry_url": "https://dorar.net/h/ZhQvjPFC",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 5
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "صحيح"
+    },
+    {
+      "id": "tirmidhi-2646",
+      "muhaddith": "الألباني",
+      "source": "صحيح الجامع",
+      "ref": "6298",
+      "grade_in_platform": "صحيح",
+      "entry_url": "https://dorar.net/h/KTo2Dd9e",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 3
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "صحيح"
+    },
+    {
+      "id": "bukhari-2989",
+      "muhaddith": "البخاري",
+      "source": "صحيح البخاري",
+      "ref": "2989",
+      "grade_in_platform": "[صحيح]",
+      "entry_url": "https://dorar.net/h/Tszg5ZRJ",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 8
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "[صحيح]"
+    },
+    {
+      "id": "bukhari-2989",
+      "muhaddith": "مسلم",
+      "source": "صحيح مسلم",
+      "ref": "1009",
+      "grade_in_platform": "[صحيح]",
+      "entry_url": "https://dorar.net/h/kUZHQv3G",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 11
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "[صحيح]"
+    },
+    {
+      "id": "tirmidhi-1956",
+      "muhaddith": "الألباني",
+      "source": "صحيح الترمذي",
+      "ref": "1956",
+      "grade_in_platform": "صحيح",
+      "entry_url": "https://dorar.net/h/6Lt3mhVZ",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "specialist",
+        "position": 24
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "صحيح"
+    },
+    {
+      "id": "tirmidhi-1956",
+      "muhaddith": "الألباني",
+      "source": "صحيح الجامع",
+      "ref": "2908",
+      "grade_in_platform": "صحيح",
+      "entry_url": "https://dorar.net/h/ly4p3UOn",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "specialist",
+        "position": 14
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "صحيح"
+    },
+    {
+      "id": "abudawud-1452",
+      "muhaddith": "الألباني",
+      "source": "صحيح أبي داود",
+      "ref": "1452",
+      "grade_in_platform": "صحيح",
+      "entry_url": "https://dorar.net/h/FGCekBQ9",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "specialist",
+        "position": 20
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "صحيح"
+    },
+    {
+      "id": "abudawud-1452",
+      "muhaddith": "الألباني",
+      "source": "صحيح الترمذي",
+      "ref": "2907",
+      "grade_in_platform": "صحيح",
+      "entry_url": "https://dorar.net/h/x85hXuIR",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "specialist",
+        "position": 21
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "صحيح"
+    },
+    {
+      "id": "bukhari-6475",
+      "muhaddith": "البخاري",
+      "source": "صحيح البخاري",
+      "ref": "6475",
+      "grade_in_platform": "[صحيح]",
+      "entry_url": "https://dorar.net/h/rpp1S6uX",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 7
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "[صحيح]"
+    },
+    {
+      "id": "bukhari-6475",
+      "muhaddith": "مسلم",
+      "source": "صحيح مسلم",
+      "ref": "47",
+      "grade_in_platform": "[صحيح]",
+      "entry_url": "https://dorar.net/h/mDZKhLdR",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 11
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "[صحيح]"
+    },
+    {
+      "id": "bukhari-6114",
+      "muhaddith": "البخاري",
+      "source": "صحيح البخاري",
+      "ref": "6114",
+      "grade_in_platform": "[صحيح]",
+      "entry_url": "https://dorar.net/h/SllC88XC",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 2
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "[صحيح]"
+    },
+    {
+      "id": "bukhari-6114",
+      "muhaddith": "مسلم",
+      "source": "صحيح مسلم",
+      "ref": "2609",
+      "grade_in_platform": "[صحيح]",
+      "entry_url": "https://dorar.net/h/J31ysYW4",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 3
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "[صحيح]"
+    },
+    {
+      "id": "hidaya-4897",
+      "muhaddith": "الألباني",
+      "source": "هداية الرواة",
+      "ref": "4897",
+      "grade_in_platform": "صحيح",
+      "entry_url": "https://dorar.net/h/hIAeXw5e",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "specialist",
+        "position": 11
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "صحيح"
+    },
+    {
+      "id": "hidaya-4897",
+      "muhaddith": "الألباني",
+      "source": "صحيح أبي داود",
+      "ref": "4941",
+      "grade_in_platform": "صحيح",
+      "entry_url": "https://dorar.net/h/fw8OeMw3",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "specialist",
+        "position": 5
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "صحيح"
+    },
+    {
+      "id": "bukhari-6013",
+      "muhaddith": "البخاري",
+      "source": "صحيح البخاري",
+      "ref": "6013",
+      "grade_in_platform": "[صحيح]",
+      "entry_url": "https://dorar.net/h/a0twW4od",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 5
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "[صحيح]"
+    },
+    {
+      "id": "bukhari-6013",
+      "muhaddith": "الألباني",
+      "source": "صحيح الجامع",
+      "ref": "6598",
+      "grade_in_platform": "صحيح",
+      "entry_url": "https://dorar.net/h/CU98e9Y7",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 6
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "صحيح"
+    },
+    {
+      "id": "muslim-2564",
+      "muhaddith": "مسلم",
+      "source": "صحيح مسلم",
+      "ref": "2564",
+      "grade_in_platform": "[صحيح]",
+      "entry_url": "https://dorar.net/h/nva12onJ",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 3
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "[صحيح]"
+    },
+    {
+      "id": "muslim-2564",
+      "muhaddith": "الألباني",
+      "source": "صحيح الجامع",
+      "ref": "1862",
+      "grade_in_platform": "صحيح",
+      "entry_url": "https://dorar.net/h/uvliIjuZ",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 7
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "صحيح"
+    },
+    {
+      "id": "abudawud-1479",
+      "muhaddith": "الألباني",
+      "source": "صحيح أبي داود",
+      "ref": "1479",
+      "grade_in_platform": "صحيح",
+      "entry_url": "https://dorar.net/h/et1c6gYD",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 19
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "صحيح"
+    },
+    {
+      "id": "abudawud-1479",
+      "muhaddith": "الألباني",
+      "source": "صحيح الجامع",
+      "ref": "3407",
+      "grade_in_platform": "صحيح",
+      "entry_url": "https://dorar.net/h/u79mc6Ee",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 2,
+        "tab": "home",
+        "position": 2
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "صحيح"
+    },
+    {
+      "id": "bukhari-2446",
+      "muhaddith": "البخاري",
+      "source": "صحيح البخاري",
+      "ref": "2446",
+      "grade_in_platform": "[صحيح]",
+      "entry_url": "https://dorar.net/h/N63KJfUT",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 7
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "[صحيح]"
+    },
+    {
+      "id": "bukhari-2446",
+      "muhaddith": "مسلم",
+      "source": "صحيح مسلم",
+      "ref": "2585",
+      "grade_in_platform": "[صحيح]",
+      "entry_url": "https://dorar.net/h/GwA4p6m1",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 1
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "[صحيح]"
+    },
+    {
+      "id": "bukhari-6116",
+      "muhaddith": "البخاري",
+      "source": "صحيح البخاري",
+      "ref": "6116",
+      "grade_in_platform": "[صحيح]",
+      "entry_url": "https://dorar.net/h/YsUk7RDs",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 5
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "[صحيح]"
+    },
+    {
+      "id": "muslim-91",
+      "muhaddith": "مسلم",
+      "source": "صحيح مسلم",
+      "ref": "91",
+      "grade_in_platform": "[صحيح]",
+      "entry_url": "https://dorar.net/h/AT9RQqKI",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 14
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "[صحيح]"
+    },
+    {
+      "id": "sahihjami-3289",
+      "muhaddith": "الألباني",
+      "source": "صحيح الجامع",
+      "ref": "3289",
+      "grade_in_platform": "حسن",
+      "entry_url": "https://dorar.net/h/LWuCYU03",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "specialist",
+        "position": 9
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "حسن"
+    },
+    {
+      "id": "sahihjami-3289",
+      "muhaddith": "الذهبي",
+      "source": "ميزان الاعتدال",
+      "ref": "3/248",
+      "grade_in_platform": "عمرو بن بكر السكسكي واه وأحاديثه شبه موضوعه",
+      "entry_url": "https://dorar.net/h/n7gQQnZw",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 4
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "[فيه] عمرو بن بكر السكسكي واه [و] أحاديثه شبه موضوعه"
+    },
+    {
+      "id": "tirmidhi-485",
+      "muhaddith": "الألباني",
+      "source": "صحيح الترمذي",
+      "ref": "485",
+      "grade_in_platform": "صحيح",
+      "entry_url": "https://dorar.net/h/qkQMQNZp",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 23
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "صحيح"
+    },
+    {
+      "id": "tirmidhi-485",
+      "muhaddith": "مسلم",
+      "source": "صحيح مسلم",
+      "ref": "384",
+      "grade_in_platform": "[صحيح]",
+      "entry_url": "https://dorar.net/h/S52zeunY",
+      "found_in_search": {
+        "query": "full text",
+        "page": 1,
+        "tab": "home",
+        "position": 18
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "[صحيح]"
+    },
+    {
+      "id": "bukhari-6464",
+      "muhaddith": "البخاري",
+      "source": "صحيح البخاري",
+      "ref": "6464",
+      "grade_in_platform": "[صحيح]",
+      "entry_url": "https://dorar.net/h/Sbgu4t05",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 6
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "[صحيح]"
+    },
+    {
+      "id": "bukhari-6464",
+      "muhaddith": "مسلم",
+      "source": "صحيح مسلم",
+      "ref": "783",
+      "grade_in_platform": "[صحيح]",
+      "entry_url": "https://dorar.net/h/NpZLQ79z",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 4
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "[صحيح]"
+    },
+    {
+      "id": "sahihjami-1880",
+      "muhaddith": "الألباني",
+      "source": "صحيح الجامع",
+      "ref": "1880",
+      "grade_in_platform": "حسن",
+      "entry_url": "https://dorar.net/h/UtSlZmEN",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "specialist",
+        "position": 6
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "حسن"
+    },
+    {
+      "id": "sahihjami-1880",
+      "muhaddith": "السيوطي",
+      "source": "الجامع الصغير",
+      "ref": "1855",
+      "grade_in_platform": "حسن",
+      "entry_url": "https://dorar.net/h/UEhEIEnY",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "specialist",
+        "position": 5
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "حسن"
+    },
+    {
+      "id": "sahihjami-97",
+      "muhaddith": "الألباني",
+      "source": "صحيح الجامع",
+      "ref": "97",
+      "grade_in_platform": "حسن",
+      "entry_url": "https://dorar.net/h/ynIf4Yuo",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "specialist",
+        "position": 13
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "حسن"
+    },
+    {
+      "id": "sahihjami-97",
+      "muhaddith": "الألباني",
+      "source": "صحيح الترمذي",
+      "ref": "1987",
+      "grade_in_platform": "حسن",
+      "entry_url": null,
+      "found_in_search": null,
+      "entry_page_checked": false,
+      "grade_on_entry_page": null
+    },
+    {
+      "id": "bukhari-2447",
+      "muhaddith": "البخاري",
+      "source": "صحيح البخاري",
+      "ref": "2447",
+      "grade_in_platform": "[صحيح]",
+      "entry_url": "https://dorar.net/h/e5S6Zb22",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 1
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "[صحيح]"
+    },
+    {
+      "id": "bukhari-2447",
+      "muhaddith": "مسلم",
+      "source": "صحيح مسلم",
+      "ref": "2579",
+      "grade_in_platform": "[صحيح]",
+      "entry_url": "https://dorar.net/h/DPDE7C5N",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 2
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "[صحيح]"
+    },
+    {
+      "id": "tamhid-24-333",
+      "muhaddith": "ابن عبدالبر",
+      "source": "التمهيد",
+      "ref": "24/333",
+      "grade_in_platform": "صحيح",
+      "entry_url": "https://dorar.net/h/5J9EJKLh",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 1
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "صحيح"
+    },
+    {
+      "id": "tamhid-24-333",
+      "muhaddith": "الألباني",
+      "source": "صحيح الجامع",
+      "ref": "2833",
+      "grade_in_platform": "صحيح",
+      "entry_url": null,
+      "found_in_search": null,
+      "entry_page_checked": false,
+      "grade_on_entry_page": null
+    },
+    {
+      "id": "bukhari-5200",
+      "muhaddith": "البخاري",
+      "source": "صحيح البخاري",
+      "ref": "5200",
+      "grade_in_platform": "[صحيح]",
+      "entry_url": "https://dorar.net/h/u7FhqWrT",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 4
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "[صحيح]"
+    },
+    {
+      "id": "bukhari-5200",
+      "muhaddith": "الألباني",
+      "source": "غاية المرام",
+      "ref": "269",
+      "grade_in_platform": "صحيح",
+      "entry_url": null,
+      "found_in_search": null,
+      "entry_page_checked": false,
+      "grade_on_entry_page": null
+    },
+    {
+      "id": "muslim-2588",
+      "muhaddith": "مسلم",
+      "source": "صحيح مسلم",
+      "ref": "2588",
+      "grade_in_platform": "[صحيح]",
+      "entry_url": "https://dorar.net/h/5ny4Eh57",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 5
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "[صحيح]"
+    },
+    {
+      "id": "muslim-2588",
+      "muhaddith": "الألباني",
+      "source": "صحيح الترمذي",
+      "ref": "2029",
+      "grade_in_platform": "صحيح",
+      "entry_url": "https://dorar.net/h/mqskYn8M",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 8
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "صحيح"
+    },
+    {
+      "id": "bukhari-52",
+      "muhaddith": "البخاري",
+      "source": "صحيح البخاري",
+      "ref": "52",
+      "grade_in_platform": "[صحيح]",
+      "entry_url": "https://dorar.net/h/wrjvh9Lg",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 8
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "[صحيح]"
+    },
+    {
+      "id": "bukhari-52",
+      "muhaddith": "مسلم",
+      "source": "صحيح مسلم",
+      "ref": "1599",
+      "grade_in_platform": "[صحيح]",
+      "entry_url": "https://dorar.net/h/3ItFLlck",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 13
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "[صحيح]"
+    },
+    {
+      "id": "tirmidhi-2317",
+      "muhaddith": "الألباني",
+      "source": "صحيح الترمذي",
+      "ref": "2317",
+      "grade_in_platform": "صحيح",
+      "entry_url": "https://dorar.net/h/KNNXwrpc",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "specialist",
+        "position": 19
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "صحيح"
+    },
+    {
+      "id": "tirmidhi-2317",
+      "muhaddith": "الألباني",
+      "source": "صحيح ابن ماجه",
+      "ref": "3226",
+      "grade_in_platform": "صحيح",
+      "entry_url": null,
+      "found_in_search": null,
+      "entry_page_checked": false,
+      "grade_on_entry_page": null
+    },
+    {
+      "id": "bukhari-6682",
+      "muhaddith": "البخاري",
+      "source": "صحيح البخاري",
+      "ref": "6682",
+      "grade_in_platform": "[صحيح]",
+      "entry_url": "https://dorar.net/h/78xTy5F6",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 2
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "[صحيح]"
+    },
+    {
+      "id": "bukhari-6682",
+      "muhaddith": "مسلم",
+      "source": "صحيح مسلم",
+      "ref": "2694",
+      "grade_in_platform": "[صحيح]",
+      "entry_url": "https://dorar.net/h/23IiX7qt",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 4
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "[صحيح]"
+    },
+    {
+      "id": "sahihjami-8195",
+      "muhaddith": "الألباني",
+      "source": "صحيح الجامع",
+      "ref": "8195",
+      "grade_in_platform": "صحيح",
+      "entry_url": "https://dorar.net/h/zNmc1DOR",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 11
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "صحيح"
+    },
+    {
+      "id": "sahihjami-8195",
+      "muhaddith": "الألباني",
+      "source": "صحيح الجامع",
+      "ref": "8197",
+      "grade_in_platform": "صحيح",
+      "entry_url": "https://dorar.net/h/O3NCSIlo",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 2
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "صحيح"
+    },
+    {
+      "id": "sahiha-250",
+      "muhaddith": "الألباني",
+      "source": "السلسلة الصحيحة",
+      "ref": "250",
+      "grade_in_platform": "صحيح",
+      "entry_url": null,
+      "found_in_search": null,
+      "entry_page_checked": false,
+      "grade_on_entry_page": null
+    },
+    {
+      "id": "sahiha-250",
+      "muhaddith": "الألباني",
+      "source": "صحيح ابن ماجه",
+      "ref": "1910",
+      "grade_in_platform": "صحيح لغيره",
+      "entry_url": null,
+      "found_in_search": null,
+      "entry_page_checked": false,
+      "grade_on_entry_page": null
+    },
+    {
+      "id": "muslim-1732",
+      "muhaddith": "مسلم",
+      "source": "صحيح مسلم",
+      "ref": "1732",
+      "grade_in_platform": "[صحيح]",
+      "entry_url": "https://dorar.net/h/IBTlAzPG",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 14
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "[صحيح]"
+    },
+    {
+      "id": "muslim-1732",
+      "muhaddith": "الألباني",
+      "source": "صحيح أبي داود",
+      "ref": "4835",
+      "grade_in_platform": "صحيح",
+      "entry_url": "https://dorar.net/h/8e3b4cAS",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 11
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "صحيح"
+    },
+    {
+      "id": "sifatfatwa-103",
+      "muhaddith": "الألباني",
+      "source": "صفة الفتوى",
+      "ref": "103",
+      "grade_in_platform": "إسناده حسن",
+      "entry_url": "https://dorar.net/h/U6o8xH73",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "specialist",
+        "position": 28
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "إسناده حسن"
+    },
+    {
+      "id": "tirmidhi-1954",
+      "muhaddith": "الألباني",
+      "source": "صحيح الترمذي",
+      "ref": "1954",
+      "grade_in_platform": "صحيح",
+      "entry_url": "https://dorar.net/h/ORgtl03T",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 6
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "صحيح"
+    },
+    {
+      "id": "tirmidhi-1954",
+      "muhaddith": "الألباني",
+      "source": "صحيح الترمذي",
+      "ref": "1955",
+      "grade_in_platform": "صحيح [لغيره]",
+      "entry_url": "https://dorar.net/h/oJ680O5C",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "specialist",
+        "position": 22
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "صحيح [لغيره]"
+    },
+    {
+      "id": "bukhari-660",
+      "muhaddith": "البخاري",
+      "source": "صحيح البخاري",
+      "ref": "660",
+      "grade_in_platform": "[صحيح]",
+      "entry_url": "https://dorar.net/h/Q6GTH0p0",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 3
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "[صحيح]"
+    },
+    {
+      "id": "bukhari-660",
+      "muhaddith": "مسلم",
+      "source": "صحيح مسلم",
+      "ref": "1031",
+      "grade_in_platform": "[صحيح]",
+      "entry_url": "https://dorar.net/h/ghdpFJ0i",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "specialist",
+        "position": 24
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "[صحيح]"
+    },
+    {
+      "id": "daifjami-3429",
+      "muhaddith": "الألباني",
+      "source": "ضعيف الجامع",
+      "ref": "3429",
+      "grade_in_platform": "ضعيف",
+      "entry_url": "https://dorar.net/h/fc6GndQg",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 10
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "ضعيف"
+    },
+    {
+      "id": "daifjami-3429",
+      "muhaddith": "الألباني",
+      "source": "السلسلة الصحيحة",
+      "ref": "4/556",
+      "grade_in_platform": "إسناده فيه ضعف",
+      "entry_url": "https://dorar.net/h/fRKnzTvd",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 9
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "إسناده فيه ضعف"
+    },
+    {
+      "id": "ibnbaz-6-113",
+      "muhaddith": "ابن باز",
+      "source": "الفوائد العلمية من الدروس البازية",
+      "ref": "6/113",
+      "grade_in_platform": "ضعيف، وبعضهم جعله في الموضوعات",
+      "entry_url": "https://dorar.net/h/wOv9xFUM",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 1
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "ضعيف، وبعضهم جعله في الموضوعات"
+    },
+    {
+      "id": "ibnbaz-6-113-2",
+      "muhaddith": "ابن باز",
+      "source": "الفوائد العلمية من الدروس البازية",
+      "ref": "6/113",
+      "grade_in_platform": "رفعه إلى النبي صلى الله عليه وسلم ليس بصحيح",
+      "entry_url": "https://dorar.net/h/yTkcy1nW",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 6
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "رفعه إلى النبي صلى الله عليه وسلم ليس بصحيح"
+    },
+    {
+      "id": "daifjami-2666",
+      "muhaddith": "الألباني",
+      "source": "ضعيف الجامع",
+      "ref": "2666",
+      "grade_in_platform": "ضعيف",
+      "entry_url": "https://dorar.net/h/BCqoqLJV",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 1
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "ضعيف"
+    },
+    {
+      "id": "daifjami-2666",
+      "muhaddith": "الألباني",
+      "source": "السلسلة الضعيفة",
+      "ref": "593",
+      "grade_in_platform": "موضوع",
+      "entry_url": "https://dorar.net/h/vN9h5blm",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 5
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "موضوع"
+    },
+    {
+      "id": "ibnjawzi-2-113",
+      "muhaddith": "ابن الجوزي",
+      "source": "الموضوعات لابن الجوزي",
+      "ref": "2/113",
+      "grade_in_platform": "لا يصح من جميع الوجوه",
+      "entry_url": "https://dorar.net/h/zI0HgYVs",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 20
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "لا يصح من جميع الوجوه"
+    },
+    {
+      "id": "ibnjawzi-2-113",
+      "muhaddith": "يحيى بن معين",
+      "source": "تاريخ بغداد",
+      "ref": "11/205",
+      "grade_in_platform": "كذب، ليس له أصل، منكر جداً",
+      "entry_url": "https://dorar.net/h/kFXH2Go4",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 22
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "كذب، ليس له أصل، منكر جداً"
+    },
+    {
+      "id": "daifa-66",
+      "muhaddith": "الألباني",
+      "source": "السلسلة الضعيفة",
+      "ref": "66",
+      "grade_in_platform": "لا أصل له",
+      "entry_url": "https://dorar.net/h/YfzEIaFu",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 5
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "لا أصل له"
+    },
+    {
+      "id": "daifa-66",
+      "muhaddith": "الصغاني",
+      "source": "الموضوعات للصغاني",
+      "ref": "35",
+      "grade_in_platform": "موضوع",
+      "entry_url": "https://dorar.net/h/tuaVk2P1",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 3
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "موضوع"
+    },
+    {
+      "id": "daifa-282",
+      "muhaddith": "الألباني",
+      "source": "السلسلة الضعيفة",
+      "ref": "282",
+      "grade_in_platform": "موضوع",
+      "entry_url": "https://dorar.net/h/xKhIjYqQ",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 4
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "موضوع"
+    },
+    {
+      "id": "daifa-282",
+      "muhaddith": "الصغاني",
+      "source": "الموضوعات للصغاني",
+      "ref": "52",
+      "grade_in_platform": "موضوع",
+      "entry_url": "https://dorar.net/h/aKUaszQK",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 1
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "موضوع"
+    },
+    {
+      "id": "daifa-310",
+      "muhaddith": "الألباني",
+      "source": "السلسلة الضعيفة",
+      "ref": "310",
+      "grade_in_platform": "ضعيف جداً",
+      "entry_url": "https://dorar.net/h/0IZpSZwW",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 3
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "ضعيف جداً"
+    },
+    {
+      "id": "daifa-310",
+      "muhaddith": "الألباني",
+      "source": "السلسلة الضعيفة",
+      "ref": "312",
+      "grade_in_platform": "ضعيف",
+      "entry_url": "https://dorar.net/h/yRP8UxmL",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 2
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "ضعيف"
+    },
+    {
+      "id": "daifa-4589",
+      "muhaddith": "الألباني",
+      "source": "السلسلة الضعيفة",
+      "ref": "4589",
+      "grade_in_platform": "موضوع",
+      "entry_url": "https://dorar.net/h/QMlsDSDY",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 16
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "موضوع"
+    },
+    {
+      "id": "daifa-4589",
+      "muhaddith": "الألباني",
+      "source": "ضعيف الجامع",
+      "ref": "5561",
+      "grade_in_platform": "ضعيف",
+      "entry_url": "https://dorar.net/h/CTm0kWDj",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 12
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "ضعيف"
+    },
+    {
+      "id": "daifjami-4301",
+      "muhaddith": "الألباني",
+      "source": "ضعيف الجامع",
+      "ref": "4301",
+      "grade_in_platform": "ضعيف جداً",
+      "entry_url": "https://dorar.net/h/VwK3gmGv",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 4
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "ضعيف جداً"
+    },
+    {
+      "id": "daifjami-4301",
+      "muhaddith": "ابن الجوزي",
+      "source": "العلل المتناهية",
+      "ref": "1/96",
+      "grade_in_platform": "لا يصح",
+      "entry_url": "https://dorar.net/h/tDSCSHM2",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 6
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "لا يصح"
+    },
+    {
+      "id": "daifjami-3619",
+      "muhaddith": "الألباني",
+      "source": "ضعيف الجامع",
+      "ref": "3619",
+      "grade_in_platform": "ضعيف",
+      "entry_url": "https://dorar.net/h/A4jF2XkX",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 3
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "ضعيف"
+    },
+    {
+      "id": "daifjami-3619",
+      "muhaddith": "الألباني",
+      "source": "السلسلة الضعيفة",
+      "ref": "1301",
+      "grade_in_platform": "ضعيف",
+      "entry_url": "https://dorar.net/h/wWsk6oB4",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 5
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "ضعيف"
+    },
+    {
+      "id": "saghani-64",
+      "muhaddith": "الصغاني",
+      "source": "الموضوعات للصغاني",
+      "ref": "64",
+      "grade_in_platform": "موضوع",
+      "entry_url": "https://dorar.net/h/uCHKgzYs",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 1
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "موضوع"
+    },
+    {
+      "id": "saghani-64",
+      "muhaddith": "العراقي",
+      "source": "تخريج الإحياء للعراقي",
+      "ref": "4/24",
+      "grade_in_platform": "لم أجده بهذا اللفظ مرفوعا",
+      "entry_url": "https://dorar.net/h/mxIRmkeW",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "specialist",
+        "position": 2
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "لم أجده بهذا اللفظ مرفوعا"
+    },
+    {
+      "id": "daifa-611",
+      "muhaddith": "الألباني",
+      "source": "السلسلة الضعيفة",
+      "ref": "611",
+      "grade_in_platform": "موضوع",
+      "entry_url": "https://dorar.net/h/MFpjukgV",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 5
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "موضوع"
+    },
+    {
+      "id": "daifa-611",
+      "muhaddith": "الألباني",
+      "source": "ضعيف الجامع",
+      "ref": "5056",
+      "grade_in_platform": "موضوع",
+      "entry_url": "https://dorar.net/h/A0gQ1YSX",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 6
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "موضوع"
+    },
+    {
+      "id": "daifa-3876",
+      "muhaddith": "الألباني",
+      "source": "السلسلة الضعيفة",
+      "ref": "3876",
+      "grade_in_platform": "ضعيف",
+      "entry_url": "https://dorar.net/h/KU4eDDZq",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 3
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "ضعيف"
+    },
+    {
+      "id": "daifa-3876",
+      "muhaddith": "الألباني",
+      "source": "السلسلة الضعيفة",
+      "ref": "3877",
+      "grade_in_platform": "ضعيف جداً",
+      "entry_url": null,
+      "found_in_search": null,
+      "entry_page_checked": false,
+      "grade_on_entry_page": null
+    },
+    {
+      "id": "daifjami-115",
+      "muhaddith": "الألباني",
+      "source": "ضعيف الجامع",
+      "ref": "115",
+      "grade_in_platform": "ضعيف",
+      "entry_url": "https://dorar.net/h/7N8wuvcE",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 1
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "ضعيف"
+    },
+    {
+      "id": "daifjami-115",
+      "muhaddith": "الألباني",
+      "source": "السلسلة الضعيفة",
+      "ref": "34",
+      "grade_in_platform": "منكر لا أصل له",
+      "entry_url": null,
+      "found_in_search": null,
+      "entry_page_checked": false,
+      "grade_on_entry_page": null
+    },
+    {
+      "id": "daifjami-5607",
+      "muhaddith": "الألباني",
+      "source": "ضعيف الجامع",
+      "ref": "5607",
+      "grade_in_platform": "موضوع",
+      "entry_url": "https://dorar.net/h/oya8EYfr",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 11
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "موضوع"
+    },
+    {
+      "id": "daifjami-5607",
+      "muhaddith": "ابن باز",
+      "source": "مجموع فتاوى ابن باز",
+      "ref": "113/16",
+      "grade_in_platform": "موضوع",
+      "entry_url": "https://dorar.net/h/4TD3Xj6c",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 3
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "موضوع"
+    },
+    {
+      "id": "maqasid-559",
+      "muhaddith": "السخاوي",
+      "source": "المقاصد الحسنة",
+      "ref": "559",
+      "grade_in_platform": "لا أصل له",
+      "entry_url": "https://dorar.net/h/F75z6gky",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 3
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "لا أصل له"
+    },
+    {
+      "id": "maqasid-559",
+      "muhaddith": "ابن باز",
+      "source": "مجموع فتاوى ابن باز",
+      "ref": "26/374",
+      "grade_in_platform": "لا أعلم له أصلا شرعيا، ولا أعلم أنه ورد في ذلك حديث يعتمد عليه",
+      "entry_url": "https://dorar.net/h/kNLWghZ8",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 8
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "لا أعلم له أصلا شرعيا، ولا أعلم أنه ورد في ذلك حديث يعتمد عليه"
+    },
+    {
+      "id": "daifa-8",
+      "muhaddith": "الألباني",
+      "source": "السلسلة الضعيفة",
+      "ref": "8",
+      "grade_in_platform": "لا أصل له مرفوعاً",
+      "entry_url": "https://dorar.net/h/WzE3LjHB",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 1
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "لا أصل له مرفوعاً"
+    },
+    {
+      "id": "daifa-8",
+      "muhaddith": "ابن عثيمين",
+      "source": "فتاوى نور على الدرب لابن عثيمين",
+      "ref": "2/575",
+      "grade_in_platform": "هذا القول المشهور لا يصح عن النَّبيِّ صلَّى اللهُ عليه وسلَّمَ، فهو من الأحاديث الموضوعة",
+      "entry_url": "https://dorar.net/h/j35H5qwx",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "specialist",
+        "position": 3
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "هذا القول المشهور لا يصح عن النَّبيِّ صلَّى اللهُ عليه وسلَّمَ، فهو من الأحاديث الموضوعة"
+    },
+    {
+      "id": "daifjami-3566",
+      "muhaddith": "الألباني",
+      "source": "ضعيف الجامع",
+      "ref": "3566",
+      "grade_in_platform": "ضعيف",
+      "entry_url": "https://dorar.net/h/nWBJBsTU",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 4
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "ضعيف"
+    },
+    {
+      "id": "daifjami-3566",
+      "muhaddith": "الألباني",
+      "source": "السلسلة الضعيفة",
+      "ref": "6967",
+      "grade_in_platform": "ضعيف",
+      "entry_url": "https://dorar.net/h/EF8tWUjR",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 6
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "ضعيف"
+    },
+    {
+      "id": "saghani-54",
+      "muhaddith": "الصغاني",
+      "source": "الموضوعات للصغاني",
+      "ref": "54",
+      "grade_in_platform": "موضوع",
+      "entry_url": "https://dorar.net/h/gffKTpCC",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 1
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "موضوع"
+    },
+    {
+      "id": "daifjami-249",
+      "muhaddith": "الألباني",
+      "source": "ضعيف الجامع",
+      "ref": "249",
+      "grade_in_platform": "ضعيف",
+      "entry_url": "https://dorar.net/h/buW6lhPk",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 4
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "ضعيف"
+    },
+    {
+      "id": "daifjami-249",
+      "muhaddith": "الألباني",
+      "source": "السلسلة الضعيفة",
+      "ref": "72",
+      "grade_in_platform": "ضعيف",
+      "entry_url": "https://dorar.net/h/gNXOWc1q",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 5
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "ضعيف"
+    },
+    {
+      "id": "daifjami-1704",
+      "muhaddith": "الألباني",
+      "source": "ضعيف الجامع",
+      "ref": "1704",
+      "grade_in_platform": "ضعيف",
+      "entry_url": "https://dorar.net/h/MgpuKW45",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 1
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "ضعيف"
+    },
+    {
+      "id": "daifjami-1704",
+      "muhaddith": "ابن الجوزي",
+      "source": "العلل المتناهية",
+      "ref": "2/589",
+      "grade_in_platform": "لا يصح",
+      "entry_url": null,
+      "found_in_search": null,
+      "entry_page_checked": false,
+      "grade_on_entry_page": null
+    },
+    {
+      "id": "shawkani-120",
+      "muhaddith": "الشوكاني",
+      "source": "الفوائد المجموعة",
+      "ref": "120",
+      "grade_in_platform": "في إسناده مسعود بن عمرو قال الذهبي في الميزان: لا أعرفه وخبره باطل",
+      "entry_url": "https://dorar.net/h/xBCEQy5W",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "specialist",
+        "position": 1
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "في إسناده مسعود بن عمرو قال الذهبي في الميزان: لا أعرفه وخبره باطل"
+    },
+    {
+      "id": "shawkani-120",
+      "muhaddith": "ابن الجوزي",
+      "source": "الموضوعات لابن الجوزي",
+      "ref": "3/44",
+      "grade_in_platform": "أورده في كتاب الموضوعات",
+      "entry_url": null,
+      "found_in_search": null,
+      "entry_page_checked": false,
+      "grade_on_entry_page": null
+    },
+    {
+      "id": "daifa-30",
+      "muhaddith": "الألباني",
+      "source": "السلسلة الضعيفة",
+      "ref": "30",
+      "grade_in_platform": "لا أصل له",
+      "entry_url": "https://dorar.net/h/8BqOxS1K",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 2
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "لا أصل له"
+    },
+    {
+      "id": "daifa-30",
+      "muhaddith": "ملا علي قاري",
+      "source": "الأسرار المرفوعة",
+      "ref": "202",
+      "grade_in_platform": "قيل لا أصل له أو بأصله موضوع",
+      "entry_url": "https://dorar.net/h/AiTNsHyl",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 1
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "قيل لا أصل له أو بأصله موضوع"
+    },
+    {
+      "id": "sahihjami-2230",
+      "muhaddith": "الألباني",
+      "source": "صحيح الجامع",
+      "ref": "2230",
+      "grade_in_platform": "صحيح",
+      "entry_url": "https://dorar.net/h/kVqUnU9G",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "specialist",
+        "position": 27
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "صحيح"
+    },
+    {
+      "id": "sahihjami-2230",
+      "muhaddith": "الألباني",
+      "source": "صحيح أبي داود",
+      "ref": "4797",
+      "grade_in_platform": "صحيح",
+      "entry_url": null,
+      "found_in_search": null,
+      "entry_page_checked": false,
+      "grade_on_entry_page": null
+    },
+    {
+      "id": "bukhari-6117",
+      "muhaddith": "البخاري",
+      "source": "صحيح البخاري",
+      "ref": "6117",
+      "grade_in_platform": "[صحيح]",
+      "entry_url": "https://dorar.net/h/zULWpkPt",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 3
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "[صحيح]"
+    },
+    {
+      "id": "bukhari-6117",
+      "muhaddith": "مسلم",
+      "source": "صحيح مسلم",
+      "ref": "37",
+      "grade_in_platform": "[صحيح]",
+      "entry_url": "https://dorar.net/h/A3JcyVw4",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 4
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "[صحيح]"
+    },
+    {
+      "id": "irwa-1448",
+      "muhaddith": "الألباني",
+      "source": "إرواء الغليل",
+      "ref": "1448",
+      "grade_in_platform": "صحيح مركب من حديثين",
+      "entry_url": "https://dorar.net/h/koL7OPAV",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "specialist",
+        "position": 3
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "صحيح مركب من حديثين"
+    },
+    {
+      "id": "muslim-2622",
+      "muhaddith": "مسلم",
+      "source": "صحيح مسلم",
+      "ref": "2622",
+      "grade_in_platform": "[صحيح]",
+      "entry_url": "https://dorar.net/h/qU4fSR8m",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 2
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "[صحيح]"
+    },
+    {
+      "id": "muslim-2622",
+      "muhaddith": "الألباني",
+      "source": "صحيح الترغيب",
+      "ref": "3212",
+      "grade_in_platform": "صحيح لغيره",
+      "entry_url": null,
+      "found_in_search": null,
+      "entry_page_checked": false,
+      "grade_on_entry_page": null
+    },
+    {
+      "id": "daifa-1794",
+      "muhaddith": "الألباني",
+      "source": "السلسلة الضعيفة",
+      "ref": "1794",
+      "grade_in_platform": "منكر",
+      "entry_url": "https://dorar.net/h/iQMGaQLk",
+      "found_in_search": {
+        "query": "first six words",
+        "page": 1,
+        "tab": "home",
+        "position": 3
+      },
+      "entry_page_checked": true,
+      "grade_on_entry_page": "منكر"
+    },
+    {
+      "id": "daifa-1794",
+      "muhaddith": "الألباني",
+      "source": "السلسلة الضعيفة",
+      "ref": "2626",
+      "grade_in_platform": "ضعيف",
+      "entry_url": null,
+      "found_in_search": null,
+      "entry_page_checked": false,
+      "grade_on_entry_page": null
+    }
+  ]
+}

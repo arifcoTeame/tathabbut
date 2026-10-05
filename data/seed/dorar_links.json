@@ -1,0 +1,424 @@
+{
+ "_meta": {
+  "checked_at": "2026-10-06T03:20:00+03:00",
+  "method": "For every grade of every record, the Dorar search results (first six words, then full text; up to 12 pages, both result tabs) were read in the Claude desktop built-in browser and the entry whose muhaddith, book and page/number equal the platform's grade was taken; its own page (https://dorar.net/h/…) was then opened and its muhaddith, book and number read back.",
+  "use": "build_index.py gives each grade its entry link, and the record's button opens the first linked grade. A record with no linked grade keeps a Dorar search link, labelled «البحث عن النص في الدرر السنية»."
+ },
+ "records": {
+  "bukhari-1": {
+   "grades": [
+    "https://dorar.net/h/45wXAdej",
+    null
+   ]
+  },
+  "bukhari-6484": {
+   "grades": [
+    "https://dorar.net/h/DmRdWSfQ"
+   ]
+  },
+  "bukhari-13": {
+   "grades": [
+    "https://dorar.net/h/a3n67ZEt",
+    "https://dorar.net/h/yHAUK8gN"
+   ]
+  },
+  "bukhari-24": {
+   "grades": [
+    "https://dorar.net/h/9TKrxdvC"
+   ]
+  },
+  "muslim-55": {
+   "grades": [
+    "https://dorar.net/h/EsvPuuoh"
+   ]
+  },
+  "muslim-101": {
+   "grades": [
+    "https://dorar.net/h/xNJyF35K"
+   ]
+  },
+  "muslim-223": {
+   "grades": [
+    "https://dorar.net/h/TvSSnRwa"
+   ]
+  },
+  "muslim-2553": {
+   "grades": [
+    "https://dorar.net/h/bq8mtkbl"
+   ]
+  },
+  "ibnmajah-224": {
+   "grades": [
+    null
+   ]
+  },
+  "daifa-416": {
+   "grades": [
+    "https://dorar.net/h/Yx6dE0Zf"
+   ]
+  },
+  "daifa-36": {
+   "grades": [
+    "https://dorar.net/h/v9O0rvM9"
+   ]
+  },
+  "daifa-57": {
+   "grades": [
+    "https://dorar.net/h/Rf4rusmc"
+   ]
+  },
+  "tirmidhi-2646": {
+   "grades": [
+    "https://dorar.net/h/ZhQvjPFC",
+    "https://dorar.net/h/KTo2Dd9e"
+   ]
+  },
+  "bukhari-2989": {
+   "grades": [
+    "https://dorar.net/h/Tszg5ZRJ",
+    "https://dorar.net/h/kUZHQv3G"
+   ]
+  },
+  "tirmidhi-1956": {
+   "grades": [
+    "https://dorar.net/h/6Lt3mhVZ",
+    "https://dorar.net/h/ly4p3UOn"
+   ]
+  },
+  "abudawud-1452": {
+   "grades": [
+    "https://dorar.net/h/FGCekBQ9",
+    "https://dorar.net/h/x85hXuIR"
+   ]
+  },
+  "bukhari-6475": {
+   "grades": [
+    "https://dorar.net/h/rpp1S6uX",
+    "https://dorar.net/h/mDZKhLdR"
+   ]
+  },
+  "bukhari-6114": {
+   "grades": [
+    "https://dorar.net/h/SllC88XC",
+    "https://dorar.net/h/J31ysYW4"
+   ]
+  },
+  "hidaya-4897": {
+   "grades": [
+    "https://dorar.net/h/hIAeXw5e",
+    "https://dorar.net/h/fw8OeMw3"
+   ]
+  },
+  "bukhari-6013": {
+   "grades": [
+    "https://dorar.net/h/a0twW4od",
+    "https://dorar.net/h/CU98e9Y7"
+   ]
+  },
+  "muslim-2564": {
+   "grades": [
+    "https://dorar.net/h/nva12onJ",
+    "https://dorar.net/h/uvliIjuZ"
+   ]
+  },
+  "abudawud-1479": {
+   "grades": [
+    "https://dorar.net/h/et1c6gYD",
+    "https://dorar.net/h/u79mc6Ee"
+   ]
+  },
+  "bukhari-2446": {
+   "grades": [
+    "https://dorar.net/h/N63KJfUT",
+    "https://dorar.net/h/GwA4p6m1"
+   ]
+  },
+  "bukhari-6116": {
+   "grades": [
+    "https://dorar.net/h/YsUk7RDs"
+   ]
+  },
+  "muslim-91": {
+   "grades": [
+    "https://dorar.net/h/AT9RQqKI"
+   ]
+  },
+  "sahihjami-3289": {
+   "grades": [
+    "https://dorar.net/h/LWuCYU03",
+    "https://dorar.net/h/n7gQQnZw"
+   ]
+  },
+  "tirmidhi-485": {
+   "grades": [
+    "https://dorar.net/h/qkQMQNZp",
+    "https://dorar.net/h/S52zeunY"
+   ]
+  },
+  "bukhari-6464": {
+   "grades": [
+    "https://dorar.net/h/Sbgu4t05",
+    "https://dorar.net/h/NpZLQ79z"
+   ]
+  },
+  "sahihjami-1880": {
+   "grades": [
+    "https://dorar.net/h/UtSlZmEN",
+    "https://dorar.net/h/UEhEIEnY"
+   ]
+  },
+  "sahihjami-97": {
+   "grades": [
+    "https://dorar.net/h/ynIf4Yuo",
+    null
+   ]
+  },
+  "bukhari-2447": {
+   "grades": [
+    "https://dorar.net/h/e5S6Zb22",
+    "https://dorar.net/h/DPDE7C5N"
+   ]
+  },
+  "tamhid-24-333": {
+   "grades": [
+    "https://dorar.net/h/5J9EJKLh",
+    null
+   ]
+  },
+  "bukhari-5200": {
+   "grades": [
+    "https://dorar.net/h/u7FhqWrT",
+    null
+   ]
+  },
+  "muslim-2588": {
+   "grades": [
+    "https://dorar.net/h/5ny4Eh57",
+    "https://dorar.net/h/mqskYn8M"
+   ]
+  },
+  "bukhari-52": {
+   "grades": [
+    "https://dorar.net/h/wrjvh9Lg",
+    "https://dorar.net/h/3ItFLlck"
+   ]
+  },
+  "tirmidhi-2317": {
+   "grades": [
+    "https://dorar.net/h/KNNXwrpc",
+    null
+   ]
+  },
+  "bukhari-6682": {
+   "grades": [
+    "https://dorar.net/h/78xTy5F6",
+    "https://dorar.net/h/23IiX7qt"
+   ]
+  },
+  "sahihjami-8195": {
+   "grades": [
+    "https://dorar.net/h/zNmc1DOR",
+    "https://dorar.net/h/O3NCSIlo"
+   ]
+  },
+  "sahiha-250": {
+   "grades": [
+    null,
+    null
+   ]
+  },
+  "muslim-1732": {
+   "grades": [
+    "https://dorar.net/h/IBTlAzPG",
+    "https://dorar.net/h/8e3b4cAS"
+   ]
+  },
+  "sifatfatwa-103": {
+   "grades": [
+    "https://dorar.net/h/U6o8xH73"
+   ]
+  },
+  "tirmidhi-1954": {
+   "grades": [
+    "https://dorar.net/h/ORgtl03T",
+    "https://dorar.net/h/oJ680O5C"
+   ]
+  },
+  "bukhari-660": {
+   "grades": [
+    "https://dorar.net/h/Q6GTH0p0",
+    "https://dorar.net/h/ghdpFJ0i"
+   ]
+  },
+  "daifjami-3429": {
+   "grades": [
+    "https://dorar.net/h/fc6GndQg",
+    "https://dorar.net/h/fRKnzTvd"
+   ]
+  },
+  "ibnbaz-6-113": {
+   "grades": [
+    "https://dorar.net/h/wOv9xFUM"
+   ]
+  },
+  "ibnbaz-6-113-2": {
+   "grades": [
+    "https://dorar.net/h/yTkcy1nW"
+   ]
+  },
+  "daifjami-2666": {
+   "grades": [
+    "https://dorar.net/h/BCqoqLJV",
+    "https://dorar.net/h/vN9h5blm"
+   ]
+  },
+  "ibnjawzi-2-113": {
+   "grades": [
+    "https://dorar.net/h/zI0HgYVs",
+    "https://dorar.net/h/kFXH2Go4"
+   ]
+  },
+  "daifa-66": {
+   "grades": [
+    "https://dorar.net/h/YfzEIaFu",
+    "https://dorar.net/h/tuaVk2P1"
+   ]
+  },
+  "daifa-282": {
+   "grades": [
+    "https://dorar.net/h/xKhIjYqQ",
+    "https://dorar.net/h/aKUaszQK"
+   ]
+  },
+  "daifa-310": {
+   "grades": [
+    "https://dorar.net/h/0IZpSZwW",
+    "https://dorar.net/h/yRP8UxmL"
+   ]
+  },
+  "daifa-4589": {
+   "grades": [
+    "https://dorar.net/h/QMlsDSDY",
+    "https://dorar.net/h/CTm0kWDj"
+   ]
+  },
+  "daifjami-4301": {
+   "grades": [
+    "https://dorar.net/h/VwK3gmGv",
+    "https://dorar.net/h/tDSCSHM2"
+   ]
+  },
+  "daifjami-3619": {
+   "grades": [
+    "https://dorar.net/h/A4jF2XkX",
+    "https://dorar.net/h/wWsk6oB4"
+   ]
+  },
+  "saghani-64": {
+   "grades": [
+    "https://dorar.net/h/uCHKgzYs",
+    "https://dorar.net/h/mxIRmkeW"
+   ]
+  },
+  "daifa-611": {
+   "grades": [
+    "https://dorar.net/h/MFpjukgV",
+    "https://dorar.net/h/A0gQ1YSX"
+   ]
+  },
+  "daifa-3876": {
+   "grades": [
+    "https://dorar.net/h/KU4eDDZq",
+    null
+   ]
+  },
+  "daifjami-115": {
+   "grades": [
+    "https://dorar.net/h/7N8wuvcE",
+    null
+   ]
+  },
+  "daifjami-5607": {
+   "grades": [
+    "https://dorar.net/h/oya8EYfr",
+    "https://dorar.net/h/4TD3Xj6c"
+   ]
+  },
+  "maqasid-559": {
+   "grades": [
+    "https://dorar.net/h/F75z6gky",
+    "https://dorar.net/h/kNLWghZ8"
+   ]
+  },
+  "daifa-8": {
+   "grades": [
+    "https://dorar.net/h/WzE3LjHB",
+    "https://dorar.net/h/j35H5qwx"
+   ]
+  },
+  "daifjami-3566": {
+   "grades": [
+    "https://dorar.net/h/nWBJBsTU",
+    "https://dorar.net/h/EF8tWUjR"
+   ]
+  },
+  "saghani-54": {
+   "grades": [
+    "https://dorar.net/h/gffKTpCC"
+   ]
+  },
+  "daifjami-249": {
+   "grades": [
+    "https://dorar.net/h/buW6lhPk",
+    "https://dorar.net/h/gNXOWc1q"
+   ]
+  },
+  "daifjami-1704": {
+   "grades": [
+    "https://dorar.net/h/MgpuKW45",
+    null
+   ]
+  },
+  "shawkani-120": {
+   "grades": [
+    "https://dorar.net/h/xBCEQy5W",
+    null
+   ]
+  },
+  "daifa-30": {
+   "grades": [
+    "https://dorar.net/h/8BqOxS1K",
+    "https://dorar.net/h/AiTNsHyl"
+   ]
+  },
+  "sahihjami-2230": {
+   "grades": [
+    "https://dorar.net/h/kVqUnU9G",
+    null
+   ]
+  },
+  "bukhari-6117": {
+   "grades": [
+    "https://dorar.net/h/zULWpkPt",
+    "https://dorar.net/h/A3JcyVw4"
+   ]
+  },
+  "irwa-1448": {
+   "grades": [
+    "https://dorar.net/h/koL7OPAV"
+   ]
+  },
+  "muslim-2622": {
+   "grades": [
+    "https://dorar.net/h/qU4fSR8m",
+    null
+   ]
+  },
+  "daifa-1794": {
+   "grades": [
+    "https://dorar.net/h/iQMGaQLk",
+    null
+   ]
+  }
+ }
+}

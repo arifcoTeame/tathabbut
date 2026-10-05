@@ -88,6 +88,14 @@ def _cue_type(window: str) -> str | None:
     return None
 
 
+# An attribution opening the sentence without an honorific: «قال رسول الله الدين النصيحة»,
+# «قال النبي …», «قال الله …». (With ﷺ / تعالى the honorific itself marks the end of the cue.)
+_LEADS = (
+    ("hadith", re.compile(r"^\s*[وف]?(?:قال|يقول|عن)\s+(?:رسول\s+الله|الرسول|النبي|النبى)\s*[:：،,\-]?\s*")),
+    ("quran", re.compile(r"^\s*[وف]?(?:قال|يقول)\s+(?:الله|ربنا|ربكم)\s*[:：،,\-]?\s*")),
+)
+
+
 def _strip_cue(sentence: str) -> tuple[str | None, str]:
     """For an unquoted sentence, return (type, text after the attribution cue)."""
     for raw in ("ﷺ", "صلى الله عليه وسلم", "عليه الصلاة والسلام", "تعالى", "عز وجل", "سبحانه"):
@@ -97,6 +105,10 @@ def _strip_cue(sentence: str) -> tuple[str | None, str]:
             rest = sentence[pos + len(raw):].lstrip(" :،,-")
             if kind and len(rest.split()) >= 2:
                 return kind, rest
+    for kind, lead in _LEADS:
+        m = lead.match(sentence)
+        if m and len(sentence[m.end():].split()) >= 2:
+            return kind, sentence[m.end():]
     return None, sentence
 
 

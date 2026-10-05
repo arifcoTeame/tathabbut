@@ -17,6 +17,8 @@ export interface Grade {
   class: string;
   /** e.g. «بلفظ مقارب» when the source's wording differs slightly from the record text */
   note?: string;
+  /** Direct link to this ruling's own entry on dorar.net (https://dorar.net/h/…), when checked */
+  url?: string;
 }
 
 export interface SourceRef {
