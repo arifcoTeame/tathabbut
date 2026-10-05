@@ -81,7 +81,7 @@ def test_unmarked_verse_without_hamza_is_recognised_as_quran(full_index, text, s
 def test_quran_source_links_to_the_quranpedia_verse(full_index):
     from app.config import settings
     claim = pipeline.run(full_index, "قل هو الله احد", Thresholds(), settings.quran_link)["claims"][0]
-    assert claim["source"]["url"] == "https://quranpedia.net/surah/1/112#verse-6222"
+    assert claim["source"]["url"] == "https://quranpedia.net/surah/1/112?ayah_id=6222"
 
 
 # Owner check on the live site, 5 October 2026 19:43: «لاتاخذه سنة ولانوم» and
@@ -143,3 +143,13 @@ def test_short_unmarked_text_found_in_the_sources(full_index, text, code, source
 def test_short_text_not_in_the_sources_is_not_attributed(full_index, text):
     c = pipeline.run(full_index, text, Thresholds(), "{surah}")["claims"][0]
     assert c["verdict"]["code"] == "NO_ORIGIN" and c["source"] is None
+
+
+@needs_full
+def test_quranpedia_link_opens_the_verse_itself(full_index):
+    """Owner check, 20:51: «#verse-N» opened the surah page without reaching the verse;
+    «?ayah_id=N» (N = verse number in the whole mushaf) opens the verse (2:258 → 265)."""
+    from app.config import settings
+    claim = pipeline.run(full_index, "قال أنا أحيي وأميت", Thresholds(), settings.quran_link)["claims"][0]
+    assert claim["source"]["id"] == "quran-2:258"
+    assert claim["source"]["url"] == "https://quranpedia.net/surah/1/2?ayah_id=265"

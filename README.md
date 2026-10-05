@@ -57,7 +57,7 @@ cd backend
 
 ```bash
 cd backend
-bash run.sh test                       # 180 اختباراً
+bash run.sh test                       # 181 اختباراً
 .venv/bin/python scripts/evaluate_release.py --in-process --repeat 3 --output ../docs/evidence/local-smoke.json
 .venv/bin/python scripts/compare_baseline_search.py        # مقارنة بالبحث الحرفي على الحالات نفسها
 cd ../frontend

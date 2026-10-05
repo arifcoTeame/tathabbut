@@ -135,7 +135,7 @@
         "docs/evidence/backend-validation-v0.7.1-2026-10-05.json",
         "docs/evidence/local-safety-v0.7.1-2026-10-05.json"
       ],
-      "note": "180 اختباراً و35 حالة مستهدفة مكررة ثلاث مرات (105/105). نجاح هذه الحالات لا يعني دقة عامة 100%."
+      "note": "181 اختباراً و35 حالة مستهدفة مكررة ثلاث مرات (105/105). نجاح هذه الحالات لا يعني دقة عامة 100%."
     },
     {
       "id": "reproducible_retrieval_comparison",
@@ -248,20 +248,20 @@
     {
       "id": "live_release_verification",
       "label_ar": "التحقق من الإصدار المنشور بعد الرفع",
-      "status": "owner_handoff",
+      "status": "local_verified",
       "evidence": [
-        "docs/evidence/live-after-v0.7.0-2026-10-05.json",
+        "docs/evidence/live-after-v0.7.1-2026-10-05.json",
         "docs/VALIDATION.md"
       ],
-      "note": "Live 0.7.0: 93/93; 0.7.1 live check after deployment.",
-      "note_ar": "آخر دليل حي: 93/93 على 0.7.0 (5 أكتوبر 19:38). اختبار 0.7.1 الحي بعد النشر."
+      "note": "105/105 and a 114-surah sample 302/302 on https://tathabbut.vercel.app, 2026-10-05 20:47–20:53, engine 0.7.1 (commit df95258).",
+      "note_ar": "105/105، وعينة السور الـ114 302/302، على https://tathabbut.vercel.app في 5 أكتوبر 20:53؛ المحرك 0.7.1."
     }
   ],
   "local_checks": {
     "command": "python3 scripts/check_submission.py",
     "output": "docs/evidence/submission-check-v0.7.1.json",
     "saved_test_expectations": {
-      "pytest_passed": 180,
+      "pytest_passed": 181,
       "release_distinct_inputs": 35,
       "release_repetitions": 3,
       "release_total": 105

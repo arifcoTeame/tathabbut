@@ -1,0 +1,2162 @@
+{
+ "checked_at": "2026-10-05T20:53:14+03:00",
+ "started_at": "2026-10-05T20:47:12+03:00",
+ "base_url": "https://tathabbut.vercel.app",
+ "deployment": {
+  "commit": "df95258",
+  "engine_version": "0.7.1",
+  "render_deployed_at": "2026-10-05T20:43:24+03:00"
+ },
+ "method": "POST /api/verify from the page origin via browser fetch() (Next.js proxy -> Render), executed by the assistant through the Claude desktop built-in browser on the owner's Mac. Run 1 keeps per-claim verdicts and source ids; runs 2–3 returned the same level, verdict and source id for every claim (compared in the browser).",
+ "scope": "35 targeted regression cases ×3, plus a whole-Quran sample; not a representative accuracy benchmark",
+ "repeat": 3,
+ "passed": 105,
+ "total": 105,
+ "latency_ms": {
+  "min": 564,
+  "median": 635,
+  "p95_nearest_rank": 2802,
+  "max": 4248,
+  "note": "browser round-trip incl. Vercel proxy and Render"
+ },
+ "runs_2_3_identical_to_run_1": true,
+ "whole_quran_live": {
+  "sample": "data/evaluation/live-quran-sample-v0.7.1.json (fetched by the browser from the public repository, commit df95258)",
+  "surahs": 114,
+  "requests": 302,
+  "passed": 302,
+  "by_form": {
+   "kfc_marked": "114/114 VERIFIED",
+   "noisy_unmarked": "114/114 VERIFIED",
+   "marked_word_missing": "74/74 ALTERED"
+  },
+  "pass_rule": "expected verdict and a source id equal to the verse or a verse with word-for-word identical text",
+  "identical_verse_matches": {
+   "3:88": "quran-2:162",
+   "55:16": "quran-55:13",
+   "81:19": "quran-69:40",
+   "101:7": "quran-69:21",
+   "109:5": "quran-109:3"
+  },
+  "latency_ms": {
+   "min": 491,
+   "median": 696,
+   "max": 4910
+  },
+  "window": "20:49:50 → 20:53:14 (+03:00)"
+ },
+ "cases": [
+  {
+   "id": "quran_exact",
+   "run": 1,
+   "input": "﴿إياك نعبد وإياك نستعين﴾",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 647,
+   "engine_elapsed_ms": 243,
+   "claims": [
+    {
+     "level": "A",
+     "verdict": "VERIFIED",
+     "source_id": "quran-1:5"
+    }
+   ]
+  },
+  {
+   "id": "quran_changed_particle",
+   "run": 1,
+   "input": "﴿إياك نعبد فإياك نستعين﴾",
+   "expected": [
+    "ALTERED"
+   ],
+   "actual": [
+    "ALTERED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 601,
+   "engine_elapsed_ms": 228,
+   "claims": [
+    {
+     "level": "A",
+     "verdict": "ALTERED",
+     "source_id": "quran-1:5"
+    }
+   ]
+  },
+  {
+   "id": "quran_missing_particle",
+   "run": 1,
+   "input": "﴿إياك نعبد إياك نستعين﴾",
+   "expected": [
+    "ALTERED"
+   ],
+   "actual": [
+    "ALTERED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 595,
+   "engine_elapsed_ms": 268,
+   "claims": [
+    {
+     "level": "A",
+     "verdict": "ALTERED",
+     "source_id": "quran-1:5"
+    }
+   ]
+  },
+  {
+   "id": "quran_merged_quote",
+   "run": 1,
+   "input": "﴿ومن يتوكل على الله فهو حسبه ونعم الوكيل﴾",
+   "expected": [
+    "ALTERED"
+   ],
+   "actual": [
+    "ALTERED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 1089,
+   "engine_elapsed_ms": 501,
+   "claims": [
+    {
+     "level": "A",
+     "verdict": "ALTERED",
+     "source_id": "quran-65:3"
+    }
+   ]
+  },
+  {
+   "id": "quran_changed_word",
+   "run": 1,
+   "input": "﴿لا يكلف الله نفسا إلا طاقتها﴾",
+   "expected": [
+    "ALTERED"
+   ],
+   "actual": [
+    "ALTERED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 626,
+   "engine_elapsed_ms": 271,
+   "claims": [
+    {
+     "level": "A",
+     "verdict": "ALTERED",
+     "source_id": "quran-2:286"
+    }
+   ]
+  },
+  {
+   "id": "quran_king_fahd_spelling",
+   "run": 1,
+   "input": "﴿ولا تقربوا الزنا إنه كان فاحشة وساء سبيلا﴾",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 595,
+   "engine_elapsed_ms": 269,
+   "claims": [
+    {
+     "level": "A",
+     "verdict": "VERIFIED",
+     "source_id": "quran-17:32"
+    }
+   ]
+  },
+  {
+   "id": "quran_basmala_prefix",
+   "run": 1,
+   "input": "﴿بسم الله الرحمن الرحيم قل هو الله أحد﴾",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 594,
+   "engine_elapsed_ms": 229,
+   "claims": [
+    {
+     "level": "A",
+     "verdict": "VERIFIED",
+     "source_id": "quran-112:1"
+    }
+   ]
+  },
+  {
+   "id": "quran_unmarked_without_hamza",
+   "run": 1,
+   "input": "قل هو الله احد",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 596,
+   "engine_elapsed_ms": 259,
+   "claims": [
+    {
+     "level": "A",
+     "verdict": "VERIFIED",
+     "source_id": "quran-112:1"
+    }
+   ]
+  },
+  {
+   "id": "quran_unmarked_near_verse",
+   "run": 1,
+   "input": "قل هو الله واحد",
+   "expected": [
+    "NEEDS_REVIEW"
+   ],
+   "actual": [
+    "NEEDS_REVIEW"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 600,
+   "engine_elapsed_ms": 277,
+   "claims": [
+    {
+     "level": "A",
+     "verdict": "NEEDS_REVIEW",
+     "source_id": "quran-112:1"
+    }
+   ]
+  },
+  {
+   "id": "hadith_unmarked_without_hamza",
+   "run": 1,
+   "input": "انما الاعمال بالنيات",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 696,
+   "engine_elapsed_ms": 359,
+   "claims": [
+    {
+     "level": "A",
+     "verdict": "VERIFIED",
+     "source_id": "hadith-bukhari-1"
+    }
+   ]
+  },
+  {
+   "id": "quran_particle_joined_to_word",
+   "run": 1,
+   "input": "لاتاخذه سنة ولانوم",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 599,
+   "engine_elapsed_ms": 264,
+   "claims": [
+    {
+     "level": "A",
+     "verdict": "VERIFIED",
+     "source_id": "quran-2:255"
+    }
+   ]
+  },
+  {
+   "id": "quran_excerpt_of_long_verse",
+   "run": 1,
+   "input": "﴿لا تحزن إن الله معنا﴾",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 611,
+   "engine_elapsed_ms": 279,
+   "claims": [
+    {
+     "level": "A",
+     "verdict": "VERIFIED",
+     "source_id": "quran-9:40"
+    }
+   ]
+  },
+  {
+   "id": "quran_short_excerpt_unmarked",
+   "run": 1,
+   "input": "لا تاخذه",
+   "expected": [
+    "NEEDS_REVIEW"
+   ],
+   "actual": [
+    "NEEDS_REVIEW"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 695,
+   "engine_elapsed_ms": 378,
+   "claims": [
+    {
+     "level": "A",
+     "verdict": "NEEDS_REVIEW",
+     "source_id": "quran-2:255"
+    }
+   ]
+  },
+  {
+   "id": "quran_short_complete_verse",
+   "run": 1,
+   "input": "الله الصمد",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 597,
+   "engine_elapsed_ms": 267,
+   "claims": [
+    {
+     "level": "A",
+     "verdict": "VERIFIED",
+     "source_id": "quran-112:2"
+    }
+   ]
+  },
+  {
+   "id": "hadith_not_in_database",
+   "run": 1,
+   "input": "قال رسول الله ﷺ: «تفاءلوا بالخير تجدوه»",
+   "expected": [
+    "NO_ORIGIN"
+   ],
+   "actual": [
+    "NO_ORIGIN"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 768,
+   "engine_elapsed_ms": 280,
+   "claims": [
+    {
+     "level": "A",
+     "verdict": "NO_ORIGIN",
+     "source_id": null
+    }
+   ]
+  },
+  {
+   "id": "hadith_authentic",
+   "run": 1,
+   "input": "قال رسول الله ﷺ: «الدين النصيحة»",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 627,
+   "engine_elapsed_ms": 288,
+   "claims": [
+    {
+     "level": "A",
+     "verdict": "VERIFIED",
+     "source_id": "hadith-muslim-55"
+    }
+   ]
+  },
+  {
+   "id": "hadith_recorded_weak",
+   "run": 1,
+   "input": "قال رسول الله ﷺ: «حب الوطن من الإيمان»",
+   "expected": [
+    "NOT_AUTHENTIC"
+   ],
+   "actual": [
+    "NOT_AUTHENTIC"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 611,
+   "engine_elapsed_ms": 283,
+   "claims": [
+    {
+     "level": "A",
+     "verdict": "NOT_AUTHENTIC",
+     "source_id": "hadith-daifa-36"
+    }
+   ]
+  },
+  {
+   "id": "hadith_negation_removed",
+   "run": 1,
+   "input": "قال رسول الله ﷺ: «يؤمن أحدكم حتى يحب لأخيه ما يحب لنفسه»",
+   "expected": [
+    "NEEDS_REVIEW"
+   ],
+   "actual": [
+    "NEEDS_REVIEW"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 597,
+   "engine_elapsed_ms": 268,
+   "claims": [
+    {
+     "level": "A",
+     "verdict": "NEEDS_REVIEW",
+     "source_id": "hadith-bukhari-13"
+    }
+   ]
+  },
+  {
+   "id": "hadith_wording_changed",
+   "run": 1,
+   "input": "قال رسول الله ﷺ: «اطلبوا العلم ولو في الصين»",
+   "expected": [
+    "NEEDS_REVIEW"
+   ],
+   "actual": [
+    "NEEDS_REVIEW"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 592,
+   "engine_elapsed_ms": 259,
+   "claims": [
+    {
+     "level": "A",
+     "verdict": "NEEDS_REVIEW",
+     "source_id": "hadith-daifa-416"
+    }
+   ]
+  },
+  {
+   "id": "outside_corpus",
+   "run": 1,
+   "input": "قال رسول الله ﷺ: «الصبر مفتاح الفرج»",
+   "expected": [
+    "NO_ORIGIN"
+   ],
+   "actual": [
+    "NO_ORIGIN"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 616,
+   "engine_elapsed_ms": 284,
+   "claims": [
+    {
+     "level": "A",
+     "verdict": "NO_ORIGIN",
+     "source_id": null
+    }
+   ]
+  },
+  {
+   "id": "hadith_popular_not_established",
+   "run": 1,
+   "input": "قال رسول الله ﷺ: «النظافة من الإيمان»",
+   "expected": [
+    "NOT_AUTHENTIC"
+   ],
+   "actual": [
+    "NOT_AUTHENTIC"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 686,
+   "engine_elapsed_ms": 363,
+   "claims": [
+    {
+     "level": "A",
+     "verdict": "NOT_AUTHENTIC",
+     "source_id": "hadith-ibnbaz-6-113-2"
+    }
+   ]
+  },
+  {
+   "id": "hadith_hasan_grade",
+   "run": 1,
+   "input": "قال رسول الله ﷺ: «إن الله تعالى يحب إذا عمل أحدكم عملا أن يتقنه»",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 706,
+   "engine_elapsed_ms": 377,
+   "claims": [
+    {
+     "level": "A",
+     "verdict": "VERIFIED",
+     "source_id": "hadith-sahihjami-1880"
+    }
+   ]
+  },
+  {
+   "id": "hadith_scholars_disagree",
+   "run": 1,
+   "input": "قال رسول الله ﷺ: «خير الناس أنفعهم للناس»",
+   "expected": [
+    "DISPUTED"
+   ],
+   "actual": [
+    "DISPUTED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 695,
+   "engine_elapsed_ms": 370,
+   "claims": [
+    {
+     "level": "A",
+     "verdict": "DISPUTED",
+     "source_id": "hadith-sahihjami-3289"
+    }
+   ]
+  },
+  {
+   "id": "hadith_baseless_recorded",
+   "run": 1,
+   "input": "قال رسول الله ﷺ: «من عرف نفسه فقد عرف ربه»",
+   "expected": [
+    "NOT_AUTHENTIC"
+   ],
+   "actual": [
+    "NOT_AUTHENTIC"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 613,
+   "engine_elapsed_ms": 278,
+   "claims": [
+    {
+     "level": "A",
+     "verdict": "NOT_AUTHENTIC",
+     "source_id": "hadith-daifa-66"
+    }
+   ]
+  },
+  {
+   "id": "hadith_fragment_of_long_text",
+   "run": 1,
+   "input": "قال رسول الله ﷺ: «الكلمة الطيبة صدقة»",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 719,
+   "engine_elapsed_ms": 367,
+   "claims": [
+    {
+     "level": "A",
+     "verdict": "VERIFIED",
+     "source_id": "hadith-bukhari-2989"
+    }
+   ]
+  },
+  {
+   "id": "hadith_popular_variant_wording",
+   "run": 1,
+   "input": "قال رسول الله ﷺ: «إنما بعثت لأتمم مكارم الأخلاق»",
+   "expected": [
+    "NEEDS_REVIEW"
+   ],
+   "actual": [
+    "NEEDS_REVIEW"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 576,
+   "engine_elapsed_ms": 242,
+   "claims": [
+    {
+     "level": "A",
+     "verdict": "NEEDS_REVIEW",
+     "source_id": "hadith-tamhid-24-333"
+    }
+   ]
+  },
+  {
+   "id": "hadith_extra_words_not_in_record",
+   "run": 1,
+   "input": "قال رسول الله ﷺ: «الحكمة ضالة المؤمن أنى وجدها فهو أحق بها»",
+   "expected": [
+    "NO_ORIGIN"
+   ],
+   "actual": [
+    "NO_ORIGIN"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 599,
+   "engine_elapsed_ms": 248,
+   "claims": [
+    {
+     "level": "A",
+     "verdict": "NO_ORIGIN",
+     "source_id": null
+    }
+   ]
+  },
+  {
+   "id": "personal_referral",
+   "run": 1,
+   "input": "هل يجوز لي أن أجمع الصلاة في العمل؟",
+   "expected": [
+    "REFER"
+   ],
+   "actual": [
+    "REFER"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 597,
+   "engine_elapsed_ms": 262,
+   "claims": [
+    {
+     "level": "D",
+     "verdict": "REFER",
+     "source_id": null
+    }
+   ]
+  },
+  {
+   "id": "multiple_claims",
+   "run": 1,
+   "input": "قال رسول الله ﷺ: «اطلبوا العلم ولو بالصين». وقال تعالى: ﴿ومن يتوكل على الله فهو حسبه ونعم الوكيل﴾. هل يجوز لي أن أجمع الصلاة في العمل؟",
+   "expected": [
+    "NOT_AUTHENTIC",
+    "ALTERED",
+    "REFER"
+   ],
+   "actual": [
+    "NOT_AUTHENTIC",
+    "ALTERED",
+    "REFER"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 1594,
+   "engine_elapsed_ms": 1173,
+   "claims": [
+    {
+     "level": "A",
+     "verdict": "NOT_AUTHENTIC",
+     "source_id": "hadith-daifa-416"
+    },
+    {
+     "level": "A",
+     "verdict": "ALTERED",
+     "source_id": "quran-65:3"
+    },
+    {
+     "level": "D",
+     "verdict": "REFER",
+     "source_id": null
+    }
+   ]
+  },
+  {
+   "id": "personal_with_quran_same_sentence",
+   "run": 1,
+   "input": "هل يجوز لي ترك الصلاة لأن الله قال: ﴿إن الله غفور رحيم﴾؟",
+   "expected": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "actual": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 2909,
+   "engine_elapsed_ms": 2591,
+   "claims": [
+    {
+     "level": "D",
+     "verdict": "REFER",
+     "source_id": null
+    },
+    {
+     "level": "A",
+     "verdict": "VERIFIED",
+     "source_id": "quran-8:69"
+    }
+   ]
+  },
+  {
+   "id": "personal_with_hadith_same_sentence",
+   "run": 1,
+   "input": "هل يجوز لي أن أفعل ذلك بناء على حديث رسول الله ﷺ: «الدين النصيحة»؟",
+   "expected": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "actual": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 895,
+   "engine_elapsed_ms": 580,
+   "claims": [
+    {
+     "level": "D",
+     "verdict": "REFER",
+     "source_id": null
+    },
+    {
+     "level": "A",
+     "verdict": "VERIFIED",
+     "source_id": "hadith-muslim-55"
+    }
+   ]
+  },
+  {
+   "id": "personal_after_quote",
+   "run": 1,
+   "input": "قال رسول الله ﷺ: «الدين النصيحة»، فهل يحق لي نشر أسرار زوجتي؟",
+   "expected": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "actual": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 909,
+   "engine_elapsed_ms": 576,
+   "claims": [
+    {
+     "level": "D",
+     "verdict": "REFER",
+     "source_id": null
+    },
+    {
+     "level": "A",
+     "verdict": "VERIFIED",
+     "source_id": "hadith-muslim-55"
+    }
+   ]
+  },
+  {
+   "id": "personal_after_unquoted_citation",
+   "run": 1,
+   "input": "قال تعالى قل هو الله أحد، فهل يلزمني شيء في حالتي؟",
+   "expected": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "actual": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 1210,
+   "engine_elapsed_ms": 531,
+   "claims": [
+    {
+     "level": "D",
+     "verdict": "REFER",
+     "source_id": null
+    },
+    {
+     "level": "A",
+     "verdict": "VERIFIED",
+     "source_id": "quran-112:1"
+    }
+   ]
+  },
+  {
+   "id": "first_person_quran_is_not_user_question",
+   "run": 1,
+   "input": "قال تعالى: ﴿إني نذرت للرحمن صوما﴾",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 589,
+   "engine_elapsed_ms": 252,
+   "claims": [
+    {
+     "level": "A",
+     "verdict": "VERIFIED",
+     "source_id": "quran-19:26"
+    }
+   ]
+  },
+  {
+   "id": "referral_preserved_at_display_limit",
+   "run": 1,
+   "input": "قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. هل يجوز لي ترك الصلاة؟",
+   "expected": [
+    "REFER",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED"
+   ],
+   "actual": [
+    "REFER",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 4248,
+   "engine_elapsed_ms": 3866,
+   "claims": [
+    {
+     "level": "D",
+     "verdict": "REFER",
+     "source_id": null
+    },
+    {
+     "level": "A",
+     "verdict": "VERIFIED",
+     "source_id": "quran-112:1"
+    },
+    {
+     "level": "A",
+     "verdict": "VERIFIED",
+     "source_id": "quran-112:1"
+    },
+    {
+     "level": "A",
+     "verdict": "VERIFIED",
+     "source_id": "quran-112:1"
+    },
+    {
+     "level": "A",
+     "verdict": "VERIFIED",
+     "source_id": "quran-112:1"
+    },
+    {
+     "level": "A",
+     "verdict": "VERIFIED",
+     "source_id": "quran-112:1"
+    },
+    {
+     "level": "A",
+     "verdict": "VERIFIED",
+     "source_id": "quran-112:1"
+    },
+    {
+     "level": "A",
+     "verdict": "VERIFIED",
+     "source_id": "quran-112:1"
+    },
+    {
+     "level": "A",
+     "verdict": "VERIFIED",
+     "source_id": "quran-112:1"
+    },
+    {
+     "level": "A",
+     "verdict": "VERIFIED",
+     "source_id": "quran-112:1"
+    },
+    {
+     "level": "A",
+     "verdict": "VERIFIED",
+     "source_id": "quran-112:1"
+    },
+    {
+     "level": "A",
+     "verdict": "VERIFIED",
+     "source_id": "quran-112:1"
+    }
+   ]
+  },
+  {
+   "id": "quran_exact",
+   "run": 2,
+   "input": "﴿إياك نعبد وإياك نستعين﴾",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 746,
+   "engine_elapsed_ms": 234
+  },
+  {
+   "id": "quran_changed_particle",
+   "run": 2,
+   "input": "﴿إياك نعبد فإياك نستعين﴾",
+   "expected": [
+    "ALTERED"
+   ],
+   "actual": [
+    "ALTERED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 599,
+   "engine_elapsed_ms": 278
+  },
+  {
+   "id": "quran_missing_particle",
+   "run": 2,
+   "input": "﴿إياك نعبد إياك نستعين﴾",
+   "expected": [
+    "ALTERED"
+   ],
+   "actual": [
+    "ALTERED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 607,
+   "engine_elapsed_ms": 260
+  },
+  {
+   "id": "quran_merged_quote",
+   "run": 2,
+   "input": "﴿ومن يتوكل على الله فهو حسبه ونعم الوكيل﴾",
+   "expected": [
+    "ALTERED"
+   ],
+   "actual": [
+    "ALTERED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 888,
+   "engine_elapsed_ms": 563
+  },
+  {
+   "id": "quran_changed_word",
+   "run": 2,
+   "input": "﴿لا يكلف الله نفسا إلا طاقتها﴾",
+   "expected": [
+    "ALTERED"
+   ],
+   "actual": [
+    "ALTERED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 610,
+   "engine_elapsed_ms": 277
+  },
+  {
+   "id": "quran_king_fahd_spelling",
+   "run": 2,
+   "input": "﴿ولا تقربوا الزنا إنه كان فاحشة وساء سبيلا﴾",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 601,
+   "engine_elapsed_ms": 274
+  },
+  {
+   "id": "quran_basmala_prefix",
+   "run": 2,
+   "input": "﴿بسم الله الرحمن الرحيم قل هو الله أحد﴾",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 604,
+   "engine_elapsed_ms": 274
+  },
+  {
+   "id": "quran_unmarked_without_hamza",
+   "run": 2,
+   "input": "قل هو الله احد",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 686,
+   "engine_elapsed_ms": 372
+  },
+  {
+   "id": "quran_unmarked_near_verse",
+   "run": 2,
+   "input": "قل هو الله واحد",
+   "expected": [
+    "NEEDS_REVIEW"
+   ],
+   "actual": [
+    "NEEDS_REVIEW"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 707,
+   "engine_elapsed_ms": 397
+  },
+  {
+   "id": "hadith_unmarked_without_hamza",
+   "run": 2,
+   "input": "انما الاعمال بالنيات",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 805,
+   "engine_elapsed_ms": 470
+  },
+  {
+   "id": "quran_particle_joined_to_word",
+   "run": 2,
+   "input": "لاتاخذه سنة ولانوم",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 603,
+   "engine_elapsed_ms": 277
+  },
+  {
+   "id": "quran_excerpt_of_long_verse",
+   "run": 2,
+   "input": "﴿لا تحزن إن الله معنا﴾",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 635,
+   "engine_elapsed_ms": 287
+  },
+  {
+   "id": "quran_short_excerpt_unmarked",
+   "run": 2,
+   "input": "لا تاخذه",
+   "expected": [
+    "NEEDS_REVIEW"
+   ],
+   "actual": [
+    "NEEDS_REVIEW"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 763,
+   "engine_elapsed_ms": 436
+  },
+  {
+   "id": "quran_short_complete_verse",
+   "run": 2,
+   "input": "الله الصمد",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 595,
+   "engine_elapsed_ms": 283
+  },
+  {
+   "id": "hadith_not_in_database",
+   "run": 2,
+   "input": "قال رسول الله ﷺ: «تفاءلوا بالخير تجدوه»",
+   "expected": [
+    "NO_ORIGIN"
+   ],
+   "actual": [
+    "NO_ORIGIN"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 599,
+   "engine_elapsed_ms": 263
+  },
+  {
+   "id": "hadith_authentic",
+   "run": 2,
+   "input": "قال رسول الله ﷺ: «الدين النصيحة»",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 593,
+   "engine_elapsed_ms": 246
+  },
+  {
+   "id": "hadith_recorded_weak",
+   "run": 2,
+   "input": "قال رسول الله ﷺ: «حب الوطن من الإيمان»",
+   "expected": [
+    "NOT_AUTHENTIC"
+   ],
+   "actual": [
+    "NOT_AUTHENTIC"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 609,
+   "engine_elapsed_ms": 266
+  },
+  {
+   "id": "hadith_negation_removed",
+   "run": 2,
+   "input": "قال رسول الله ﷺ: «يؤمن أحدكم حتى يحب لأخيه ما يحب لنفسه»",
+   "expected": [
+    "NEEDS_REVIEW"
+   ],
+   "actual": [
+    "NEEDS_REVIEW"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 690,
+   "engine_elapsed_ms": 361
+  },
+  {
+   "id": "hadith_wording_changed",
+   "run": 2,
+   "input": "قال رسول الله ﷺ: «اطلبوا العلم ولو في الصين»",
+   "expected": [
+    "NEEDS_REVIEW"
+   ],
+   "actual": [
+    "NEEDS_REVIEW"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 608,
+   "engine_elapsed_ms": 293
+  },
+  {
+   "id": "outside_corpus",
+   "run": 2,
+   "input": "قال رسول الله ﷺ: «الصبر مفتاح الفرج»",
+   "expected": [
+    "NO_ORIGIN"
+   ],
+   "actual": [
+    "NO_ORIGIN"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 599,
+   "engine_elapsed_ms": 264
+  },
+  {
+   "id": "hadith_popular_not_established",
+   "run": 2,
+   "input": "قال رسول الله ﷺ: «النظافة من الإيمان»",
+   "expected": [
+    "NOT_AUTHENTIC"
+   ],
+   "actual": [
+    "NOT_AUTHENTIC"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 609,
+   "engine_elapsed_ms": 277
+  },
+  {
+   "id": "hadith_hasan_grade",
+   "run": 2,
+   "input": "قال رسول الله ﷺ: «إن الله تعالى يحب إذا عمل أحدكم عملا أن يتقنه»",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 684,
+   "engine_elapsed_ms": 372
+  },
+  {
+   "id": "hadith_scholars_disagree",
+   "run": 2,
+   "input": "قال رسول الله ﷺ: «خير الناس أنفعهم للناس»",
+   "expected": [
+    "DISPUTED"
+   ],
+   "actual": [
+    "DISPUTED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 601,
+   "engine_elapsed_ms": 288
+  },
+  {
+   "id": "hadith_baseless_recorded",
+   "run": 2,
+   "input": "قال رسول الله ﷺ: «من عرف نفسه فقد عرف ربه»",
+   "expected": [
+    "NOT_AUTHENTIC"
+   ],
+   "actual": [
+    "NOT_AUTHENTIC"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 710,
+   "engine_elapsed_ms": 379
+  },
+  {
+   "id": "hadith_fragment_of_long_text",
+   "run": 2,
+   "input": "قال رسول الله ﷺ: «الكلمة الطيبة صدقة»",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 735,
+   "engine_elapsed_ms": 256
+  },
+  {
+   "id": "hadith_popular_variant_wording",
+   "run": 2,
+   "input": "قال رسول الله ﷺ: «إنما بعثت لأتمم مكارم الأخلاق»",
+   "expected": [
+    "NEEDS_REVIEW"
+   ],
+   "actual": [
+    "NEEDS_REVIEW"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 570,
+   "engine_elapsed_ms": 221
+  },
+  {
+   "id": "hadith_extra_words_not_in_record",
+   "run": 2,
+   "input": "قال رسول الله ﷺ: «الحكمة ضالة المؤمن أنى وجدها فهو أحق بها»",
+   "expected": [
+    "NO_ORIGIN"
+   ],
+   "actual": [
+    "NO_ORIGIN"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 686,
+   "engine_elapsed_ms": 347
+  },
+  {
+   "id": "personal_referral",
+   "run": 2,
+   "input": "هل يجوز لي أن أجمع الصلاة في العمل؟",
+   "expected": [
+    "REFER"
+   ],
+   "actual": [
+    "REFER"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 605,
+   "engine_elapsed_ms": 267
+  },
+  {
+   "id": "multiple_claims",
+   "run": 2,
+   "input": "قال رسول الله ﷺ: «اطلبوا العلم ولو بالصين». وقال تعالى: ﴿ومن يتوكل على الله فهو حسبه ونعم الوكيل﴾. هل يجوز لي أن أجمع الصلاة في العمل؟",
+   "expected": [
+    "NOT_AUTHENTIC",
+    "ALTERED",
+    "REFER"
+   ],
+   "actual": [
+    "NOT_AUTHENTIC",
+    "ALTERED",
+    "REFER"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 1500,
+   "engine_elapsed_ms": 1170
+  },
+  {
+   "id": "personal_with_quran_same_sentence",
+   "run": 2,
+   "input": "هل يجوز لي ترك الصلاة لأن الله قال: ﴿إن الله غفور رحيم﴾؟",
+   "expected": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "actual": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 2894,
+   "engine_elapsed_ms": 2444
+  },
+  {
+   "id": "personal_with_hadith_same_sentence",
+   "run": 2,
+   "input": "هل يجوز لي أن أفعل ذلك بناء على حديث رسول الله ﷺ: «الدين النصيحة»؟",
+   "expected": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "actual": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 930,
+   "engine_elapsed_ms": 567
+  },
+  {
+   "id": "personal_after_quote",
+   "run": 2,
+   "input": "قال رسول الله ﷺ: «الدين النصيحة»، فهل يحق لي نشر أسرار زوجتي؟",
+   "expected": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "actual": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 976,
+   "engine_elapsed_ms": 637
+  },
+  {
+   "id": "personal_after_unquoted_citation",
+   "run": 2,
+   "input": "قال تعالى قل هو الله أحد، فهل يلزمني شيء في حالتي؟",
+   "expected": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "actual": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 900,
+   "engine_elapsed_ms": 577
+  },
+  {
+   "id": "first_person_quran_is_not_user_question",
+   "run": 2,
+   "input": "قال تعالى: ﴿إني نذرت للرحمن صوما﴾",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 601,
+   "engine_elapsed_ms": 286
+  },
+  {
+   "id": "referral_preserved_at_display_limit",
+   "run": 2,
+   "input": "قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. هل يجوز لي ترك الصلاة؟",
+   "expected": [
+    "REFER",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED"
+   ],
+   "actual": [
+    "REFER",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 4198,
+   "engine_elapsed_ms": 3879
+  },
+  {
+   "id": "quran_exact",
+   "run": 3,
+   "input": "﴿إياك نعبد وإياك نستعين﴾",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 607,
+   "engine_elapsed_ms": 293
+  },
+  {
+   "id": "quran_changed_particle",
+   "run": 3,
+   "input": "﴿إياك نعبد فإياك نستعين﴾",
+   "expected": [
+    "ALTERED"
+   ],
+   "actual": [
+    "ALTERED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 735,
+   "engine_elapsed_ms": 354
+  },
+  {
+   "id": "quran_missing_particle",
+   "run": 3,
+   "input": "﴿إياك نعبد إياك نستعين﴾",
+   "expected": [
+    "ALTERED"
+   ],
+   "actual": [
+    "ALTERED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 564,
+   "engine_elapsed_ms": 250
+  },
+  {
+   "id": "quran_merged_quote",
+   "run": 3,
+   "input": "﴿ومن يتوكل على الله فهو حسبه ونعم الوكيل﴾",
+   "expected": [
+    "ALTERED"
+   ],
+   "actual": [
+    "ALTERED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 896,
+   "engine_elapsed_ms": 570
+  },
+  {
+   "id": "quran_changed_word",
+   "run": 3,
+   "input": "﴿لا يكلف الله نفسا إلا طاقتها﴾",
+   "expected": [
+    "ALTERED"
+   ],
+   "actual": [
+    "ALTERED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 605,
+   "engine_elapsed_ms": 308
+  },
+  {
+   "id": "quran_king_fahd_spelling",
+   "run": 3,
+   "input": "﴿ولا تقربوا الزنا إنه كان فاحشة وساء سبيلا﴾",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 598,
+   "engine_elapsed_ms": 271
+  },
+  {
+   "id": "quran_basmala_prefix",
+   "run": 3,
+   "input": "﴿بسم الله الرحمن الرحيم قل هو الله أحد﴾",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 591,
+   "engine_elapsed_ms": 278
+  },
+  {
+   "id": "quran_unmarked_without_hamza",
+   "run": 3,
+   "input": "قل هو الله احد",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 606,
+   "engine_elapsed_ms": 271
+  },
+  {
+   "id": "quran_unmarked_near_verse",
+   "run": 3,
+   "input": "قل هو الله واحد",
+   "expected": [
+    "NEEDS_REVIEW"
+   ],
+   "actual": [
+    "NEEDS_REVIEW"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 603,
+   "engine_elapsed_ms": 271
+  },
+  {
+   "id": "hadith_unmarked_without_hamza",
+   "run": 3,
+   "input": "انما الاعمال بالنيات",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 602,
+   "engine_elapsed_ms": 294
+  },
+  {
+   "id": "quran_particle_joined_to_word",
+   "run": 3,
+   "input": "لاتاخذه سنة ولانوم",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 695,
+   "engine_elapsed_ms": 260
+  },
+  {
+   "id": "quran_excerpt_of_long_verse",
+   "run": 3,
+   "input": "﴿لا تحزن إن الله معنا﴾",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 692,
+   "engine_elapsed_ms": 274
+  },
+  {
+   "id": "quran_short_excerpt_unmarked",
+   "run": 3,
+   "input": "لا تاخذه",
+   "expected": [
+    "NEEDS_REVIEW"
+   ],
+   "actual": [
+    "NEEDS_REVIEW"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 969,
+   "engine_elapsed_ms": 390
+  },
+  {
+   "id": "quran_short_complete_verse",
+   "run": 3,
+   "input": "الله الصمد",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 634,
+   "engine_elapsed_ms": 297
+  },
+  {
+   "id": "hadith_not_in_database",
+   "run": 3,
+   "input": "قال رسول الله ﷺ: «تفاءلوا بالخير تجدوه»",
+   "expected": [
+    "NO_ORIGIN"
+   ],
+   "actual": [
+    "NO_ORIGIN"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 606,
+   "engine_elapsed_ms": 280
+  },
+  {
+   "id": "hadith_authentic",
+   "run": 3,
+   "input": "قال رسول الله ﷺ: «الدين النصيحة»",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 593,
+   "engine_elapsed_ms": 255
+  },
+  {
+   "id": "hadith_recorded_weak",
+   "run": 3,
+   "input": "قال رسول الله ﷺ: «حب الوطن من الإيمان»",
+   "expected": [
+    "NOT_AUTHENTIC"
+   ],
+   "actual": [
+    "NOT_AUTHENTIC"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 710,
+   "engine_elapsed_ms": 388
+  },
+  {
+   "id": "hadith_negation_removed",
+   "run": 3,
+   "input": "قال رسول الله ﷺ: «يؤمن أحدكم حتى يحب لأخيه ما يحب لنفسه»",
+   "expected": [
+    "NEEDS_REVIEW"
+   ],
+   "actual": [
+    "NEEDS_REVIEW"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 891,
+   "engine_elapsed_ms": 380
+  },
+  {
+   "id": "hadith_wording_changed",
+   "run": 3,
+   "input": "قال رسول الله ﷺ: «اطلبوا العلم ولو في الصين»",
+   "expected": [
+    "NEEDS_REVIEW"
+   ],
+   "actual": [
+    "NEEDS_REVIEW"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 710,
+   "engine_elapsed_ms": 376
+  },
+  {
+   "id": "outside_corpus",
+   "run": 3,
+   "input": "قال رسول الله ﷺ: «الصبر مفتاح الفرج»",
+   "expected": [
+    "NO_ORIGIN"
+   ],
+   "actual": [
+    "NO_ORIGIN"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 691,
+   "engine_elapsed_ms": 371
+  },
+  {
+   "id": "hadith_popular_not_established",
+   "run": 3,
+   "input": "قال رسول الله ﷺ: «النظافة من الإيمان»",
+   "expected": [
+    "NOT_AUTHENTIC"
+   ],
+   "actual": [
+    "NOT_AUTHENTIC"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 719,
+   "engine_elapsed_ms": 406
+  },
+  {
+   "id": "hadith_hasan_grade",
+   "run": 3,
+   "input": "قال رسول الله ﷺ: «إن الله تعالى يحب إذا عمل أحدكم عملا أن يتقنه»",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 688,
+   "engine_elapsed_ms": 368
+  },
+  {
+   "id": "hadith_scholars_disagree",
+   "run": 3,
+   "input": "قال رسول الله ﷺ: «خير الناس أنفعهم للناس»",
+   "expected": [
+    "DISPUTED"
+   ],
+   "actual": [
+    "DISPUTED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 630,
+   "engine_elapsed_ms": 279
+  },
+  {
+   "id": "hadith_baseless_recorded",
+   "run": 3,
+   "input": "قال رسول الله ﷺ: «من عرف نفسه فقد عرف ربه»",
+   "expected": [
+    "NOT_AUTHENTIC"
+   ],
+   "actual": [
+    "NOT_AUTHENTIC"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 670,
+   "engine_elapsed_ms": 334
+  },
+  {
+   "id": "hadith_fragment_of_long_text",
+   "run": 3,
+   "input": "قال رسول الله ﷺ: «الكلمة الطيبة صدقة»",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 597,
+   "engine_elapsed_ms": 253
+  },
+  {
+   "id": "hadith_popular_variant_wording",
+   "run": 3,
+   "input": "قال رسول الله ﷺ: «إنما بعثت لأتمم مكارم الأخلاق»",
+   "expected": [
+    "NEEDS_REVIEW"
+   ],
+   "actual": [
+    "NEEDS_REVIEW"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 703,
+   "engine_elapsed_ms": 364
+  },
+  {
+   "id": "hadith_extra_words_not_in_record",
+   "run": 3,
+   "input": "قال رسول الله ﷺ: «الحكمة ضالة المؤمن أنى وجدها فهو أحق بها»",
+   "expected": [
+    "NO_ORIGIN"
+   ],
+   "actual": [
+    "NO_ORIGIN"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 690,
+   "engine_elapsed_ms": 266
+  },
+  {
+   "id": "personal_referral",
+   "run": 3,
+   "input": "هل يجوز لي أن أجمع الصلاة في العمل؟",
+   "expected": [
+    "REFER"
+   ],
+   "actual": [
+    "REFER"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 615,
+   "engine_elapsed_ms": 279
+  },
+  {
+   "id": "multiple_claims",
+   "run": 3,
+   "input": "قال رسول الله ﷺ: «اطلبوا العلم ولو بالصين». وقال تعالى: ﴿ومن يتوكل على الله فهو حسبه ونعم الوكيل﴾. هل يجوز لي أن أجمع الصلاة في العمل؟",
+   "expected": [
+    "NOT_AUTHENTIC",
+    "ALTERED",
+    "REFER"
+   ],
+   "actual": [
+    "NOT_AUTHENTIC",
+    "ALTERED",
+    "REFER"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 1699,
+   "engine_elapsed_ms": 1349
+  },
+  {
+   "id": "personal_with_quran_same_sentence",
+   "run": 3,
+   "input": "هل يجوز لي ترك الصلاة لأن الله قال: ﴿إن الله غفور رحيم﴾؟",
+   "expected": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "actual": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 2802,
+   "engine_elapsed_ms": 2467
+  },
+  {
+   "id": "personal_with_hadith_same_sentence",
+   "run": 3,
+   "input": "هل يجوز لي أن أفعل ذلك بناء على حديث رسول الله ﷺ: «الدين النصيحة»؟",
+   "expected": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "actual": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 886,
+   "engine_elapsed_ms": 557
+  },
+  {
+   "id": "personal_after_quote",
+   "run": 3,
+   "input": "قال رسول الله ﷺ: «الدين النصيحة»، فهل يحق لي نشر أسرار زوجتي؟",
+   "expected": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "actual": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 904,
+   "engine_elapsed_ms": 595
+  },
+  {
+   "id": "personal_after_unquoted_citation",
+   "run": 3,
+   "input": "قال تعالى قل هو الله أحد، فهل يلزمني شيء في حالتي؟",
+   "expected": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "actual": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 901,
+   "engine_elapsed_ms": 566
+  },
+  {
+   "id": "first_person_quran_is_not_user_question",
+   "run": 3,
+   "input": "قال تعالى: ﴿إني نذرت للرحمن صوما﴾",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 594,
+   "engine_elapsed_ms": 275
+  },
+  {
+   "id": "referral_preserved_at_display_limit",
+   "run": 3,
+   "input": "قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. هل يجوز لي ترك الصلاة؟",
+   "expected": [
+    "REFER",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED"
+   ],
+   "actual": [
+    "REFER",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED"
+   ],
+   "passed": true,
+   "engine_version": "0.7.1",
+   "http_status": 200,
+   "roundtrip_ms": 4211,
+   "engine_elapsed_ms": 3883
+  }
+ ]
+}

@@ -20,7 +20,7 @@ class Settings:
         default_factory=lambda: os.getenv("TATHABBUT_CORS", "http://localhost:3000").split(",")
     )
     max_input_chars: int = int(os.getenv("TATHABBUT_MAX_CHARS", "4000"))
-    quran_link: str = os.getenv("TATHABBUT_QURAN_LINK", "https://quranpedia.net/surah/1/{surah}#verse-{gid}")
+    quran_link: str = os.getenv("TATHABBUT_QURAN_LINK", "https://quranpedia.net/surah/1/{surah}?ayah_id={gid}")
     thresholds: Thresholds = field(
         default_factory=lambda: Thresholds(require_verified_sources=_bool("TATHABBUT_REQUIRE_VERIFIED", False))
     )

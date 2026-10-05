@@ -21,7 +21,7 @@ from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parents[1]
 VERSION = "0.7.1"
-HADITH, PYTEST, CASES = 72, 180, 35   # release 0.7.1 corpus and evidence sizes
+HADITH, PYTEST, CASES = 72, 181, 35   # release 0.7.1 corpus and evidence sizes
 STATUSES = {"local_verified", "owner_handoff", "external_review_pending"}
 WEIGHTS = {"technical_ai": 25, "scientific_safety": 15, "innovation": 15,
            "user_experience": 10, "benefit": 20, "operations": 10, "presentation": 5}

@@ -4,7 +4,7 @@ import pytest
 
 from app.core import pipeline
 
-LINK = "https://quranpedia.net/surah/1/{surah}#verse-{gid}"
+LINK = "https://quranpedia.net/surah/1/{surah}?ayah_id={gid}"
 
 
 @pytest.mark.parametrize("text", [

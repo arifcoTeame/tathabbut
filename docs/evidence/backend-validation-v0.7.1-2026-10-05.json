@@ -1,5 +1,5 @@
 {
- "recorded_at": "2026-10-05T20:38:15.722576+03:00",
+ "recorded_at": "2026-10-05T20:59:44.612903+03:00",
  "engine_version": "0.7.1",
  "environment": {
   "os": "Linux",
@@ -10,9 +10,9 @@
  "pytest": {
   "command": "python3 -m pytest -q",
   "observed_exit_code": 0,
-  "passed": 180,
+  "passed": 181,
   "failed": 0,
-  "duration_seconds": 57.07,
+  "duration_seconds": 15.81,
   "provenance": "Summary of the actual command output observed in this local review; not an independently signed test report."
  },
  "release_cases": {
@@ -40,7 +40,7 @@
   "backend/app/core/index.py": "e3f2a495adacafcb6557fea1c961c11960a87892f7b7476769a6fa59f71d450f",
   "backend/app/core/embedder.py": "0680ee80f1baf0fca6f2d341ad378ebf4940f7de8ddf92bdc2cfd8f7689a919a",
   "backend/app/core/align.py": "889b7b84c885a2fbfcd709149e3a11973d47ca206ced0d9aa32dcc4d9ff65aae",
-  "backend/app/config.py": "0d8e08273306863ee69289bdec2d8509868b060bdb80ec109fc53fd5770aec48",
+  "backend/app/config.py": "2f75d88733858b0afe8f61d93eb21798d7b9fe7756b15bc5bc4d90b277883c51",
   "backend/scripts/build_index.py": "cc76bacfc727a898d5f54e0775e9ef4957db63112038e46e8c20437b4926f75f",
   "backend/scripts/prepare_quran_kfc.py": "d32c24b11d3c68780f200fc22218570604ec1e85b5adb876acf8236e8a11c467",
   "backend/scripts/validate_hadith.py": "6e81b6871cb52ab7dd61c2691c38a61885b3a0253372573658af964521ffc26c",
@@ -54,8 +54,8 @@
   "backend/scripts/compare_baseline_search.py": "3e01be26fe5ed82710142fb811863472545cea0497920431be8ebf0e55ee583a",
   "backend/tests/test_engine.py": "4b4d95d2646e0795f7edad3e2e27da9a44a1283973d85398c149cc1e63be57a2",
   "backend/tests/test_personal_referral.py": "eba40d1008a7c67a00e4ea8d6bf6928e9ef1eb28a04b0da0402993d2d8dee642",
-  "backend/tests/test_quran_reference.py": "cf628b435ec6d3e41842a69338ef0e1c026ad42add933092d6f195a67e5e9632",
-  "backend/tests/test_mentor_review.py": "bdad9deb6da433b004afaead5d15dbf15224e95dd49791a27a7d021b70a6695f",
+  "backend/tests/test_quran_reference.py": "1d72ae75444e00272f5664ac9f53258b9dbc71c731418b5bcceeeb680c4bf3c8",
+  "backend/tests/test_mentor_review.py": "ad71dcb2e1dd2c4d355a0c17c63bfaf87fe3722999edd7882dc302124d24ede3",
   "backend/tests/test_compare_quranpedia.py": "f270c764c84d3077941aa28e3125c7ecafddb8f9f4a3ed7a3956e8def0c1141e",
   "backend/tests/test_compare_baseline_search.py": "671110e9683274d280eb02f0cd10836934d304216456773fe23bb2f7772a1553",
   "data/seed/hadith_seed.json": "8b71df75317d54b01bbe7c16c9f5459d675b8e1c40d32d957039553bba94cbfd",
