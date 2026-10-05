@@ -7,7 +7,7 @@ from . import extractor
 from .index import HybridIndex
 from .judge import VERDICTS, Judgement, Thresholds, judge
 
-ENGINE_VERSION = "0.7.0"
+ENGINE_VERSION = "0.7.1"
 DISCLAIMER = "تثبّت أداة مدعومة بالذكاء الاصطناعي ولا تُغني عن المختص. النص الشرعي منسوخ من الفهرس، والدرجات منقولة عن المحدّثين كما هي مسجّلة في المصدر."
 
 

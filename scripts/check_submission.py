@@ -20,14 +20,14 @@ import sys
 from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "0.7.0"
-HADITH, PYTEST, CASES = 72, 163, 31   # release 0.7.0 corpus and evidence sizes
+VERSION = "0.7.1"
+HADITH, PYTEST, CASES = 72, 180, 35   # release 0.7.1 corpus and evidence sizes
 STATUSES = {"local_verified", "owner_handoff", "external_review_pending"}
 WEIGHTS = {"technical_ai": 25, "scientific_safety": 15, "innovation": 15,
            "user_experience": 10, "benefit": 20, "operations": 10, "presentation": 5}
-VALIDATION = "docs/evidence/backend-validation-v0.7.0-2026-10-05.json"
-SAFETY = "docs/evidence/local-safety-v0.7.0-2026-10-05.json"
-QURAN_VARIANTS = "docs/evidence/quran-variants-v0.7.0-2026-10-05.json"
+VALIDATION = "docs/evidence/backend-validation-v0.7.1-2026-10-05.json"
+SAFETY = "docs/evidence/local-safety-v0.7.1-2026-10-05.json"
+QURAN_VARIANTS = "docs/evidence/quran-variants-v0.7.1-2026-10-05.json"
 
 
 def local_file(name: str) -> Path:
@@ -172,7 +172,7 @@ def retrieval_repeatability(manifest: dict) -> dict:
     require(sha256(local_file(primary["fixture"])) == primary["fixture_sha256"], "Frozen retrieval fixture changed")
     # Protocol v1 is frozen to the 0.5.1 corpus (12 hadiths) and cannot be rerun on 0.6.x;
     # it is kept as a dated historical measurement. Current Quran retrieval is covered by
-    # docs/evidence/quran-variants-v0.7.0-2026-10-05.json: every verse of the King Fahd
+    # docs/evidence/quran-variants-v0.7.1-2026-10-05.json: every verse of the King Fahd
     # print text (Quranpedia) and of the Tanzil text, quoted as ﴿…﴾, plus every verse of
     # 3+ words pasted without diacritics, hamza or brackets.
     current = read_json(QURAN_VARIANTS)
@@ -226,7 +226,7 @@ def public_git_inventory(manifest: dict) -> dict:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--output", type=Path, default=ROOT / "docs/evidence/submission-check-v0.7.0.json")
+    parser.add_argument("--output", type=Path, default=ROOT / "docs/evidence/submission-check-v0.7.1.json")
     args = parser.parse_args()
     checks = []
     try:

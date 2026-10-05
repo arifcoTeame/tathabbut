@@ -1,7 +1,7 @@
 {
-  "checked_at": "2026-10-05T19:40:28.670193+03:00",
-  "release": "0.7.0",
-  "manifest_sha256": "41f462572b769c1afe2d251a743e90c8feffc3cd32fa8aa201ab3500e55fd08c",
+  "checked_at": "2026-10-05T20:38:15.821607+03:00",
+  "release": "0.7.1",
+  "manifest_sha256": "b044d94793cfc23ae53fbe23a1c0bf1f6759aed914128036b7d673852c90d6d9",
   "scope": "Local consistency gate for saved evidence; no official score or final compliance certification",
   "network_used": false,
   "local_checks_passed": true,
@@ -9,8 +9,8 @@
   "local_checks_passed_count": 8,
   "overall_ready": false,
   "status_counts": {
-    "local_verified": 8,
-    "owner_handoff": 1,
+    "local_verified": 7,
+    "owner_handoff": 2,
     "external_review_pending": 2
   },
   "pending_requirements": [
@@ -28,6 +28,11 @@
       "id": "independent_review_and_user_trial",
       "label_ar": "المراجعة العلمية وقياس النفع مع مستخدمين",
       "status": "external_review_pending"
+    },
+    {
+      "id": "live_release_verification",
+      "label_ar": "التحقق من الإصدار المنشور بعد الرفع",
+      "status": "owner_handoff"
     }
   ],
   "checks": [
@@ -52,9 +57,9 @@
       "id": "versions",
       "passed": true,
       "details": {
-        "engine": "0.7.0",
-        "frontend_package": "0.7.0",
-        "lockfile": "0.7.0"
+        "engine": "0.7.1",
+        "frontend_package": "0.7.1",
+        "lockfile": "0.7.1"
       }
     },
     {
@@ -70,11 +75,11 @@
       "id": "saved_safety_results",
       "passed": true,
       "details": {
-        "distinct_cases": 31,
+        "distinct_cases": 35,
         "repetitions": 3,
-        "saved_passed": 93,
-        "saved_total": 93,
-        "saved_pytest_passed": 163,
+        "saved_passed": 105,
+        "saved_total": 105,
+        "saved_pytest_passed": 180,
         "tests_rerun_by_this_checker": false
       }
     },
@@ -82,7 +87,7 @@
       "id": "evidence_code_hashes",
       "passed": true,
       "details": {
-        "matching_tested_code_and_data_hashes": 26
+        "matching_tested_code_and_data_hashes": 28
       }
     },
     {
@@ -93,17 +98,18 @@
         "identical_rankings": true,
         "scope": "Synthetic reference retrieval only",
         "historical_measurement_of_code_before": [
+          "backend/app/core/index.py",
           "backend/app/core/arabic.py"
         ],
-        "current_full_quran_verification": "6236/6236 VERIFIED (King Fahd and Tanzil spelling) on engine 0.7.0",
-        "unmarked_verses_verified": 6034
+        "current_full_quran_verification": "6236/6236 VERIFIED (King Fahd and Tanzil spelling) on engine 0.7.1",
+        "unmarked_verses_verified": 6208
       }
     },
     {
       "id": "public_git_inventory",
       "passed": true,
       "details": {
-        "candidate_files": 142,
+        "candidate_files": 148,
         "risky_filename_count": 0,
         "file_contents_scanned": false,
         "secret_file_contents_read": false,

@@ -82,3 +82,64 @@ def test_quran_source_links_to_the_quranpedia_verse(full_index):
     from app.config import settings
     claim = pipeline.run(full_index, "قل هو الله احد", Thresholds(), settings.quran_link)["claims"][0]
     assert claim["source"]["url"] == "https://quranpedia.net/surah/1/112#verse-6222"
+
+
+# Owner check on the live site, 5 October 2026 19:43: «لاتاخذه سنة ولانوم» and
+# «لايؤمن احدكم» were «لم يُعثر عليه» because «لا» was typed joined to the next word.
+@pytest.mark.parametrize("text, source", [
+    ("لاتاخذه سنة ولانوم", "quran-2:255"),
+    ("﴿لاتاخذه سنة ولانوم﴾", "quran-2:255"),
+    ("ياايها الذين امنوا اذكروا الله ذكرا كثيرا", "quran-33:41"),
+    ("فلاتقل لهما اف", "quran-17:23"),
+    ("قال رسول الله ﷺ: «لايؤمن احدكم حتى يحب لاخيه ما يحب لنفسه»", "hadith-bukhari-13"),
+])
+def test_particle_typed_joined_to_next_word(full_index, text, source):
+    c = pipeline.run(full_index, text, Thresholds(), "{surah}")["claims"][0]
+    assert c["verdict"]["code"] == "VERIFIED"
+    assert c["source"]["id"] == source
+
+
+def test_joined_particle_split_never_hides_a_change(full_index):
+    """Splitting «لا» does not certify a changed word."""
+    c = pipeline.run(full_index, "﴿لاتاخذه نوم ولاسنة﴾", Thresholds(), "{surah}")["claims"][0]
+    assert c["verdict"]["code"] != "VERIFIED"
+
+
+def test_words_that_start_with_la_are_not_split(full_index):
+    from app.core.arabic import display_tokens
+    assert display_tokens("لاعب الكرة") == ["لاعب", "الكرة"]
+
+
+# «لا تحزن إن الله معنا» is the end of 9:40, a long verse that the fused ranking
+# alone placed outside the top 8; a correct quotation then looked «مُحرَّف» against 16:18.
+@pytest.mark.parametrize("text, source", [
+    ("﴿لا تحزن إن الله معنا﴾", "quran-9:40"),
+    ("لا تحزن ان الله معنا", "quran-9:40"),
+    ("وما توفيقي الا بالله", "quran-11:88"),
+])
+def test_excerpt_of_a_long_verse_is_found(full_index, text, source):
+    c = pipeline.run(full_index, text, Thresholds(), "{surah}")["claims"][0]
+    assert c["verdict"]["code"] == "VERIFIED"
+    assert c["source"]["id"] == source
+
+
+# Owner check on the live site, 20:13: «لا تاخذه» (two words, unmarked) was «لم يُعثر عليه»
+# although the words occur in 2:255. Short text is not attributed with certainty, but the
+# verse is shown and the user is asked to check it; a complete two-word verse is verified.
+@pytest.mark.parametrize("text, code, source", [
+    ("لا تاخذه", "NEEDS_REVIEW", "quran-2:255"),
+    ("لاتاخذه", "NEEDS_REVIEW", "quran-2:255"),
+    ("الله الصمد", "VERIFIED", "quran-112:2"),
+    ("مدهامتان", "NEEDS_REVIEW", "quran-55:64"),
+    ("الدين النصيحة", "NEEDS_REVIEW", "hadith-muslim-55"),
+])
+def test_short_unmarked_text_found_in_the_sources(full_index, text, code, source):
+    c = pipeline.run(full_index, text, Thresholds(), "{surah}")["claims"][0]
+    assert c["verdict"]["code"] == code
+    assert c["source"]["id"] == source
+
+
+@pytest.mark.parametrize("text", ["صباح الخير", "سلام"])
+def test_short_text_not_in_the_sources_is_not_attributed(full_index, text):
+    c = pipeline.run(full_index, text, Thresholds(), "{surah}")["claims"][0]
+    assert c["verdict"]["code"] == "NO_ORIGIN" and c["source"] is None

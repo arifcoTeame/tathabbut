@@ -37,17 +37,50 @@ STOPWORDS = {
 # (imla'i) text published by Quranpedia. Found by scripts/compare_quranpedia.py:
 # across all 6236 verses these are the only letter-level differences, so the
 # table is exhaustive for that reference. Both spellings are the same word.
+_WORDING_MAP = str.maketrans({"أ": "ا", "إ": "ا", "آ": "ا", "ٱ": "ا", "ى": "ي", "ة": "ه"})
 _JOINED = re.compile(r"(?<!\S)([وف]?)بعدما(?!\S)")          # بعدما ≡ بعد ما
 ORTHO_VARIANTS = {"الزنا": "الزنى", "حسرتا": "حسرتى", "ويلتا": "ويلتى"}
 _ORTHO_KEYS = {k.translate(str.maketrans({"ى": "ي"})): v.translate(str.maketrans({"ى": "ي"}))
                for k, v in ORTHO_VARIANTS.items()}
 
 
+# Particles people often type joined to the next word: «لاتاخذه» for «لا تأخذه»,
+# «ولانوم» for «ولا نوم», «ياايها» for «يا أيها». Split only when the joined form is
+# not a word of the indexed sources and the remainder is one (see register_vocabulary).
+_JOINED_PARTICLE = re.compile(r"(?<![\u0621-\u064A])([وف]?لا|يا)([\u0621-\u064A]{2,})(?![\u0621-\u064A])")
+_VOCABULARY: frozenset[str] = frozenset()
+
+
+def _wording_key(word: str) -> str:
+    return word.translate(_WORDING_MAP)
+
+
+def _split_particle(match: re.Match) -> str:
+    prefix, rest = match.group(1), match.group(2)
+    if _wording_key(prefix + rest) in _VOCABULARY or _wording_key(rest) not in _VOCABULARY:
+        return match.group(0)
+    return prefix + " " + rest
+
+
+def register_vocabulary(texts) -> None:
+    """Record the words of the indexed sources (wording form). Called once the
+    index is built or loaded; source words themselves are never split."""
+    global _VOCABULARY
+    _VOCABULARY = frozenset()
+    words = set()
+    for text in texts:
+        words.update(_wording_key(w) for w in display_tokens(text))
+    _VOCABULARY = frozenset(words)
+
+
 def strip_diacritics(text: str) -> str:
     # Compose hamza/madda first so removing vowel marks cannot erase a letter's
     # hamza merely because the input used its decomposed Unicode spelling.
     text = _DIACRITICS.sub("", unicodedata.normalize("NFC", text))
-    return _JOINED.sub(r"\1بعد ما", text)
+    text = _JOINED.sub(r"\1بعد ما", text)
+    if _VOCABULARY:
+        text = _JOINED_PARTICLE.sub(_split_particle, text)
+    return text
 
 
 def normalize(text: str) -> str:
@@ -82,7 +115,6 @@ def key_tokens(text: str) -> list[str]:
 
 # Spelling conventions people type interchangeably and that never change a word
 # of the Quran into another word: hamza seats on alef, alef maqsura and ta marbuta.
-_WORDING_MAP = str.maketrans({"أ": "ا", "إ": "ا", "آ": "ا", "ٱ": "ا", "ى": "ي", "ة": "ه"})
 
 
 def wording_tokens(text: str) -> list[str]:

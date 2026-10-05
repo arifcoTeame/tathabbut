@@ -4,6 +4,11 @@
   tanzil_marked  the Tanzil «simple clean» text (no diacritics, other spelling source) as ﴿…﴾
   plain_unmarked no diacritics, no hamza on alef, ة→ه, ى→ي, and no ﴿﴾ or «قال تعالى»:
                  the way people often paste a verse (e.g. «قل هو الله احد»)
+  noisy_unmarked plain_unmarked plus tatweel inside the longest word, a double space,
+                 a comma after the second word and a full stop at the end
+  marked_word_missing  the King Fahd text as ﴿…﴾ with its middle word removed (verses of
+                 6+ words): expected ALTERED at the verse's own location, so the card
+                 shows the correct text, the surah and the verse number
 
 Expected: every verse VERIFIED at its own location or at a location whose wording is
 identical. Very short verses (fewer than 3 words, e.g. «الم») are only accepted as Quran
@@ -39,11 +44,30 @@ def plain(text: str) -> str:
     return re.sub(r"\s+", " ", strip_diacritics(text).translate(PLAIN)).strip()
 
 
+def noisy(text: str) -> str:
+    words = plain(text).split()
+    i = max(range(len(words)), key=lambda j: (len(words[j]), -j))
+    if len(words[i]) >= 3:
+        words[i] = words[i][:2] + "ـ" + words[i][2:]
+    if len(words) >= 3:
+        words[1] = words[1] + "،"
+    return words[0] + "  " + " ".join(words[1:]) + "."
+
+
+def drop_middle(text: str) -> str | None:
+    # Words only: pause marks such as «ۖ» are separate tokens in the print text.
+    words = [w for w in text.split() if re.search("[\u0621-\u064A]", w)]
+    if len(words) < 6:
+        return None
+    del words[len(words) // 2]
+    return "﴿" + " ".join(words) + "﴾"
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--output", type=Path, required=True)
     ap.add_argument("--limit", type=int, default=0)
-    ap.add_argument("--runs", default="kfc_marked,tanzil_marked,plain_unmarked")
+    ap.add_argument("--runs", default="kfc_marked,tanzil_marked,plain_unmarked,noisy_unmarked,marked_word_missing")
     args = ap.parse_args(argv)
     index = HybridIndex.load(DATA / "index")
     kfc = {(r["surah"], r["ayah"]): r["text"] for r in json.loads((DATA / "quran/quran_kfc.json").read_text("utf-8"))["records"]}
@@ -52,25 +76,31 @@ def main(argv=None) -> int:
     keys = sorted(kfc)[: args.limit or None]
     runs = {"kfc_marked": lambda k: "﴿" + kfc[k] + "﴾",
             "tanzil_marked": lambda k: "﴿" + tanzil[k] + "﴾",
-            "plain_unmarked": lambda k: plain(kfc[k])}
+            "plain_unmarked": lambda k: plain(kfc[k]),
+            "noisy_unmarked": lambda k: noisy(kfc[k]),
+            "marked_word_missing": lambda k: drop_middle(kfc[k])}
     report = {"checked_at": datetime.now(ZoneInfo("Asia/Riyadh")).isoformat(), "engine_version": pipeline.ENGINE_VERSION,
               "verses": len(keys), "runs": {}}
     for name, make in runs.items():
         if name not in args.runs.split(","):
             continue
         verdicts, wrong, short_unmarked = Counter(), [], []
+        expected = "ALTERED" if name == "marked_word_missing" else "VERIFIED"
         for k in keys:
             text = make(k)
+            if text is None:              # verse too short to remove a word
+                short_unmarked.append(f"{k[0]}:{k[1]}")
+                continue
             claims = pipeline.run(index, text, Thresholds(), "{surah}:{ayah}")["claims"]
             c = claims[0] if claims else None
             code = c["verdict"]["code"] if c else "NONE"
             sid = (c.get("source") or {}).get("id") if c else None
-            if name == "plain_unmarked" and len(key_tokens(text)) < 3 and code != "VERIFIED":
+            if name in ("plain_unmarked", "noisy_unmarked") and len(key_tokens(text)) < 3 and code != "VERIFIED":
                 short_unmarked.append(f"{k[0]}:{k[1]}")
                 continue
             verdicts[code] += 1
             ok_loc = False
-            if code == "VERIFIED" and sid and sid.startswith("quran-"):
+            if code == expected and sid and sid.startswith("quran-"):
                 loc = sid[len("quran-"):]
                 first = tuple(map(int, loc.split("-")[0].split(":")))
                 if "-" in loc:            # multi-verse run that starts at or before this verse
@@ -78,7 +108,7 @@ def main(argv=None) -> int:
                     ok_loc = first[0] == k[0] and first[1] <= k[1] <= end
                 else:                     # same verse, or a verse with word-for-word identical text
                     ok_loc = first == k or wording.get(first) == wording[k]
-            if not (code == "VERIFIED" and ok_loc):
+            if not (code == expected and ok_loc):
                 wrong.append({"verse": f"{k[0]}:{k[1]}", "verdict": code, "source": sid})
         report["runs"][name] = {"verdicts": dict(verdicts), "not_verified_or_wrong_location": wrong,
                                 "short_verses_unmarked_not_claimed_as_quran": short_unmarked}

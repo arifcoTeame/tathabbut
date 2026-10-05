@@ -24,7 +24,7 @@ except ImportError:  # pragma: no cover
     faiss = None
 
 from . import embedder as emb
-from .arabic import key_tokens
+from .arabic import key_tokens, register_vocabulary
 
 RRF_K = 60
 QURAN_VERSES = 6236
@@ -57,8 +57,15 @@ class Hit:
 class HybridIndex:
     def __init__(self, docs: list[Doc], embedder: emb.Embedder, vectors: np.ndarray):
         self.docs = docs
+        register_vocabulary(d.text for d in docs)
         self.embedder = embedder
         self._keys = [d.keys for d in docs]
+        # Positions of every key word, to find records that contain a quotation
+        # word for word even when ranking misses them (an excerpt of a long verse).
+        self._positions: dict[str, list[tuple[int, int]]] = {}
+        for doc_i, keys in enumerate(self._keys):
+            for pos, key in enumerate(keys):
+                self._positions.setdefault(key, []).append((doc_i, pos))
         self.by_verse = {
             (d.ref["surah"], d.ref["ayah"]): d for d in docs if d.kind == "quran"
         }
@@ -160,6 +167,30 @@ class HybridIndex:
                 total += 1
         return total
 
+    def phrase_matches(self, keys: list[str], mask: np.ndarray, limit: int) -> list[int]:
+        """Records containing ``keys`` (3+ words) as a contiguous run, shortest first."""
+        if len(keys) < 3:
+            return []
+        found = []
+        for doc_i, pos in self._positions.get(keys[0], ()):
+            if mask[doc_i] and self._keys[doc_i][pos : pos + len(keys)] == keys:
+                found.append(doc_i)
+        found = sorted(set(found), key=lambda i: (len(self._keys[i]), i))
+        return found[:limit]
+
+    def _with_phrase_matches(self, top: list[tuple[int, float]], keys: list[str], mask: np.ndarray, k: int):
+        """Keep the fused ranking, but make sure records that contain the quotation
+        word for word are among the candidates passed to the word alignment."""
+        exact = self.phrase_matches(keys, mask, k)
+        present = {i for i, _ in top}
+        missing = [i for i in exact if i not in present]
+        if not missing:
+            return top
+        keep = [kv for kv in top if kv[0] in exact] + [kv for kv in top if kv[0] not in exact]
+        keep = keep[: max(0, k - len(missing))]
+        floor = min((score for _, score in top), default=0.0)
+        return keep + [(i, floor) for i in missing]
+
     def search(self, text: str, kind: str | None = None, k: int = 8) -> list[Hit]:
         if kind is None:
             mask = np.ones(len(self.docs), dtype=bool)
@@ -190,6 +221,7 @@ class HybridIndex:
                 fused[doc_i] = fused.get(doc_i, 0.0) + 1.0 / (RRF_K + r + 1)
 
         top = sorted(fused.items(), key=lambda kv: kv[1], reverse=True)[:k]
+        top = self._with_phrase_matches(top, key_tokens(text), mask, k)
         return [
             Hit(self.docs[i], score, bm25_rank.get(i), dense_rank.get(i)) for i, score in top
         ]

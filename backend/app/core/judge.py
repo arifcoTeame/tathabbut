@@ -51,6 +51,7 @@ class Judgement:
     candidate: Candidate | None = None      # the source the verdict rests on
     closest: Candidate | None = None        # non-matching nearest text, shown as a hint only
     notes: list[str] = field(default_factory=list)
+    short: bool = False                     # one-word input: the generic «not found» note does not apply
 
     @property
     def label(self) -> str:
@@ -167,6 +168,48 @@ def _no_origin(closest: Candidate | None, th: Thresholds) -> Judgement:
     return Judgement("NO_ORIGIN", None, hint)
 
 
+def _others(count: int) -> str:
+    if count <= 0:
+        return ""
+    if count == 1:
+        return "، وفي موضع آخر"
+    if count == 2:
+        return "، وفي موضعين آخرين"
+    if count <= 10:
+        return f"، وفي {count} مواضع أخرى"
+    return f"، وفي {count} موضعاً آخر"
+
+
+def _short_text(index: HybridIndex, claim: Claim, q: Candidate | None, h: Candidate | None,
+                n_words: int, th: Thresholds) -> Judgement | None:
+    """Unmarked text of one or two words. Too short to attribute as a quotation, but
+    it must not be reported as absent from the Quran when it occurs there word for word:
+    a complete two-word verse («الله الصمد») is verified; a one-word verse («مدهامتان»)
+    or an excerpt («لا تأخذه» → البقرة 255) shows the verse and asks the user to check it."""
+    claim_words = wording_tokens(claim.text)
+    if h and h.al.exact and claim_words == wording_tokens(h.doc.text):
+        return _judge_hadith(h, th)                      # a complete short hadith record
+    size = "كلمة واحدة" if n_words == 1 else "كلمتان"
+    if q and q.al.exact:
+        where = f"سورة {q.doc.ref['surah_name']}، الآية {q.doc.ref['ayah']}"
+        whole = "ayah_end" not in q.doc.ref and claim_words == wording_tokens(q.doc.text)
+        if whole and n_words == 2:
+            return Judgement("VERIFIED", q, notes=[f"النص آية كاملة: {where}."])
+        if n_words == 2 or whole:
+            others = _others(index.count_containing(key_tokens(claim.text)) - 1)
+            return Judgement("NEEDS_REVIEW", q, notes=[
+                f"عبارة قصيرة ({size}) وردت بلفظها في {where}{others} من المصحف. قِصرها لا يكفي للجزم "
+                "بأنها اقتباس من هذا الموضع؛ الآية كاملة معروضة أعلاه للمراجعة."])
+    if h and h.al.exact and n_words == 2:
+        return Judgement("NEEDS_REVIEW", h, notes=[
+            "عبارة قصيرة (كلمتان) وردت بلفظها في حديث مسجّل في القاعدة؛ قِصرها لا يكفي لنقل حكمه إليها. "
+            "نص الحديث كاملاً ومصدره معروضان أعلاه للمراجعة."])
+    if n_words == 1:
+        return Judgement("NO_ORIGIN", short=True, notes=[
+            "كلمة واحدة لا تكفي للتحقق من اقتباس؛ أدخل الآية أو الحديث كاملاً."])
+    return None
+
+
 def _judge_quran(index: HybridIndex, claim: Claim, c: Candidate | None, th: Thresholds, strict: bool) -> Judgement:
     minimum = th.quran_unknown_min if strict else th.quran_altered_min
     if c is None or c.al.claim_coverage < minimum:
@@ -250,6 +293,8 @@ def judge(index: HybridIndex, claim: Claim, th: Thresholds) -> Judgement:
                 "ولم يُحكم بالتحريف لأن النص لم يُقدَّم على أنه آية."])
         elif claim.level == "C":
             j = Judgement("DISPUTED", notes=["مسألة اجتهادية؛ لا تُعرض بصيغة القطع ويُحال فيها إلى المختص."])
+        elif n_words < 3 and (short := _short_text(index, claim, q, h, n_words, th)):
+            j = short
         else:
             best = max((x for x in (q, h) if x), key=lambda x: x.al.content_coverage, default=None)
             j = _no_origin(best, th)
@@ -265,7 +310,7 @@ def judge(index: HybridIndex, claim: Claim, th: Thresholds) -> Judgement:
             j.notes.append(f"النص نفسه يتكرر في {max(total, c.ties)} مواضع من المصحف، منها: {where}.")
         else:
             j.notes.append(f"قريب بالقدر نفسه من مواضع أخرى: {where}؛ رُجّح الأقرب لفظاً.")
-    if j.code == "NO_ORIGIN":
+    if j.code == "NO_ORIGIN" and not j.short:
         if claim.type_hint == "quran":
             j.notes.append("لم يُعثر على آية مطابقة في المصحف (6236 آية)؛ لا يُبنى على هذا النص بوصفه آية حتى يُراجع.")
         else:
