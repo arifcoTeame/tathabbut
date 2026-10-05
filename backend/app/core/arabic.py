@@ -80,8 +80,14 @@ def key_tokens(text: str) -> list[str]:
     return [light_stem(_ORTHO_KEYS.get(w, w)) for w in normalize(text).split()]
 
 
+# Spelling conventions people type interchangeably and that never change a word
+# of the Quran into another word: hamza seats on alef, alef maqsura and ta marbuta.
+_WORDING_MAP = str.maketrans({"أ": "ا", "إ": "ا", "آ": "ا", "ٱ": "ا", "ى": "ي", "ة": "ه"})
+
+
 def wording_tokens(text: str) -> list[str]:
-    """Words for checking quotations: ignore vowels, punctuation and the
-    wasla sign, but preserve hamza, letters, conjunctions and prepositions."""
-    words = (word.replace("ٱ", "ا") for word in display_tokens(text))
-    return [ORTHO_VARIANTS.get(word, word) for word in words]
+    """Words for checking quotations: ignore vowels, tatweel, punctuation, the
+    wasla sign, hamza seats on alef («احد» = «أحد»), ى/ي and ة/ه; preserve
+    every other letter, conjunctions and prepositions (و/ف, لا, …)."""
+    words = (word.translate(_WORDING_MAP) for word in display_tokens(text))
+    return [_ORTHO_KEYS.get(word, word) for word in words]

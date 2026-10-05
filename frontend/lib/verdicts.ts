@@ -14,7 +14,7 @@ export const VERDICT_META: Record<VerdictCode, { label: string; hint: string; to
   VERIFIED: { label: "موثّق", hint: "مطابق للمصدر المعتمد", tone: "verified" },
   NOT_AUTHENTIC: { label: "لا يصح", hint: "بدرجة منقولة عن المحدّثين", tone: "weak" },
   ALTERED: { label: "مُحرَّف", hint: "يختلف عن نص المصحف", tone: "altered" },
-  NO_ORIGIN: { label: "لم يُعثر عليه", hint: "ضمن الفهرس الحالي · يلزم بحث أوسع", tone: "noorigin" },
+  NO_ORIGIN: { label: "لم يُعثر عليه", hint: "ضمن قاعدة البيانات الحالية · يتطلب تحققاً", tone: "noorigin" },
   DISPUTED: { label: "خلافي", hint: "لا يُعرض بصيغة القطع", tone: "disputed" },
   REFER: { label: "إحالة", hint: "حالة شخصية · المستوى (د)", tone: "refer" },
   NEEDS_REVIEW: { label: "يتطلب مزيد تحقق", hint: "مطابقة غير كافية للحكم", tone: "review" },

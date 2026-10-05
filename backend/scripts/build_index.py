@@ -25,7 +25,8 @@ from app.core.quran_meta import surah_name  # noqa: E402
 DATA = ROOT / "data"
 
 
-FULL_QURAN_CANDIDATES = (DATA / "raw" / "quran_full.json", DATA / "quran" / "quran_full.json")
+# King Fahd print text from Quranpedia (approved in the challenge reference) first; Tanzil kept as fallback.
+FULL_QURAN_CANDIDATES = (DATA / "quran" / "quran_kfc.json", DATA / "raw" / "quran_full.json", DATA / "quran" / "quran_full.json")
 
 
 def full_quran_path() -> Path | None:
@@ -56,7 +57,8 @@ def load_quran(prefer_full: bool = True) -> tuple[list[Doc], str]:
             id=f"quran-{r['surah']}:{r['ayah']}",
             kind="quran",
             text=verse_text(r),
-            ref={"surah": r["surah"], "ayah": r["ayah"], "surah_name": surah_name(r["surah"])},
+            ref={"surah": r["surah"], "ayah": r["ayah"], "surah_name": surah_name(r["surah"]),
+                 **({"gid": r["gid"]} if "gid" in r else {})},
             verified=verified,
         )
         for r in records

@@ -27,10 +27,11 @@ def test_normalize_and_tokens_align():
 
 def test_wording_preserves_letters_and_ignores_diacritics():
     assert wording_tokens("قُلْ هُوَ ٱللَّهُ أَحَدٌ") == wording_tokens("قل هو الله أحد")
-    # Decomposed hamza must survive removal of vowel marks as well.
-    assert wording_tokens("ا\u0654حد") == ["أحد"]
+    # Hamza seats on alef are spelling, not wording: «احد» = «أحد» = decomposed «أحد».
+    assert wording_tokens("ا\u0654حد") == wording_tokens("أحد") == wording_tokens("احد") == ["احد"]
+    # Conjunctions and prepositions stay distinct.
     assert wording_tokens("وإياك فإياك إياك بالله لله الله") == [
-        "وإياك", "فإياك", "إياك", "بالله", "لله", "الله",
+        "واياك", "فاياك", "اياك", "بالله", "لله", "الله",
     ]
 
 
@@ -85,7 +86,6 @@ def test_substituted_word_is_changed_not_added(index, th):
     ("الحمد بالله رب العالمين", "بالله", "لله"),
     ("حمد لله رب العالمين", "حمد", "الحمد"),
     ("الحمد لله رب عالمين", "عالمين", "العالمين"),
-    ("قل هو الله احد", "احد", "أحد"),
 ])
 def test_quran_letter_changes_are_not_hidden_by_retrieval_stemming(index, th, text, changed, original):
     c = pipeline.run(index, f"قال تعالى: ﴿{text}﴾", th, LINK)["claims"][0]
@@ -98,6 +98,7 @@ def test_quran_letter_changes_are_not_hidden_by_retrieval_stemming(index, th, te
     "قال تعالى: ﴿إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ﴾",
     "قال تعالى: ﴿قُلْ هُوَ ٱللَّهُ أَحَدٌ﴾",
     "قال تعالى: ﴿قل  هو، الله   أَحد﴾",
+    "قال تعالى: ﴿قل هو الله احد﴾",          # written without hamza (mentor review, 5 Oct)
 ])
 def test_quran_vowels_spacing_and_punctuation_are_accepted(index, th, text):
     c = pipeline.run(index, text, th, LINK)["claims"][0]
@@ -122,8 +123,8 @@ def test_unmarked_or_misattributed_altered_quran_is_not_verified(index, th, text
 
 def test_missing_match_is_not_a_hadith_authenticity_verdict(index, th):
     c = pipeline.run(index, "قال رسول الله ﷺ: «الصبر مفتاح الفرج»", th, LINK)["claims"][0]
-    assert c["verdict"] == {"code": "NO_ORIGIN", "label_ar": "لم يُعثر عليه"}
-    assert "لم يُعثر على نص مطابق في الفهرس الحالي؛ عدم العثور لا يحكم على صحة الحديث أو وجوده في مصادر أخرى." in c["notes"]
+    assert c["verdict"] == {"code": "NO_ORIGIN", "label_ar": "لم يُعثر عليه ضمن قاعدة البيانات الحالية"}
+    assert any("يتطلب تحققاً" in n and "لا يعني أن الحديث لا يصح" in n for n in c["notes"])
 
 
 @pytest.mark.parametrize("text,source_id,difference", [

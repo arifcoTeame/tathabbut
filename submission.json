@@ -3,7 +3,7 @@
   "project": {
     "name_ar": "تثبّت",
     "name_en": "Tathabbut",
-    "release": "0.6.1",
+    "release": "0.7.0",
     "prepared_on": "2026-10-03",
     "timezone": "Asia/Riyadh",
     "phase": "pre_challenge_preparation",
@@ -33,10 +33,10 @@
   },
   "data": {
     "quran": {
-      "path": "data/quran/quran_full.json",
+      "path": "data/quran/quran_kfc.json",
       "records": 6236,
-      "source": "Tanzil simple-clean, Hafs",
-      "independent_reference_comparison": "external_review_pending"
+      "source": "Quranpedia Hafs mushaf (King Fahd Complex print text), dump version 2026-10-04; Tanzil simple-clean kept as cross-check",
+      "independent_reference_comparison": "local_verified"
     },
     "hadith": {
       "path": "data/seed/hadith_seed.json",
@@ -58,7 +58,8 @@
         "evidence": [
           "docs/VALIDATION.md",
           "docs/RETRIEVAL_EVALUATION.md",
-          "docs/evidence/backend-validation-v0.6.1-2026-10-04.json"
+          "docs/evidence/backend-validation-v0.7.0-2026-10-05.json",
+          "docs/evidence/retrieval-typos-v0.7.0-2026-10-05.json"
         ]
       },
       {
@@ -69,7 +70,8 @@
           "SOURCES.md",
           "docs/QURAN_REFERENCE_CHECK.md",
           "docs/VERIFY_SEED.md",
-          "docs/evidence/local-safety-v0.6.1-2026-10-04.json"
+          "docs/evidence/local-safety-v0.7.0-2026-10-05.json",
+          "docs/evidence/quran-variants-v0.7.0-2026-10-05.json"
         ]
       },
       {
@@ -130,10 +132,10 @@
       "label_ar": "اختبارات السلامة المحلية",
       "status": "local_verified",
       "evidence": [
-        "docs/evidence/backend-validation-v0.6.1-2026-10-04.json",
-        "docs/evidence/local-safety-v0.6.1-2026-10-04.json"
+        "docs/evidence/backend-validation-v0.7.0-2026-10-05.json",
+        "docs/evidence/local-safety-v0.7.0-2026-10-05.json"
       ],
-      "note": "137 اختباراً و25 حالة مستهدفة مكررة ثلاث مرات. نجاح هذه الحالات لا يعني دقة عامة 100%."
+      "note": "163 اختباراً و31 حالة مستهدفة مكررة ثلاث مرات (93/93). نجاح هذه الحالات لا يعني دقة عامة 100%."
     },
     {
       "id": "reproducible_retrieval_comparison",
@@ -144,9 +146,10 @@
         "data/evaluation/retrieval-cases-v1.json",
         "docs/evidence/retrieval-evaluation-2026-10-03.json",
         "docs/evidence/retrieval-evaluation-repeat-2026-10-03.json",
-        "docs/evidence/retrieval-reproducibility-2026-10-03.json"
+        "docs/evidence/retrieval-reproducibility-2026-10-03.json",
+        "docs/evidence/retrieval-typos-v0.7.0-2026-10-05.json"
       ],
-      "note": "لم يثبت تفوق الهجين على BM25 في المجموعة المصطنعة؛ تسجل النتائج كما هي."
+      "note": "بروتوكول v1 (814 استعلاماً) قياس تاريخي لم يثبت فيه تفوق الهجين على BM25. قياس 0.7.0: 1000 آية بأخطاء إملائية مصطنعة ببذرة ثابتة، يقارن BM25 وTF-IDF/SVD والدمج والمحرك كاملاً؛ النتائج كما هي في الملف."
     },
     {
       "id": "owned_code_license_and_notices",
@@ -157,6 +160,7 @@
         "THIRD_PARTY.md",
         "CREDITS.md",
         "LICENSES/Tanzil.txt",
+        "LICENSES/Quranpedia.txt",
         "LICENSES/Readex-Pro-OFL-1.1.txt",
         "docs/evidence/dependency-licenses.json"
       ],
@@ -214,10 +218,11 @@
       "evidence": [
         "docs/QURAN_REFERENCE_CHECK.md",
         "docs/evidence/quranpedia-compare-2026-10-04.json",
-        "docs/evidence/kingfahd-text-verification-2026-10-04.json"
+        "docs/evidence/kingfahd-text-verification-2026-10-04.json",
+        "docs/evidence/quran-variants-v0.7.0-2026-10-05.json"
       ],
-      "note": "تعذر تنزيل مصحف حفص الرسمي بسبب HTTP 403؛ لا توجد مقابلة كاملة موثقة بعد.",
-      "note_ar": "قوبلت الآيات الـ6236 بمصحف حفص في الموسوعة القرآنية (إصدار 2026-10-04، موافق لطبعة مجمع الملك فهد): 6230 متطابقة حرفياً و6 فروق إملائية؛ وأدخلت الآيات الـ6236 بنص الموسوعة إلى المحرك فكانت كلها «موثّق»."
+      "note": "اعتمد الإصدار 0.7.0 نص مصحف حفص من الموسوعة القرآنية (طبعة مجمع الملك فهد، إصدار 2026-10-04) مصدراً للنص المعروض والمطابقة. أُدخلت الآيات الـ6236 بنص المجمع وبنص Tanzil بين ﴿﴾ فكانت كلها «موثّق»، وأُدخلت بلا تشكيل ولا همزات ولا أقواس فتعرّف المحرك على كل آية من 3 كلمات فأكثر.",
+      "note_ar": "اعتمد الإصدار 0.7.0 نص مصحف حفص من الموسوعة القرآنية (طبعة مجمع الملك فهد، إصدار 2026-10-04) مصدراً للنص المعروض والمطابقة. أُدخلت الآيات الـ6236 بنص المجمع وبنص Tanzil بين ﴿﴾ فكانت كلها «موثّق»، وأُدخلت بلا تشكيل ولا همزات ولا أقواس فتعرّف المحرك على كل آية من 3 كلمات فأكثر."
     },
     {
       "id": "hadith_reuse_and_expansion",
@@ -228,7 +233,7 @@
         "SOURCES.md",
         "THIRD_PARTY.md"
       ],
-      "note": "تبقى العينة 12 حديثاً. قائمة 95 عبارة بحث ليست بيانات معتمدة، ولا توجد موافقة خاصة من المنظم على نسخ بيانات الدرر."
+      "note": "القاعدة 72 حديثاً بأحكام موثقة من الدرر. عند عدم العثور على الحديث تعرض الأداة «لم يُعثر عليه ضمن قاعدة البيانات الحالية · يتطلب تحققاً» ولا تحكم بعدم صحته. لا توجد موافقة خاصة من المنظم على نسخ بيانات الدرر."
     },
     {
       "id": "independent_review_and_user_trial",
@@ -243,27 +248,27 @@
     {
       "id": "live_release_verification",
       "label_ar": "التحقق من الإصدار المنشور بعد الرفع",
-      "status": "local_verified",
+      "status": "owner_handoff",
       "evidence": [
         "docs/evidence/live-after-v0.6.1-2026-10-05.json",
         "docs/VALIDATION.md"
       ],
-      "note": "يجب أن يثبت دليل جديد تشغيل 0.6.0 وسلامة الحالات عبر الرابط العام بعد نشر صاحب المشروع؛ الدليل المحلي لا يثبت ذلك.",
-      "note_ar": "81/81 على https://tathabbut.vercel.app في 5 أكتوبر 18:02؛ المحرك 0.6.1، 72 حديثاً."
+      "note": "يجب أن يثبت دليل جديد تشغيل 0.7.0 وسلامة الحالات عبر الرابط العام بعد النشر؛ الدليل المحلي لا يثبت ذلك.",
+      "note_ar": "آخر دليل حي: 81/81 على الإصدار 0.6.1 (5 أكتوبر 18:02). اختبار 0.7.0 الحي بعد النشر."
     }
   ],
   "local_checks": {
     "command": "python3 scripts/check_submission.py",
-    "output": "docs/evidence/submission-check-v0.6.0.json",
+    "output": "docs/evidence/submission-check-v0.7.0.json",
     "saved_test_expectations": {
-      "pytest_passed": 151,
-      "release_distinct_inputs": 27,
+      "pytest_passed": 163,
+      "release_distinct_inputs": 31,
       "release_repetitions": 3,
-      "release_total": 81
+      "release_total": 93
     },
     "evidence": [
-      "docs/evidence/backend-validation-v0.6.1-2026-10-04.json",
-      "docs/evidence/local-safety-v0.6.1-2026-10-04.json"
+      "docs/evidence/backend-validation-v0.7.0-2026-10-05.json",
+      "docs/evidence/local-safety-v0.7.0-2026-10-05.json"
     ],
     "readiness_rule": "Local checks may pass while owner handoff or external review remains pending. The checker does not assign a judging score or certify final compliance."
   }

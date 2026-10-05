@@ -6,7 +6,8 @@
 
 | المكوّن | الاستخدام | الحقوق والإجراء |
 |---|---|---|
-| Tanzil Quran Text، Simple Clean، حفص | 6236 آية في `data/quran/quran_full.json` | CC BY 3.0 وفق إشعار Tanzil مع شرط نقل النص دون تغيير ونسبة المصدر. الإشعار الكامل في `LICENSES/Tanzil.txt` وبيانات الملف. |
+| Quranpedia.net، مصحف حفص (طبعة مجمع الملك فهد)، إصدار 2026-10-04 | 6236 آية في `data/quran/quran_kfc.json` (المصدر المعتمد) | مجاني داخل التطبيقات؛ إعادة نشره قاعدةَ بيانات تتطلب ذكر «الموسوعة القرآنية quranpedia.net» مع الرابط وتاريخ النسخة، وهي مذكورة في `_meta` وفي `LICENSES/Quranpedia.txt`. |
+| Tanzil Quran Text، Simple Clean، حفص (للمقابلة) | 6236 آية في `data/quran/quran_full.json` | CC BY 3.0 وفق إشعار Tanzil مع شرط نقل النص دون تغيير ونسبة المصدر. الإشعار الكامل في `LICENSES/Tanzil.txt` وبيانات الملف. |
 | الإحالات والأحكام الحديثية | 72 سجلاً (12 موروثاً + 60 روجعت في 3 أكتوبر 2026) | لا توجد رخصة مفتوحة مسجلة لإعادة توزيع موسوعة الدرر. لا يشملها MIT. سجل المصدر وحدود التوسعة في `SOURCES.md`. |
 | Readex Pro | خط الواجهة | SIL Open Font License 1.1؛ الإشعار الكامل في `LICENSES/Readex-Pro-OFL-1.1.txt`. |
 

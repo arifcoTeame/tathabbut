@@ -30,7 +30,8 @@ RUN mkdir -p data/index data/raw && chown -R user:user /app
 USER user
 WORKDIR /app/backend
 
-# Full Quran: bundled data/quran/quran_full.json (or data/raw), else download from Tanzil, else seed sample.
+# Full Quran: bundled data/quran/quran_kfc.json (King Fahd print text via Quranpedia) is used first;
+# Tanzil data/quran/quran_full.json (or data/raw / download) is the fallback, else seed sample.
 RUN [ -f ../data/quran/quran_full.json ] || [ -f ../data/raw/quran_full.json ] || \
     python scripts/fetch_quran.py || echo "!!! Using Quran seed sample"
 RUN python scripts/build_index.py --embedder "$EMBEDDER" || \

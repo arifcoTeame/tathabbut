@@ -51,10 +51,34 @@ def test_king_fahd_spelling_and_basmala_verify(full_index, text, source):
 @needs_full
 def test_verse_one_is_indexed_without_the_tanzil_basmala(full_index):
     claim = first(full_index, "﴿قل هو الله أحد﴾")
-    assert claim["source"]["text"].startswith("قل هو الله أحد")
+    import unicodedata
+    shown = unicodedata.normalize("NFC", claim["source"]["text"])
+    assert shown == unicodedata.normalize("NFC", "قُلْ هُوَ اللَّهُ أَحَدٌ")      # King Fahd print text, no basmala
 
 
 @needs_full
 def test_variant_spelling_does_not_mask_a_changed_word(full_index):
     claim = first(full_index, "﴿ولا تقربوا الزنا إنه كان فاحشة وساء طريقا﴾")
     assert claim["verdict"]["code"] == "ALTERED"
+
+
+@needs_full
+@pytest.mark.parametrize("text,source", [
+    ("قل هو الله احد", "quran-112:1"),                      # no hamza, no brackets, no «قال تعالى»
+    ("قل هو الله أحد", "quran-112:1"),
+    ("ان مع العسر يسرا", "quran-94:6"),
+    ("اياك نعبد واياك نستعين", "quran-1:5"),
+    ("ولا تقربوا الزنى انه كان فاحشه وساء سبيلا", "quran-17:32"),  # ة written as ه
+])
+def test_unmarked_verse_without_hamza_is_recognised_as_quran(full_index, text, source):
+    claim = first(full_index, text)
+    assert claim["verdict"]["code"] == "VERIFIED" and claim["source"]["id"] == source
+    assert claim["source"]["kind"] == "quran" and claim["source"]["ref"]["surah_name"]
+
+
+
+@needs_full
+def test_quran_source_links_to_the_quranpedia_verse(full_index):
+    from app.config import settings
+    claim = pipeline.run(full_index, "قل هو الله احد", Thresholds(), settings.quran_link)["claims"][0]
+    assert claim["source"]["url"] == "https://quranpedia.net/surah/1/112#verse-6222"

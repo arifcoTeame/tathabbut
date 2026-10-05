@@ -20,13 +20,14 @@ import sys
 from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "0.6.1"
-HADITH, PYTEST, CASES = 72, 151, 27   # release 0.6.1 corpus and evidence sizes
+VERSION = "0.7.0"
+HADITH, PYTEST, CASES = 72, 163, 31   # release 0.7.0 corpus and evidence sizes
 STATUSES = {"local_verified", "owner_handoff", "external_review_pending"}
 WEIGHTS = {"technical_ai": 25, "scientific_safety": 15, "innovation": 15,
            "user_experience": 10, "benefit": 20, "operations": 10, "presentation": 5}
-VALIDATION = "docs/evidence/backend-validation-v0.6.1-2026-10-04.json"
-SAFETY = "docs/evidence/local-safety-v0.6.1-2026-10-04.json"
+VALIDATION = "docs/evidence/backend-validation-v0.7.0-2026-10-05.json"
+SAFETY = "docs/evidence/local-safety-v0.7.0-2026-10-05.json"
+QURAN_VARIANTS = "docs/evidence/quran-variants-v0.7.0-2026-10-05.json"
 
 
 def local_file(name: str) -> Path:
@@ -171,13 +172,23 @@ def retrieval_repeatability(manifest: dict) -> dict:
     require(sha256(local_file(primary["fixture"])) == primary["fixture_sha256"], "Frozen retrieval fixture changed")
     # Protocol v1 is frozen to the 0.5.1 corpus (12 hadiths) and cannot be rerun on 0.6.x;
     # it is kept as a dated historical measurement. Current Quran retrieval is covered by
-    # docs/evidence/kingfahd-text-verification-2026-10-04.json (6236/6236 verses).
-    current = read_json("docs/evidence/kingfahd-text-verification-2026-10-04.json")
+    # docs/evidence/quran-variants-v0.7.0-2026-10-05.json: every verse of the King Fahd
+    # print text (Quranpedia) and of the Tanzil text, quoted as ﴿…﴾, plus every verse of
+    # 3+ words pasted without diacritics, hamza or brackets.
+    current = read_json(QURAN_VARIANTS)
+    runs = current["runs"]
     require(current["engine_version"] == VERSION and current["verses"] == 6236
-            and current["verdicts"] == {"VERIFIED": 6236}, "Current full-Quran verification evidence missing or failing")
+            and all(runs[name]["verdicts"] == {"VERIFIED": 6236} and not runs[name]["not_verified_or_wrong_location"]
+                    for name in ("kfc_marked", "tanzil_marked")),
+            "Current full-Quran verification evidence missing or failing")
+    plain = runs["plain_unmarked"]
+    require(not plain["not_verified_or_wrong_location"]
+            and plain["verdicts"].get("VERIFIED", 0) + len(plain["short_verses_unmarked_not_claimed_as_quran"]) == 6236,
+            "Unmarked full-Quran verification evidence failing")
     return {"queries_per_run": 814, "identical_rankings": True, "scope": "Synthetic reference retrieval only",
             "historical_measurement_of_code_before": changed or None,
-            "current_full_quran_verification": "6236/6236 VERIFIED on engine " + VERSION}
+            "current_full_quran_verification": "6236/6236 VERIFIED (King Fahd and Tanzil spelling) on engine " + VERSION,
+            "unmarked_verses_verified": plain["verdicts"].get("VERIFIED", 0)}
 
 
 def sensitive_filename(name: str) -> bool:
@@ -215,7 +226,7 @@ def public_git_inventory(manifest: dict) -> dict:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--output", type=Path, default=ROOT / "docs/evidence/submission-check-v0.6.1.json")
+    parser.add_argument("--output", type=Path, default=ROOT / "docs/evidence/submission-check-v0.7.0.json")
     args = parser.parse_args()
     checks = []
     try:

@@ -9,7 +9,7 @@ function SourceLine({ claim }: { claim: Claim }) {
       {s.kind === "quran" ? <span>{verseLabel(s.ref)}</span> : s.ref.narrator ? <span>الراوي: {s.ref.narrator}</span> : null}
       {s.url && (
         <a href={s.url} target="_blank" rel="noopener noreferrer">
-          {s.kind === "quran" ? "عرض الآية في مشروع تنزيل (Tanzil)" : "التحقق في الدرر السنية"} ↗
+          {s.kind === "quran" ? "عرض الآية في الموسوعة القرآنية (طبعة المجمع)" : "التحقق في الدرر السنية"} ↗
         </a>
       )}
       {!s.verified && <span className="tag warn">سجل تجريبي لم يُراجع بعد</span>}

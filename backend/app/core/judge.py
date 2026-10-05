@@ -17,7 +17,7 @@ VERDICTS = {
     "VERIFIED": "موثّق",
     "NOT_AUTHENTIC": "لا يصح",
     "ALTERED": "مُحرَّف",
-    "NO_ORIGIN": "لم يُعثر عليه",
+    "NO_ORIGIN": "لم يُعثر عليه ضمن قاعدة البيانات الحالية",
     "DISPUTED": "خلافي",
     "REFER": "إحالة",
     "NEEDS_REVIEW": "يتطلب مزيد تحقق",
@@ -206,7 +206,13 @@ def _judge_hadith(c: Candidate | None, th: Thresholds) -> Judgement:
 
 
 def judge(index: HybridIndex, claim: Claim, th: Thresholds) -> Judgement:
-    # Level D: refuse before any retrieval or generation.
+    # Level D: refuse before any retrieval or generation — unless the whole text is
+    # itself a verse pasted without brackets (e.g. 2:270 «وما أنفقتم من نفقة أو نذرتم من نذر…»),
+    # whose second-person wording belongs to the verse, not to a question from the user.
+    if claim.level == "D" and "؟" not in claim.text and "?" not in claim.text:
+        verse = _best(index, claim.text, "quran")
+        if verse and verse.al.exact and verse.al.claim_coverage == 1 and len(key_tokens(claim.text)) >= 3:
+            return Judgement("VERIFIED", verse, notes=["النص آية قرآنية كاملة لا سؤال شخصي؛ التوثيق يخص النص ولا يُعد فتوى."])
     if claim.level == "D":
         notes = ["حالة شخصية تتطلب فتوى من جهة مؤهلة؛ لا يُصدر النظام حكماً فيها."]
         if has_categorical_ruling(claim.context_after):
@@ -232,10 +238,16 @@ def judge(index: HybridIndex, claim: Claim, th: Thresholds) -> Judgement:
     else:  # unknown type: decide by the strongest evidence
         if q_exact:
             j = Judgement("VERIFIED", q)
-        elif h and h.al.content_coverage >= th.hadith_match_min:
+        elif h and n_words >= 3 and h.al.content_coverage >= th.hadith_match_min:
             j = _judge_hadith(h, th)
-        elif q and q.al.claim_coverage >= th.quran_unknown_min:
-            j = _judge_quran(index, claim, q, th, strict=True)
+        elif q and n_words >= 3 and q.al.claim_coverage >= th.closest_min:
+            # Close to a verse but not identical, and the text was not presented as a verse:
+            # show the correct verse with its surah and number, without asserting «مُحرَّف».
+            where = f"سورة {q.doc.ref['surah_name']}، الآية {q.doc.ref['ayah']}" + (
+                f"–{q.doc.ref['ayah_end']}" if q.doc.ref.get("ayah_end") else "")
+            j = Judgement("NEEDS_REVIEW", q, notes=[
+                f"النص يشبه آية قرآنية ولا يطابقها حرفياً ({where}). إن كان المقصود الآية فنصها الصحيح معروض أعلاه مع الفروق؛ "
+                "ولم يُحكم بالتحريف لأن النص لم يُقدَّم على أنه آية."])
         elif claim.level == "C":
             j = Judgement("DISPUTED", notes=["مسألة اجتهادية؛ لا تُعرض بصيغة القطع ويُحال فيها إلى المختص."])
         else:
@@ -254,7 +266,11 @@ def judge(index: HybridIndex, claim: Claim, th: Thresholds) -> Judgement:
         else:
             j.notes.append(f"قريب بالقدر نفسه من مواضع أخرى: {where}؛ رُجّح الأقرب لفظاً.")
     if j.code == "NO_ORIGIN":
-        j.notes.append("لم يُعثر على نص مطابق في الفهرس الحالي؛ عدم العثور لا يحكم على صحة الحديث أو وجوده في مصادر أخرى.")
+        if claim.type_hint == "quran":
+            j.notes.append("لم يُعثر على آية مطابقة في المصحف (6236 آية)؛ لا يُبنى على هذا النص بوصفه آية حتى يُراجع.")
+        else:
+            j.notes.append("لم يُعثر على نص مطابق في المصحف ولا في قاعدة الأحاديث الحالية (72 سجلاً)؛ يتطلب تحققاً. "
+                           "عدم العثور لا يعني أن الحديث لا يصح، ولا يحكم على وجوده في مصادر أخرى.")
     quran_related = claim.type_hint == "quran" or (j.candidate and j.candidate.doc.kind == "quran")
     if quran_related and j.code in ("ALTERED", "NO_ORIGIN") and not index.stats()["quran_complete"]:
         j.notes.append("تنبيه: الفهرس القرآني الحالي عينة جزئية؛ الحكم مبدئي حتى تحميل النص الكامل.")

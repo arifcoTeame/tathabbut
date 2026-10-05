@@ -7,7 +7,7 @@ from . import extractor
 from .index import HybridIndex
 from .judge import VERDICTS, Judgement, Thresholds, judge
 
-ENGINE_VERSION = "0.6.1"
+ENGINE_VERSION = "0.7.0"
 DISCLAIMER = "تثبّت أداة مدعومة بالذكاء الاصطناعي ولا تُغني عن المختص. النص الشرعي منسوخ من الفهرس، والدرجات منقولة عن المحدّثين كما هي مسجّلة في المصدر."
 
 
@@ -15,7 +15,7 @@ def _source_url(doc, quran_link: str) -> str:
     if doc.url:
         return doc.url
     if doc.kind == "quran":
-        return quran_link.format(surah=doc.ref.get("surah"), ayah=doc.ref.get("ayah"))
+        return quran_link.format(surah=doc.ref.get("surah"), ayah=doc.ref.get("ayah"), gid=doc.ref.get("gid", ""))
     return ""
 
 
@@ -69,7 +69,8 @@ def run(index: HybridIndex, text: str, th: Thresholds, quran_link: str) -> dict:
             )
         summary[j.code] += 1
         c = j.candidate
-        level = "A" if c is not None and claim.level == "B" else claim.level
+        verse_not_question = claim.level == "D" and j.code == "VERIFIED" and c is not None and c.doc.kind == "quran"
+        level = "A" if c is not None and (claim.level == "B" or verse_not_question) else claim.level
         out = {
             "id": claim.id,
             "text": claim.text,
