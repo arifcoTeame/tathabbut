@@ -1,0 +1,675 @@
+{
+  "checked_at": "2026-10-06T02:56:21+03:00",
+  "started_at": "2026-10-06T02:49:29+03:00",
+  "base_url": "https://tathabbut.vercel.app",
+  "deployment": {
+    "engine_version": "0.8.0",
+    "commit_message": "release 0.8.0: clear results, Dorar entry links",
+    "render_status": "Deploy succeeded | Live (reported by the owner, 6 Oct ~02:48)",
+    "stats": {
+      "quran": 6236,
+      "quran_complete": true,
+      "docs": 6308,
+      "embedder": "tfidf-char"
+    }
+  },
+  "method": "POST /api/verify from the page origin via browser fetch() (Next.js proxy -> Render), run by the assistant in the Claude desktop built-in browser on the owner's Mac. Source buttons opened in the same browser.",
+  "five_user_cases": {
+    "forms": [
+      "original with ﷺ / «قال تعالى»",
+      "hamza and diacritics",
+      "plain, normalised"
+    ],
+    "passed": 15,
+    "total": 15,
+    "attribution_phrase_excluded_from_matched_text": "15/15",
+    "results": [
+      {
+        "id": "watan_original",
+        "input": "قال رسول الله ﷺ: «حب الوطن من الإيمان»",
+        "expected": [
+          "NOT_AUTHENTIC"
+        ],
+        "actual": [
+          "NOT_AUTHENTIC"
+        ],
+        "passed": true,
+        "matched_text": "حب الوطن من الإيمان",
+        "attribution_excluded": true,
+        "source_url": "https://dorar.net/h/v9O0rvM9",
+        "grades": [
+          [
+            "موضوع",
+            "الألباني",
+            "السلسلة الضعيفة",
+            "36",
+            "https://dorar.net/h/v9O0rvM9"
+          ]
+        ],
+        "diff": [],
+        "engine_version": "0.8.0",
+        "ms": 908
+      },
+      {
+        "id": "watan_diacritics",
+        "input": "قالَ رسولُ اللهِ ﷺ: «حُبُّ الوَطَنِ مِنَ الإيمانِ»",
+        "expected": [
+          "NOT_AUTHENTIC"
+        ],
+        "actual": [
+          "NOT_AUTHENTIC"
+        ],
+        "passed": true,
+        "matched_text": "حُبُّ الوَطَنِ مِنَ الإيمانِ",
+        "attribution_excluded": true,
+        "source_url": "https://dorar.net/h/v9O0rvM9",
+        "grades": [
+          [
+            "موضوع",
+            "الألباني",
+            "السلسلة الضعيفة",
+            "36",
+            "https://dorar.net/h/v9O0rvM9"
+          ]
+        ],
+        "diff": [],
+        "engine_version": "0.8.0",
+        "ms": 695
+      },
+      {
+        "id": "watan_plain",
+        "input": "قال رسول الله حب الوطن من الايمان",
+        "expected": [
+          "NOT_AUTHENTIC"
+        ],
+        "actual": [
+          "NOT_AUTHENTIC"
+        ],
+        "passed": true,
+        "matched_text": "حب الوطن من الايمان",
+        "attribution_excluded": true,
+        "source_url": "https://dorar.net/h/v9O0rvM9",
+        "grades": [
+          [
+            "موضوع",
+            "الألباني",
+            "السلسلة الضعيفة",
+            "36",
+            "https://dorar.net/h/v9O0rvM9"
+          ]
+        ],
+        "diff": [],
+        "engine_version": "0.8.0",
+        "ms": 839
+      },
+      {
+        "id": "taqa_original",
+        "input": "قال تعالى: ﴿لا يكلف الله نفسًا إلا طاقتها﴾",
+        "expected": [
+          "ALTERED"
+        ],
+        "actual": [
+          "ALTERED"
+        ],
+        "passed": true,
+        "matched_text": "لا يكلف الله نفسًا إلا طاقتها",
+        "attribution_excluded": true,
+        "source_url": "https://quranpedia.net/surah/1/2?ayah_id=293",
+        "grades": [],
+        "diff": [
+          {
+            "op": "changed",
+            "claim": "طاقتها",
+            "source": "وسعها"
+          }
+        ],
+        "engine_version": "0.8.0",
+        "ms": 560
+      },
+      {
+        "id": "taqa_diacritics",
+        "input": "قالَ تعالى: ﴿لَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا طَاقَتَهَا﴾",
+        "expected": [
+          "ALTERED"
+        ],
+        "actual": [
+          "ALTERED"
+        ],
+        "passed": true,
+        "matched_text": "لَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا طَاقَتَهَا",
+        "attribution_excluded": true,
+        "source_url": "https://quranpedia.net/surah/1/2?ayah_id=293",
+        "grades": [],
+        "diff": [
+          {
+            "op": "changed",
+            "claim": "طاقتها",
+            "source": "وسعها"
+          }
+        ],
+        "engine_version": "0.8.0",
+        "ms": 693
+      },
+      {
+        "id": "taqa_plain",
+        "input": "قال تعالى لا يكلف الله نفسا الا طاقتها",
+        "expected": [
+          "ALTERED"
+        ],
+        "actual": [
+          "ALTERED"
+        ],
+        "passed": true,
+        "matched_text": "لا يكلف الله نفسا الا طاقتها",
+        "attribution_excluded": true,
+        "source_url": "https://quranpedia.net/surah/1/2?ayah_id=293",
+        "grades": [],
+        "diff": [
+          {
+            "op": "changed",
+            "claim": "طاقتها",
+            "source": "وسعها"
+          }
+        ],
+        "engine_version": "0.8.0",
+        "ms": 708
+      },
+      {
+        "id": "anfa_original",
+        "input": "قال رسول الله ﷺ: «خير الناس أنفعهم للناس»",
+        "expected": [
+          "DISPUTED"
+        ],
+        "actual": [
+          "DISPUTED"
+        ],
+        "passed": true,
+        "matched_text": "خير الناس أنفعهم للناس",
+        "attribution_excluded": true,
+        "source_url": "https://dorar.net/h/LWuCYU03",
+        "grades": [
+          [
+            "حسن",
+            "الألباني",
+            "صحيح الجامع",
+            "3289",
+            "https://dorar.net/h/LWuCYU03"
+          ],
+          [
+            "عمرو بن بكر السكسكي واه وأحاديثه شبه موضوعه",
+            "الذهبي",
+            "ميزان الاعتدال",
+            "3/248",
+            "https://dorar.net/h/n7gQQnZw"
+          ]
+        ],
+        "diff": [],
+        "engine_version": "0.8.0",
+        "ms": 651
+      },
+      {
+        "id": "anfa_diacritics",
+        "input": "قالَ رسولُ اللهِ ﷺ: «خَيْرُ النَّاسِ أَنْفَعُهُمْ لِلنَّاسِ»",
+        "expected": [
+          "DISPUTED"
+        ],
+        "actual": [
+          "DISPUTED"
+        ],
+        "passed": true,
+        "matched_text": "خَيْرُ النَّاسِ أَنْفَعُهُمْ لِلنَّاسِ",
+        "attribution_excluded": true,
+        "source_url": "https://dorar.net/h/LWuCYU03",
+        "grades": [
+          [
+            "حسن",
+            "الألباني",
+            "صحيح الجامع",
+            "3289",
+            "https://dorar.net/h/LWuCYU03"
+          ],
+          [
+            "عمرو بن بكر السكسكي واه وأحاديثه شبه موضوعه",
+            "الذهبي",
+            "ميزان الاعتدال",
+            "3/248",
+            "https://dorar.net/h/n7gQQnZw"
+          ]
+        ],
+        "diff": [],
+        "engine_version": "0.8.0",
+        "ms": 747
+      },
+      {
+        "id": "anfa_plain",
+        "input": "قال رسول الله خير الناس انفعهم للناس",
+        "expected": [
+          "DISPUTED"
+        ],
+        "actual": [
+          "DISPUTED"
+        ],
+        "passed": true,
+        "matched_text": "خير الناس انفعهم للناس",
+        "attribution_excluded": true,
+        "source_url": "https://dorar.net/h/LWuCYU03",
+        "grades": [
+          [
+            "حسن",
+            "الألباني",
+            "صحيح الجامع",
+            "3289",
+            "https://dorar.net/h/LWuCYU03"
+          ],
+          [
+            "عمرو بن بكر السكسكي واه وأحاديثه شبه موضوعه",
+            "الذهبي",
+            "ميزان الاعتدال",
+            "3/248",
+            "https://dorar.net/h/n7gQQnZw"
+          ]
+        ],
+        "diff": [],
+        "engine_version": "0.8.0",
+        "ms": 593
+      },
+      {
+        "id": "makarim_original",
+        "input": "قال رسول الله ﷺ: «إنما بعثت لأتمم مكارم الأخلاق»",
+        "expected": [
+          "NEEDS_REVIEW"
+        ],
+        "actual": [
+          "NEEDS_REVIEW"
+        ],
+        "passed": true,
+        "matched_text": "إنما بعثت لأتمم مكارم الأخلاق",
+        "attribution_excluded": true,
+        "source_url": "https://dorar.net/h/5J9EJKLh",
+        "grades": [
+          [
+            "صحيح",
+            "ابن عبدالبر",
+            "التمهيد",
+            "24/333",
+            "https://dorar.net/h/5J9EJKLh"
+          ],
+          [
+            "صحيح",
+            "الألباني",
+            "صحيح الجامع",
+            "2833",
+            null
+          ]
+        ],
+        "diff": [
+          {
+            "op": "changed",
+            "claim": "مكارم",
+            "source": "صالح"
+          }
+        ],
+        "engine_version": "0.8.0",
+        "ms": 802
+      },
+      {
+        "id": "makarim_diacritics",
+        "input": "قالَ رسولُ اللهِ ﷺ: «إِنَّمَا بُعِثْتُ لِأُتَمِّمَ مَكَارِمَ الأَخْلَاقِ»",
+        "expected": [
+          "NEEDS_REVIEW"
+        ],
+        "actual": [
+          "NEEDS_REVIEW"
+        ],
+        "passed": true,
+        "matched_text": "إِنَّمَا بُعِثْتُ لِأُتَمِّمَ مَكَارِمَ الأَخْلَاقِ",
+        "attribution_excluded": true,
+        "source_url": "https://dorar.net/h/5J9EJKLh",
+        "grades": [
+          [
+            "صحيح",
+            "ابن عبدالبر",
+            "التمهيد",
+            "24/333",
+            "https://dorar.net/h/5J9EJKLh"
+          ],
+          [
+            "صحيح",
+            "الألباني",
+            "صحيح الجامع",
+            "2833",
+            null
+          ]
+        ],
+        "diff": [
+          {
+            "op": "changed",
+            "claim": "مكارم",
+            "source": "صالح"
+          }
+        ],
+        "engine_version": "0.8.0",
+        "ms": 701
+      },
+      {
+        "id": "makarim_plain",
+        "input": "قال رسول الله انما بعثت لاتمم مكارم الاخلاق",
+        "expected": [
+          "NEEDS_REVIEW"
+        ],
+        "actual": [
+          "NEEDS_REVIEW"
+        ],
+        "passed": true,
+        "matched_text": "انما بعثت لاتمم مكارم الاخلاق",
+        "attribution_excluded": true,
+        "source_url": "https://dorar.net/h/5J9EJKLh",
+        "grades": [
+          [
+            "صحيح",
+            "ابن عبدالبر",
+            "التمهيد",
+            "24/333",
+            "https://dorar.net/h/5J9EJKLh"
+          ],
+          [
+            "صحيح",
+            "الألباني",
+            "صحيح الجامع",
+            "2833",
+            null
+          ]
+        ],
+        "diff": [
+          {
+            "op": "changed",
+            "claim": "مكارم",
+            "source": "صالح"
+          }
+        ],
+        "engine_version": "0.8.0",
+        "ms": 604
+      },
+      {
+        "id": "sabr_original",
+        "input": "قال رسول الله ﷺ: «الصبر مفتاح الفرج»",
+        "expected": [
+          "NO_ORIGIN"
+        ],
+        "actual": [
+          "NO_ORIGIN"
+        ],
+        "passed": true,
+        "matched_text": "الصبر مفتاح الفرج",
+        "attribution_excluded": true,
+        "source_url": null,
+        "grades": [],
+        "diff": [],
+        "engine_version": "0.8.0",
+        "ms": 600
+      },
+      {
+        "id": "sabr_diacritics",
+        "input": "قالَ رسولُ اللهِ ﷺ: «الصَّبْرُ مِفْتَاحُ الفَرَجِ»",
+        "expected": [
+          "NO_ORIGIN"
+        ],
+        "actual": [
+          "NO_ORIGIN"
+        ],
+        "passed": true,
+        "matched_text": "الصَّبْرُ مِفْتَاحُ الفَرَجِ",
+        "attribution_excluded": true,
+        "source_url": null,
+        "grades": [],
+        "diff": [],
+        "engine_version": "0.8.0",
+        "ms": 687
+      },
+      {
+        "id": "sabr_plain",
+        "input": "قال رسول الله الصبر مفتاح الفرج",
+        "expected": [
+          "NO_ORIGIN"
+        ],
+        "actual": [
+          "NO_ORIGIN"
+        ],
+        "passed": true,
+        "matched_text": "الصبر مفتاح الفرج",
+        "attribution_excluded": true,
+        "source_url": null,
+        "grades": [],
+        "diff": [],
+        "engine_version": "0.8.0",
+        "ms": 709
+      }
+    ]
+  },
+  "release_cases": {
+    "distinct": 37,
+    "repeat": 3,
+    "passed": 111,
+    "total": 111,
+    "runs_2_3_identical_to_run_1": true,
+    "http_status": "200 for all",
+    "run_1": [
+      {
+        "id": "quran_exact",
+        "actual": "VERIFIED",
+        "source_ids": "quran-1:5"
+      },
+      {
+        "id": "quran_changed_particle",
+        "actual": "ALTERED",
+        "source_ids": "quran-1:5"
+      },
+      {
+        "id": "quran_missing_particle",
+        "actual": "ALTERED",
+        "source_ids": "quran-1:5"
+      },
+      {
+        "id": "quran_merged_quote",
+        "actual": "ALTERED",
+        "source_ids": "quran-65:3"
+      },
+      {
+        "id": "quran_changed_word",
+        "actual": "ALTERED",
+        "source_ids": "quran-2:286"
+      },
+      {
+        "id": "quran_king_fahd_spelling",
+        "actual": "VERIFIED",
+        "source_ids": "quran-17:32"
+      },
+      {
+        "id": "quran_basmala_prefix",
+        "actual": "VERIFIED",
+        "source_ids": "quran-112:1"
+      },
+      {
+        "id": "quran_unmarked_without_hamza",
+        "actual": "VERIFIED",
+        "source_ids": "quran-112:1"
+      },
+      {
+        "id": "quran_unmarked_near_verse",
+        "actual": "NEEDS_REVIEW",
+        "source_ids": "quran-112:1"
+      },
+      {
+        "id": "hadith_unmarked_without_hamza",
+        "actual": "VERIFIED",
+        "source_ids": "hadith-bukhari-1"
+      },
+      {
+        "id": "quran_particle_joined_to_word",
+        "actual": "VERIFIED",
+        "source_ids": "quran-2:255"
+      },
+      {
+        "id": "quran_excerpt_of_long_verse",
+        "actual": "VERIFIED",
+        "source_ids": "quran-9:40"
+      },
+      {
+        "id": "quran_short_excerpt_unmarked",
+        "actual": "NEEDS_REVIEW",
+        "source_ids": "quran-2:255"
+      },
+      {
+        "id": "quran_short_complete_verse",
+        "actual": "VERIFIED",
+        "source_ids": "quran-112:2"
+      },
+      {
+        "id": "quran_misspelled_short_excerpt",
+        "actual": "NEEDS_REVIEW",
+        "source_ids": "quran-2:258"
+      },
+      {
+        "id": "hadith_unquoted_without_honorific",
+        "actual": "NOT_AUTHENTIC",
+        "source_ids": "hadith-daifa-36"
+      },
+      {
+        "id": "hadith_not_in_database",
+        "actual": "NO_ORIGIN",
+        "source_ids": ""
+      },
+      {
+        "id": "hadith_authentic",
+        "actual": "VERIFIED",
+        "source_ids": "hadith-muslim-55"
+      },
+      {
+        "id": "hadith_recorded_weak",
+        "actual": "NOT_AUTHENTIC",
+        "source_ids": "hadith-daifa-36"
+      },
+      {
+        "id": "hadith_negation_removed",
+        "actual": "NEEDS_REVIEW",
+        "source_ids": "hadith-bukhari-13"
+      },
+      {
+        "id": "hadith_wording_changed",
+        "actual": "NEEDS_REVIEW",
+        "source_ids": "hadith-daifa-416"
+      },
+      {
+        "id": "outside_corpus",
+        "actual": "NO_ORIGIN",
+        "source_ids": ""
+      },
+      {
+        "id": "hadith_popular_not_established",
+        "actual": "NOT_AUTHENTIC",
+        "source_ids": "hadith-ibnbaz-6-113-2"
+      },
+      {
+        "id": "hadith_hasan_grade",
+        "actual": "VERIFIED",
+        "source_ids": "hadith-sahihjami-1880"
+      },
+      {
+        "id": "hadith_scholars_disagree",
+        "actual": "DISPUTED",
+        "source_ids": "hadith-sahihjami-3289"
+      },
+      {
+        "id": "hadith_baseless_recorded",
+        "actual": "NOT_AUTHENTIC",
+        "source_ids": "hadith-daifa-66"
+      },
+      {
+        "id": "hadith_fragment_of_long_text",
+        "actual": "VERIFIED",
+        "source_ids": "hadith-bukhari-2989"
+      },
+      {
+        "id": "hadith_popular_variant_wording",
+        "actual": "NEEDS_REVIEW",
+        "source_ids": "hadith-tamhid-24-333"
+      },
+      {
+        "id": "hadith_extra_words_not_in_record",
+        "actual": "NO_ORIGIN",
+        "source_ids": ""
+      },
+      {
+        "id": "personal_referral",
+        "actual": "REFER",
+        "source_ids": ""
+      },
+      {
+        "id": "multiple_claims",
+        "actual": "NOT_AUTHENTIC,ALTERED,REFER",
+        "source_ids": "hadith-daifa-416,quran-65:3,"
+      },
+      {
+        "id": "personal_with_quran_same_sentence",
+        "actual": "REFER,VERIFIED",
+        "source_ids": ",quran-8:69"
+      },
+      {
+        "id": "personal_with_hadith_same_sentence",
+        "actual": "REFER,VERIFIED",
+        "source_ids": ",hadith-muslim-55"
+      },
+      {
+        "id": "personal_after_quote",
+        "actual": "REFER,VERIFIED",
+        "source_ids": ",hadith-muslim-55"
+      },
+      {
+        "id": "personal_after_unquoted_citation",
+        "actual": "REFER,VERIFIED",
+        "source_ids": ",quran-112:1"
+      },
+      {
+        "id": "first_person_quran_is_not_user_question",
+        "actual": "VERIFIED",
+        "source_ids": "quran-19:26"
+      },
+      {
+        "id": "referral_preserved_at_display_limit",
+        "actual": "REFER + 11×VERIFIED",
+        "source_ids": "quran-112:1 ×11"
+      }
+    ]
+  },
+  "whole_quran_live": {
+    "sample": "data/evaluation/live-quran-sample-v0.7.1.json, fetched by the browser from the public repository (main)",
+    "surahs": 114,
+    "requests": 302,
+    "passed": 302,
+    "by_form": {
+      "kfc_marked": "114/114 VERIFIED",
+      "noisy_unmarked": "114/114 VERIFIED",
+      "marked_word_missing": "74/74 ALTERED"
+    }
+  },
+  "source_buttons_opened": {
+    "https://dorar.net/h/v9O0rvM9": "حبُّ الوطنِ منَ الإيمانِ — موضوع — الألباني، السلسلة الضعيفة 36 (same entry as the card)",
+    "https://dorar.net/h/LWuCYU03": "خيرُ الناسَ أنفعُهُمْ لِلناسِ — حسن — الألباني، صحيح الجامع 3289",
+    "https://dorar.net/h/n7gQQnZw": "خيرُ الناسِ أنفعُهم للناسِ — [فيه] عمرو بن بكر السكسكي واه … — الذهبي، ميزان الاعتدال 3/248",
+    "https://dorar.net/h/5J9EJKLh": "إنَّما بُعِثْتُ لأُتممَ صالحَ الأخلاقِ — صحيح — ابن عبدالبر، التمهيد 24/333 (shown in the card as the similar text)",
+    "https://dorar.net/hadith/search?q=الصبر مفتاح الفرج": "Dorar search page with results (button «البحث عن النص كاملًا في الدرر السنية»)",
+    "https://quranpedia.net/surah/1/2?ayah_id=293": "سورة البقرة، الآية 286 opened directly"
+  },
+  "latency_ms": {
+    "release_min": 584,
+    "release_median": 702,
+    "release_max": 4407,
+    "quran_sample_median": 699,
+    "quran_sample_p95": 2906,
+    "quran_sample_max": 5530,
+    "note": "browser round-trip incl. Vercel proxy and Render; the slowest are the 12-claim and personal-question cases"
+  },
+  "render_stability": "428 requests over about 7 minutes (15 + 111 + 302), all HTTP 200, engine 0.8.0 in every response, no retries",
+  "found_on_live_and_fixed_after": "The status pill showed «72 حديثاً مفهرساً» and the about page «٧٢ سجلاً»; both replaced by «قاعدة الأحاديث الحالية» in the follow-up upload (verified separately after it).",
+  "scope": "targeted cases and a whole-Quran sample; not a representative accuracy benchmark"
+}

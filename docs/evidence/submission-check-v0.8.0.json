@@ -1,7 +1,7 @@
 {
-  "checked_at": "2026-10-06T02:36:06.721318+03:00",
+  "checked_at": "2026-10-06T02:57:28.728541+03:00",
   "release": "0.8.0",
-  "manifest_sha256": "5896cd0ab057cfa4239c0483b9a92db5a48ecc8c642508af4ba9fe1105a3f851",
+  "manifest_sha256": "8ee822f3635a9d51aba12fb0e5099a0f26a2358dc1420c7cac4aa33c8210b4aa",
   "scope": "Local consistency gate for saved evidence; no official score or final compliance certification",
   "network_used": false,
   "local_checks_passed": true,
@@ -9,8 +9,8 @@
   "local_checks_passed_count": 8,
   "overall_ready": false,
   "status_counts": {
-    "local_verified": 7,
-    "owner_handoff": 2,
+    "local_verified": 8,
+    "owner_handoff": 1,
     "external_review_pending": 2
   },
   "pending_requirements": [
@@ -28,11 +28,6 @@
       "id": "independent_review_and_user_trial",
       "label_ar": "المراجعة العلمية وقياس النفع مع مستخدمين",
       "status": "external_review_pending"
-    },
-    {
-      "id": "live_release_verification",
-      "label_ar": "التحقق من الإصدار المنشور بعد الرفع",
-      "status": "owner_handoff"
     }
   ],
   "checks": [
@@ -49,7 +44,7 @@
       "id": "references",
       "passed": true,
       "details": {
-        "existing_nonempty_references": 37,
+        "existing_nonempty_references": 38,
         "meaning": "File existence, not approval of its substantive claims"
       }
     },
@@ -109,7 +104,7 @@
       "id": "public_git_inventory",
       "passed": true,
       "details": {
-        "candidate_files": 160,
+        "candidate_files": 162,
         "risky_filename_count": 0,
         "file_contents_scanned": false,
         "secret_file_contents_read": false,

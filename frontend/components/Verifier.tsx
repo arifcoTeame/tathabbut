@@ -60,7 +60,7 @@ function IndexStatus({ status, onRetry }: { status: Status; onRetry: () => void 
       <span className="dot ok" />
       {s.quran_complete ? `المصحف كاملاً (${s.quran.toLocaleString("ar")} آية)` : `عينة قرآنية (${s.quran} آية)`}
       {" · "}
-      {s.hadith} حديثاً مفهرساً
+      قاعدة الأحاديث الحالية
     </span>
   );
 }
