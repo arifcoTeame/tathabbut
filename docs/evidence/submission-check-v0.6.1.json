@@ -1,7 +1,7 @@
 {
-  "checked_at": "2026-10-04T23:08:52.930944+03:00",
+  "checked_at": "2026-10-05T18:03:17.678316+03:00",
   "release": "0.6.1",
-  "manifest_sha256": "fb0b94288ad1861e5d6728869450829175fe64e0092cd1f0d7c803362e2d9977",
+  "manifest_sha256": "9a78f64ad7259ed72557c91541c28fa7b6f3c1eec5f5860c1d232df17c4058df",
   "scope": "Local consistency gate for saved evidence; no official score or final compliance certification",
   "network_used": false,
   "local_checks_passed": true,
@@ -102,7 +102,7 @@
       "id": "public_git_inventory",
       "passed": true,
       "details": {
-        "candidate_files": 127,
+        "candidate_files": 128,
         "risky_filename_count": 0,
         "file_contents_scanned": false,
         "secret_file_contents_read": false,

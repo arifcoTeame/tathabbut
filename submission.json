@@ -245,11 +245,11 @@
       "label_ar": "التحقق من الإصدار المنشور بعد الرفع",
       "status": "local_verified",
       "evidence": [
-        "docs/evidence/live-after-v0.6.0-2026-10-04.json",
+        "docs/evidence/live-after-v0.6.1-2026-10-05.json",
         "docs/VALIDATION.md"
       ],
       "note": "يجب أن يثبت دليل جديد تشغيل 0.6.0 وسلامة الحالات عبر الرابط العام بعد نشر صاحب المشروع؛ الدليل المحلي لا يثبت ذلك.",
-      "note_ar": "75/75 على https://tathabbut.vercel.app في 4 أكتوبر 21:24؛ المحرك 0.6.0، 72 حديثاً."
+      "note_ar": "81/81 على https://tathabbut.vercel.app في 5 أكتوبر 18:02؛ المحرك 0.6.1، 72 حديثاً."
     }
   ],
   "local_checks": {
