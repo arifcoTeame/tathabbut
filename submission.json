@@ -198,8 +198,8 @@
         "docs/SUBMISSION_FORM.md",
         "docs/DEVELOPMENT_LOG.md"
       ],
-      "note": "يتولى صاحب المشروع الفيديو ورفعه. السيناريو دليل تجهيز ولا يمثل ملف فيديو مسلماً.",
-      "note_ar": "https://www.youtube.com/watch?v=TnObDSHEl4M — غير مُدرج، 1:42، فُحص في 4 أكتوبر 22:10."
+      "note": "Owner recorded the 0.8.0 demo on the live site and uploaded it to YouTube (unlisted).",
+      "note_ar": "https://www.youtube.com/watch?v=ylZlyHt58kE — غير مُدرج، 1:44، على الإصدار 0.8.0؛ فُتح دون تسجيل دخول في 6 أكتوبر 06:12 (حالة التشغيل OK). الفيديو السابق TnObDSHEl4M كان على 0.6.0."
     },
     {
       "id": "final_presentation_and_portal",

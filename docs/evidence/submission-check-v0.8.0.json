@@ -1,7 +1,7 @@
 {
-  "checked_at": "2026-10-06T02:57:28.728541+03:00",
+  "checked_at": "2026-10-06T06:13:57.604073+03:00",
   "release": "0.8.0",
-  "manifest_sha256": "8ee822f3635a9d51aba12fb0e5099a0f26a2358dc1420c7cac4aa33c8210b4aa",
+  "manifest_sha256": "8f8a51781032cc29b6061f2f91b5218b43d85ef2f70941f0801c9cf19b4284ca",
   "scope": "Local consistency gate for saved evidence; no official score or final compliance certification",
   "network_used": false,
   "local_checks_passed": true,
