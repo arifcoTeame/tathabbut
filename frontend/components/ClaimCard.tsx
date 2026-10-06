@@ -48,6 +48,11 @@ export default function ClaimCard({ claim }: { claim: Claim }) {
           <p className="v-summary">{o.summary}</p>
           <p className="v-advice"><b>الخلاصة: </b>{o.advice}</p>
           {o.note && <p className="v-note">{o.note}</p>}
+          {code === "OUT_OF_SCOPE" && (
+            <a className="btn-source" href="https://dorar.net/aqeeda" target="_blank" rel="noopener noreferrer">
+              فتح الموسوعة العقدية في الدرر السنية ↗
+            </a>
+          )}
           {(src?.url || searchDorar) && (
             <a
               className="btn-source"
