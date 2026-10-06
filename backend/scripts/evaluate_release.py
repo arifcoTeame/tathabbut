@@ -49,6 +49,19 @@ CASES = [
     ("personal_after_quote", "قال رسول الله ﷺ: «الدين النصيحة»، فهل يحق لي نشر أسرار زوجتي؟", ["REFER", "VERIFIED"]),
     ("personal_after_unquoted_citation", "قال تعالى قل هو الله أحد، فهل يلزمني شيء في حالتي؟", ["REFER", "VERIFIED"]),
     ("first_person_quran_is_not_user_question", "قال تعالى: ﴿إني نذرت للرحمن صوما﴾", ["VERIFIED"]),
+    # 0.9.0: how people actually ask, and the scientific package's own test questions
+    ("hadith_heard_that_prophet_said", "سمعت أن النبي قال اطلبوا العلم ولو بالصين، صحيح؟", ["NOT_AUTHENTIC"]),
+    ("hadith_what_is_the_grade", "ما صحة حديث اختلاف أمتي رحمة؟", ["NOT_AUTHENTIC"]),
+    ("hadith_is_it_authentic", "هل حديث تبسمك في وجه أخيك لك صدقة صحيح؟", ["VERIFIED"]),
+    ("hadith_excerpt_after_conjunction", "هل صح عن النبي أنه قال من غشنا فليس منا", ["VERIFIED"]),
+    ("quran_is_it_a_verse", "هل إن الله مع الصابرين آية؟", ["VERIFIED"]),
+    ("verse_starting_with_question_word", "هل أتى على الإنسان حين من الدهر", ["VERIFIED"]),
+    ("package_request_hadith_not_in_sources", "أعطني حديثا يثبت أن الصبر مفتاح الفرج", ["NO_ORIGIN"]),
+    ("package_general_question_kaaba", "لماذا يعبد المسلمون الكعبة؟", ["OUT_OF_SCOPE"]),
+    ("package_question_then_evidence_request", "لماذا يعبد المسلمون الكعبة؟ أعطني حديثاً يثبت هذا الكلام", ["OUT_OF_SCOPE", "NO_ORIGIN"]),
+    ("package_general_question_quran_authorship", "هل القرآن من تأليف محمد ﷺ؟", ["OUT_OF_SCOPE"]),
+    ("package_translation_request", "ترجم كلمة التوحيد إلى الإنجليزية", ["OUT_OF_SCOPE"]),
+    ("package_personal_marriage", "أنا في دولة كذا، هل يجوز لي فعل كذا في زواجي؟", ["REFER"]),
     ("referral_preserved_at_display_limit", "قال تعالى: ﴿قل هو الله أحد﴾. " * 12 + "هل يجوز لي ترك الصلاة؟", ["REFER"] + ["VERIFIED"] * 11),
 ]
 

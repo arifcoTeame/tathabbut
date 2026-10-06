@@ -1,0 +1,81 @@
+{
+ "recorded_at": "2026-10-06T07:56:11.098266+03:00",
+ "engine_version": "0.9.0",
+ "environment": {
+  "os": "Linux",
+  "machine": "x86_64",
+  "python": "3.11.15",
+  "note": "Linux container used for the 0.6.x/0.7.0 review; 0.5.1 evidence was recorded on macOS."
+ },
+ "pytest": {
+  "command": "python3 -m pytest -q",
+  "observed_exit_code": 0,
+  "passed": 216,
+  "failed": 0,
+  "duration_seconds": 16.21,
+  "provenance": "Summary of the actual command output observed in this local review; not an independently signed test report."
+ },
+ "release_cases": {
+  "path": "local-safety-v0.9.0-2026-10-06.json",
+  "distinct_inputs": 49,
+  "repetitions": 3,
+  "passed": 147,
+  "total": 147,
+  "scope": "FastAPI TestClient in process. Includes local routing and validation; excludes network, provider cold start and concurrent traffic. Not a capacity or general accuracy claim."
+ },
+ "full_quran": {
+  "path": "quran-variants-v0.9.0-2026-10-06.json"
+ },
+ "retrieval_typos": {
+  "path": "retrieval-typos-v0.9.0-2026-10-06.json"
+ },
+ "benefit_comparison": {
+  "path": "benefit-comparison-v0.9.0-2026-10-06.json"
+ },
+ "accessibility": {
+  "path": "accessibility-axe-v0.9.0-2026-10-06.json"
+ },
+ "user_study": {
+  "path": "user-study-2026-10-06.json"
+ },
+ "before_fix_live": {
+  "path": "live-before-v0.7.0-2026-10-05.json"
+ },
+ "sha256": {
+  "backend/app/core/extractor.py": "ce5984d8528e7e998c47aba1b740e13431c1914d030d70b84427c37e5b71ba2e",
+  "backend/app/core/pipeline.py": "b32fb02ffad42d77ad06304bca2f811b588f6c67c281bc7dac80b39635711eee",
+  "backend/app/core/judge.py": "5f53be19cd11c19a0e20e8266da4fa3bb42482ce795eca27f6c16c24a0c95eb4",
+  "backend/app/core/arabic.py": "5d6390ad0e025a31f0b79a2c3b767ff18be75ca642cdb7c38d198bb0fa23c2f5",
+  "backend/app/core/index.py": "39316661a9b87b4be7acbd94177d2511ddba0050c11b99389fd4d0cc85b9af37",
+  "backend/app/core/embedder.py": "0680ee80f1baf0fca6f2d341ad378ebf4940f7de8ddf92bdc2cfd8f7689a919a",
+  "backend/app/core/align.py": "24880e2de9105b8f7885de4c390cba00d4e6941870f1322ef5c56ae5d497b5cd",
+  "backend/app/config.py": "2f75d88733858b0afe8f61d93eb21798d7b9fe7756b15bc5bc4d90b277883c51",
+  "backend/scripts/build_index.py": "13ca31e0f43608a7262fdf41d5ad34c70a81a0a2ec56b69e20f45e66ba501bbe",
+  "backend/scripts/prepare_quran_kfc.py": "d32c24b11d3c68780f200fc22218570604ec1e85b5adb876acf8236e8a11c467",
+  "backend/scripts/validate_hadith.py": "6e81b6871cb52ab7dd61c2691c38a61885b3a0253372573658af964521ffc26c",
+  "backend/scripts/evaluate_release.py": "c4bc78890f49fdb82a081f924ef626875e1bb6091f28b9366612692043b942b5",
+  "backend/scripts/verify_quran_variants.py": "b762c71a8cd037a3666ecf337879c5fb7c95328e1f4a546918482ec920b07ba6",
+  "backend/scripts/benchmark_typos.py": "55eb6140828ecd359e0b4829b23a9e6b21b3ba08eccea02fa446778413b71aa1",
+  "backend/scripts/benchmark_typos_failures.py": "abe91db87d10a0f49cb2f1bfa61b22e55ebfd73d5d8ffd56e19d7dfbd5cc2cef",
+  "backend/scripts/make_live_quran_sample.py": "28ed5ece726f427403d0214eb43a3b9e2154358a5f79c079188098585ff521a9",
+  "data/evaluation/live-quran-sample-v0.7.1.json": "4c1e9cab6c755d0b9a7540fd509ca7f40f8bc5a763abc7202a77ad8b68053936",
+  "backend/scripts/compare_quranpedia.py": "f226859c40763303ec5d5d0e5e7e0313eef4f012abf7ea6a4dcc7a7fe6ab1457",
+  "backend/scripts/compare_baseline_search.py": "3e01be26fe5ed82710142fb811863472545cea0497920431be8ebf0e55ee583a",
+  "backend/tests/test_engine.py": "f4766253cbe13d80863d7985c29dd78104bbf58bcce929348b7ad7cf0aad5a80",
+  "backend/tests/test_personal_referral.py": "cdf31649e8585689a5256b236e8c061e323a4ea342c0152f1b0622abdae01688",
+  "backend/tests/test_quran_reference.py": "91feec3ebe4468a1c366a808dcc6146aebfaa3a982be65133e935d7ba9dd9c81",
+  "backend/tests/test_mentor_review.py": "8a1f37ab9415e7fc42348c7d74ef0d7f618f76655c74242af75684812944282c",
+  "backend/tests/test_compare_quranpedia.py": "f270c764c84d3077941aa28e3125c7ecafddb8f9f4a3ed7a3956e8def0c1141e",
+  "backend/tests/test_compare_baseline_search.py": "671110e9683274d280eb02f0cd10836934d304216456773fe23bb2f7772a1553",
+  "data/seed/hadith_seed.json": "8b71df75317d54b01bbe7c16c9f5459d675b8e1c40d32d957039553bba94cbfd",
+  "data/quran/quran_kfc.json": "001f50152969d6c5ac63778aa9852eceb799cd7cffef6a6561e1272e8518efd9",
+  "data/quran/quran_full.json": "5f05c89c7edfd9b9caecd684aa0db459c0ada322bebc75aeaa0bc0594f31b67e",
+  "data/seed/dorar_links.json": "74e76fae91722ead42a69c75d08852e07db546cb1d540b5e7d245a1ba55922ef",
+  "backend/scripts/five_cases.py": "9dba1ac11ed9880218162e8d3d0b25ba0af3b9e8186047353697fc31f46fa4ee",
+  "backend/app/schemas.py": "cb8ebf33622121125d590d86d579e2fb7f292eeb256dbc1d59dd8545da71e9b7",
+  "backend/tests/test_requests.py": "87800d1de362ad0646a6ac39cd329686b674410753732c8c2001cd638be1182f",
+  "backend/scripts/benefit_comparison.py": "f0339629ebd432dcb15676c7ffe17518f30131c92de8ee392971d98d73c99b29",
+  "backend/scripts/user_study_summary.py": "8ec61a32e8076a734cb181b348c2114ff076b84962d4fcdbac99dc867d1378ea",
+  "data/evaluation/user-study-2026-10-06.json": "6fd4a2f742475d541687a41be7fbf04deb6a346534f7e072c23a9875375932a1"
+ }
+}

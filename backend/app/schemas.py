@@ -43,6 +43,7 @@ class ClaimOut(BaseModel):
     id: int
     text: str
     type_hint: str
+    request: str = ""
     level: str
     verdict: Verdict
     source: SourceOut | None = None

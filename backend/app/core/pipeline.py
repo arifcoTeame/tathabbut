@@ -7,7 +7,7 @@ from . import extractor
 from .index import HybridIndex
 from .judge import VERDICTS, Judgement, Thresholds, judge
 
-ENGINE_VERSION = "0.8.0"
+ENGINE_VERSION = "0.9.0"
 DISCLAIMER = "تثبّت أداة مدعومة بالذكاء الاصطناعي ولا تُغني عن المختص. النص الشرعي منسوخ من الفهرس، والدرجات منقولة عن المحدّثين كما هي مسجّلة في المصدر."
 
 
@@ -55,13 +55,50 @@ def _explanation(j: Judgement) -> dict | None:
     return {"kind": "template", "generated": True, "text": text}
 
 
+QUESTION_NOTE = (
+    "هذا سؤال عام وليس آيةً أو حديثاً منقولاً. تثبّت يتحقق من النصوص المنسوبة إلى القرآن الكريم والسنة النبوية، "
+    "ولا يجيب عن الأسئلة العامة ولا يصدر فتوى. الصق الآية أو الحديث الذي تريد التحقق منه."
+)
+_FOUND = ("VERIFIED", "NOT_AUTHENTIC", "DISPUTED")
+
+
+def _reference_note(type_hint: str) -> str:
+    what, to = ("حديثاً يثبت", "إلى النبي ﷺ") if type_hint == "hadith" else ("آيةً تثبت", "إلى القرآن الكريم")
+    return (f"طلبتَ {what} كلاماً دون ذكر نص منسوب. تثبّت لا ينشئ أحاديث ولا آيات ولا يأتي بأدلة من عنده، "
+            f"ولا يوجد في الطلب نص يمكن مقارنته بالمصادر، فلا دليل مطابق يُعرض، ولا يُنسب {to} ما لم يثبت. "
+            "إن كان لديك نص منسوب فالصقه كاملاً للتحقق منه.")
+
+
+def _apply_request(claim, j: Judgement) -> Judgement:
+    """Requests are answered only from what the sources hold: a general question is not
+    graded as a missing hadith, and «أعطني حديثاً يثبت…» never yields a text that is not
+    recorded word for word."""
+    if claim.request == "question" and j.code == "NO_ORIGIN":
+        return Judgement("OUT_OF_SCOPE", notes=[QUESTION_NOTE])
+    if claim.request == "evidence":
+        what = "حديثاً" if claim.type_hint == "hadith" else "آيةً"
+        if j.code in _FOUND:
+            j.notes.insert(0, f"طلبتَ {what} بهذا النص: هذا نص مسجّل بلفظه في قاعدة المنصة ومعه حكمه كما في مصدره؛ تثبّت لا ينشئ نصوصاً ولا يقترحها من عنده.")
+            return j
+        base = "قاعدة الأحاديث الحالية في المنصة" if claim.type_hint == "hadith" else "المصحف القرآني المعتمد من Quranpedia"
+        note = (f"تثبّت لا ينشئ أحاديث ولا آيات ولا يقترح نصوصاً من عنده. بحث عن «{claim.text}» في {base} "
+                "فلم يُعثر على تطابق مطابق؛ وهذا لا يعني الحكم على النص. ابحث عنه كاملاً في الدرر السنية.")
+        if claim.type_hint != "hadith":
+            note = note.replace(" ابحث عنه كاملاً في الدرر السنية.", " راجع النص في Quranpedia.")
+        return Judgement("NO_ORIGIN", closest=j.candidate or j.closest, notes=[note])
+    return j
+
+
 def run(index: HybridIndex, text: str, th: Thresholds, quran_link: str) -> dict:
     t0 = time.perf_counter()
     claims_out = []
     summary = {code: 0 for code in VERDICTS}
 
     for claim in extractor.extract(text):
-        j = judge(index, claim, th)
+        if claim.request == "evidence_ref":
+            j = Judgement("NO_ORIGIN", notes=[_reference_note(claim.type_hint)])
+        else:
+            j = _apply_request(claim, judge(index, claim, th))
         if claim.omitted_count:
             j.notes.append(
                 f"تجاوز النص حد عرض {extractor.MAX_CLAIMS} بطاقة؛ لم تُعرض {claim.omitted_count} بطاقة إضافية. "
@@ -75,6 +112,7 @@ def run(index: HybridIndex, text: str, th: Thresholds, quran_link: str) -> dict:
             "id": claim.id,
             "text": claim.text,
             "type_hint": claim.type_hint,
+            "request": claim.request,
             "level": level,
             "verdict": {"code": j.code, "label_ar": j.label},
             "source": None,

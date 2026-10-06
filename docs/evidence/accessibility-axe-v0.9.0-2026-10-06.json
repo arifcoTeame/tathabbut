@@ -1,0 +1,41 @@
+{
+ "recorded_at": "2026-10-06T04:45:30.380Z",
+ "tool": "axe-core 4.14.0",
+ "browser": "Chromium (Playwright)",
+ "base": "http://localhost:3101",
+ "tags": [
+  "wcag2a",
+  "wcag2aa",
+  "wcag21a",
+  "wcag21aa",
+  "best-practice"
+ ],
+ "scope": "Automated rules only; does not replace a manual screen-reader review.",
+ "total_violations": 0,
+ "pages": {
+  "desktop/home": {
+   "violations": [],
+   "passes": 38
+  },
+  "desktop/results": {
+   "violations": [],
+   "passes": 45
+  },
+  "desktop/about": {
+   "violations": [],
+   "passes": 34
+  },
+  "mobile/home": {
+   "violations": [],
+   "passes": 38
+  },
+  "mobile/results": {
+   "violations": [],
+   "passes": 45
+  },
+  "mobile/about": {
+   "violations": [],
+   "passes": 34
+  }
+ }
+}

@@ -21,6 +21,7 @@ VERDICTS = {
     "DISPUTED": "خلافي",
     "REFER": "إحالة",
     "NEEDS_REVIEW": "يتطلب مزيد تحقق",
+    "OUT_OF_SCOPE": "سؤال عام خارج نطاق التحقق",
 }
 MAX_EXTRA_VERSES = 3
 
@@ -159,7 +160,8 @@ def _best(index: HybridIndex, text: str, kind: str) -> Candidate | None:
             best.alternatives = near[:5]
         return best
     cands = [
-        Candidate(h, align(text, h.doc.text, stemmed=False, preserve_negation=True), h.doc)
+        Candidate(h, align(text, h.doc.text, stemmed=False, preserve_negation=True,
+                           leading_conjunction=kind == "hadith"), h.doc)
         for h in index.search(text, kind=kind)
     ]
     key = lambda c: (round(c.al.content_coverage, 3), round(c.al.claim_coverage, 3), _surface(text, c.doc), c.al.dice, c.hit.fused)

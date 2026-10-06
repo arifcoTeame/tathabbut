@@ -1,0 +1,148 @@
+{
+ "source": "data/evaluation/user-study-2026-10-06.json",
+ "by_method": {
+  "tathabbut": {
+   "answers": 9,
+   "correct": 9,
+   "undecided": 0,
+   "mean_seconds": 11.7,
+   "median_seconds": 12,
+   "mean_confidence": 4.44
+  },
+  "usual": {
+   "answers": 9,
+   "correct": 8,
+   "undecided": 1,
+   "mean_seconds": 27.2,
+   "median_seconds": 28,
+   "mean_confidence": 4.22
+  }
+ },
+ "by_task": {
+  "1": {
+   "tathabbut": {
+    "answers": 1,
+    "correct": 1,
+    "undecided": 0,
+    "mean_seconds": 13,
+    "median_seconds": 13,
+    "mean_confidence": 4
+   },
+   "usual": {
+    "answers": 2,
+    "correct": 2,
+    "undecided": 0,
+    "mean_seconds": 31,
+    "median_seconds": 31.0,
+    "mean_confidence": 4
+   }
+  },
+  "2": {
+   "tathabbut": {
+    "answers": 1,
+    "correct": 1,
+    "undecided": 0,
+    "mean_seconds": 10,
+    "median_seconds": 10,
+    "mean_confidence": 5
+   },
+   "usual": {
+    "answers": 2,
+    "correct": 2,
+    "undecided": 0,
+    "mean_seconds": 20.5,
+    "median_seconds": 20.5,
+    "mean_confidence": 5
+   }
+  },
+  "3": {
+   "tathabbut": {
+    "answers": 1,
+    "correct": 1,
+    "undecided": 0,
+    "mean_seconds": 12,
+    "median_seconds": 12,
+    "mean_confidence": 5
+   },
+   "usual": {
+    "answers": 2,
+    "correct": 2,
+    "undecided": 0,
+    "mean_seconds": 29,
+    "median_seconds": 29.0,
+    "mean_confidence": 4.5
+   }
+  },
+  "4": {
+   "tathabbut": {
+    "answers": 2,
+    "correct": 2,
+    "undecided": 0,
+    "mean_seconds": 8.5,
+    "median_seconds": 8.5,
+    "mean_confidence": 5
+   },
+   "usual": {
+    "answers": 1,
+    "correct": 1,
+    "undecided": 0,
+    "mean_seconds": 17,
+    "median_seconds": 17,
+    "mean_confidence": 5
+   }
+  },
+  "5": {
+   "tathabbut": {
+    "answers": 2,
+    "correct": 2,
+    "undecided": 0,
+    "mean_seconds": 15,
+    "median_seconds": 15.0,
+    "mean_confidence": 3
+   },
+   "usual": {
+    "answers": 1,
+    "correct": 0,
+    "undecided": 1,
+    "mean_seconds": 39,
+    "median_seconds": 39,
+    "mean_confidence": 2
+   }
+  },
+  "6": {
+   "tathabbut": {
+    "answers": 2,
+    "correct": 2,
+    "undecided": 0,
+    "mean_seconds": 11.5,
+    "median_seconds": 11.5,
+    "mean_confidence": 5
+   },
+   "usual": {
+    "answers": 1,
+    "correct": 1,
+    "undecided": 0,
+    "mean_seconds": 28,
+    "median_seconds": 28,
+    "mean_confidence": 4
+   }
+  }
+ },
+ "tasks_faster_with_tathabbut": 6,
+ "ratings_mean": {
+  "ease": 4.67,
+  "clarity": 4.33,
+  "intent": 4.67
+ },
+ "comments": [
+  "أعجبتني سرعة ظهور النتيجة، وأحتاج فقط إلى توضيح أكبر عند اختلاف أحكام الحديث.",
+  "عرض المصدر داخل النتيجة مفيد، لكن من الأفضل إبراز الفرق بين الحديث غير الموجود والحديث غير الثابت.",
+  "المنصة سهلة ومفيدة، خصوصًا في توضيح الآية الصحيحة وإظهار رابط المصدر."
+ ],
+ "limits": [
+  "Three participants recruited by the team; self-timed with a phone stopwatch; replies relayed by the project owner.",
+  "Within-subject with alternating task halves, but with three people tasks 1–3 were done twice with the usual method and once with Tathabbut (and the reverse for 4–6).",
+  "All six texts are in the platform's sources; for a hadith outside the base Tathabbut only refers to dorar.net and saves less time.",
+  "No significance test is claimed; the result is a measured indication, not proof of general benefit."
+ ]
+}

@@ -1,0 +1,5025 @@
+{
+  "recorded_at": "2026-10-06T07:52:14.298153+03:00",
+  "engine_version": "0.9.0",
+  "alternative": "exact text search over the same sources (Quranpedia KFC text and the platform's hadith records), letters and diacritics normalised, given only the quoted words",
+  "definition": "actionable = right publish decision plus what is needed to act on it (verse and place, corrected wording, recorded grade, referral, scope notice, or not-found)",
+  "summary": {
+    "release": {
+      "items": 67,
+      "exact_search_actionable": 27,
+      "tathabbut_actionable": 67,
+      "exact_search_rate": 0.403,
+      "tathabbut_rate": 1.0
+    },
+    "hadith_forms": {
+      "items": 216,
+      "exact_search_actionable": 0,
+      "tathabbut_actionable": 216,
+      "exact_search_rate": 0.0,
+      "tathabbut_rate": 1.0,
+      "exact_search_found_text": 216
+    },
+    "quran_sample": {
+      "items": 302,
+      "exact_search_actionable": 228,
+      "tathabbut_actionable": 302,
+      "exact_search_rate": 0.755,
+      "tathabbut_rate": 1.0
+    },
+    "quran_typos": {
+      "source": "retrieval-typos-v0.9.0-2026-10-06.json",
+      "by_error_type": {
+        "exact": {
+          "items": 1000,
+          "tathabbut_rate": 1.0,
+          "exact_search_rate": 1.0
+        },
+        "letter_dropped": {
+          "items": 998,
+          "tathabbut_rate": 0.9709,
+          "exact_search_rate": 0.0
+        },
+        "letters_swapped": {
+          "items": 998,
+          "tathabbut_rate": 0.9649,
+          "exact_search_rate": 0.0
+        },
+        "two_words_typos": {
+          "items": 899,
+          "tathabbut_rate": 0.9066,
+          "exact_search_rate": 0.0
+        },
+        "excerpt_with_typo": {
+          "items": 601,
+          "tathabbut_rate": 0.9917,
+          "exact_search_rate": 0.0
+        }
+      }
+    },
+    "total_three_sets": {
+      "items": 585,
+      "exact_search_actionable": 255,
+      "tathabbut_actionable": 585,
+      "exact_search_rate": 0.4359,
+      "tathabbut_rate": 1.0
+    }
+  },
+  "by_form": {
+    "hadith_forms": {
+      "heard_that": {
+        "items": 72,
+        "exact_search_actionable": 0,
+        "tathabbut_actionable": 72,
+        "exact_search_rate": 0.0,
+        "tathabbut_rate": 1.0
+      },
+      "quoted": {
+        "items": 72,
+        "exact_search_actionable": 0,
+        "tathabbut_actionable": 72,
+        "exact_search_rate": 0.0,
+        "tathabbut_rate": 1.0
+      },
+      "what_is_its_grade": {
+        "items": 72,
+        "exact_search_actionable": 0,
+        "tathabbut_actionable": 72,
+        "exact_search_rate": 0.0,
+        "tathabbut_rate": 1.0
+      }
+    },
+    "quran_sample": {
+      "kfc_marked": {
+        "items": 114,
+        "exact_search_actionable": 114,
+        "tathabbut_actionable": 114,
+        "exact_search_rate": 1.0,
+        "tathabbut_rate": 1.0
+      },
+      "marked_word_missing": {
+        "items": 74,
+        "exact_search_actionable": 0,
+        "tathabbut_actionable": 74,
+        "exact_search_rate": 0.0,
+        "tathabbut_rate": 1.0
+      },
+      "noisy_unmarked": {
+        "items": 114,
+        "exact_search_actionable": 114,
+        "tathabbut_actionable": 114,
+        "exact_search_rate": 1.0,
+        "tathabbut_rate": 1.0
+      }
+    }
+  },
+  "limits": [
+    "Automated measurement, not a user study: it shows what each method can give, not how people use it.",
+    "The release cases were chosen to probe failure modes; the hadith forms use every record in the platform's limited base; the Quran sample has one random verse per surah. Rates are not a general accuracy claim.",
+    "Exact search is credited generously (see the script docstring). A scholar or a careful reading of dorar.net is a stronger alternative and is not measured here.",
+    "For hadith forms the expected verdict is the engine's own verdict on the canonical quoted form, which the release cases and the Dorar entry check (dorar-links-v0.8.0) validate; this set measures robustness to how the question is written."
+  ],
+  "rows": {
+    "release": [
+      {
+        "case": "quran_exact",
+        "claim": 0,
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "quran_changed_particle",
+        "claim": 0,
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "quran_missing_particle",
+        "claim": 0,
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "quran_merged_quote",
+        "claim": 0,
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "quran_changed_word",
+        "claim": 0,
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "quran_king_fahd_spelling",
+        "claim": 0,
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "quran_basmala_prefix",
+        "claim": 0,
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "quran_unmarked_without_hamza",
+        "claim": 0,
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "quran_unmarked_near_verse",
+        "claim": 0,
+        "expected": "NEEDS_REVIEW",
+        "tathabbut": "NEEDS_REVIEW",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "hadith_unmarked_without_hamza",
+        "claim": 0,
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "quran_particle_joined_to_word",
+        "claim": 0,
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "quran_excerpt_of_long_verse",
+        "claim": 0,
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "quran_short_excerpt_unmarked",
+        "claim": 0,
+        "expected": "NEEDS_REVIEW",
+        "tathabbut": "NEEDS_REVIEW",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "quran_short_complete_verse",
+        "claim": 0,
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "quran_misspelled_short_excerpt",
+        "claim": 0,
+        "expected": "NEEDS_REVIEW",
+        "tathabbut": "NEEDS_REVIEW",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "hadith_unquoted_without_honorific",
+        "claim": 0,
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "hadith_not_in_database",
+        "claim": 0,
+        "expected": "NO_ORIGIN",
+        "tathabbut": "NO_ORIGIN",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "hadith_authentic",
+        "claim": 0,
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "hadith_recorded_weak",
+        "claim": 0,
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "hadith_negation_removed",
+        "claim": 0,
+        "expected": "NEEDS_REVIEW",
+        "tathabbut": "NEEDS_REVIEW",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "hadith_wording_changed",
+        "claim": 0,
+        "expected": "NEEDS_REVIEW",
+        "tathabbut": "NEEDS_REVIEW",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "outside_corpus",
+        "claim": 0,
+        "expected": "NO_ORIGIN",
+        "tathabbut": "NO_ORIGIN",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "hadith_popular_not_established",
+        "claim": 0,
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "hadith_hasan_grade",
+        "claim": 0,
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "hadith_scholars_disagree",
+        "claim": 0,
+        "expected": "DISPUTED",
+        "tathabbut": "DISPUTED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "hadith_baseless_recorded",
+        "claim": 0,
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "hadith_fragment_of_long_text",
+        "claim": 0,
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "hadith_popular_variant_wording",
+        "claim": 0,
+        "expected": "NEEDS_REVIEW",
+        "tathabbut": "NEEDS_REVIEW",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "hadith_extra_words_not_in_record",
+        "claim": 0,
+        "expected": "NO_ORIGIN",
+        "tathabbut": "NO_ORIGIN",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "personal_referral",
+        "claim": 0,
+        "expected": "REFER",
+        "tathabbut": "REFER",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "multiple_claims",
+        "claim": 0,
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "multiple_claims",
+        "claim": 1,
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "multiple_claims",
+        "claim": 2,
+        "expected": "REFER",
+        "tathabbut": "REFER",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "personal_with_quran_same_sentence",
+        "claim": 0,
+        "expected": "REFER",
+        "tathabbut": "REFER",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "personal_with_quran_same_sentence",
+        "claim": 1,
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "personal_with_hadith_same_sentence",
+        "claim": 0,
+        "expected": "REFER",
+        "tathabbut": "REFER",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "personal_with_hadith_same_sentence",
+        "claim": 1,
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "personal_after_quote",
+        "claim": 0,
+        "expected": "REFER",
+        "tathabbut": "REFER",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "personal_after_quote",
+        "claim": 1,
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "personal_after_unquoted_citation",
+        "claim": 0,
+        "expected": "REFER",
+        "tathabbut": "REFER",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "personal_after_unquoted_citation",
+        "claim": 1,
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "first_person_quran_is_not_user_question",
+        "claim": 0,
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "hadith_heard_that_prophet_said",
+        "claim": 0,
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "hadith_what_is_the_grade",
+        "claim": 0,
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "hadith_is_it_authentic",
+        "claim": 0,
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "hadith_excerpt_after_conjunction",
+        "claim": 0,
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "quran_is_it_a_verse",
+        "claim": 0,
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "verse_starting_with_question_word",
+        "claim": 0,
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "package_request_hadith_not_in_sources",
+        "claim": 0,
+        "expected": "NO_ORIGIN",
+        "tathabbut": "NO_ORIGIN",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "package_general_question_kaaba",
+        "claim": 0,
+        "expected": "OUT_OF_SCOPE",
+        "tathabbut": "OUT_OF_SCOPE",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "package_question_then_evidence_request",
+        "claim": 0,
+        "expected": "OUT_OF_SCOPE",
+        "tathabbut": "OUT_OF_SCOPE",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "package_question_then_evidence_request",
+        "claim": 1,
+        "expected": "NO_ORIGIN",
+        "tathabbut": "NO_ORIGIN",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "package_general_question_quran_authorship",
+        "claim": 0,
+        "expected": "OUT_OF_SCOPE",
+        "tathabbut": "OUT_OF_SCOPE",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "package_translation_request",
+        "claim": 0,
+        "expected": "OUT_OF_SCOPE",
+        "tathabbut": "OUT_OF_SCOPE",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "package_personal_marriage",
+        "claim": 0,
+        "expected": "REFER",
+        "tathabbut": "REFER",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "referral_preserved_at_display_limit",
+        "claim": 0,
+        "expected": "REFER",
+        "tathabbut": "REFER",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "referral_preserved_at_display_limit",
+        "claim": 1,
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "referral_preserved_at_display_limit",
+        "claim": 2,
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "referral_preserved_at_display_limit",
+        "claim": 3,
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "referral_preserved_at_display_limit",
+        "claim": 4,
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "referral_preserved_at_display_limit",
+        "claim": 5,
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "referral_preserved_at_display_limit",
+        "claim": 6,
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "referral_preserved_at_display_limit",
+        "claim": 7,
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "referral_preserved_at_display_limit",
+        "claim": 8,
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "referral_preserved_at_display_limit",
+        "claim": 9,
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "referral_preserved_at_display_limit",
+        "claim": 10,
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "case": "referral_preserved_at_display_limit",
+        "claim": 11,
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      }
+    ],
+    "hadith_forms": [
+      {
+        "record": "bukhari-1",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-1",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-1",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-6484",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-6484",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-6484",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-13",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-13",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-13",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-24",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-24",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-24",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "muslim-55",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "muslim-55",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "muslim-55",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "muslim-101",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "muslim-101",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "muslim-101",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "muslim-223",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "muslim-223",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "muslim-223",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "muslim-2553",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "muslim-2553",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "muslim-2553",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "ibnmajah-224",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "ibnmajah-224",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "ibnmajah-224",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifa-416",
+        "form": "quoted",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifa-416",
+        "form": "what_is_its_grade",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifa-416",
+        "form": "heard_that",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifa-36",
+        "form": "quoted",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifa-36",
+        "form": "what_is_its_grade",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifa-36",
+        "form": "heard_that",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifa-57",
+        "form": "quoted",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifa-57",
+        "form": "what_is_its_grade",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifa-57",
+        "form": "heard_that",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "tirmidhi-2646",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "tirmidhi-2646",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "tirmidhi-2646",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-2989",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-2989",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-2989",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "tirmidhi-1956",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "tirmidhi-1956",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "tirmidhi-1956",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "abudawud-1452",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "abudawud-1452",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "abudawud-1452",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-6475",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-6475",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-6475",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-6114",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-6114",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-6114",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "hidaya-4897",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "hidaya-4897",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "hidaya-4897",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-6013",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-6013",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-6013",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "muslim-2564",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "muslim-2564",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "muslim-2564",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "abudawud-1479",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "abudawud-1479",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "abudawud-1479",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-2446",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-2446",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-2446",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-6116",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-6116",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-6116",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "muslim-91",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "muslim-91",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "muslim-91",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "sahihjami-3289",
+        "form": "quoted",
+        "expected": "DISPUTED",
+        "tathabbut": "DISPUTED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "sahihjami-3289",
+        "form": "what_is_its_grade",
+        "expected": "DISPUTED",
+        "tathabbut": "DISPUTED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "sahihjami-3289",
+        "form": "heard_that",
+        "expected": "DISPUTED",
+        "tathabbut": "DISPUTED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "tirmidhi-485",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "tirmidhi-485",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "tirmidhi-485",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-6464",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-6464",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-6464",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "sahihjami-1880",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "sahihjami-1880",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "sahihjami-1880",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "sahihjami-97",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "sahihjami-97",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "sahihjami-97",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-2447",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-2447",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-2447",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "tamhid-24-333",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "tamhid-24-333",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "tamhid-24-333",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-5200",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-5200",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-5200",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "muslim-2588",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "muslim-2588",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "muslim-2588",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-52",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-52",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-52",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "tirmidhi-2317",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "tirmidhi-2317",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "tirmidhi-2317",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-6682",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-6682",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-6682",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "sahihjami-8195",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "sahihjami-8195",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "sahihjami-8195",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "sahiha-250",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "sahiha-250",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "sahiha-250",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "muslim-1732",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "muslim-1732",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "muslim-1732",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "sifatfatwa-103",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "sifatfatwa-103",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "sifatfatwa-103",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "tirmidhi-1954",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "tirmidhi-1954",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "tirmidhi-1954",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-660",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-660",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-660",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifjami-3429",
+        "form": "quoted",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifjami-3429",
+        "form": "what_is_its_grade",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifjami-3429",
+        "form": "heard_that",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "ibnbaz-6-113",
+        "form": "quoted",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "ibnbaz-6-113",
+        "form": "what_is_its_grade",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "ibnbaz-6-113",
+        "form": "heard_that",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "ibnbaz-6-113-2",
+        "form": "quoted",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "ibnbaz-6-113-2",
+        "form": "what_is_its_grade",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "ibnbaz-6-113-2",
+        "form": "heard_that",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifjami-2666",
+        "form": "quoted",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifjami-2666",
+        "form": "what_is_its_grade",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifjami-2666",
+        "form": "heard_that",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "ibnjawzi-2-113",
+        "form": "quoted",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "ibnjawzi-2-113",
+        "form": "what_is_its_grade",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "ibnjawzi-2-113",
+        "form": "heard_that",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifa-66",
+        "form": "quoted",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifa-66",
+        "form": "what_is_its_grade",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifa-66",
+        "form": "heard_that",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifa-282",
+        "form": "quoted",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifa-282",
+        "form": "what_is_its_grade",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifa-282",
+        "form": "heard_that",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifa-310",
+        "form": "quoted",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifa-310",
+        "form": "what_is_its_grade",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifa-310",
+        "form": "heard_that",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifa-4589",
+        "form": "quoted",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifa-4589",
+        "form": "what_is_its_grade",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifa-4589",
+        "form": "heard_that",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifjami-4301",
+        "form": "quoted",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifjami-4301",
+        "form": "what_is_its_grade",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifjami-4301",
+        "form": "heard_that",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifjami-3619",
+        "form": "quoted",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifjami-3619",
+        "form": "what_is_its_grade",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifjami-3619",
+        "form": "heard_that",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "saghani-64",
+        "form": "quoted",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "saghani-64",
+        "form": "what_is_its_grade",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "saghani-64",
+        "form": "heard_that",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifa-611",
+        "form": "quoted",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifa-611",
+        "form": "what_is_its_grade",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifa-611",
+        "form": "heard_that",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifa-3876",
+        "form": "quoted",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifa-3876",
+        "form": "what_is_its_grade",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifa-3876",
+        "form": "heard_that",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifjami-115",
+        "form": "quoted",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifjami-115",
+        "form": "what_is_its_grade",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifjami-115",
+        "form": "heard_that",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifjami-5607",
+        "form": "quoted",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifjami-5607",
+        "form": "what_is_its_grade",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifjami-5607",
+        "form": "heard_that",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "maqasid-559",
+        "form": "quoted",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "maqasid-559",
+        "form": "what_is_its_grade",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "maqasid-559",
+        "form": "heard_that",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifa-8",
+        "form": "quoted",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifa-8",
+        "form": "what_is_its_grade",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifa-8",
+        "form": "heard_that",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifjami-3566",
+        "form": "quoted",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifjami-3566",
+        "form": "what_is_its_grade",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifjami-3566",
+        "form": "heard_that",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "saghani-54",
+        "form": "quoted",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "saghani-54",
+        "form": "what_is_its_grade",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "saghani-54",
+        "form": "heard_that",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifjami-249",
+        "form": "quoted",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifjami-249",
+        "form": "what_is_its_grade",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifjami-249",
+        "form": "heard_that",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifjami-1704",
+        "form": "quoted",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifjami-1704",
+        "form": "what_is_its_grade",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifjami-1704",
+        "form": "heard_that",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "shawkani-120",
+        "form": "quoted",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "shawkani-120",
+        "form": "what_is_its_grade",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "shawkani-120",
+        "form": "heard_that",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifa-30",
+        "form": "quoted",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifa-30",
+        "form": "what_is_its_grade",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifa-30",
+        "form": "heard_that",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "sahihjami-2230",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "sahihjami-2230",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "sahihjami-2230",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-6117",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-6117",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "bukhari-6117",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "irwa-1448",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "irwa-1448",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "irwa-1448",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "muslim-2622",
+        "form": "quoted",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "muslim-2622",
+        "form": "what_is_its_grade",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "muslim-2622",
+        "form": "heard_that",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifa-1794",
+        "form": "quoted",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifa-1794",
+        "form": "what_is_its_grade",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "record": "daifa-1794",
+        "form": "heard_that",
+        "expected": "NOT_AUTHENTIC",
+        "tathabbut": "NOT_AUTHENTIC",
+        "exact_search_found_text": true,
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      }
+    ],
+    "quran_sample": [
+      {
+        "verse": "1:2",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "1:2",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "2:52",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "2:52",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "2:52",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "3:88",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "3:88",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "3:88",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "4:172",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "4:172",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "4:172",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "5:32",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "5:32",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "5:32",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "6:161",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "6:161",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "6:161",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "7:163",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "7:163",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "7:163",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "8:7",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "8:7",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "8:7",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "9:40",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "9:40",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "9:40",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "10:67",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "10:67",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "10:67",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "11:68",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "11:68",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "11:68",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "12:87",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "12:87",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "12:87",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "13:34",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "13:34",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "13:34",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "14:19",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "14:19",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "14:19",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "15:78",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "15:78",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "16:17",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "16:17",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "16:17",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "17:69",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "17:69",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "17:69",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "18:105",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "18:105",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "18:105",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "19:49",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "19:49",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "19:49",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "20:53",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "20:53",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "20:53",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "21:91",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "21:91",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "21:91",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "22:14",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "22:14",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "22:14",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "23:109",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "23:109",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "23:109",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "24:12",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "24:12",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "24:12",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "25:60",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "25:60",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "25:60",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "26:118",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "26:118",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "26:118",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "27:16",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "27:16",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "27:16",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "28:78",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "28:78",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "28:78",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "29:69",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "29:69",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "29:69",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "30:22",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "30:22",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "30:22",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "31:26",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "31:26",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "31:26",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "32:18",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "32:18",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "32:18",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "33:57",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "33:57",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "33:57",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "34:40",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "34:40",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "34:40",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "35:30",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "35:30",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "35:30",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "36:35",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "36:35",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "36:35",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "37:149",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "37:149",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "38:82",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "38:82",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "39:29",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "39:29",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "39:29",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "40:44",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "40:44",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "40:44",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "41:38",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "41:38",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "41:38",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "42:22",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "42:22",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "42:22",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "43:15",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "43:15",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "43:15",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "44:8",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "44:8",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "44:8",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "45:10",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "45:10",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "45:10",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "46:18",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "46:18",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "46:18",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "47:24",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "47:24",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "47:24",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "48:6",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "48:6",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "48:6",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "49:17",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "49:17",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "49:17",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "50:14",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "50:14",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "50:14",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "51:40",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "51:40",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "51:40",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "52:30",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "52:30",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "52:30",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "53:11",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "53:11",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "54:35",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "54:35",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "54:35",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "55:16",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "55:16",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "56:21",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "56:21",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "57:10",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "57:10",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "57:10",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "58:11",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "58:11",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "58:11",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "59:2",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "59:2",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "59:2",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "60:4",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "60:4",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "60:4",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "61:7",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "61:7",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "61:7",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "62:2",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "62:2",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "62:2",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "63:5",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "63:5",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "63:5",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "64:11",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "64:11",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "64:11",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "65:2",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "65:2",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "65:2",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "66:4",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "66:4",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "66:4",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "67:8",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "67:8",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "67:8",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "68:22",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "68:22",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "68:22",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "69:37",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "69:37",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "70:10",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "70:10",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "71:5",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "71:5",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "71:5",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "72:19",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "72:19",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "72:19",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "73:17",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "73:17",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "73:17",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "74:56",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "74:56",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "74:56",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "75:19",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "75:19",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "76:12",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "76:12",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "77:38",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "77:38",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "78:14",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "78:14",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "79:26",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "79:26",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "79:26",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "80:37",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "80:37",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "80:37",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "81:19",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "81:19",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "82:7",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "82:7",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "83:2",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "83:2",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "83:2",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "84:9",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "84:9",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "85:17",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "85:17",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "86:2",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "86:2",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "87:16",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "87:16",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "88:1",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "88:1",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "89:5",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "89:5",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "89:5",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "90:7",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "90:7",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "91:13",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "91:13",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "91:13",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "92:13",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "92:13",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "93:10",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "93:10",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "94:1",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "94:1",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "95:7",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "95:7",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "96:5",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "96:5",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "97:3",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "97:3",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "97:3",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "98:8",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "98:8",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "98:8",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "99:5",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "99:5",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "100:10",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "100:10",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "101:7",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "101:7",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "102:8",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "102:8",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "103:3",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "103:3",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "103:3",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "104:3",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "104:3",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "105:3",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "105:3",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "106:2",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "106:2",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "107:1",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "107:1",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "108:3",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "108:3",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "109:5",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "109:5",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "110:2",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "110:2",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "110:2",
+        "form": "marked_word_missing",
+        "expected": "ALTERED",
+        "tathabbut": "ALTERED",
+        "exact_search_actionable": false,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "111:5",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "111:5",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "112:1",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "112:1",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "113:4",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "113:4",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "114:5",
+        "form": "kfc_marked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      },
+      {
+        "verse": "114:5",
+        "form": "noisy_unmarked",
+        "expected": "VERIFIED",
+        "tathabbut": "VERIFIED",
+        "exact_search_actionable": true,
+        "tathabbut_actionable": true
+      }
+    ]
+  }
+}

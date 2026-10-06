@@ -32,6 +32,8 @@ const EXAMPLES: { label: string; text: string }[] = [
   { label: "حديث صحيح", text: "قال رسول الله ﷺ: «لا يؤمن أحدكم حتى يحب لأخيه ما يحب لنفسه»" },
   { label: "حديث اختلف فيه المحدّثون", text: "قال رسول الله ﷺ: «خير الناس أنفعهم للناس»" },
   { label: "لفظ متداول يحتاج تحققاً", text: "قال رسول الله ﷺ: «إنما بعثت لأتمم مكارم الأخلاق»" },
+  { label: "سؤال بصيغة عادية", text: "سمعت أن النبي قال اطلبوا العلم ولو بالصين، صحيح؟" },
+  { label: "سؤال عام وطلب دليل", text: "لماذا يعبد المسلمون الكعبة؟ أعطني حديثاً يثبت هذا الكلام" },
 ];
 
 type Status =
@@ -72,6 +74,7 @@ export default function Verifier() {
   const [result, setResult] = useState<VerifyResponse | null>(null);
   const [status, setStatus] = useState<Status>({ state: "checking", waking: false });
   const resultsRef = useRef<HTMLDivElement>(null);
+  const noTextRequests = result ? result.claims.filter((c) => c.request === "evidence_ref").length : 0;
   const requestRef = useRef<AbortController | null>(null);
   const connectionRef = useRef<AbortController | null>(null);
   const requestId = useRef(0);
@@ -270,12 +273,19 @@ export default function Verifier() {
                 </div>
               )}
               <div className="summary">
-                {VERDICT_ORDER.map((code) => (
-                  <span key={code} className={`chip ${result.summary[code] ? "" : "zero"}`}>
-                    {VERDICT_META[code].label}
-                    <b>{result.summary[code] ?? 0}</b>
-                  </span>
-                ))}
+                {VERDICT_ORDER.map((code) => {
+                  // «أعطني حديثاً يثبت هذا الكلام» has its own card label; it is not a hadith that was not found.
+                  const n = (result.summary[code] ?? 0) - (code === "NO_ORIGIN" ? noTextRequests : 0);
+                  return (
+                    <span key={code} className={`chip ${n ? "" : "zero"}`}>
+                      {VERDICT_META[code].label}
+                      <b>{n}</b>
+                    </span>
+                  );
+                })}
+                {noTextRequests > 0 && (
+                  <span className="chip">لا يُنشئ أدلة<b>{noTextRequests}</b></span>
+                )}
                 <details className="meta-line">
                   <summary>{claimsCount(result.claims.length)} · تفاصيل تقنية</summary>
                   زمن الاستجابة {result.elapsed_ms} ms

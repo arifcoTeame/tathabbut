@@ -1,0 +1,125 @@
+{
+ "checked_at": "2026-10-06T07:49:28.077166+03:00",
+ "engine_version": "0.9.0",
+ "corpus": "6236 verses (King Fahd print text, Quranpedia)",
+ "sample_verses": 1000,
+ "seed": 7,
+ "k": 8,
+ "results": {
+  "exact": {
+   "engine_end_to_end": {
+    "queries": 1000,
+    "correct_verse_and_verdict": 1.0,
+    "correct_verse_shown": 1.0
+   },
+   "bm25_only": {
+    "queries": 1000,
+    "hit_at_1": 0.998,
+    "hit_at_8": 1.0
+   },
+   "tfidf_svd_only": {
+    "queries": 1000,
+    "hit_at_1": 1.0,
+    "hit_at_8": 1.0
+   },
+   "hybrid_rrf": {
+    "queries": 1000,
+    "hit_at_1": 1.0,
+    "hit_at_8": 1.0
+   }
+  },
+  "letter_dropped": {
+   "engine_end_to_end": {
+    "queries": 998,
+    "correct_verse_and_verdict": 0.9709,
+    "correct_verse_shown": 0.9709
+   },
+   "bm25_only": {
+    "queries": 998,
+    "hit_at_1": 0.984,
+    "hit_at_8": 1.0
+   },
+   "tfidf_svd_only": {
+    "queries": 998,
+    "hit_at_1": 0.998,
+    "hit_at_8": 1.0
+   },
+   "hybrid_rrf": {
+    "queries": 998,
+    "hit_at_1": 0.991,
+    "hit_at_8": 1.0
+   }
+  },
+  "letters_swapped": {
+   "engine_end_to_end": {
+    "queries": 998,
+    "correct_verse_and_verdict": 0.9649,
+    "correct_verse_shown": 0.9649
+   },
+   "bm25_only": {
+    "queries": 998,
+    "hit_at_1": 0.985,
+    "hit_at_8": 1.0
+   },
+   "tfidf_svd_only": {
+    "queries": 998,
+    "hit_at_1": 0.993,
+    "hit_at_8": 0.999
+   },
+   "hybrid_rrf": {
+    "queries": 998,
+    "hit_at_1": 0.99,
+    "hit_at_8": 1.0
+   }
+  },
+  "two_words_typos": {
+   "engine_end_to_end": {
+    "queries": 899,
+    "correct_verse_and_verdict": 0.9066,
+    "correct_verse_shown": 0.9066
+   },
+   "bm25_only": {
+    "queries": 899,
+    "hit_at_1": 0.9677,
+    "hit_at_8": 1.0
+   },
+   "tfidf_svd_only": {
+    "queries": 899,
+    "hit_at_1": 0.9967,
+    "hit_at_8": 1.0
+   },
+   "hybrid_rrf": {
+    "queries": 899,
+    "hit_at_1": 0.9844,
+    "hit_at_8": 1.0
+   }
+  },
+  "excerpt_with_typo": {
+   "engine_end_to_end": {
+    "queries": 601,
+    "correct_verse_and_verdict": 0.9917,
+    "correct_verse_shown": 0.9917
+   },
+   "bm25_only": {
+    "queries": 601,
+    "hit_at_1": 0.8752,
+    "hit_at_8": 0.985
+   },
+   "tfidf_svd_only": {
+    "queries": 601,
+    "hit_at_1": 0.6855,
+    "hit_at_8": 0.9368
+   },
+   "hybrid_rrf": {
+    "queries": 601,
+    "hit_at_1": 0.8436,
+    "hit_at_8": 1.0
+   }
+  }
+ },
+ "engine_end_to_end": "The full engine on ﴿query﴾: correct_verse_and_verdict = the source verse is shown and the verdict is VERIFIED for the exact text, ALTERED (with the typo as a difference) otherwise.",
+ "limits": [
+  "Synthetic typing errors on a random verse sample; not user traffic.",
+  "Retrieval only: the verdict still requires word-by-word alignment, so a typo is reported as a difference."
+ ]
+}

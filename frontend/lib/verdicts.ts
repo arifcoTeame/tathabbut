@@ -8,6 +8,7 @@ export const VERDICT_ORDER: VerdictCode[] = [
   "DISPUTED",
   "REFER",
   "NEEDS_REVIEW",
+  "OUT_OF_SCOPE",
 ];
 
 export const VERDICT_META: Record<VerdictCode, { label: string; hint: string; tone: string }> = {
@@ -18,6 +19,7 @@ export const VERDICT_META: Record<VerdictCode, { label: string; hint: string; to
   DISPUTED: { label: "حكم مختلف فيه", hint: "بحسب الدرر السنية", tone: "disputed" },
   REFER: { label: "إحالة إلى مختص", hint: "حالة شخصية", tone: "refer" },
   NEEDS_REVIEW: { label: "يحتاج إلى تحقق إضافي", hint: "نتيجة مشابهة وليست مطابقة", tone: "review" },
+  OUT_OF_SCOPE: { label: "سؤال عام", hint: "خارج نطاق التحقق", tone: "refer" },
 };
 
 export const TYPE_LABEL: Record<Claim["type_hint"], string> = {

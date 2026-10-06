@@ -22,10 +22,13 @@ export default function ClaimCard({ claim }: { claim: Claim }) {
   const similar = code === "NEEDS_REVIEW" && !!src;          // a close text, not an exact match
   const hadithReview = src?.kind === "hadith" && code === "NEEDS_REVIEW";
   const misattributed = claim.type_hint === "hadith" && src?.kind === "quran";
-  const searchDorar = !src && code === "NO_ORIGIN" && claim.type_hint !== "quran";
+  const noText = claim.request === "evidence_ref";             // «أعطني حديثاً يثبت هذا الكلام»
+  const searchDorar = !src && !noText && code === "NO_ORIGIN" && claim.type_hint !== "quran";
   // The list of related verses is shown as links below; its sentence would repeat it.
   const notes = claim.notes.filter((n) =>
-    code === "NO_ORIGIN" ? n.startsWith("كلمة واحدة") : !n.startsWith("آيات أخرى تشترك"));
+    code === "OUT_OF_SCOPE" || noText ? false
+      : code === "NO_ORIGIN" ? n.startsWith("كلمة واحدة") || n.startsWith("تثبّت لا ينشئ")
+      : !n.startsWith("آيات أخرى تشترك"));
 
   return (
     <article className="card" aria-labelledby={`claim-${claim.id}`}>

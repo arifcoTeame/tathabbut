@@ -3,13 +3,13 @@
   "project": {
     "name_ar": "تثبّت",
     "name_en": "Tathabbut",
-    "release": "0.8.0",
+    "release": "0.9.0",
     "prepared_on": "2026-10-03",
     "timezone": "Asia/Riyadh",
     "phase": "pre_challenge_preparation",
     "demo_url": "https://tathabbut.vercel.app",
     "repository_url": "https://github.com/arifcoTeame/tathabbut",
-    "description_ar": "أداة لمقارنة الاقتباسات القرآنية والحديثية بالمراجع المحلية وإظهار المصدر والفروق والإحالة عند الحاجة. لا تقرر صحة الاستدلال الفقهي ولا تغني عن المختص."
+    "description_ar": "أداة تتحقق من الاقتباسات القرآنية والحديثية قبل النشر: تقارنها بنص المصحف من الموسوعة القرآنية وبأحكام الأحاديث من الدرر السنية، وتعرض المصدر وموضع الاختلاف وحالة الدليل، وتحيل الحالات الشخصية ولا تجيب عن الأسئلة العامة ولا تنشئ نصوصاً. لا تقرر صحة الاستدلال الفقهي ولا تغني عن المختص."
   },
   "scope": {
     "official_judging_score": false,
@@ -56,10 +56,12 @@
         "label_ar": "الجودة التقنية وتوظيف الذكاء الاصطناعي",
         "weight": 25,
         "evidence": [
+          "docs/JUDGES_GUIDE.md",
           "docs/VALIDATION.md",
           "docs/RETRIEVAL_EVALUATION.md",
-          "docs/evidence/backend-validation-v0.8.0-2026-10-06.json",
-          "docs/evidence/retrieval-typos-v0.8.0-2026-10-06.json"
+          "docs/evidence/backend-validation-v0.9.0-2026-10-06.json",
+          "docs/evidence/retrieval-typos-v0.9.0-2026-10-06.json",
+          "docs/evidence/quran-variants-v0.9.0-2026-10-06.json"
         ]
       },
       {
@@ -70,8 +72,9 @@
           "SOURCES.md",
           "docs/QURAN_REFERENCE_CHECK.md",
           "docs/VERIFY_SEED.md",
-          "docs/evidence/local-safety-v0.8.0-2026-10-06.json",
-          "docs/evidence/quran-variants-v0.8.0-2026-10-06.json"
+          "docs/TEST_CASES.md",
+          "docs/evidence/local-safety-v0.9.0-2026-10-06.json",
+          "docs/evidence/dorar-links-v0.8.0-2026-10-06.json"
         ]
       },
       {
@@ -79,6 +82,8 @@
         "label_ar": "الابتكار",
         "weight": 15,
         "evidence": [
+          "docs/JUDGES_GUIDE.md",
+          "docs/TEST_CASES.md",
           "docs/RETRIEVAL_EVALUATION.md"
         ]
       },
@@ -87,9 +92,9 @@
         "label_ar": "تجربة المستخدم والإتاحة",
         "weight": 10,
         "evidence": [
-          "docs/evidence/screenshots/local-mobile-v0.5.1.jpg",
-          "docs/evidence/screenshots/local-referral-detail-v0.5.1.jpg",
-          "docs/HUMAN_REVIEW.md"
+          "docs/evidence/accessibility-axe-v0.9.0-2026-10-06.json",
+          "docs/USER_FEEDBACK.md",
+          "docs/evidence/user-study-2026-10-06.json"
         ]
       },
       {
@@ -97,8 +102,11 @@
         "label_ar": "النفع والأثر",
         "weight": 20,
         "evidence": [
-          "docs/HUMAN_REVIEW.md",
-          "docs/evidence/user-study-template.csv"
+          "docs/evidence/benefit-comparison-v0.9.0-2026-10-06.json",
+          "docs/evidence/user-study-2026-10-06.json",
+          "data/evaluation/user-study-2026-10-06.json",
+          "docs/USER_FEEDBACK.md",
+          "docs/HUMAN_REVIEW.md"
         ]
       },
       {
@@ -107,7 +115,8 @@
         "weight": 10,
         "evidence": [
           "docs/OPERATIONS.md",
-          "docs/DEPLOY.md"
+          "docs/DEPLOY.md",
+          ".github/workflows/keepalive.yml"
         ]
       },
       {
@@ -115,7 +124,8 @@
         "label_ar": "العرض وقابلية التحقق",
         "weight": 5,
         "evidence": [
-          "docs/SUBMISSION_CHECKLIST.md",
+          "docs/JUDGES_GUIDE.md",
+          "docs/SUBMISSION_FORM.md",
           "docs/VIDEO_SCRIPT.md"
         ]
       }
@@ -132,10 +142,10 @@
       "label_ar": "اختبارات السلامة المحلية",
       "status": "local_verified",
       "evidence": [
-        "docs/evidence/backend-validation-v0.8.0-2026-10-06.json",
-        "docs/evidence/local-safety-v0.8.0-2026-10-06.json"
+        "docs/evidence/backend-validation-v0.9.0-2026-10-06.json",
+        "docs/evidence/local-safety-v0.9.0-2026-10-06.json"
       ],
-      "note": "191 اختباراً و37 حالة مستهدفة مكررة ثلاث مرات (111/111). نجاح هذه الحالات لا يعني دقة عامة 100%."
+      "note": "216 اختباراً و49 حالة مستهدفة مكررة ثلاث مرات (147/147). نجاح هذه الحالات لا يعني دقة عامة 100%."
     },
     {
       "id": "reproducible_retrieval_comparison",
@@ -147,7 +157,8 @@
         "docs/evidence/retrieval-evaluation-2026-10-03.json",
         "docs/evidence/retrieval-evaluation-repeat-2026-10-03.json",
         "docs/evidence/retrieval-reproducibility-2026-10-03.json",
-        "docs/evidence/retrieval-typos-v0.8.0-2026-10-06.json"
+        "docs/evidence/retrieval-typos-v0.9.0-2026-10-06.json",
+        "docs/evidence/benefit-comparison-v0.9.0-2026-10-06.json"
       ],
       "note": "بروتوكول v1 (814 استعلاماً) قياس تاريخي لم يثبت فيه تفوق الهجين على BM25. قياس 0.7.0: 1000 آية بأخطاء إملائية مصطنعة ببذرة ثابتة، يقارن BM25 وTF-IDF/SVD والدمج والمحرك كاملاً؛ النتائج كما هي في الملف."
     },
@@ -219,10 +230,10 @@
         "docs/QURAN_REFERENCE_CHECK.md",
         "docs/evidence/quranpedia-compare-2026-10-04.json",
         "docs/evidence/kingfahd-text-verification-2026-10-04.json",
-        "docs/evidence/quran-variants-v0.8.0-2026-10-06.json"
+        "docs/evidence/quran-variants-v0.9.0-2026-10-06.json"
       ],
-      "note": "اعتمد الإصدار 0.7.0 نص مصحف حفص من الموسوعة القرآنية (طبعة مجمع الملك فهد، إصدار 2026-10-04) مصدراً للنص المعروض والمطابقة. أُدخلت الآيات الـ6236 بنص المجمع وبنص Tanzil بين ﴿﴾ فكانت كلها «موثّق»، وأُدخلت بلا تشكيل ولا همزات ولا أقواس فتعرّف المحرك على كل آية من 3 كلمات فأكثر.",
-      "note_ar": "اعتمد الإصدار 0.7.0 نص مصحف حفص من الموسوعة القرآنية (طبعة مجمع الملك فهد، إصدار 2026-10-04) مصدراً للنص المعروض والمطابقة. أُدخلت الآيات الـ6236 بنص المجمع وبنص Tanzil بين ﴿﴾ فكانت كلها «موثّق»، وأُدخلت بلا تشكيل ولا همزات ولا أقواس فتعرّف المحرك على كل آية من 3 كلمات فأكثر."
+      "note": "اعتمد الإصدار 0.7.0 نص مصحف حفص من الموسوعة القرآنية (طبعة مجمع الملك فهد، إصدار 2026-10-04) مصدراً للنص المعروض والمطابقة. أُدخلت الآيات الـ6236 بنص المجمع وبنص Tanzil بين ﴿﴾ فكانت كلها «مطابق»، وأُدخلت بلا تشكيل ولا همزات ولا أقواس فتعرّف المحرك على كل آية من 3 كلمات فأكثر.",
+      "note_ar": "اعتمد الإصدار 0.7.0 نص مصحف حفص من الموسوعة القرآنية (طبعة مجمع الملك فهد، إصدار 2026-10-04) مصدراً للنص المعروض والمطابقة. أُدخلت الآيات الـ6236 بنص المجمع وبنص Tanzil بين ﴿﴾ فكانت كلها «مطابق»، وأُدخلت بلا تشكيل ولا همزات ولا أقواس فتعرّف المحرك على كل آية من 3 كلمات فأكثر."
     },
     {
       "id": "hadith_reuse_and_expansion",
@@ -241,10 +252,11 @@
       "status": "external_review_pending",
       "evidence": [
         "docs/USER_FEEDBACK.md",
-        "docs/HUMAN_REVIEW.md",
-        "docs/evidence/user-study-template.csv"
+        "data/evaluation/user-study-2026-10-06.json",
+        "docs/evidence/user-study-2026-10-06.json",
+        "docs/HUMAN_REVIEW.md"
       ],
-      "note": "تجربة استخدام أولية في 5 أكتوبر مع أربعة مستخدمين (صانع محتوى، معلم تحفيظ، طالبا علم) على الإصدار 0.7.1، وآراؤهم مكتوبة كما وصلت وما تغيّر بعدها في 0.8.0. ليست دراسة مقيسة، ولم يوثق اعتماد مختص مستقل."
+      "note": "جولتان: آراء أربعة مستخدمين على 0.7.1 (5 أكتوبر)، ثم مهام مقيسة مع ثلاثة مستخدمين على 0.8.0 (6 أكتوبر): بتثبّت 9/9 قرارات صحيحة في 11.7 ثانية للنص، وبالطريقة المعتادة 8/9 في 27.2 ثانية. عينة صغيرة من معارف الفريق دون دلالة إحصائية، ولم يوثق اعتماد مختص علمي مستقل؛ لذلك تبقى الحالة معلقة."
     },
     {
       "id": "live_release_verification",
@@ -260,16 +272,16 @@
   ],
   "local_checks": {
     "command": "python3 scripts/check_submission.py",
-    "output": "docs/evidence/submission-check-v0.8.0.json",
+    "output": "docs/evidence/submission-check-v0.9.0.json",
     "saved_test_expectations": {
-      "pytest_passed": 191,
-      "release_distinct_inputs": 37,
+      "pytest_passed": 216,
+      "release_distinct_inputs": 49,
       "release_repetitions": 3,
-      "release_total": 111
+      "release_total": 147
     },
     "evidence": [
-      "docs/evidence/backend-validation-v0.8.0-2026-10-06.json",
-      "docs/evidence/local-safety-v0.8.0-2026-10-06.json"
+      "docs/evidence/backend-validation-v0.9.0-2026-10-06.json",
+      "docs/evidence/local-safety-v0.9.0-2026-10-06.json"
     ],
     "readiness_rule": "Local checks may pass while owner handoff or external review remains pending. The checker does not assign a judging score or certify final compliance."
   }

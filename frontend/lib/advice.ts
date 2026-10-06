@@ -19,6 +19,7 @@ export interface Outcome {
 export const HADITH_NOT_FOUND_TEXT = "لم يُعثر على تطابق مطابق ضمن قاعدة الأحاديث الحالية في منصة تثبّت.";
 export const HADITH_NOT_FOUND_NOTE =
   "هذه النتيجة لا تعني أن الحديث غير موجود في الدرر السنية، ولا تعني الحكم عليه بالصحة أو الضعف؛ بل تعني فقط أنه لم يُعثر عليه ضمن قاعدة الأحاديث الحالية في المنصة.";
+export const HADITH_NOT_FOUND_DIFF = "«لم يُعثر عليه» تعني أن النص ليس في قاعدة المنصة، وتختلف عن «حديث ضعيف أو موضوع» التي تعني أن له حكماً مسجّلاً يرده.";
 export const HADITH_NOT_FOUND_ADVICE = "للتأكد من وجود النص وحكمه، ابحث عنه كاملًا في موقع الدرر السنية.";
 export const DORAR_SEARCH_LABEL = "البحث عن النص كاملًا في الدرر السنية";
 export const SIMILAR_TEXT = "هذه نتيجة مشابهة وليست تطابقًا مطابقًا للنص المدخل.";
@@ -77,6 +78,16 @@ export function outcome(claim: Claim): Outcome {
   const attributedToProphet = claim.type_hint === "hadith";
   const dorar = "لا تنسب النص إلى النبي ﷺ ولا تنشره على أنه حديث صحيح قبل التحقق من الدرر السنية.";
 
+  // «أعطني حديثاً يثبت هذا الكلام»: nothing to compare, and nothing is produced.
+  if (claim.request === "evidence_ref") {
+    const what = claim.type_hint === "quran" ? "آيةً تثبت" : "حديثاً يثبت";
+    return {
+      label: "لا يُنشئ أدلة", hint: "لا يوجد نص منسوب للتحقق منه", tone: "refer", icon: "✕",
+      summary: `طلبتَ ${what} كلاماً دون ذكر نص منسوب. تثبّت لا ينشئ أحاديث ولا آيات ولا يأتي بأدلة من عنده، ولا يوجد في الطلب نص يمكن مقارنته بالمصادر؛ فلا دليل مطابق يُعرض.`,
+      advice: "لا تنسب إلى النبي ﷺ ولا إلى القرآن الكريم ما لم يثبت. إن كان لديك حديث أو آية منسوبة فالصق نصها كاملاً للتحقق منه، وللسؤال الشرعي ارجع إلى مختص.",
+    };
+  }
+
   switch (claim.verdict.code) {
     case "VERIFIED": {
       if (isQuran) {
@@ -98,11 +109,20 @@ export function outcome(claim: Claim): Outcome {
     case "NOT_AUTHENTIC": {
       const kind = gradeKind(claim.grades) ?? "unverified";
       const g = GRADE_LABEL[kind];
-      const word = kind === "weak" ? "ضعيف" : kind === "fabricated" ? "موضوع" : kind === "baseless" ? "لا أصل له" : "لا يصح مرفوعًا";
+      // Several rulings that all reject the hadith (e.g. «ضعيف» and «موضوع») are not a dispute.
+      const classes = new Set(claim.grades.map((x) => x.class));
+      const mixed = claim.grades.length > 1 && classes.size > 1;
+      const word = mixed ? "لا يصح بحسب كل الأحكام المسجّلة له في الدرر السنية"
+        : `${kind === "weak" ? "ضعيف" : kind === "fabricated" ? "موضوع" : kind === "baseless" ? "لا أصل له" : "لا يصح مرفوعًا"} بحسب الدرر السنية`;
       return {
-        label: g.label, hint: "بحسب الدرر السنية", tone: g.tone, icon: g.icon,
-        summary: `وُجد ضمن قاعدة الأحاديث الحالية في المنصة، وحكمه المنقول من الدرر السنية: ${gradeLine(claim.grades)}.`,
-        advice: `الحديث ${word} بحسب الدرر السنية، فلا يُنشر على أنه حديث صحيح ولا يُنسب إلى النبي ﷺ.`,
+        label: mixed ? "حديث لا يصح" : g.label,
+        hint: mixed ? "كل أحكامه المسجّلة لا تصححه" : "حكم مسجّل في الدرر السنية",
+        tone: g.tone, icon: g.icon,
+        summary: mixed
+          ? `وُجد ضمن قاعدة الأحاديث الحالية في المنصة، وله أكثر من حكم في الدرر السنية، وكلها لا تصححه (وليس هذا اختلافًا في صحته): ${gradeLine(claim.grades)}.`
+          : `وُجد ضمن قاعدة الأحاديث الحالية في المنصة، وحكمه المنقول من الدرر السنية: ${gradeLine(claim.grades)}.`,
+        advice: `الحديث ${word}، فلا يُنشر على أنه حديث صحيح ولا يُنسب إلى النبي ﷺ.`,
+        note: "هذا حكم مسجّل على الحديث في الدرر السنية، وليس مجرد عدم عثور عليه.",
       };
     }
     case "DISPUTED":
@@ -130,7 +150,7 @@ export function outcome(claim: Claim): Outcome {
         summary: claim.type_hint === "unknown"
           ? `${HADITH_NOT_FOUND_TEXT.slice(0, -1)}، ولا في المصحف القرآني المعتمد من Quranpedia.`
           : HADITH_NOT_FOUND_TEXT,
-        note: HADITH_NOT_FOUND_NOTE,
+        note: `${HADITH_NOT_FOUND_NOTE} ${HADITH_NOT_FOUND_DIFF}`,
         advice: `${HADITH_NOT_FOUND_ADVICE} ولا تنسب النص إلى النبي ﷺ قبل هذا التحقق.`,
       };
     case "NEEDS_REVIEW":
@@ -151,6 +171,12 @@ export function outcome(claim: Claim): Outcome {
       return {
         label: "يحتاج إلى تحقق إضافي", hint: "مطابقة غير كافية للحكم", tone: "review", icon: "≈",
         summary: "لم تكفِ المطابقة لإصدار نتيجة.", advice: "لم يُعثر عليه بيقين؛ يلزم التحقق الإضافي قبل النشر.",
+      };
+    case "OUT_OF_SCOPE":
+      return {
+        label: "سؤال عام", hint: "خارج نطاق التحقق", tone: "refer", icon: "?",
+        summary: "هذا سؤال عام وليس آيةً أو حديثاً منقولاً؛ تثبّت يتحقق من النصوص المنسوبة إلى القرآن الكريم والسنة النبوية، ولا يجيب عن الأسئلة العامة ولا يصدر فتوى.",
+        advice: "الصق الآية أو الحديث الذي تريد التحقق منه، مثل: «قال رسول الله ﷺ: الدين النصيحة» أو «ما صحة حديث اطلبوا العلم ولو بالصين؟». وللأسئلة العامة ارجع إلى مختص.",
       };
     case "REFER":
       return {

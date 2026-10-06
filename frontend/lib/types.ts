@@ -7,7 +7,8 @@ export type VerdictCode =
   | "NO_ORIGIN"
   | "DISPUTED"
   | "REFER"
-  | "NEEDS_REVIEW";
+  | "NEEDS_REVIEW"
+  | "OUT_OF_SCOPE";
 
 export interface Grade {
   muhaddith: string;
@@ -60,6 +61,8 @@ export interface Claim {
   id: number;
   text: string;
   type_hint: "quran" | "hadith" | "personal" | "unknown";
+  /** "evidence": «أعطني حديثاً يثبت أن …»; "evidence_ref": «… يثبت هذا الكلام» (no text given); "question": general question */
+  request?: "" | "evidence" | "evidence_ref" | "question";
   level: "A" | "B" | "C" | "D";
   verdict: { code: VerdictCode; label_ar: string };
   source: Source | null;
