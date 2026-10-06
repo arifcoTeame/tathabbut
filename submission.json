@@ -263,11 +263,11 @@
       "label_ar": "التحقق من الإصدار المنشور بعد الرفع",
       "status": "local_verified",
       "evidence": [
-        "docs/evidence/live-after-v0.8.0-2026-10-06.json",
+        "docs/evidence/live-after-v0.9.0-2026-10-06.json",
         "docs/VALIDATION.md"
       ],
-      "note": "Live 0.8.0 (6 Oct 02:49-02:56): five user cases 15/15 in three forms, release cases 111/111, whole-Quran sample 302/302, source buttons opened.",
-      "note_ar": "الإصدار 0.8.0 على الرابط الحي: الحالات الخمس 15/15 بثلاث صيغ، وحالات الإصدار 111/111، وعينة المصحف 302/302، وفُتحت أزرار المصادر. الدليل حي وليس محلياً رغم اسم الحالة."
+      "note": "Live 0.9.0 (6 Oct 11:23-11:30 Riyadh, Render fe9036b): release cases 147/147 (49 x3), five user cases 15/15 in three forms, whole-Quran sample 302/302.",
+      "note_ar": "الإصدار 0.9.0 على الرابط الحي: حالات الإصدار 147/147، والحالات الخمس 15/15 بثلاث صيغ، وعينة المصحف 302/302. الدليل حي وليس محلياً رغم اسم الحالة."
     }
   ],
   "local_checks": {

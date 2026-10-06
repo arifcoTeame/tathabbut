@@ -1,0 +1,5745 @@
+{
+ "recorded_at": "2026-10-06T11:23:06+03:00",
+ "finished_at": "2026-10-06T11:30:08+03:00",
+ "engine_version": "0.9.0",
+ "endpoint": "https://tathabbut.vercel.app/api/verify (Vercel frontend proxy -> Render tathabbut-api, deploy fe9036b)",
+ "method": "Run from the built-in browser on the owner's Mac, same-origin fetch to /api/verify, sequential requests. Inputs were read from the published repository (docs/evidence/local-safety-v0.9.0-2026-10-06.json run 1, docs/evidence/five-cases-local-v0.8.0-2026-10-06.json, data/evaluation/live-quran-sample-v0.7.1.json).",
+ "summary": {
+  "release_cases": {
+   "distinct": 49,
+   "repetitions": 3,
+   "passed": 147,
+   "total": 147,
+   "all_runs_identical_verdicts_and_sources": true,
+   "sources_identical_to_local_evidence": true
+  },
+  "five_user_cases": {
+   "passed": 15,
+   "total": 15,
+   "attribution_excluded_all": true
+  },
+  "quran_sample": {
+   "passed": 302,
+   "total": 302,
+   "surahs": 114,
+   "by_form": {
+    "kfc_marked": "114 VERIFIED",
+    "noisy_unmarked": "114 VERIFIED",
+    "marked_word_missing": "74 ALTERED"
+   }
+  },
+  "requests": 464,
+  "engine_versions_seen": [
+   "0.9.0"
+  ],
+  "roundtrip_ms": {
+   "median": 699,
+   "p95": 2711,
+   "max": 5704,
+   "note": "Browser-to-Vercel-to-Render round trip from Riyadh; the slowest single request was the verse 17:69 quote."
+  },
+  "http_status": "147/147 release requests returned 200; the other 317 returned a parsed verdict response (status not recorded separately)"
+ },
+ "notes": [
+  "Per-case verdicts equal the expected lists in every run; the 'actual' field is recorded as equal because the browser check compared JSON-serialised verdict lists and reported zero mismatches.",
+  "For the Quran sample the browser confirmed each returned source id is in the case's accepted list; the exact id is not copied here when several are accepted.",
+  "The frontend card wording for a single 'باطل' grade (frontend/lib/advice.ts) was published in a later upload; this file covers the API results only."
+ ],
+ "release_cases": [
+  {
+   "id": "quran_exact",
+   "run": 1,
+   "input": "﴿إياك نعبد وإياك نستعين﴾",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 737,
+   "sources": [
+    "quran-1:5"
+   ]
+  },
+  {
+   "id": "quran_changed_particle",
+   "run": 1,
+   "input": "﴿إياك نعبد فإياك نستعين﴾",
+   "expected": [
+    "ALTERED"
+   ],
+   "actual": [
+    "ALTERED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 912,
+   "sources": [
+    "quran-1:5"
+   ]
+  },
+  {
+   "id": "quran_missing_particle",
+   "run": 1,
+   "input": "﴿إياك نعبد إياك نستعين﴾",
+   "expected": [
+    "ALTERED"
+   ],
+   "actual": [
+    "ALTERED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 589,
+   "sources": [
+    "quran-1:5"
+   ]
+  },
+  {
+   "id": "quran_merged_quote",
+   "run": 1,
+   "input": "﴿ومن يتوكل على الله فهو حسبه ونعم الوكيل﴾",
+   "expected": [
+    "ALTERED"
+   ],
+   "actual": [
+    "ALTERED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 991,
+   "sources": [
+    "quran-65:3"
+   ]
+  },
+  {
+   "id": "quran_changed_word",
+   "run": 1,
+   "input": "﴿لا يكلف الله نفسا إلا طاقتها﴾",
+   "expected": [
+    "ALTERED"
+   ],
+   "actual": [
+    "ALTERED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 710,
+   "sources": [
+    "quran-2:286"
+   ]
+  },
+  {
+   "id": "quran_king_fahd_spelling",
+   "run": 1,
+   "input": "﴿ولا تقربوا الزنا إنه كان فاحشة وساء سبيلا﴾",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 598,
+   "sources": [
+    "quran-17:32"
+   ]
+  },
+  {
+   "id": "quran_basmala_prefix",
+   "run": 1,
+   "input": "﴿بسم الله الرحمن الرحيم قل هو الله أحد﴾",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 600,
+   "sources": [
+    "quran-112:1"
+   ]
+  },
+  {
+   "id": "quran_unmarked_without_hamza",
+   "run": 1,
+   "input": "قل هو الله احد",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 605,
+   "sources": [
+    "quran-112:1"
+   ]
+  },
+  {
+   "id": "quran_unmarked_near_verse",
+   "run": 1,
+   "input": "قل هو الله واحد",
+   "expected": [
+    "NEEDS_REVIEW"
+   ],
+   "actual": [
+    "NEEDS_REVIEW"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 606,
+   "sources": [
+    "quran-112:1"
+   ]
+  },
+  {
+   "id": "hadith_unmarked_without_hamza",
+   "run": 1,
+   "input": "انما الاعمال بالنيات",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 696,
+   "sources": [
+    "hadith-bukhari-1"
+   ]
+  },
+  {
+   "id": "quran_particle_joined_to_word",
+   "run": 1,
+   "input": "لاتاخذه سنة ولانوم",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 686,
+   "sources": [
+    "quran-2:255"
+   ]
+  },
+  {
+   "id": "quran_excerpt_of_long_verse",
+   "run": 1,
+   "input": "﴿لا تحزن إن الله معنا﴾",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 613,
+   "sources": [
+    "quran-9:40"
+   ]
+  },
+  {
+   "id": "quran_short_excerpt_unmarked",
+   "run": 1,
+   "input": "لا تاخذه",
+   "expected": [
+    "NEEDS_REVIEW"
+   ],
+   "actual": [
+    "NEEDS_REVIEW"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 806,
+   "sources": [
+    "quran-2:255"
+   ]
+  },
+  {
+   "id": "quran_short_complete_verse",
+   "run": 1,
+   "input": "الله الصمد",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 598,
+   "sources": [
+    "quran-112:2"
+   ]
+  },
+  {
+   "id": "quran_misspelled_short_excerpt",
+   "run": 1,
+   "input": "قال انا احي",
+   "expected": [
+    "NEEDS_REVIEW"
+   ],
+   "actual": [
+    "NEEDS_REVIEW"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 691,
+   "sources": [
+    "quran-2:258"
+   ]
+  },
+  {
+   "id": "hadith_unquoted_without_honorific",
+   "run": 1,
+   "input": "قال رسول الله حب الوطن من الايمان",
+   "expected": [
+    "NOT_AUTHENTIC"
+   ],
+   "actual": [
+    "NOT_AUTHENTIC"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 698,
+   "sources": [
+    "hadith-daifa-36"
+   ]
+  },
+  {
+   "id": "hadith_not_in_database",
+   "run": 1,
+   "input": "قال رسول الله ﷺ: «تفاءلوا بالخير تجدوه»",
+   "expected": [
+    "NO_ORIGIN"
+   ],
+   "actual": [
+    "NO_ORIGIN"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 696,
+   "sources": [
+    null
+   ]
+  },
+  {
+   "id": "hadith_authentic",
+   "run": 1,
+   "input": "قال رسول الله ﷺ: «الدين النصيحة»",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 619,
+   "sources": [
+    "hadith-muslim-55"
+   ]
+  },
+  {
+   "id": "hadith_recorded_weak",
+   "run": 1,
+   "input": "قال رسول الله ﷺ: «حب الوطن من الإيمان»",
+   "expected": [
+    "NOT_AUTHENTIC"
+   ],
+   "actual": [
+    "NOT_AUTHENTIC"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 872,
+   "sources": [
+    "hadith-daifa-36"
+   ]
+  },
+  {
+   "id": "hadith_negation_removed",
+   "run": 1,
+   "input": "قال رسول الله ﷺ: «يؤمن أحدكم حتى يحب لأخيه ما يحب لنفسه»",
+   "expected": [
+    "NEEDS_REVIEW"
+   ],
+   "actual": [
+    "NEEDS_REVIEW"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 720,
+   "sources": [
+    "hadith-bukhari-13"
+   ]
+  },
+  {
+   "id": "hadith_wording_changed",
+   "run": 1,
+   "input": "قال رسول الله ﷺ: «اطلبوا العلم ولو في الصين»",
+   "expected": [
+    "NEEDS_REVIEW"
+   ],
+   "actual": [
+    "NEEDS_REVIEW"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 793,
+   "sources": [
+    "hadith-daifa-416"
+   ]
+  },
+  {
+   "id": "outside_corpus",
+   "run": 1,
+   "input": "قال رسول الله ﷺ: «الصبر مفتاح الفرج»",
+   "expected": [
+    "NO_ORIGIN"
+   ],
+   "actual": [
+    "NO_ORIGIN"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 711,
+   "sources": [
+    null
+   ]
+  },
+  {
+   "id": "hadith_popular_not_established",
+   "run": 1,
+   "input": "قال رسول الله ﷺ: «النظافة من الإيمان»",
+   "expected": [
+    "NOT_AUTHENTIC"
+   ],
+   "actual": [
+    "NOT_AUTHENTIC"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 691,
+   "sources": [
+    "hadith-ibnbaz-6-113-2"
+   ]
+  },
+  {
+   "id": "hadith_hasan_grade",
+   "run": 1,
+   "input": "قال رسول الله ﷺ: «إن الله تعالى يحب إذا عمل أحدكم عملا أن يتقنه»",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 807,
+   "sources": [
+    "hadith-sahihjami-1880"
+   ]
+  },
+  {
+   "id": "hadith_scholars_disagree",
+   "run": 1,
+   "input": "قال رسول الله ﷺ: «خير الناس أنفعهم للناس»",
+   "expected": [
+    "DISPUTED"
+   ],
+   "actual": [
+    "DISPUTED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 600,
+   "sources": [
+    "hadith-sahihjami-3289"
+   ]
+  },
+  {
+   "id": "hadith_baseless_recorded",
+   "run": 1,
+   "input": "قال رسول الله ﷺ: «من عرف نفسه فقد عرف ربه»",
+   "expected": [
+    "NOT_AUTHENTIC"
+   ],
+   "actual": [
+    "NOT_AUTHENTIC"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 798,
+   "sources": [
+    "hadith-daifa-66"
+   ]
+  },
+  {
+   "id": "hadith_fragment_of_long_text",
+   "run": 1,
+   "input": "قال رسول الله ﷺ: «الكلمة الطيبة صدقة»",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 739,
+   "sources": [
+    "hadith-bukhari-2989"
+   ]
+  },
+  {
+   "id": "hadith_popular_variant_wording",
+   "run": 1,
+   "input": "قال رسول الله ﷺ: «إنما بعثت لأتمم مكارم الأخلاق»",
+   "expected": [
+    "NEEDS_REVIEW"
+   ],
+   "actual": [
+    "NEEDS_REVIEW"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 655,
+   "sources": [
+    "hadith-tamhid-24-333"
+   ]
+  },
+  {
+   "id": "hadith_extra_words_not_in_record",
+   "run": 1,
+   "input": "قال رسول الله ﷺ: «الحكمة ضالة المؤمن أنى وجدها فهو أحق بها»",
+   "expected": [
+    "NO_ORIGIN"
+   ],
+   "actual": [
+    "NO_ORIGIN"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 695,
+   "sources": [
+    null
+   ]
+  },
+  {
+   "id": "personal_referral",
+   "run": 1,
+   "input": "هل يجوز لي أن أجمع الصلاة في العمل؟",
+   "expected": [
+    "REFER"
+   ],
+   "actual": [
+    "REFER"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 716,
+   "sources": [
+    null
+   ]
+  },
+  {
+   "id": "multiple_claims",
+   "run": 1,
+   "input": "قال رسول الله ﷺ: «اطلبوا العلم ولو بالصين». وقال تعالى: ﴿ومن يتوكل على الله فهو حسبه ونعم الوكيل﴾. هل يجوز لي أن أجمع الصلاة في العمل؟",
+   "expected": [
+    "NOT_AUTHENTIC",
+    "ALTERED",
+    "REFER"
+   ],
+   "actual": [
+    "NOT_AUTHENTIC",
+    "ALTERED",
+    "REFER"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 1677,
+   "sources": [
+    "hadith-daifa-416",
+    "quran-65:3",
+    null
+   ]
+  },
+  {
+   "id": "personal_with_quran_same_sentence",
+   "run": 1,
+   "input": "هل يجوز لي ترك الصلاة لأن الله قال: ﴿إن الله غفور رحيم﴾؟",
+   "expected": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "actual": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 3008,
+   "sources": [
+    null,
+    "quran-8:69"
+   ]
+  },
+  {
+   "id": "personal_with_hadith_same_sentence",
+   "run": 1,
+   "input": "هل يجوز لي أن أفعل ذلك بناء على حديث رسول الله ﷺ: «الدين النصيحة»؟",
+   "expected": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "actual": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 1109,
+   "sources": [
+    null,
+    "hadith-muslim-55"
+   ]
+  },
+  {
+   "id": "personal_after_quote",
+   "run": 1,
+   "input": "قال رسول الله ﷺ: «الدين النصيحة»، فهل يحق لي نشر أسرار زوجتي؟",
+   "expected": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "actual": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 995,
+   "sources": [
+    null,
+    "hadith-muslim-55"
+   ]
+  },
+  {
+   "id": "personal_after_unquoted_citation",
+   "run": 1,
+   "input": "قال تعالى قل هو الله أحد، فهل يلزمني شيء في حالتي؟",
+   "expected": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "actual": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 1098,
+   "sources": [
+    null,
+    "quran-112:1"
+   ]
+  },
+  {
+   "id": "first_person_quran_is_not_user_question",
+   "run": 1,
+   "input": "قال تعالى: ﴿إني نذرت للرحمن صوما﴾",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 596,
+   "sources": [
+    "quran-19:26"
+   ]
+  },
+  {
+   "id": "hadith_heard_that_prophet_said",
+   "run": 1,
+   "input": "سمعت أن النبي قال اطلبوا العلم ولو بالصين، صحيح؟",
+   "expected": [
+    "NOT_AUTHENTIC"
+   ],
+   "actual": [
+    "NOT_AUTHENTIC"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 694,
+   "sources": [
+    "hadith-daifa-416"
+   ]
+  },
+  {
+   "id": "hadith_what_is_the_grade",
+   "run": 1,
+   "input": "ما صحة حديث اختلاف أمتي رحمة؟",
+   "expected": [
+    "NOT_AUTHENTIC"
+   ],
+   "actual": [
+    "NOT_AUTHENTIC"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 608,
+   "sources": [
+    "hadith-daifa-57"
+   ]
+  },
+  {
+   "id": "hadith_is_it_authentic",
+   "run": 1,
+   "input": "هل حديث تبسمك في وجه أخيك لك صدقة صحيح؟",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 693,
+   "sources": [
+    "hadith-tirmidhi-1956"
+   ]
+  },
+  {
+   "id": "hadith_excerpt_after_conjunction",
+   "run": 1,
+   "input": "هل صح عن النبي أنه قال من غشنا فليس منا",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 812,
+   "sources": [
+    "hadith-muslim-101"
+   ]
+  },
+  {
+   "id": "quran_is_it_a_verse",
+   "run": 1,
+   "input": "هل إن الله مع الصابرين آية؟",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 2800,
+   "sources": [
+    "quran-2:153"
+   ]
+  },
+  {
+   "id": "verse_starting_with_question_word",
+   "run": 1,
+   "input": "هل أتى على الإنسان حين من الدهر",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 705,
+   "sources": [
+    "quran-76:1"
+   ]
+  },
+  {
+   "id": "package_request_hadith_not_in_sources",
+   "run": 1,
+   "input": "أعطني حديثا يثبت أن الصبر مفتاح الفرج",
+   "expected": [
+    "NO_ORIGIN"
+   ],
+   "actual": [
+    "NO_ORIGIN"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 606,
+   "sources": [
+    null
+   ]
+  },
+  {
+   "id": "package_general_question_kaaba",
+   "run": 1,
+   "input": "لماذا يعبد المسلمون الكعبة؟",
+   "expected": [
+    "OUT_OF_SCOPE"
+   ],
+   "actual": [
+    "OUT_OF_SCOPE"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 683,
+   "sources": [
+    null
+   ]
+  },
+  {
+   "id": "package_question_then_evidence_request",
+   "run": 1,
+   "input": "لماذا يعبد المسلمون الكعبة؟ أعطني حديثاً يثبت هذا الكلام",
+   "expected": [
+    "OUT_OF_SCOPE",
+    "NO_ORIGIN"
+   ],
+   "actual": [
+    "OUT_OF_SCOPE",
+    "NO_ORIGIN"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 699,
+   "sources": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": "package_general_question_quran_authorship",
+   "run": 1,
+   "input": "هل القرآن من تأليف محمد ﷺ؟",
+   "expected": [
+    "OUT_OF_SCOPE"
+   ],
+   "actual": [
+    "OUT_OF_SCOPE"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 699,
+   "sources": [
+    null
+   ]
+  },
+  {
+   "id": "package_translation_request",
+   "run": 1,
+   "input": "ترجم كلمة التوحيد إلى الإنجليزية",
+   "expected": [
+    "OUT_OF_SCOPE"
+   ],
+   "actual": [
+    "OUT_OF_SCOPE"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 705,
+   "sources": [
+    null
+   ]
+  },
+  {
+   "id": "package_personal_marriage",
+   "run": 1,
+   "input": "أنا في دولة كذا، هل يجوز لي فعل كذا في زواجي؟",
+   "expected": [
+    "REFER"
+   ],
+   "actual": [
+    "REFER"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 693,
+   "sources": [
+    null
+   ]
+  },
+  {
+   "id": "referral_preserved_at_display_limit",
+   "run": 1,
+   "input": "قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. هل يجوز لي ترك الصلاة؟",
+   "expected": [
+    "REFER",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED"
+   ],
+   "actual": [
+    "REFER",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 4512,
+   "sources": [
+    null,
+    "quran-112:1",
+    "quran-112:1",
+    "quran-112:1",
+    "quran-112:1",
+    "quran-112:1",
+    "quran-112:1",
+    "quran-112:1",
+    "quran-112:1",
+    "quran-112:1",
+    "quran-112:1",
+    "quran-112:1"
+   ]
+  },
+  {
+   "id": "quran_exact",
+   "run": 2,
+   "input": "﴿إياك نعبد وإياك نستعين﴾",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 596,
+   "sources": [
+    "quran-1:5"
+   ]
+  },
+  {
+   "id": "quran_changed_particle",
+   "run": 2,
+   "input": "﴿إياك نعبد فإياك نستعين﴾",
+   "expected": [
+    "ALTERED"
+   ],
+   "actual": [
+    "ALTERED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 699,
+   "sources": [
+    "quran-1:5"
+   ]
+  },
+  {
+   "id": "quran_missing_particle",
+   "run": 2,
+   "input": "﴿إياك نعبد إياك نستعين﴾",
+   "expected": [
+    "ALTERED"
+   ],
+   "actual": [
+    "ALTERED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 704,
+   "sources": [
+    "quran-1:5"
+   ]
+  },
+  {
+   "id": "quran_merged_quote",
+   "run": 2,
+   "input": "﴿ومن يتوكل على الله فهو حسبه ونعم الوكيل﴾",
+   "expected": [
+    "ALTERED"
+   ],
+   "actual": [
+    "ALTERED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 902,
+   "sources": [
+    "quran-65:3"
+   ]
+  },
+  {
+   "id": "quran_changed_word",
+   "run": 2,
+   "input": "﴿لا يكلف الله نفسا إلا طاقتها﴾",
+   "expected": [
+    "ALTERED"
+   ],
+   "actual": [
+    "ALTERED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 688,
+   "sources": [
+    "quran-2:286"
+   ]
+  },
+  {
+   "id": "quran_king_fahd_spelling",
+   "run": 2,
+   "input": "﴿ولا تقربوا الزنا إنه كان فاحشة وساء سبيلا﴾",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 695,
+   "sources": [
+    "quran-17:32"
+   ]
+  },
+  {
+   "id": "quran_basmala_prefix",
+   "run": 2,
+   "input": "﴿بسم الله الرحمن الرحيم قل هو الله أحد﴾",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 612,
+   "sources": [
+    "quran-112:1"
+   ]
+  },
+  {
+   "id": "quran_unmarked_without_hamza",
+   "run": 2,
+   "input": "قل هو الله احد",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 599,
+   "sources": [
+    "quran-112:1"
+   ]
+  },
+  {
+   "id": "quran_unmarked_near_verse",
+   "run": 2,
+   "input": "قل هو الله واحد",
+   "expected": [
+    "NEEDS_REVIEW"
+   ],
+   "actual": [
+    "NEEDS_REVIEW"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 690,
+   "sources": [
+    "quran-112:1"
+   ]
+  },
+  {
+   "id": "hadith_unmarked_without_hamza",
+   "run": 2,
+   "input": "انما الاعمال بالنيات",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 618,
+   "sources": [
+    "hadith-bukhari-1"
+   ]
+  },
+  {
+   "id": "quran_particle_joined_to_word",
+   "run": 2,
+   "input": "لاتاخذه سنة ولانوم",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 598,
+   "sources": [
+    "quran-2:255"
+   ]
+  },
+  {
+   "id": "quran_excerpt_of_long_verse",
+   "run": 2,
+   "input": "﴿لا تحزن إن الله معنا﴾",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 693,
+   "sources": [
+    "quran-9:40"
+   ]
+  },
+  {
+   "id": "quran_short_excerpt_unmarked",
+   "run": 2,
+   "input": "لا تاخذه",
+   "expected": [
+    "NEEDS_REVIEW"
+   ],
+   "actual": [
+    "NEEDS_REVIEW"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 706,
+   "sources": [
+    "quran-2:255"
+   ]
+  },
+  {
+   "id": "quran_short_complete_verse",
+   "run": 2,
+   "input": "الله الصمد",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 697,
+   "sources": [
+    "quran-112:2"
+   ]
+  },
+  {
+   "id": "quran_misspelled_short_excerpt",
+   "run": 2,
+   "input": "قال انا احي",
+   "expected": [
+    "NEEDS_REVIEW"
+   ],
+   "actual": [
+    "NEEDS_REVIEW"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 798,
+   "sources": [
+    "quran-2:258"
+   ]
+  },
+  {
+   "id": "hadith_unquoted_without_honorific",
+   "run": 2,
+   "input": "قال رسول الله حب الوطن من الايمان",
+   "expected": [
+    "NOT_AUTHENTIC"
+   ],
+   "actual": [
+    "NOT_AUTHENTIC"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 817,
+   "sources": [
+    "hadith-daifa-36"
+   ]
+  },
+  {
+   "id": "hadith_not_in_database",
+   "run": 2,
+   "input": "قال رسول الله ﷺ: «تفاءلوا بالخير تجدوه»",
+   "expected": [
+    "NO_ORIGIN"
+   ],
+   "actual": [
+    "NO_ORIGIN"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 686,
+   "sources": [
+    null
+   ]
+  },
+  {
+   "id": "hadith_authentic",
+   "run": 2,
+   "input": "قال رسول الله ﷺ: «الدين النصيحة»",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 671,
+   "sources": [
+    "hadith-muslim-55"
+   ]
+  },
+  {
+   "id": "hadith_recorded_weak",
+   "run": 2,
+   "input": "قال رسول الله ﷺ: «حب الوطن من الإيمان»",
+   "expected": [
+    "NOT_AUTHENTIC"
+   ],
+   "actual": [
+    "NOT_AUTHENTIC"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 721,
+   "sources": [
+    "hadith-daifa-36"
+   ]
+  },
+  {
+   "id": "hadith_negation_removed",
+   "run": 2,
+   "input": "قال رسول الله ﷺ: «يؤمن أحدكم حتى يحب لأخيه ما يحب لنفسه»",
+   "expected": [
+    "NEEDS_REVIEW"
+   ],
+   "actual": [
+    "NEEDS_REVIEW"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 803,
+   "sources": [
+    "hadith-bukhari-13"
+   ]
+  },
+  {
+   "id": "hadith_wording_changed",
+   "run": 2,
+   "input": "قال رسول الله ﷺ: «اطلبوا العلم ولو في الصين»",
+   "expected": [
+    "NEEDS_REVIEW"
+   ],
+   "actual": [
+    "NEEDS_REVIEW"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 695,
+   "sources": [
+    "hadith-daifa-416"
+   ]
+  },
+  {
+   "id": "outside_corpus",
+   "run": 2,
+   "input": "قال رسول الله ﷺ: «الصبر مفتاح الفرج»",
+   "expected": [
+    "NO_ORIGIN"
+   ],
+   "actual": [
+    "NO_ORIGIN"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 713,
+   "sources": [
+    null
+   ]
+  },
+  {
+   "id": "hadith_popular_not_established",
+   "run": 2,
+   "input": "قال رسول الله ﷺ: «النظافة من الإيمان»",
+   "expected": [
+    "NOT_AUTHENTIC"
+   ],
+   "actual": [
+    "NOT_AUTHENTIC"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 687,
+   "sources": [
+    "hadith-ibnbaz-6-113-2"
+   ]
+  },
+  {
+   "id": "hadith_hasan_grade",
+   "run": 2,
+   "input": "قال رسول الله ﷺ: «إن الله تعالى يحب إذا عمل أحدكم عملا أن يتقنه»",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 803,
+   "sources": [
+    "hadith-sahihjami-1880"
+   ]
+  },
+  {
+   "id": "hadith_scholars_disagree",
+   "run": 2,
+   "input": "قال رسول الله ﷺ: «خير الناس أنفعهم للناس»",
+   "expected": [
+    "DISPUTED"
+   ],
+   "actual": [
+    "DISPUTED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 605,
+   "sources": [
+    "hadith-sahihjami-3289"
+   ]
+  },
+  {
+   "id": "hadith_baseless_recorded",
+   "run": 2,
+   "input": "قال رسول الله ﷺ: «من عرف نفسه فقد عرف ربه»",
+   "expected": [
+    "NOT_AUTHENTIC"
+   ],
+   "actual": [
+    "NOT_AUTHENTIC"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 802,
+   "sources": [
+    "hadith-daifa-66"
+   ]
+  },
+  {
+   "id": "hadith_fragment_of_long_text",
+   "run": 2,
+   "input": "قال رسول الله ﷺ: «الكلمة الطيبة صدقة»",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 799,
+   "sources": [
+    "hadith-bukhari-2989"
+   ]
+  },
+  {
+   "id": "hadith_popular_variant_wording",
+   "run": 2,
+   "input": "قال رسول الله ﷺ: «إنما بعثت لأتمم مكارم الأخلاق»",
+   "expected": [
+    "NEEDS_REVIEW"
+   ],
+   "actual": [
+    "NEEDS_REVIEW"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 604,
+   "sources": [
+    "hadith-tamhid-24-333"
+   ]
+  },
+  {
+   "id": "hadith_extra_words_not_in_record",
+   "run": 2,
+   "input": "قال رسول الله ﷺ: «الحكمة ضالة المؤمن أنى وجدها فهو أحق بها»",
+   "expected": [
+    "NO_ORIGIN"
+   ],
+   "actual": [
+    "NO_ORIGIN"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 799,
+   "sources": [
+    null
+   ]
+  },
+  {
+   "id": "personal_referral",
+   "run": 2,
+   "input": "هل يجوز لي أن أجمع الصلاة في العمل؟",
+   "expected": [
+    "REFER"
+   ],
+   "actual": [
+    "REFER"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 701,
+   "sources": [
+    null
+   ]
+  },
+  {
+   "id": "multiple_claims",
+   "run": 2,
+   "input": "قال رسول الله ﷺ: «اطلبوا العلم ولو بالصين». وقال تعالى: ﴿ومن يتوكل على الله فهو حسبه ونعم الوكيل﴾. هل يجوز لي أن أجمع الصلاة في العمل؟",
+   "expected": [
+    "NOT_AUTHENTIC",
+    "ALTERED",
+    "REFER"
+   ],
+   "actual": [
+    "NOT_AUTHENTIC",
+    "ALTERED",
+    "REFER"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 1699,
+   "sources": [
+    "hadith-daifa-416",
+    "quran-65:3",
+    null
+   ]
+  },
+  {
+   "id": "personal_with_quran_same_sentence",
+   "run": 2,
+   "input": "هل يجوز لي ترك الصلاة لأن الله قال: ﴿إن الله غفور رحيم﴾؟",
+   "expected": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "actual": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 3295,
+   "sources": [
+    null,
+    "quran-8:69"
+   ]
+  },
+  {
+   "id": "personal_with_hadith_same_sentence",
+   "run": 2,
+   "input": "هل يجوز لي أن أفعل ذلك بناء على حديث رسول الله ﷺ: «الدين النصيحة»؟",
+   "expected": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "actual": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 996,
+   "sources": [
+    null,
+    "hadith-muslim-55"
+   ]
+  },
+  {
+   "id": "personal_after_quote",
+   "run": 2,
+   "input": "قال رسول الله ﷺ: «الدين النصيحة»، فهل يحق لي نشر أسرار زوجتي؟",
+   "expected": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "actual": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 1113,
+   "sources": [
+    null,
+    "hadith-muslim-55"
+   ]
+  },
+  {
+   "id": "personal_after_unquoted_citation",
+   "run": 2,
+   "input": "قال تعالى قل هو الله أحد، فهل يلزمني شيء في حالتي؟",
+   "expected": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "actual": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 1180,
+   "sources": [
+    null,
+    "quran-112:1"
+   ]
+  },
+  {
+   "id": "first_person_quran_is_not_user_question",
+   "run": 2,
+   "input": "قال تعالى: ﴿إني نذرت للرحمن صوما﴾",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 607,
+   "sources": [
+    "quran-19:26"
+   ]
+  },
+  {
+   "id": "hadith_heard_that_prophet_said",
+   "run": 2,
+   "input": "سمعت أن النبي قال اطلبوا العلم ولو بالصين، صحيح؟",
+   "expected": [
+    "NOT_AUTHENTIC"
+   ],
+   "actual": [
+    "NOT_AUTHENTIC"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 622,
+   "sources": [
+    "hadith-daifa-416"
+   ]
+  },
+  {
+   "id": "hadith_what_is_the_grade",
+   "run": 2,
+   "input": "ما صحة حديث اختلاف أمتي رحمة؟",
+   "expected": [
+    "NOT_AUTHENTIC"
+   ],
+   "actual": [
+    "NOT_AUTHENTIC"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 696,
+   "sources": [
+    "hadith-daifa-57"
+   ]
+  },
+  {
+   "id": "hadith_is_it_authentic",
+   "run": 2,
+   "input": "هل حديث تبسمك في وجه أخيك لك صدقة صحيح؟",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 698,
+   "sources": [
+    "hadith-tirmidhi-1956"
+   ]
+  },
+  {
+   "id": "hadith_excerpt_after_conjunction",
+   "run": 2,
+   "input": "هل صح عن النبي أنه قال من غشنا فليس منا",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 695,
+   "sources": [
+    "hadith-muslim-101"
+   ]
+  },
+  {
+   "id": "quran_is_it_a_verse",
+   "run": 2,
+   "input": "هل إن الله مع الصابرين آية؟",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 2898,
+   "sources": [
+    "quran-2:153"
+   ]
+  },
+  {
+   "id": "verse_starting_with_question_word",
+   "run": 2,
+   "input": "هل أتى على الإنسان حين من الدهر",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 684,
+   "sources": [
+    "quran-76:1"
+   ]
+  },
+  {
+   "id": "package_request_hadith_not_in_sources",
+   "run": 2,
+   "input": "أعطني حديثا يثبت أن الصبر مفتاح الفرج",
+   "expected": [
+    "NO_ORIGIN"
+   ],
+   "actual": [
+    "NO_ORIGIN"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 719,
+   "sources": [
+    null
+   ]
+  },
+  {
+   "id": "package_general_question_kaaba",
+   "run": 2,
+   "input": "لماذا يعبد المسلمون الكعبة؟",
+   "expected": [
+    "OUT_OF_SCOPE"
+   ],
+   "actual": [
+    "OUT_OF_SCOPE"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 596,
+   "sources": [
+    null
+   ]
+  },
+  {
+   "id": "package_question_then_evidence_request",
+   "run": 2,
+   "input": "لماذا يعبد المسلمون الكعبة؟ أعطني حديثاً يثبت هذا الكلام",
+   "expected": [
+    "OUT_OF_SCOPE",
+    "NO_ORIGIN"
+   ],
+   "actual": [
+    "OUT_OF_SCOPE",
+    "NO_ORIGIN"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 694,
+   "sources": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": "package_general_question_quran_authorship",
+   "run": 2,
+   "input": "هل القرآن من تأليف محمد ﷺ؟",
+   "expected": [
+    "OUT_OF_SCOPE"
+   ],
+   "actual": [
+    "OUT_OF_SCOPE"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 612,
+   "sources": [
+    null
+   ]
+  },
+  {
+   "id": "package_translation_request",
+   "run": 2,
+   "input": "ترجم كلمة التوحيد إلى الإنجليزية",
+   "expected": [
+    "OUT_OF_SCOPE"
+   ],
+   "actual": [
+    "OUT_OF_SCOPE"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 730,
+   "sources": [
+    null
+   ]
+  },
+  {
+   "id": "package_personal_marriage",
+   "run": 2,
+   "input": "أنا في دولة كذا، هل يجوز لي فعل كذا في زواجي؟",
+   "expected": [
+    "REFER"
+   ],
+   "actual": [
+    "REFER"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 765,
+   "sources": [
+    null
+   ]
+  },
+  {
+   "id": "referral_preserved_at_display_limit",
+   "run": 2,
+   "input": "قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. هل يجوز لي ترك الصلاة؟",
+   "expected": [
+    "REFER",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED"
+   ],
+   "actual": [
+    "REFER",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 4287,
+   "sources": [
+    null,
+    "quran-112:1",
+    "quran-112:1",
+    "quran-112:1",
+    "quran-112:1",
+    "quran-112:1",
+    "quran-112:1",
+    "quran-112:1",
+    "quran-112:1",
+    "quran-112:1",
+    "quran-112:1",
+    "quran-112:1"
+   ]
+  },
+  {
+   "id": "quran_exact",
+   "run": 3,
+   "input": "﴿إياك نعبد وإياك نستعين﴾",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 664,
+   "sources": [
+    "quran-1:5"
+   ]
+  },
+  {
+   "id": "quran_changed_particle",
+   "run": 3,
+   "input": "﴿إياك نعبد فإياك نستعين﴾",
+   "expected": [
+    "ALTERED"
+   ],
+   "actual": [
+    "ALTERED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 763,
+   "sources": [
+    "quran-1:5"
+   ]
+  },
+  {
+   "id": "quran_missing_particle",
+   "run": 3,
+   "input": "﴿إياك نعبد إياك نستعين﴾",
+   "expected": [
+    "ALTERED"
+   ],
+   "actual": [
+    "ALTERED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 675,
+   "sources": [
+    "quran-1:5"
+   ]
+  },
+  {
+   "id": "quran_merged_quote",
+   "run": 3,
+   "input": "﴿ومن يتوكل على الله فهو حسبه ونعم الوكيل﴾",
+   "expected": [
+    "ALTERED"
+   ],
+   "actual": [
+    "ALTERED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 1009,
+   "sources": [
+    "quran-65:3"
+   ]
+  },
+  {
+   "id": "quran_changed_word",
+   "run": 3,
+   "input": "﴿لا يكلف الله نفسا إلا طاقتها﴾",
+   "expected": [
+    "ALTERED"
+   ],
+   "actual": [
+    "ALTERED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 708,
+   "sources": [
+    "quran-2:286"
+   ]
+  },
+  {
+   "id": "quran_king_fahd_spelling",
+   "run": 3,
+   "input": "﴿ولا تقربوا الزنا إنه كان فاحشة وساء سبيلا﴾",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 696,
+   "sources": [
+    "quran-17:32"
+   ]
+  },
+  {
+   "id": "quran_basmala_prefix",
+   "run": 3,
+   "input": "﴿بسم الله الرحمن الرحيم قل هو الله أحد﴾",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 597,
+   "sources": [
+    "quran-112:1"
+   ]
+  },
+  {
+   "id": "quran_unmarked_without_hamza",
+   "run": 3,
+   "input": "قل هو الله احد",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 592,
+   "sources": [
+    "quran-112:1"
+   ]
+  },
+  {
+   "id": "quran_unmarked_near_verse",
+   "run": 3,
+   "input": "قل هو الله واحد",
+   "expected": [
+    "NEEDS_REVIEW"
+   ],
+   "actual": [
+    "NEEDS_REVIEW"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 706,
+   "sources": [
+    "quran-112:1"
+   ]
+  },
+  {
+   "id": "hadith_unmarked_without_hamza",
+   "run": 3,
+   "input": "انما الاعمال بالنيات",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 605,
+   "sources": [
+    "hadith-bukhari-1"
+   ]
+  },
+  {
+   "id": "quran_particle_joined_to_word",
+   "run": 3,
+   "input": "لاتاخذه سنة ولانوم",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 719,
+   "sources": [
+    "quran-2:255"
+   ]
+  },
+  {
+   "id": "quran_excerpt_of_long_verse",
+   "run": 3,
+   "input": "﴿لا تحزن إن الله معنا﴾",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 574,
+   "sources": [
+    "quran-9:40"
+   ]
+  },
+  {
+   "id": "quran_short_excerpt_unmarked",
+   "run": 3,
+   "input": "لا تاخذه",
+   "expected": [
+    "NEEDS_REVIEW"
+   ],
+   "actual": [
+    "NEEDS_REVIEW"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 697,
+   "sources": [
+    "quran-2:255"
+   ]
+  },
+  {
+   "id": "quran_short_complete_verse",
+   "run": 3,
+   "input": "الله الصمد",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 604,
+   "sources": [
+    "quran-112:2"
+   ]
+  },
+  {
+   "id": "quran_misspelled_short_excerpt",
+   "run": 3,
+   "input": "قال انا احي",
+   "expected": [
+    "NEEDS_REVIEW"
+   ],
+   "actual": [
+    "NEEDS_REVIEW"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 712,
+   "sources": [
+    "quran-2:258"
+   ]
+  },
+  {
+   "id": "hadith_unquoted_without_honorific",
+   "run": 3,
+   "input": "قال رسول الله حب الوطن من الايمان",
+   "expected": [
+    "NOT_AUTHENTIC"
+   ],
+   "actual": [
+    "NOT_AUTHENTIC"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 693,
+   "sources": [
+    "hadith-daifa-36"
+   ]
+  },
+  {
+   "id": "hadith_not_in_database",
+   "run": 3,
+   "input": "قال رسول الله ﷺ: «تفاءلوا بالخير تجدوه»",
+   "expected": [
+    "NO_ORIGIN"
+   ],
+   "actual": [
+    "NO_ORIGIN"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 601,
+   "sources": [
+    null
+   ]
+  },
+  {
+   "id": "hadith_authentic",
+   "run": 3,
+   "input": "قال رسول الله ﷺ: «الدين النصيحة»",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 602,
+   "sources": [
+    "hadith-muslim-55"
+   ]
+  },
+  {
+   "id": "hadith_recorded_weak",
+   "run": 3,
+   "input": "قال رسول الله ﷺ: «حب الوطن من الإيمان»",
+   "expected": [
+    "NOT_AUTHENTIC"
+   ],
+   "actual": [
+    "NOT_AUTHENTIC"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 695,
+   "sources": [
+    "hadith-daifa-36"
+   ]
+  },
+  {
+   "id": "hadith_negation_removed",
+   "run": 3,
+   "input": "قال رسول الله ﷺ: «يؤمن أحدكم حتى يحب لأخيه ما يحب لنفسه»",
+   "expected": [
+    "NEEDS_REVIEW"
+   ],
+   "actual": [
+    "NEEDS_REVIEW"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 802,
+   "sources": [
+    "hadith-bukhari-13"
+   ]
+  },
+  {
+   "id": "hadith_wording_changed",
+   "run": 3,
+   "input": "قال رسول الله ﷺ: «اطلبوا العلم ولو في الصين»",
+   "expected": [
+    "NEEDS_REVIEW"
+   ],
+   "actual": [
+    "NEEDS_REVIEW"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 697,
+   "sources": [
+    "hadith-daifa-416"
+   ]
+  },
+  {
+   "id": "outside_corpus",
+   "run": 3,
+   "input": "قال رسول الله ﷺ: «الصبر مفتاح الفرج»",
+   "expected": [
+    "NO_ORIGIN"
+   ],
+   "actual": [
+    "NO_ORIGIN"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 733,
+   "sources": [
+    null
+   ]
+  },
+  {
+   "id": "hadith_popular_not_established",
+   "run": 3,
+   "input": "قال رسول الله ﷺ: «النظافة من الإيمان»",
+   "expected": [
+    "NOT_AUTHENTIC"
+   ],
+   "actual": [
+    "NOT_AUTHENTIC"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 873,
+   "sources": [
+    "hadith-ibnbaz-6-113-2"
+   ]
+  },
+  {
+   "id": "hadith_hasan_grade",
+   "run": 3,
+   "input": "قال رسول الله ﷺ: «إن الله تعالى يحب إذا عمل أحدكم عملا أن يتقنه»",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 783,
+   "sources": [
+    "hadith-sahihjami-1880"
+   ]
+  },
+  {
+   "id": "hadith_scholars_disagree",
+   "run": 3,
+   "input": "قال رسول الله ﷺ: «خير الناس أنفعهم للناس»",
+   "expected": [
+    "DISPUTED"
+   ],
+   "actual": [
+    "DISPUTED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 714,
+   "sources": [
+    "hadith-sahihjami-3289"
+   ]
+  },
+  {
+   "id": "hadith_baseless_recorded",
+   "run": 3,
+   "input": "قال رسول الله ﷺ: «من عرف نفسه فقد عرف ربه»",
+   "expected": [
+    "NOT_AUTHENTIC"
+   ],
+   "actual": [
+    "NOT_AUTHENTIC"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 787,
+   "sources": [
+    "hadith-daifa-66"
+   ]
+  },
+  {
+   "id": "hadith_fragment_of_long_text",
+   "run": 3,
+   "input": "قال رسول الله ﷺ: «الكلمة الطيبة صدقة»",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 722,
+   "sources": [
+    "hadith-bukhari-2989"
+   ]
+  },
+  {
+   "id": "hadith_popular_variant_wording",
+   "run": 3,
+   "input": "قال رسول الله ﷺ: «إنما بعثت لأتمم مكارم الأخلاق»",
+   "expected": [
+    "NEEDS_REVIEW"
+   ],
+   "actual": [
+    "NEEDS_REVIEW"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 597,
+   "sources": [
+    "hadith-tamhid-24-333"
+   ]
+  },
+  {
+   "id": "hadith_extra_words_not_in_record",
+   "run": 3,
+   "input": "قال رسول الله ﷺ: «الحكمة ضالة المؤمن أنى وجدها فهو أحق بها»",
+   "expected": [
+    "NO_ORIGIN"
+   ],
+   "actual": [
+    "NO_ORIGIN"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 700,
+   "sources": [
+    null
+   ]
+  },
+  {
+   "id": "personal_referral",
+   "run": 3,
+   "input": "هل يجوز لي أن أجمع الصلاة في العمل؟",
+   "expected": [
+    "REFER"
+   ],
+   "actual": [
+    "REFER"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 805,
+   "sources": [
+    null
+   ]
+  },
+  {
+   "id": "multiple_claims",
+   "run": 3,
+   "input": "قال رسول الله ﷺ: «اطلبوا العلم ولو بالصين». وقال تعالى: ﴿ومن يتوكل على الله فهو حسبه ونعم الوكيل﴾. هل يجوز لي أن أجمع الصلاة في العمل؟",
+   "expected": [
+    "NOT_AUTHENTIC",
+    "ALTERED",
+    "REFER"
+   ],
+   "actual": [
+    "NOT_AUTHENTIC",
+    "ALTERED",
+    "REFER"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 1799,
+   "sources": [
+    "hadith-daifa-416",
+    "quran-65:3",
+    null
+   ]
+  },
+  {
+   "id": "personal_with_quran_same_sentence",
+   "run": 3,
+   "input": "هل يجوز لي ترك الصلاة لأن الله قال: ﴿إن الله غفور رحيم﴾؟",
+   "expected": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "actual": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 3593,
+   "sources": [
+    null,
+    "quran-8:69"
+   ]
+  },
+  {
+   "id": "personal_with_hadith_same_sentence",
+   "run": 3,
+   "input": "هل يجوز لي أن أفعل ذلك بناء على حديث رسول الله ﷺ: «الدين النصيحة»؟",
+   "expected": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "actual": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 1100,
+   "sources": [
+    null,
+    "hadith-muslim-55"
+   ]
+  },
+  {
+   "id": "personal_after_quote",
+   "run": 3,
+   "input": "قال رسول الله ﷺ: «الدين النصيحة»، فهل يحق لي نشر أسرار زوجتي؟",
+   "expected": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "actual": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 1101,
+   "sources": [
+    null,
+    "hadith-muslim-55"
+   ]
+  },
+  {
+   "id": "personal_after_unquoted_citation",
+   "run": 3,
+   "input": "قال تعالى قل هو الله أحد، فهل يلزمني شيء في حالتي؟",
+   "expected": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "actual": [
+    "REFER",
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 1091,
+   "sources": [
+    null,
+    "quran-112:1"
+   ]
+  },
+  {
+   "id": "first_person_quran_is_not_user_question",
+   "run": 3,
+   "input": "قال تعالى: ﴿إني نذرت للرحمن صوما﴾",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 610,
+   "sources": [
+    "quran-19:26"
+   ]
+  },
+  {
+   "id": "hadith_heard_that_prophet_said",
+   "run": 3,
+   "input": "سمعت أن النبي قال اطلبوا العلم ولو بالصين، صحيح؟",
+   "expected": [
+    "NOT_AUTHENTIC"
+   ],
+   "actual": [
+    "NOT_AUTHENTIC"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 608,
+   "sources": [
+    "hadith-daifa-416"
+   ]
+  },
+  {
+   "id": "hadith_what_is_the_grade",
+   "run": 3,
+   "input": "ما صحة حديث اختلاف أمتي رحمة؟",
+   "expected": [
+    "NOT_AUTHENTIC"
+   ],
+   "actual": [
+    "NOT_AUTHENTIC"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 774,
+   "sources": [
+    "hadith-daifa-57"
+   ]
+  },
+  {
+   "id": "hadith_is_it_authentic",
+   "run": 3,
+   "input": "هل حديث تبسمك في وجه أخيك لك صدقة صحيح؟",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 613,
+   "sources": [
+    "hadith-tirmidhi-1956"
+   ]
+  },
+  {
+   "id": "hadith_excerpt_after_conjunction",
+   "run": 3,
+   "input": "هل صح عن النبي أنه قال من غشنا فليس منا",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 689,
+   "sources": [
+    "hadith-muslim-101"
+   ]
+  },
+  {
+   "id": "quran_is_it_a_verse",
+   "run": 3,
+   "input": "هل إن الله مع الصابرين آية؟",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 2702,
+   "sources": [
+    "quran-2:153"
+   ]
+  },
+  {
+   "id": "verse_starting_with_question_word",
+   "run": 3,
+   "input": "هل أتى على الإنسان حين من الدهر",
+   "expected": [
+    "VERIFIED"
+   ],
+   "actual": [
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 693,
+   "sources": [
+    "quran-76:1"
+   ]
+  },
+  {
+   "id": "package_request_hadith_not_in_sources",
+   "run": 3,
+   "input": "أعطني حديثا يثبت أن الصبر مفتاح الفرج",
+   "expected": [
+    "NO_ORIGIN"
+   ],
+   "actual": [
+    "NO_ORIGIN"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 721,
+   "sources": [
+    null
+   ]
+  },
+  {
+   "id": "package_general_question_kaaba",
+   "run": 3,
+   "input": "لماذا يعبد المسلمون الكعبة؟",
+   "expected": [
+    "OUT_OF_SCOPE"
+   ],
+   "actual": [
+    "OUT_OF_SCOPE"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 688,
+   "sources": [
+    null
+   ]
+  },
+  {
+   "id": "package_question_then_evidence_request",
+   "run": 3,
+   "input": "لماذا يعبد المسلمون الكعبة؟ أعطني حديثاً يثبت هذا الكلام",
+   "expected": [
+    "OUT_OF_SCOPE",
+    "NO_ORIGIN"
+   ],
+   "actual": [
+    "OUT_OF_SCOPE",
+    "NO_ORIGIN"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 705,
+   "sources": [
+    null,
+    null
+   ]
+  },
+  {
+   "id": "package_general_question_quran_authorship",
+   "run": 3,
+   "input": "هل القرآن من تأليف محمد ﷺ؟",
+   "expected": [
+    "OUT_OF_SCOPE"
+   ],
+   "actual": [
+    "OUT_OF_SCOPE"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 619,
+   "sources": [
+    null
+   ]
+  },
+  {
+   "id": "package_translation_request",
+   "run": 3,
+   "input": "ترجم كلمة التوحيد إلى الإنجليزية",
+   "expected": [
+    "OUT_OF_SCOPE"
+   ],
+   "actual": [
+    "OUT_OF_SCOPE"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 679,
+   "sources": [
+    null
+   ]
+  },
+  {
+   "id": "package_personal_marriage",
+   "run": 3,
+   "input": "أنا في دولة كذا، هل يجوز لي فعل كذا في زواجي؟",
+   "expected": [
+    "REFER"
+   ],
+   "actual": [
+    "REFER"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 695,
+   "sources": [
+    null
+   ]
+  },
+  {
+   "id": "referral_preserved_at_display_limit",
+   "run": 3,
+   "input": "قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. قال تعالى: ﴿قل هو الله أحد﴾. هل يجوز لي ترك الصلاة؟",
+   "expected": [
+    "REFER",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED"
+   ],
+   "actual": [
+    "REFER",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED",
+    "VERIFIED"
+   ],
+   "passed": true,
+   "http_status": 200,
+   "engine_version": "0.9.0",
+   "roundtrip_ms": 4201,
+   "sources": [
+    null,
+    "quran-112:1",
+    "quran-112:1",
+    "quran-112:1",
+    "quran-112:1",
+    "quran-112:1",
+    "quran-112:1",
+    "quran-112:1",
+    "quran-112:1",
+    "quran-112:1",
+    "quran-112:1",
+    "quran-112:1"
+   ]
+  }
+ ],
+ "five_user_cases": [
+  {
+   "case": "watan",
+   "form": "original",
+   "matched_text": "حب الوطن من الإيمان",
+   "verdict": "NOT_AUTHENTIC",
+   "source": "hadith-daifa-36",
+   "source_url": "https://dorar.net/h/v9O0rvM9",
+   "attribution_excluded": true,
+   "passed": true,
+   "roundtrip_ms": 757
+  },
+  {
+   "case": "watan",
+   "form": "diacritics",
+   "matched_text": "حُبُّ الوَطَنِ مِنَ الإيمانِ",
+   "verdict": "NOT_AUTHENTIC",
+   "source": "hadith-daifa-36",
+   "source_url": "https://dorar.net/h/v9O0rvM9",
+   "attribution_excluded": true,
+   "passed": true,
+   "roundtrip_ms": 843
+  },
+  {
+   "case": "watan",
+   "form": "plain",
+   "matched_text": "حب الوطن من الايمان",
+   "verdict": "NOT_AUTHENTIC",
+   "source": "hadith-daifa-36",
+   "source_url": "https://dorar.net/h/v9O0rvM9",
+   "attribution_excluded": true,
+   "passed": true,
+   "roundtrip_ms": 713
+  },
+  {
+   "case": "taqa",
+   "form": "original",
+   "matched_text": "لا يكلف الله نفسًا إلا طاقتها",
+   "verdict": "ALTERED",
+   "source": "quran-2:286",
+   "source_url": "https://quranpedia.net/surah/1/2?ayah_id=293",
+   "attribution_excluded": true,
+   "passed": true,
+   "roundtrip_ms": 791
+  },
+  {
+   "case": "taqa",
+   "form": "diacritics",
+   "matched_text": "لَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا طَاقَتَهَا",
+   "verdict": "ALTERED",
+   "source": "quran-2:286",
+   "source_url": "https://quranpedia.net/surah/1/2?ayah_id=293",
+   "attribution_excluded": true,
+   "passed": true,
+   "roundtrip_ms": 899
+  },
+  {
+   "case": "taqa",
+   "form": "plain",
+   "matched_text": "لا يكلف الله نفسا الا طاقتها",
+   "verdict": "ALTERED",
+   "source": "quran-2:286",
+   "source_url": "https://quranpedia.net/surah/1/2?ayah_id=293",
+   "attribution_excluded": true,
+   "passed": true,
+   "roundtrip_ms": 612
+  },
+  {
+   "case": "anfa",
+   "form": "original",
+   "matched_text": "خير الناس أنفعهم للناس",
+   "verdict": "DISPUTED",
+   "source": "hadith-sahihjami-3289",
+   "source_url": "https://dorar.net/h/LWuCYU03",
+   "attribution_excluded": true,
+   "passed": true,
+   "roundtrip_ms": 592
+  },
+  {
+   "case": "anfa",
+   "form": "diacritics",
+   "matched_text": "خَيْرُ النَّاسِ أَنْفَعُهُمْ لِلنَّاسِ",
+   "verdict": "DISPUTED",
+   "source": "hadith-sahihjami-3289",
+   "source_url": "https://dorar.net/h/LWuCYU03",
+   "attribution_excluded": true,
+   "passed": true,
+   "roundtrip_ms": 595
+  },
+  {
+   "case": "anfa",
+   "form": "plain",
+   "matched_text": "خير الناس انفعهم للناس",
+   "verdict": "DISPUTED",
+   "source": "hadith-sahihjami-3289",
+   "source_url": "https://dorar.net/h/LWuCYU03",
+   "attribution_excluded": true,
+   "passed": true,
+   "roundtrip_ms": 608
+  },
+  {
+   "case": "makarim",
+   "form": "original",
+   "matched_text": "إنما بعثت لأتمم مكارم الأخلاق",
+   "verdict": "NEEDS_REVIEW",
+   "source": "hadith-tamhid-24-333",
+   "source_url": "https://dorar.net/h/5J9EJKLh",
+   "attribution_excluded": true,
+   "passed": true,
+   "roundtrip_ms": 599
+  },
+  {
+   "case": "makarim",
+   "form": "diacritics",
+   "matched_text": "إِنَّمَا بُعِثْتُ لِأُتَمِّمَ مَكَارِمَ الأَخْلَاقِ",
+   "verdict": "NEEDS_REVIEW",
+   "source": "hadith-tamhid-24-333",
+   "source_url": "https://dorar.net/h/5J9EJKLh",
+   "attribution_excluded": true,
+   "passed": true,
+   "roundtrip_ms": 692
+  },
+  {
+   "case": "makarim",
+   "form": "plain",
+   "matched_text": "انما بعثت لاتمم مكارم الاخلاق",
+   "verdict": "NEEDS_REVIEW",
+   "source": "hadith-tamhid-24-333",
+   "source_url": "https://dorar.net/h/5J9EJKLh",
+   "attribution_excluded": true,
+   "passed": true,
+   "roundtrip_ms": 711
+  },
+  {
+   "case": "sabr",
+   "form": "original",
+   "matched_text": "الصبر مفتاح الفرج",
+   "verdict": "NO_ORIGIN",
+   "source": null,
+   "source_url": null,
+   "attribution_excluded": true,
+   "passed": true,
+   "roundtrip_ms": 604
+  },
+  {
+   "case": "sabr",
+   "form": "diacritics",
+   "matched_text": "الصَّبْرُ مِفْتَاحُ الفَرَجِ",
+   "verdict": "NO_ORIGIN",
+   "source": null,
+   "source_url": null,
+   "attribution_excluded": true,
+   "passed": true,
+   "roundtrip_ms": 592
+  },
+  {
+   "case": "sabr",
+   "form": "plain",
+   "matched_text": "الصبر مفتاح الفرج",
+   "verdict": "NO_ORIGIN",
+   "source": null,
+   "source_url": null,
+   "attribution_excluded": true,
+   "passed": true,
+   "roundtrip_ms": 604
+  }
+ ],
+ "quran_sample": [
+  {
+   "verse": "1:2",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 2711
+  },
+  {
+   "verse": "1:2",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 2784
+  },
+  {
+   "verse": "2:52",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 688
+  },
+  {
+   "verse": "2:52",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 618
+  },
+  {
+   "verse": "2:52",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 699
+  },
+  {
+   "verse": "3:88",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 3095
+  },
+  {
+   "verse": "3:88",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 2800
+  },
+  {
+   "verse": "3:88",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 696
+  },
+  {
+   "verse": "4:172",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 807
+  },
+  {
+   "verse": "4:172",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 686
+  },
+  {
+   "verse": "4:172",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 817
+  },
+  {
+   "verse": "5:32",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 998
+  },
+  {
+   "verse": "5:32",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 898
+  },
+  {
+   "verse": "5:32",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 1500
+  },
+  {
+   "verse": "6:161",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 886
+  },
+  {
+   "verse": "6:161",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 611
+  },
+  {
+   "verse": "6:161",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 815
+  },
+  {
+   "verse": "7:163",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 775
+  },
+  {
+   "verse": "7:163",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 718
+  },
+  {
+   "verse": "7:163",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 1100
+  },
+  {
+   "verse": "8:7",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 793
+  },
+  {
+   "verse": "8:7",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 798
+  },
+  {
+   "verse": "8:7",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 1103
+  },
+  {
+   "verse": "9:40",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 904
+  },
+  {
+   "verse": "9:40",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 922
+  },
+  {
+   "verse": "9:40",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 1878
+  },
+  {
+   "verse": "10:67",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 681
+  },
+  {
+   "verse": "10:67",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 718
+  },
+  {
+   "verse": "10:67",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 798
+  },
+  {
+   "verse": "11:68",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 699
+  },
+  {
+   "verse": "11:68",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 694
+  },
+  {
+   "verse": "11:68",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 803
+  },
+  {
+   "verse": "12:87",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 706
+  },
+  {
+   "verse": "12:87",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 699
+  },
+  {
+   "verse": "12:87",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 999
+  },
+  {
+   "verse": "13:34",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 690
+  },
+  {
+   "verse": "13:34",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 700
+  },
+  {
+   "verse": "13:34",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 715
+  },
+  {
+   "verse": "14:19",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 690
+  },
+  {
+   "verse": "14:19",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 699
+  },
+  {
+   "verse": "14:19",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 905
+  },
+  {
+   "verse": "15:78",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 595
+  },
+  {
+   "verse": "15:78",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 712
+  },
+  {
+   "verse": "16:17",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 590
+  },
+  {
+   "verse": "16:17",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 602
+  },
+  {
+   "verse": "16:17",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 606
+  },
+  {
+   "verse": "17:69",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 5704
+  },
+  {
+   "verse": "17:69",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 4100
+  },
+  {
+   "verse": "17:69",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 884
+  },
+  {
+   "verse": "18:105",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 710
+  },
+  {
+   "verse": "18:105",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 702
+  },
+  {
+   "verse": "18:105",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 800
+  },
+  {
+   "verse": "19:49",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 699
+  },
+  {
+   "verse": "19:49",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 697
+  },
+  {
+   "verse": "19:49",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 802
+  },
+  {
+   "verse": "20:53",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 799
+  },
+  {
+   "verse": "20:53",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 692
+  },
+  {
+   "verse": "20:53",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 793
+  },
+  {
+   "verse": "21:91",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 614
+  },
+  {
+   "verse": "21:91",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 699
+  },
+  {
+   "verse": "21:91",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 801
+  },
+  {
+   "verse": "22:14",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 805
+  },
+  {
+   "verse": "22:14",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 789
+  },
+  {
+   "verse": "22:14",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 901
+  },
+  {
+   "verse": "23:109",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 697
+  },
+  {
+   "verse": "23:109",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 807
+  },
+  {
+   "verse": "23:109",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 794
+  },
+  {
+   "verse": "24:12",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 706
+  },
+  {
+   "verse": "24:12",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 600
+  },
+  {
+   "verse": "24:12",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 706
+  },
+  {
+   "verse": "25:60",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 683
+  },
+  {
+   "verse": "25:60",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 715
+  },
+  {
+   "verse": "25:60",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 698
+  },
+  {
+   "verse": "26:118",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 688
+  },
+  {
+   "verse": "26:118",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 797
+  },
+  {
+   "verse": "26:118",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 703
+  },
+  {
+   "verse": "27:16",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 4737
+  },
+  {
+   "verse": "27:16",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 3282
+  },
+  {
+   "verse": "27:16",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 900
+  },
+  {
+   "verse": "28:78",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 805
+  },
+  {
+   "verse": "28:78",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 694
+  },
+  {
+   "verse": "28:78",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 1099
+  },
+  {
+   "verse": "29:69",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 682
+  },
+  {
+   "verse": "29:69",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 714
+  },
+  {
+   "verse": "29:69",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 798
+  },
+  {
+   "verse": "30:22",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 800
+  },
+  {
+   "verse": "30:22",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 601
+  },
+  {
+   "verse": "30:22",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 702
+  },
+  {
+   "verse": "31:26",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 685
+  },
+  {
+   "verse": "31:26",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 714
+  },
+  {
+   "verse": "31:26",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 902
+  },
+  {
+   "verse": "32:18",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 693
+  },
+  {
+   "verse": "32:18",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 715
+  },
+  {
+   "verse": "32:18",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 684
+  },
+  {
+   "verse": "33:57",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 707
+  },
+  {
+   "verse": "33:57",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 694
+  },
+  {
+   "verse": "33:57",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 916
+  },
+  {
+   "verse": "34:40",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 587
+  },
+  {
+   "verse": "34:40",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 695
+  },
+  {
+   "verse": "34:40",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 705
+  },
+  {
+   "verse": "35:30",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 711
+  },
+  {
+   "verse": "35:30",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 600
+  },
+  {
+   "verse": "35:30",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 685
+  },
+  {
+   "verse": "36:35",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 602
+  },
+  {
+   "verse": "36:35",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 704
+  },
+  {
+   "verse": "36:35",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 695
+  },
+  {
+   "verse": "37:149",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 601
+  },
+  {
+   "verse": "37:149",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 693
+  },
+  {
+   "verse": "38:82",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 602
+  },
+  {
+   "verse": "38:82",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 604
+  },
+  {
+   "verse": "39:29",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 728
+  },
+  {
+   "verse": "39:29",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 783
+  },
+  {
+   "verse": "39:29",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 899
+  },
+  {
+   "verse": "40:44",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 789
+  },
+  {
+   "verse": "40:44",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 703
+  },
+  {
+   "verse": "40:44",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 810
+  },
+  {
+   "verse": "41:38",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 692
+  },
+  {
+   "verse": "41:38",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 709
+  },
+  {
+   "verse": "41:38",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 702
+  },
+  {
+   "verse": "42:22",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 692
+  },
+  {
+   "verse": "42:22",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 706
+  },
+  {
+   "verse": "42:22",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 893
+  },
+  {
+   "verse": "43:15",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 600
+  },
+  {
+   "verse": "43:15",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 601
+  },
+  {
+   "verse": "43:15",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 691
+  },
+  {
+   "verse": "44:8",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 632
+  },
+  {
+   "verse": "44:8",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 577
+  },
+  {
+   "verse": "44:8",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 696
+  },
+  {
+   "verse": "45:10",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 714
+  },
+  {
+   "verse": "45:10",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 678
+  },
+  {
+   "verse": "45:10",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 816
+  },
+  {
+   "verse": "46:18",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 795
+  },
+  {
+   "verse": "46:18",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 795
+  },
+  {
+   "verse": "46:18",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 900
+  },
+  {
+   "verse": "47:24",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 601
+  },
+  {
+   "verse": "47:24",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 610
+  },
+  {
+   "verse": "47:24",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 596
+  },
+  {
+   "verse": "48:6",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 698
+  },
+  {
+   "verse": "48:6",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 702
+  },
+  {
+   "verse": "48:6",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 797
+  },
+  {
+   "verse": "49:17",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 788
+  },
+  {
+   "verse": "49:17",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 705
+  },
+  {
+   "verse": "49:17",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 800
+  },
+  {
+   "verse": "50:14",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 698
+  },
+  {
+   "verse": "50:14",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 609
+  },
+  {
+   "verse": "50:14",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 687
+  },
+  {
+   "verse": "51:40",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 608
+  },
+  {
+   "verse": "51:40",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 611
+  },
+  {
+   "verse": "51:40",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 611
+  },
+  {
+   "verse": "52:30",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 596
+  },
+  {
+   "verse": "52:30",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 593
+  },
+  {
+   "verse": "52:30",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 603
+  },
+  {
+   "verse": "53:11",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 609
+  },
+  {
+   "verse": "53:11",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 588
+  },
+  {
+   "verse": "54:35",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 696
+  },
+  {
+   "verse": "54:35",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 588
+  },
+  {
+   "verse": "54:35",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 629
+  },
+  {
+   "verse": "55:16",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 3277
+  },
+  {
+   "verse": "55:16",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 2698
+  },
+  {
+   "verse": "56:21",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 3014
+  },
+  {
+   "verse": "56:21",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 2597
+  },
+  {
+   "verse": "57:10",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 805
+  },
+  {
+   "verse": "57:10",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 885
+  },
+  {
+   "verse": "57:10",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 1405
+  },
+  {
+   "verse": "58:11",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 809
+  },
+  {
+   "verse": "58:11",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 795
+  },
+  {
+   "verse": "58:11",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 1096
+  },
+  {
+   "verse": "59:2",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 1003
+  },
+  {
+   "verse": "59:2",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 903
+  },
+  {
+   "verse": "59:2",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 1504
+  },
+  {
+   "verse": "60:4",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 988
+  },
+  {
+   "verse": "60:4",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 903
+  },
+  {
+   "verse": "60:4",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 1703
+  },
+  {
+   "verse": "61:7",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 700
+  },
+  {
+   "verse": "61:7",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 712
+  },
+  {
+   "verse": "61:7",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 889
+  },
+  {
+   "verse": "62:2",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 695
+  },
+  {
+   "verse": "62:2",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 708
+  },
+  {
+   "verse": "62:2",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 996
+  },
+  {
+   "verse": "63:5",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 808
+  },
+  {
+   "verse": "63:5",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 694
+  },
+  {
+   "verse": "63:5",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 805
+  },
+  {
+   "verse": "64:11",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 682
+  },
+  {
+   "verse": "64:11",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 699
+  },
+  {
+   "verse": "64:11",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 918
+  },
+  {
+   "verse": "65:2",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 894
+  },
+  {
+   "verse": "65:2",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 800
+  },
+  {
+   "verse": "65:2",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 1295
+  },
+  {
+   "verse": "66:4",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 806
+  },
+  {
+   "verse": "66:4",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 705
+  },
+  {
+   "verse": "66:4",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 900
+  },
+  {
+   "verse": "67:8",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 696
+  },
+  {
+   "verse": "67:8",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 596
+  },
+  {
+   "verse": "67:8",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 803
+  },
+  {
+   "verse": "68:22",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 595
+  },
+  {
+   "verse": "68:22",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 792
+  },
+  {
+   "verse": "68:22",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 704
+  },
+  {
+   "verse": "69:37",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 603
+  },
+  {
+   "verse": "69:37",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 697
+  },
+  {
+   "verse": "70:10",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 615
+  },
+  {
+   "verse": "70:10",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 601
+  },
+  {
+   "verse": "71:5",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 596
+  },
+  {
+   "verse": "71:5",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 601
+  },
+  {
+   "verse": "71:5",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 699
+  },
+  {
+   "verse": "72:19",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 695
+  },
+  {
+   "verse": "72:19",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 701
+  },
+  {
+   "verse": "72:19",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 703
+  },
+  {
+   "verse": "73:17",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 699
+  },
+  {
+   "verse": "73:17",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 600
+  },
+  {
+   "verse": "73:17",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 616
+  },
+  {
+   "verse": "74:56",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 587
+  },
+  {
+   "verse": "74:56",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 602
+  },
+  {
+   "verse": "74:56",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 696
+  },
+  {
+   "verse": "75:19",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 694
+  },
+  {
+   "verse": "75:19",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 608
+  },
+  {
+   "verse": "76:12",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 701
+  },
+  {
+   "verse": "76:12",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 601
+  },
+  {
+   "verse": "77:38",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 761
+  },
+  {
+   "verse": "77:38",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 688
+  },
+  {
+   "verse": "78:14",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 750
+  },
+  {
+   "verse": "78:14",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 702
+  },
+  {
+   "verse": "79:26",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 602
+  },
+  {
+   "verse": "79:26",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 699
+  },
+  {
+   "verse": "79:26",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 696
+  },
+  {
+   "verse": "80:37",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 596
+  },
+  {
+   "verse": "80:37",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 704
+  },
+  {
+   "verse": "80:37",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 604
+  },
+  {
+   "verse": "81:19",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 2690
+  },
+  {
+   "verse": "81:19",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 2795
+  },
+  {
+   "verse": "82:7",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 611
+  },
+  {
+   "verse": "82:7",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 594
+  },
+  {
+   "verse": "83:2",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 641
+  },
+  {
+   "verse": "83:2",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 581
+  },
+  {
+   "verse": "83:2",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 881
+  },
+  {
+   "verse": "84:9",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 704
+  },
+  {
+   "verse": "84:9",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 694
+  },
+  {
+   "verse": "85:17",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 598
+  },
+  {
+   "verse": "85:17",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 722
+  },
+  {
+   "verse": "86:2",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 776
+  },
+  {
+   "verse": "86:2",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 711
+  },
+  {
+   "verse": "87:16",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 590
+  },
+  {
+   "verse": "87:16",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 606
+  },
+  {
+   "verse": "88:1",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 600
+  },
+  {
+   "verse": "88:1",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 598
+  },
+  {
+   "verse": "89:5",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 604
+  },
+  {
+   "verse": "89:5",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 604
+  },
+  {
+   "verse": "89:5",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 599
+  },
+  {
+   "verse": "90:7",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 605
+  },
+  {
+   "verse": "90:7",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 592
+  },
+  {
+   "verse": "91:13",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 702
+  },
+  {
+   "verse": "91:13",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 697
+  },
+  {
+   "verse": "91:13",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 696
+  },
+  {
+   "verse": "92:13",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 596
+  },
+  {
+   "verse": "92:13",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 625
+  },
+  {
+   "verse": "93:10",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 2581
+  },
+  {
+   "verse": "93:10",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 2595
+  },
+  {
+   "verse": "94:1",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 698
+  },
+  {
+   "verse": "94:1",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 595
+  },
+  {
+   "verse": "95:7",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 599
+  },
+  {
+   "verse": "95:7",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 603
+  },
+  {
+   "verse": "96:5",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 602
+  },
+  {
+   "verse": "96:5",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 600
+  },
+  {
+   "verse": "97:3",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 2499
+  },
+  {
+   "verse": "97:3",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 2713
+  },
+  {
+   "verse": "97:3",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 589
+  },
+  {
+   "verse": "98:8",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 714
+  },
+  {
+   "verse": "98:8",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 602
+  },
+  {
+   "verse": "98:8",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 798
+  },
+  {
+   "verse": "99:5",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 598
+  },
+  {
+   "verse": "99:5",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 686
+  },
+  {
+   "verse": "100:10",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 695
+  },
+  {
+   "verse": "100:10",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 620
+  },
+  {
+   "verse": "101:7",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 2982
+  },
+  {
+   "verse": "101:7",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 2510
+  },
+  {
+   "verse": "102:8",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 598
+  },
+  {
+   "verse": "102:8",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 599
+  },
+  {
+   "verse": "103:3",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 610
+  },
+  {
+   "verse": "103:3",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 683
+  },
+  {
+   "verse": "103:3",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 709
+  },
+  {
+   "verse": "104:3",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 604
+  },
+  {
+   "verse": "104:3",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 596
+  },
+  {
+   "verse": "105:3",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 738
+  },
+  {
+   "verse": "105:3",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 568
+  },
+  {
+   "verse": "106:2",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 589
+  },
+  {
+   "verse": "106:2",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 607
+  },
+  {
+   "verse": "107:1",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 594
+  },
+  {
+   "verse": "107:1",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 610
+  },
+  {
+   "verse": "108:3",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 597
+  },
+  {
+   "verse": "108:3",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 613
+  },
+  {
+   "verse": "109:5",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 2995
+  },
+  {
+   "verse": "109:5",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 2705
+  },
+  {
+   "verse": "110:2",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 685
+  },
+  {
+   "verse": "110:2",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 697
+  },
+  {
+   "verse": "110:2",
+   "form": "marked_word_missing",
+   "expected": "ALTERED",
+   "verdict": "ALTERED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 702
+  },
+  {
+   "verse": "111:5",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 609
+  },
+  {
+   "verse": "111:5",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 689
+  },
+  {
+   "verse": "112:1",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 707
+  },
+  {
+   "verse": "112:1",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 592
+  },
+  {
+   "verse": "113:4",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 3012
+  },
+  {
+   "verse": "113:4",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 3015
+  },
+  {
+   "verse": "114:5",
+   "form": "kfc_marked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 669
+  },
+  {
+   "verse": "114:5",
+   "form": "noisy_unmarked",
+   "expected": "VERIFIED",
+   "verdict": "VERIFIED",
+   "source_in_accepted": true,
+   "passed": true,
+   "roundtrip_ms": 646
+  }
+ ]
+}

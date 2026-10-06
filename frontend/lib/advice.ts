@@ -27,6 +27,8 @@ export const SIMILAR_TEXT = "هذه نتيجة مشابهة وليست تطاب�
 type GradeKind = "sahih" | "hasan" | "weak" | "fabricated" | "baseless" | "unverified";
 
 /** Strongest recorded grade class, using only the grades copied from Dorar. */
+const EXACT_GRADE_WORDS = ["باطل", "منكر", "ضعيف جداً", "ضعيف جدا"];
+
 export function gradeKind(grades: Grade[]): GradeKind | null {
   if (!grades.length) return null;
   const classes = new Set(grades.map((g) => g.class));
@@ -112,10 +114,13 @@ export function outcome(claim: Claim): Outcome {
       // Several rulings that all reject the hadith (e.g. «ضعيف» and «موضوع») are not a dispute.
       const classes = new Set(claim.grades.map((x) => x.class));
       const mixed = claim.grades.length > 1 && classes.size > 1;
+      // A short grade word recorded by the muhaddith («باطل»، «منكر»…) is shown as written, not as its class.
+      const words = new Set(claim.grades.map((x) => x.grade.trim()));
+      const exact = !mixed && words.size === 1 ? EXACT_GRADE_WORDS.find((w) => words.has(w)) : undefined;
       const word = mixed ? "لا يصح بحسب كل الأحكام المسجّلة له في الدرر السنية"
-        : `${kind === "weak" ? "ضعيف" : kind === "fabricated" ? "موضوع" : kind === "baseless" ? "لا أصل له" : "لا يصح مرفوعًا"} بحسب الدرر السنية`;
+        : `${exact ?? (kind === "weak" ? "ضعيف" : kind === "fabricated" ? "موضوع" : kind === "baseless" ? "لا أصل له" : "لا يصح مرفوعًا")} بحسب الدرر السنية`;
       return {
-        label: mixed ? "حديث لا يصح" : g.label,
+        label: mixed ? "حديث لا يصح" : exact ? `حديث ${exact}` : g.label,
         hint: mixed ? "كل أحكامه المسجّلة لا تصححه" : "حكم مسجّل في الدرر السنية",
         tone: g.tone, icon: g.icon,
         summary: mixed
