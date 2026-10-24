@@ -16,7 +16,7 @@ export const VERDICT_META: Record<VerdictCode, { label: string; hint: string; to
   VERIFIED: { label: "مطابق للمصدر", hint: "آية مطابقة أو حديث صحيح/حسن بحسب الدرر السنية", tone: "verified" },
   NOT_AUTHENTIC: { label: "ضعيف أو موضوع", hint: "بحسب حكم الدرر السنية", tone: "weak" },
   ALTERED: { label: "يختلف عن النص القرآني", hint: "النص المعتمد في Quranpedia", tone: "altered" },
-  NO_ORIGIN: { label: "لم يُعثر عليه", hint: "في قاعدة المنصة ولا في البحث المباشر في الدرر · لا يعني الحكم بالصحة أو الضعف", tone: "noorigin" },
+  NO_ORIGIN: { label: "لم يُعثر عليه", hint: "لا يعني الحكم بالصحة أو الضعف", tone: "noorigin" },
   DISPUTED: { label: "حكم مختلف فيه", hint: "بحسب الدرر السنية", tone: "disputed" },
   REFER: { label: "إحالة إلى مختص", hint: "حالة شخصية", tone: "refer" },
   NEEDS_REVIEW: { label: "يحتاج إلى تحقق إضافي", hint: "نتيجة مشابهة وليست مطابقة", tone: "review" },

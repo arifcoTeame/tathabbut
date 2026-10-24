@@ -79,14 +79,14 @@ def _apply_request(claim, j: Judgement) -> Judgement:
     if claim.request == "evidence":
         what = "حديثاً" if claim.type_hint == "hadith" else "آيةً"
         if j.code in _FOUND:
-            where = "في الدرر السنية" if j.candidate and j.candidate.doc.ref.get("live") else "في قاعدة المنصة"
+            where = "في المصحف" if j.candidate and j.candidate.doc.kind == "quran" else "في الدرر السنية"
             j.notes.insert(0, f"طلبتَ {what} بهذا النص: هذا نص مسجّل بلفظه {where} ومعه حكمه كما في مصدره؛ تثبّت لا ينشئ نصوصاً ولا يقترحها من عنده.")
             return j
-        base = "قاعدة الأحاديث الحالية في المنصة" if claim.type_hint == "hadith" else "المصحف القرآني المعتمد من Quranpedia"
+        base = "الدرر السنية" if claim.type_hint == "hadith" else "المصحف القرآني المعتمد من Quranpedia"
         note = (f"تثبّت لا ينشئ أحاديث ولا آيات ولا يقترح نصوصاً من عنده. بحث عن «{claim.text}» في {base} "
-                "فلم يُعثر على تطابق مطابق؛ وهذا لا يعني الحكم على النص. ابحث عنه كاملاً في الدرر السنية.")
+                "فلم يُعثر على تطابق مطابق؛ وهذا لا يعني الحكم على النص. ابحث عنه بلفظ آخر في الدرر السنية.")
         if claim.type_hint != "hadith":
-            note = note.replace(" ابحث عنه كاملاً في الدرر السنية.", " راجع النص في Quranpedia.")
+            note = note.replace(" ابحث عنه بلفظ آخر في الدرر السنية.", " راجع النص في Quranpedia.")
         return Judgement("NO_ORIGIN", closest=j.candidate or j.closest, notes=[note])
     return j
 
