@@ -81,18 +81,19 @@ function liveOutcome(claim: Claim): Outcome | null {
   if (!src?.ref.live) return null;
   const pick = (cls: string[]) => claim.grades.filter((g) => cls.includes(g.class));
   switch (claim.verdict.code) {
+    // Dorar's terms forbid deriving a ruling that is not stated: the badge says where the rulings
+    // are from, and the rulings themselves are quoted as they are.
     case "VERIFIED":
       return {
-        label: "وردت أحكام بصحته", hint: "بحسب أحكام المحدّثين في الدرر السنية", tone: "verified", icon: "✓",
+        label: "وُجد في الدرر السنية", hint: "أحكام المحدّثين معروضة كما هي", tone: "verified", icon: "✓",
         summary: `حكمه في الدرر السنية: ${gradeLine(claim.grades)}.`,
-        advice: "يمكن نشره منسوبًا إلى النبي ﷺ مع ذكر مصدره وحكمه كما في الدرر السنية.",
+        advice: "إذا نسبته إلى النبي ﷺ فاذكر حكم المحدّث ومصدره كما في الدرر السنية.",
       };
     case "NOT_AUTHENTIC":
       return {
-        label: "حديث لا يصح", hint: "أحكام المحدّثين في الدرر السنية لا تصححه", tone: "fabricated", icon: "✕",
-        summary: `أحكامه في الدرر السنية لا تصححه: ${gradeLine(pick(["fabricated", "baseless", "weak"]))}.`,
-        advice: "لا يُنشر على أنه حديث صحيح ولا يُنسب إلى النبي ﷺ.",
-        note: "هذه أحكام مسجّلة في الدرر السنية، وليست مجرد عدم عثور عليه.",
+        label: "وُجد في الدرر السنية", hint: "أحكام المحدّثين معروضة كما هي", tone: "fabricated", icon: "!",
+        summary: `حكمه في الدرر السنية: ${gradeLine(pick(["fabricated", "baseless", "weak"]))}.`,
+        advice: "اقرأ أحكام المحدّثين المعروضة قبل نسبته إلى النبي ﷺ أو نشره على أنه حديث.",
       };
     case "DISPUTED":
       return {

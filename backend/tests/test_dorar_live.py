@@ -89,6 +89,12 @@ def test_unrelated_results_are_not_a_match():
                          lookup("الكرسي الأزرق يطير فوق الغيم البنفسجي"), TH) is None
 
 
+def test_cache_and_rate_limit_follow_dorar_terms():
+    assert dl._cache.ttl <= 48 * 3600
+    lim = dl._RateLimit(3)
+    assert [lim.allow() for _ in range(4)] == [True, True, True, False]
+
+
 def test_failed_lookup_returns_none():
     assert dl.judge_live("حب الوطن من الإيمان", dl.Lookup(False, error="URLError"), TH) is None
 

@@ -168,7 +168,8 @@ class Lookup:
 
 
 class _Cache:
-    def __init__(self, size: int = 2000, ttl: float = 7 * 24 * 3600):
+    # Dorar's terms allow caching for performance only, for at most 24–48 hours: 24 hours here.
+    def __init__(self, size: int = 2000, ttl: float = 24 * 3600):
         self.size, self.ttl = size, ttl
         self._d: OrderedDict[str, tuple[float, Lookup]] = OrderedDict()
         self._lock = threading.Lock()
@@ -193,6 +194,27 @@ class _Cache:
 _cache = _Cache()
 
 
+class _RateLimit:
+    """Dorar's terms set 60 requests a minute per account; stay under it across all users."""
+
+    def __init__(self, per_minute: int):
+        self.per_minute = per_minute
+        self._times: list[float] = []
+        self._lock = threading.Lock()
+
+    def allow(self) -> bool:
+        now = time.time()
+        with self._lock:
+            self._times = [t for t in self._times if now - t < 60]
+            if len(self._times) >= self.per_minute:
+                return False
+            self._times.append(now)
+            return True
+
+
+_limit = _RateLimit(int(os.getenv("TATHABBUT_DORAR_PER_MINUTE", "50")))
+
+
 def query_text(claim: str) -> str:
     return normalize(claim)
 
@@ -208,6 +230,8 @@ def fetch(claim: str, timeout: float = 4.0, opener=urlopen) -> Lookup:
     cached = _cache.get(key)
     if cached is not None:
         return cached
+    if not _limit.allow():
+        return Lookup(False, error="RateLimited")
     url = ENDPOINT + "?" + urlencode({"skey": q})
     try:
         req = Request(url, headers={"Accept": "application/json", "User-Agent": USER_AGENT})
