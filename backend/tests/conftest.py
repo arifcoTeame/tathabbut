@@ -1,5 +1,8 @@
+import os
 import sys
 from pathlib import Path
+
+os.environ.setdefault("TATHABBUT_DORAR_LIVE", "0")   # tests never reach dorar.net; live tests inject a fetcher
 
 import pytest
 

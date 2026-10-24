@@ -3,11 +3,12 @@ from __future__ import annotations
 
 import time
 
-from . import extractor
+from . import dorar_live, extractor
+from .arabic import key_tokens
 from .index import HybridIndex
 from .judge import VERDICTS, Judgement, Thresholds, judge
 
-ENGINE_VERSION = "0.9.0"
+ENGINE_VERSION = "0.10.0"
 DISCLAIMER = "تثبّت أداة مدعومة بالذكاء الاصطناعي ولا تُغني عن المختص. النص الشرعي منسوخ من الفهرس، والدرجات منقولة عن المحدّثين كما هي مسجّلة في المصدر."
 
 
@@ -41,7 +42,7 @@ def _explanation(j: Judgement) -> dict | None:
     c = j.candidate
     if j.code == "VERIFIED" and c and c.doc.kind == "quran":
         text = f"النص مطابق لما في المصحف: {_ayah_label(c.doc.ref)}."
-    elif j.code in ("VERIFIED", "NOT_AUTHENTIC", "DISPUTED") and c and c.doc.grades:
+    elif j.code in ("VERIFIED", "NOT_AUTHENTIC", "DISPUTED", "IN_SOURCE") and c and c.doc.grades:
         g = "؛ ".join(f"{x['muhaddith']} ({x['source']} {x['ref']}): {x['grade']}" for x in c.doc.grades)
         text = f"الدرجة كما هي مسجّلة في المصدر: {g}."
     elif j.code == "ALTERED" and c:
@@ -59,7 +60,7 @@ QUESTION_NOTE = (
     "هذا سؤال عام وليس آيةً أو حديثاً منقولاً. تثبّت يتحقق من النصوص المنسوبة إلى القرآن الكريم والسنة النبوية، "
     "ولا يجيب عن الأسئلة العامة ولا يصدر فتوى. الصق الآية أو الحديث الذي تريد التحقق منه."
 )
-_FOUND = ("VERIFIED", "NOT_AUTHENTIC", "DISPUTED")
+_FOUND = ("VERIFIED", "NOT_AUTHENTIC", "DISPUTED", "IN_SOURCE")
 
 
 def _reference_note(type_hint: str) -> str:
@@ -78,7 +79,8 @@ def _apply_request(claim, j: Judgement) -> Judgement:
     if claim.request == "evidence":
         what = "حديثاً" if claim.type_hint == "hadith" else "آيةً"
         if j.code in _FOUND:
-            j.notes.insert(0, f"طلبتَ {what} بهذا النص: هذا نص مسجّل بلفظه في قاعدة المنصة ومعه حكمه كما في مصدره؛ تثبّت لا ينشئ نصوصاً ولا يقترحها من عنده.")
+            where = "في الدرر السنية" if j.candidate and j.candidate.doc.ref.get("live") else "في قاعدة المنصة"
+            j.notes.insert(0, f"طلبتَ {what} بهذا النص: هذا نص مسجّل بلفظه {where} ومعه حكمه كما في مصدره؛ تثبّت لا ينشئ نصوصاً ولا يقترحها من عنده.")
             return j
         base = "قاعدة الأحاديث الحالية في المنصة" if claim.type_hint == "hadith" else "المصحف القرآني المعتمد من Quranpedia"
         note = (f"تثبّت لا ينشئ أحاديث ولا آيات ولا يقترح نصوصاً من عنده. بحث عن «{claim.text}» في {base} "
@@ -89,16 +91,43 @@ def _apply_request(claim, j: Judgement) -> Judgement:
     return j
 
 
-def run(index: HybridIndex, text: str, th: Thresholds, quran_link: str) -> dict:
+MAX_LIVE_LOOKUPS = 4
+
+
+def _live_eligible(claim, j: Judgement) -> bool:
+    """Ask Dorar only for a hadith-like quotation the local base did not find."""
+    if j.code != "NO_ORIGIN" or j.short or claim.level == "D" or claim.request in ("question", "evidence_ref"):
+        return False
+    n = len(key_tokens(claim.text))
+    # An unmarked phrase must be longer: a few common words occur inside many hadiths.
+    return (claim.type_hint == "hadith" and n >= 3) or (claim.type_hint == "unknown" and n >= 5)
+
+
+def run(index: HybridIndex, text: str, th: Thresholds, quran_link: str,
+        live: bool = False, live_fetch=None, live_timeout: float = 4.0) -> dict:
     t0 = time.perf_counter()
     claims_out = []
     summary = {code: 0 for code in VERDICTS}
+    lookups = 0
 
     for claim in extractor.extract(text):
+        live_info = None
         if claim.request == "evidence_ref":
             j = Judgement("NO_ORIGIN", notes=[_reference_note(claim.type_hint)])
         else:
-            j = _apply_request(claim, judge(index, claim, th))
+            j = judge(index, claim, th)
+            if live and lookups < MAX_LIVE_LOOKUPS and _live_eligible(claim, j):
+                lookups += 1
+                found = (live_fetch or dorar_live.fetch)(claim.text, timeout=live_timeout)
+                live_info = {"searched": True, "ok": found.ok}
+                lj = dorar_live.judge_live(claim.text, found, th)
+                if lj is not None:
+                    j = lj
+                elif found.ok:
+                    j.notes.append(dorar_live.NOT_FOUND_NOTE)
+                else:
+                    j.notes.append(dorar_live.UNAVAILABLE_NOTE)
+            j = _apply_request(claim, j)
         if claim.omitted_count:
             j.notes.append(
                 f"تجاوز النص حد عرض {extractor.MAX_CLAIMS} بطاقة؛ لم تُعرض {claim.omitted_count} بطاقة إضافية. "
@@ -123,6 +152,7 @@ def run(index: HybridIndex, text: str, th: Thresholds, quran_link: str) -> dict:
             "alternatives": [],
             "notes": j.notes,
             "explanation": _explanation(j),
+            "live": live_info,
         }
         if c is not None:
             out["source"] = _source(c.doc, quran_link)

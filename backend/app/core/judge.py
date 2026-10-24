@@ -22,6 +22,7 @@ VERDICTS = {
     "REFER": "إحالة",
     "NEEDS_REVIEW": "يتطلب مزيد تحقق",
     "OUT_OF_SCOPE": "سؤال عام خارج نطاق التحقق",
+    "IN_SOURCE": "وُجد في الدرر السنية؛ أحكامه معروضة للمراجعة",
 }
 MAX_EXTRA_VERSES = 3
 

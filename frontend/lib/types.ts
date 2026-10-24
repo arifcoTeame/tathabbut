@@ -8,7 +8,8 @@ export type VerdictCode =
   | "DISPUTED"
   | "REFER"
   | "NEEDS_REVIEW"
-  | "OUT_OF_SCOPE";
+  | "OUT_OF_SCOPE"
+  | "IN_SOURCE";
 
 export interface Grade {
   muhaddith: string;
@@ -20,6 +21,8 @@ export interface Grade {
   note?: string;
   /** Direct link to this ruling's own entry on dorar.net (https://dorar.net/h/…), when checked */
   url?: string;
+  /** narrator of this record (live Dorar results list one per ruling) */
+  narrator?: string;
 }
 
 export interface SourceRef {
@@ -30,6 +33,8 @@ export interface SourceRef {
   narrator?: string;
   /** full wording of the cited entry in the source (hadith) when the record is a popular fragment */
   context?: string;
+  /** true when the record came from a live search of Dorar, not from the platform's own base */
+  live?: boolean;
 }
 
 export interface Source {
@@ -73,6 +78,8 @@ export interface Claim {
   alternatives: { id: string; ref: SourceRef; url: string }[];
   notes: string[];
   explanation: { kind: string; generated: boolean; text: string } | null;
+  /** set when Dorar was searched directly for this claim */
+  live?: { searched: boolean; ok: boolean } | null;
 }
 
 export interface IndexStats {

@@ -20,6 +20,7 @@ export default function ClaimCard({ claim }: { claim: Claim }) {
   const code = claim.verdict.code;
   const showDiff = claim.diff.length > 0 && claim.diff.some((d) => d.op !== "equal");
   const similar = code === "NEEDS_REVIEW" && !!src;          // a close text, not an exact match
+  const live = !!src?.ref.live;                              // record from a live Dorar search
   const hadithReview = src?.kind === "hadith" && code === "NEEDS_REVIEW";
   const misattributed = claim.type_hint === "hadith" && src?.kind === "quran";
   const noText = claim.request === "evidence_ref";             // «أعطني حديثاً يثبت هذا الكلام»
@@ -28,7 +29,7 @@ export default function ClaimCard({ claim }: { claim: Claim }) {
   const notes = claim.notes.filter((n) =>
     code === "OUT_OF_SCOPE" || noText ? false
       : code === "NO_ORIGIN" ? n.startsWith("كلمة واحدة") || n.startsWith("تثبّت لا ينشئ")
-      : !n.startsWith("آيات أخرى تشترك"));
+      : !n.startsWith("آيات أخرى تشترك") && !(src?.ref.live && n.startsWith("نتيجة من البحث المباشر")));
 
   return (
     <article className="card" aria-labelledby={`claim-${claim.id}`}>
@@ -72,6 +73,7 @@ export default function ClaimCard({ claim }: { claim: Claim }) {
               <span className="lbl">
                 {src.kind === "quran"
                   ? similar ? "النص القرآني المشابه (Quranpedia)" : "النص القرآني المعتمد (Quranpedia)"
+                  : live ? (similar ? "النص المشابه في الدرر السنية (بحث مباشر)" : "لفظ الحديث كما في الدرر السنية (بحث مباشر)")
                   : similar ? "النص المشابه في قاعدة المنصة، بلفظه المنقول من الدرر السنية" : "لفظ الحديث كما نُقل من الدرر السنية"}
               </span>
               {src.kind === "quran" ? `﴿${src.text}﴾` : src.text}
@@ -84,7 +86,8 @@ export default function ClaimCard({ claim }: { claim: Claim }) {
             </blockquote>
             <div className="src">
               {src.kind === "quran" ? <span>{verseLabel(src.ref)}</span> : src.ref.narrator ? <span>الراوي: {src.ref.narrator}</span> : null}
-              {!src.verified && <span className="tag warn">سجل تجريبي لم يُراجع بعد</span>}
+              {live ? <span className="tag">من الدرر السنية مباشرة</span>
+                : !src.verified && <span className="tag warn">سجل تجريبي لم يُراجع بعد</span>}
             </div>
           </>
         )}
@@ -94,11 +97,14 @@ export default function ClaimCard({ claim }: { claim: Claim }) {
             {hadithReview && (
               <p className="coverage-note">الأحكام التالية تخص لفظ المصدر؛ لا تُنقل إلى النص المدخل قبل مراجعة الفروق.</p>
             )}
+            {live && (
+              <p className="coverage-note">أحكام المحدّثين كما وردت في أول نتائج البحث في الدرر السنية، منسوبة لأصحابها دون ترجيح؛ وقد يخص بعضها إسنادًا أو رواية بعينها.</p>
+            )}
             <ul className="grades" aria-label="حكم الحديث كما في الدرر السنية">
               {claim.grades.map((g, i) => (
                 <li key={i}>
                   <span className="g-label">الحكم:</span> <b>{g.grade}</b>
-                  <span className="g-meta"> — المحدّث: {g.muhaddith} · المصدر: {g.source}{g.ref ? ` · الرقم أو الصفحة: ${g.ref}` : ""}</span>
+                  <span className="g-meta"> — المحدّث: {g.muhaddith} · المصدر: {g.source}{g.ref ? ` · الرقم أو الصفحة: ${g.ref}` : ""}{live && g.narrator ? ` · الراوي: ${g.narrator}` : ""}</span>
                   {g.note && <span className="tag">{g.note}</span>}
                   {g.url && (
                     <a className="inline-link" href={g.url} target="_blank" rel="noopener noreferrer">

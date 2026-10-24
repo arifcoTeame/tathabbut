@@ -63,4 +63,5 @@ def verify(req: VerifyRequest) -> dict:
     if len(text) > settings.max_input_chars:
         raise HTTPException(413, f"النص أطول من الحد المسموح ({settings.max_input_chars} حرفاً).")
     # No request text is logged or stored (privacy).
-    return pipeline.run(state["index"], text, settings.thresholds, settings.quran_link)
+    return pipeline.run(state["index"], text, settings.thresholds, settings.quran_link,
+                        live=settings.dorar_live, live_timeout=settings.dorar_timeout)

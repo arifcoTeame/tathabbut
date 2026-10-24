@@ -21,6 +21,9 @@ class Settings:
     )
     max_input_chars: int = int(os.getenv("TATHABBUT_MAX_CHARS", "4000"))
     quran_link: str = os.getenv("TATHABBUT_QURAN_LINK", "https://quranpedia.net/surah/1/{surah}?ayah_id={gid}")
+    # Search Dorar's hadith API directly for hadiths not in the local base (TATHABBUT_DORAR_LIVE=0 to turn off).
+    dorar_live: bool = _bool("TATHABBUT_DORAR_LIVE", True)
+    dorar_timeout: float = float(os.getenv("TATHABBUT_DORAR_TIMEOUT", "4"))
     thresholds: Thresholds = field(
         default_factory=lambda: Thresholds(require_verified_sources=_bool("TATHABBUT_REQUIRE_VERIFIED", False))
     )

@@ -54,6 +54,7 @@ class ClaimOut(BaseModel):
     alternatives: list[dict] = []
     notes: list[str] = []
     explanation: dict | None = None
+    live: dict | None = None     # {"searched": bool, "ok": bool} when Dorar was searched directly
 
 
 class VerifyResponse(BaseModel):

@@ -74,7 +74,51 @@ function gradeLine(grades: Grade[]): string {
   return grades.slice(0, 2).map((g) => `${g.grade} — ${g.muhaddith}، ${g.source}${g.ref ? ` (${g.ref})` : ""}`).join("؛ ");
 }
 
+/** Rulings from a live Dorar search: shown as found there, never as the platform's own grade. */
+function liveOutcome(claim: Claim): Outcome | null {
+  const src = claim.source;
+  if (!src?.ref.live) return null;
+  const found = "وُجد في الدرر السنية (بحث مباشر)";
+  const pick = (cls: string[]) => claim.grades.filter((g) => cls.includes(g.class));
+  switch (claim.verdict.code) {
+    case "VERIFIED":
+      return {
+        label: "وردت أحكام بصحته", hint: "بحسب أحكام المحدّثين في الدرر السنية", tone: "verified", icon: "✓",
+        summary: `${found}، والأحكام المعروضة له تصححه ولا يرده منها شيء: ${gradeLine(claim.grades)}.`,
+        advice: "يمكن نشره منسوبًا إلى النبي ﷺ مع ذكر مصدره وحكمه كما في الدرر السنية.",
+      };
+    case "NOT_AUTHENTIC":
+      return {
+        label: "حديث لا يصح", hint: "أحكام المحدّثين في الدرر السنية لا تصححه", tone: "fabricated", icon: "✕",
+        summary: `${found}، وأحكام المحدّثين المعروضة له لا تصححه: ${gradeLine(pick(["fabricated", "baseless", "weak"]))}.`,
+        advice: "لا يُنشر على أنه حديث صحيح ولا يُنسب إلى النبي ﷺ.",
+        note: "هذه أحكام مسجّلة في الدرر السنية، وليست مجرد عدم عثور عليه.",
+      };
+    case "DISPUTED":
+      return {
+        label: "تعددت أحكام المحدّثين", hint: "قد تخص روايات وأسانيد مختلفة", tone: "disputed", icon: "⇄",
+        summary: `${found}، وله أحكام مختلفة: ${gradeLine([...pick(["authentic"]).slice(0, 1), ...pick(["fabricated", "baseless", "weak"]).slice(0, 1)])}.`,
+        advice: "راجع الأحكام كاملة في الدرر السنية، ولا تنشره بصيغة الجزم بصحته قبل ذلك.",
+      };
+    case "IN_SOURCE":
+      return {
+        label: "وُجد في الدرر السنية", hint: "أحكامه معروضة للمراجعة", tone: "review", icon: "≈",
+        summary: `${found}، وأحكامه المعروضة لا تتفق على حكم واضح أو تخص أسانيد بعينها؛ تُعرض كما هي.`,
+        advice: "افتح البحث في الدرر السنية واقرأ أحكام المحدّثين قبل نسبته إلى النبي ﷺ.",
+      };
+    case "NEEDS_REVIEW":
+      return {
+        label: "يحتاج إلى تحقق إضافي", hint: "نتيجة مشابهة في الدرر السنية", tone: "review", icon: "≈",
+        summary: diffSentence(claim.diff, "hadith") || "لفظ النص المدخل لا يطابق لفظ أقرب حديث في الدرر السنية؛ الحكم المعروض يخص نص المصدر.",
+        advice: "لا تنسبه إلى النبي ﷺ بهذه الصيغة قبل التحقق من الدرر السنية.",
+      };
+  }
+  return null;
+}
+
 export function outcome(claim: Claim): Outcome {
+  const live = liveOutcome(claim);
+  if (live) return live;
   const src = claim.source;
   const isQuran = src?.kind === "quran";
   const attributedToProphet = claim.type_hint === "hadith";
@@ -150,12 +194,22 @@ export function outcome(claim: Claim): Outcome {
           advice: "لا تنشره على أنه آية؛ راجع النص في Quranpedia.",
         };
       }
+      if (claim.live?.searched && claim.live.ok) {
+        return {
+          label: "لم يُعثر عليه", hint: "في قاعدة المنصة ولا في البحث المباشر في الدرر", tone: "noorigin", icon: "؟",
+          summary: "لم يُعثر على تطابق مطابق في قاعدة المنصة، ولا في أول نتائج البحث المباشر في الدرر السنية.",
+          note: "عدم العثور لا يعني الحكم على النص بالصحة أو الضعف؛ قد يكون بلفظ آخر. «لم يُعثر عليه» تختلف عن «حديث لا يصح» التي تعني أن له أحكاماً مسجّلة ترده.",
+          advice: "ابحث عنه بلفظ آخر في موقع الدرر السنية، ولا تنسب النص إلى النبي ﷺ قبل هذا التحقق.",
+        };
+      }
       return {
         label: "لم يُعثر عليه", hint: "ضمن قاعدة الأحاديث الحالية في المنصة", tone: "noorigin", icon: "؟",
         summary: claim.type_hint === "unknown"
           ? `${HADITH_NOT_FOUND_TEXT.slice(0, -1)}، ولا في المصحف القرآني المعتمد من Quranpedia.`
           : HADITH_NOT_FOUND_TEXT,
-        note: `${HADITH_NOT_FOUND_NOTE} ${HADITH_NOT_FOUND_DIFF}`,
+        note: claim.live?.searched
+          ? `تعذّر الوصول إلى الدرر السنية الآن للبحث المباشر. ${HADITH_NOT_FOUND_NOTE}`
+          : `${HADITH_NOT_FOUND_NOTE} ${HADITH_NOT_FOUND_DIFF}`,
         advice: `${HADITH_NOT_FOUND_ADVICE} ولا تنسب النص إلى النبي ﷺ قبل هذا التحقق.`,
       };
     case "NEEDS_REVIEW":
@@ -182,6 +236,11 @@ export function outcome(claim: Claim): Outcome {
         label: "سؤال عام", hint: "خارج نطاق التحقق", tone: "refer", icon: "?",
         summary: "هذا سؤال عام وليس آيةً أو حديثاً منقولاً؛ تثبّت يتحقق من النصوص المنسوبة إلى القرآن الكريم والسنة النبوية، ولا يجيب عن الأسئلة العامة ولا يصدر فتوى.",
         advice: "الصق الآية أو الحديث الذي تريد التحقق منه، مثل: «قال رسول الله ﷺ: الدين النصيحة» أو «ما صحة حديث اطلبوا العلم ولو بالصين؟». وللأسئلة العامة في العقيدة والتعريف بالإسلام ارجع إلى مختص أو إلى الموسوعة العقدية في الدرر السنية.",
+      };
+    case "IN_SOURCE":
+      return {
+        label: "وُجد في الدرر السنية", hint: "أحكامه معروضة للمراجعة", tone: "review", icon: "≈",
+        summary: "وُجد في الدرر السنية؛ أحكامه معروضة كما هي.", advice: "اقرأ أحكام المحدّثين في الدرر السنية قبل نسبته إلى النبي ﷺ.",
       };
     case "REFER":
       return {
